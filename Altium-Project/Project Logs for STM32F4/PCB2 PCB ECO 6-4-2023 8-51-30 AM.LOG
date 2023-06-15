@@ -1,0 +1,8 @@
+Change Component Comment : Designator=C2 Old Comment=0603YC104KAZ2A New Comment=100n
+Change Component Comment : Designator=C3 Old Comment=0603YC104KAZ2A New Comment=100n
+Change Component Comment : Designator=C4 Old Comment=0603YC104KAZ2A New Comment=100n
+Change Component Comment : Designator=C5 Old Comment=0603YC104KAZ2A New Comment=100n
+Change Component Comment : Designator=C6 Old Comment=0603YC104KAZ2A New Comment=100n
+Change Component Comment : Designator=C25 Old Comment=0603YC104KAZ2A New Comment=100n
+Change Component Comment : Designator=C1 Old Comment=C0603C475K9PACTU New Comment=
+Added Pin To Net: NetName=GND Pin=U1-12

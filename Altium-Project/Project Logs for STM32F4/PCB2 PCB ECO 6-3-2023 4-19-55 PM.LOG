@@ -1,0 +1,37 @@
+Removed Pin From Net: NetName=GND Pin=U7-1
+Removed Pin From Net: NetName=3v3 Pin=U7-2
+Removed Pin From Net: NetName=3v3 Pin=U7-3
+Removed Pin From Net: NetName=GND Pin=U7-4
+Removed Pin From Net: NetName=GND Pin=U7-5
+Removed Pin From Net: NetName=GND Pin=U7-6
+Removed Pin From Net: NetName=TP Pin=U7-7
+Removed Pin From Net: NetName=S\A\F\E\B\O\O\T\ Pin=U7-8
+Removed Pin From Net: NetName=SDA Pin=U7-9
+Removed Pin From Net: NetName=GND Pin=U7-10
+Removed Pin From Net: NetName=GND Pin=U7-11
+Removed Pin From Net: NetName=MCU_RX_GPS_TX Pin=U7-13
+Removed Pin From Net: NetName=MCU_TX_GPS_RX Pin=U7-14
+Removed Pin From Net: NetName=GND Pin=U7-15
+Removed Pin From Net: NetName=GND Pin=U7-16
+Removed Pin From Net: NetName=3v3 Pin=U7-17
+Removed Pin From Net: NetName=G\P\S\_\R\S\T\ Pin=U7-18
+Removed Pin From Net: NetName=GPS_INT Pin=U7-19
+Removed Pin From Net: NetName=GND Pin=U7-20
+Removed Member From Class: ClassName=MCU Member=U7
+Added Component: Designator=U?(SAM-M10Q-00B)
+Added Pin To Net: NetName=GND Pin=U?-6
+Added Pin To Net: NetName=TP Pin=U?-7
+Added Pin To Net: NetName=S\A\F\E\B\O\O\T\ Pin=U?-8
+Added Pin To Net: NetName=SDA Pin=U?-9
+Added Pin To Net: NetName=GND Pin=U?-10
+Added Pin To Net: NetName=GND Pin=U?-11
+Added Pin To Net: NetName=SCL Pin=U?-12
+Added Pin To Net: NetName=MCU_RX_GPS_TX Pin=U?-13
+Added Pin To Net: NetName=MCU_TX_GPS_RX Pin=U?-14
+Added Pin To Net: NetName=GND Pin=U?-15
+Added Pin To Net: NetName=GND Pin=U?-16
+Added Pin To Net: NetName=3v3 Pin=U?-17
+Added Pin To Net: NetName=G\P\S\_\R\S\T\ Pin=U?-18
+Added Pin To Net: NetName=GPS_INT Pin=U?-19
+Added Pin To Net: NetName=GND Pin=U?-20
+Added Member To Class: ClassName=MCU Member=Component U? SAM-M10Q-00B-Breakout

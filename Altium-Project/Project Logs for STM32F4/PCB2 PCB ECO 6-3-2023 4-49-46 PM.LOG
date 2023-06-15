@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=SDA Pin=U1-59
+Removed Pin From Net: NetName=SCL Pin=U1-61
+Added Pin To Net: NetName=SCL Pin=P6-1
+Added Pin To Net: NetName=SDA Pin=P9-2
+Added Pin To Net: NetName=SDA Pin=U1-40
+Added Pin To Net: NetName=SCL Pin=U1-41
+Added Member To Class: ClassName=MCU Member=Component U6 24AA128-I/MF

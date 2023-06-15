@@ -1,0 +1,66 @@
+Altium Designer Pick and Place Locations
+C:\Users\Public\Documents\Altium\STM32F4\Project Outputs for STM32F4\Pick Place\Pick Place for PCB2.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       04/06/23
+Time:       10:05
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mil
+
+Designator Comment                  Layer    Footprint                  Center-X(mil) Center-Y(mil) Rotation Description                                                                                                             
+SW1        PTS645SM43SMTR92LFS      TopLayer FP-PTS645SM43SMTR92LFS-MFG 3396.108      2445.000      0        "SWITCH TACTILE SPST-NO 0.05A 12V"                                                                                      
+C25        100n                     TopLayer CAPC1608X90X35ML15T15      3185.000      3120.000      90       ""                                                                                                                      
+P2         61300811121              TopLayer 61300811121                2610.000      2105.000      180      "THT Vertical Pin Header WR-PHD, Pitch 2.54 mm, Single Row, 8 pins"                                                     
+J3         90120-0123               TopLayer FP-90120-0123-MFG          1510.000      2510.000      180      "CONN HEADER VERT 3POS 2.54MM"                                                                                          
+J2         90120-0123               TopLayer FP-90120-0123-MFG          4515.000      3590.000      0        "CONN HEADER VERT 3POS 2.54MM"                                                                                          
+SW2        PTS645SM43SMTR92LFS      TopLayer FP-PTS645SM43SMTR92LFS-MFG 1975.000      2455.000      270      "SWITCH TACTILE SPST-NO 0.05A 12V"                                                                                      
+U6         24AA128-I/MF             TopLayer DFNS-MF8_PS                2315.000      3676.378      270      "128Kbit, 400kHz, 1.7V, I2C Serial EEPROM, 8-Pin DFN Punch Singulated, Industrial Temperature"                          
+U7         SAM-M10Q-00B-Breakout    TopLayer SAM-M10Q-00B               4267.500      2730.000      90       ""                                                                                                                      
+C24        100n                     TopLayer CAPC1608X90X35ML15T15      2487.688      3621.378      270      ""                                                                                                                      
+U5         LIS2DH12TR               TopLayer FP-LGA-12-8365767-MFG      1909.842      3704.980      180      "ACCEL 2-16G I2C/SPI 12LGA"                                                                                             
+U4         BMP280                   TopLayer FP-BMP280-MFG              2784.814      2528.552      90       "SENSOR PRESSURE ABS"                                                                                                   
+R10        RC0603FR-071KL           TopLayer FP-RC0603-0_55-IPC_C       2056.902      3699.980      0        "RES 1K OHM 1% 1/10W 0603"                                                                                              
+R9         RC0603FR-071KL           TopLayer FP-RC0603-0_55-IPC_C       2335.000      3155.000      225      "RES 1K OHM 1% 1/10W 0603"                                                                                              
+R8         RC0603FR-071KL           TopLayer FP-RC0603-0_55-IPC_C       2365.000      3275.000      180      "RES 1K OHM 1% 1/10W 0603"                                                                                              
+R7         RC0603FR-071KL           TopLayer FP-RC0603-0_55-IPC_C       3481.116      3675.000      180      "RES 1K OHM 1% 1/10W 0603"                                                                                              
+D3         LTST-C190GKT             TopLayer FP-LTST-C190GKT-MFG        3370.473      3675.000      0        "LED GREEN CLEAR CHIP SMD"                                                                                              
+C23        100n                     TopLayer CAPC1608X90X35ML15T15      1690.260      3709.980      270      ""                                                                                                                      
+C22        100n                     TopLayer CAPC1608X90X35ML15T15      1790.260      3709.980      270      ""                                                                                                                      
+C21        100n                     TopLayer CAPC1608X90X35ML15T15      2657.678      2533.551      270      ""                                                                                                                      
+C20        100n                     TopLayer CAPC1608X90X35ML15T15      2772.678      2403.462      0        ""                                                                                                                      
+U3         FT230XS-R                TopLayer FP-SSOP-16-MFG             1661.214      2946.998      90       "IC USB SERIAL BASIC UART 16SSOP"                                                                                       
+R6         27r                      TopLayer FP-CRCW0603-e3-IPC_B       1425.000      2995.000      0        "RES Thick Film, 27O, 5%, 0.1W, 200ppm/°C, 0603"                                                                        
+R5         27r                      TopLayer FP-CRCW0603-e3-IPC_B       1425.000      2900.000      0        "RES Thick Film, 27O, 5%, 0.1W, 200ppm/°C, 0603"                                                                        
+J1         MICROQTJ                 TopLayer SHOUHAN_MICROQTJ           1126.757      2951.260      270      ""                                                                                                                      
+FB1        BLM18PG121SN1D           TopLayer FP-BLM18-0_15-t0_8-IPC_A   1535.000      3200.000      0        "Chip Ferrite Bead, 0603, 120O @ 100MHz, 0.05O, 25%, 2A"                                                                
+C19        ""                       TopLayer FP-C0603-CG-MFG            1665.000      3185.000      90       "CAP CER 4.7UF 6.3V X5R 0603"                                                                                           
+C18        100n                     TopLayer CAPC1608X90X35ML15T15      1876.362      3275.089      270      ""                                                                                                                      
+C17        ""                       TopLayer FP-C0603-CG-MFG            1405.236      3160.000      90       "CAP CER 4.7UF 6.3V X5R 0603"                                                                                           
+C16        ""                       TopLayer FP-C0603-CG-MFG            1317.890      3157.372      90       "CAP CER 4.7UF 6.3V X5R 0603"                                                                                           
+C15        ""                       TopLayer FP-C0603C-CF-MFG           1305.000      3022.372      90       "CAP CER 47PF 100V 5% NP0 0603"                                                                                         
+C14        ""                       TopLayer FP-C0603C-CF-MFG           1300.000      2910.000      270      "CAP CER 47PF 100V 5% NP0 0603"                                                                                         
+C13        100n                     TopLayer CAPC1608X90X35ML15T15      1861.259      2950.000      180      ""                                                                                                                      
+Y1         NX2520SA-16MHZ-STD-CSW-5 TopLayer FP-NX2520SA-MFG            3373.206      3026.483      90       "CRYSTAL 16.0000MHZ 8PF SMD"                                                                                            
+U2         AMS1117-3.3              TopLayer FP-AMS1117-IPC_C           2084.951      2994.709      270      "LDO Voltage Regulators 1A, 3.3V"                                                                                       
+U1         STM32F401RCT6            TopLayer STM-LQFP64_M               2835.187      3070.187      180      "ARM Cortex-M4 32-bit MCU+FPU, 105 DMIPS, 256 kB Flash, 64 kB Internal RAM, 48 I/Os, 64-pin LQFP, -40 to 85 degC, Tray" 
+R4         RC0603FR-071KL           TopLayer FP-RC0603-0_55-IPC_C       2935.000      2615.000      0        "RES 1K OHM 1% 1/10W 0603"                                                                                              
+R2         RC0603FR-071KL           TopLayer FP-RC0603-0_55-IPC_C       1506.642      3500.000      0        "RES 1K OHM 1% 1/10W 0603"                                                                                              
+R1         RC0603FR-071KL           TopLayer FP-RC0603-0_55-IPC_C       3475.170      3555.186      180      "RES 1K OHM 1% 1/10W 0603"                                                                                              
+P5         FTSH-105-01-F-DV-K       TopLayer SMTC-FTSH-105-01-L-DV-K_V  2355.000      2649.996      270      "Male Header, Pitch 1.27 mm, 2 x 5 Position, Height 6.12 mm, RoHS, Tube"                                                
+D2         LTST-C190GKT             TopLayer FP-LTST-C190GKT-MFG        3360.876      3555.000      0        "LED GREEN CLEAR CHIP SMD"                                                                                              
+D1         LTST-C190GKT             TopLayer FP-LTST-C190GKT-MFG        1505.000      3415.186      180      "LED GREEN CLEAR CHIP SMD"                                                                                              
+C12        0603YC104KAZ2A           TopLayer CAPC1608X90X35ML15T15      2840.000      3530.000      180      ""                                                                                                                      
+C11        0603YC104KAZ2A           TopLayer CAPC1608X90X35ML15T15      3121.334      2500.000      90       ""                                                                                                                      
+C10        C1608X5R0J226M080AC      TopLayer CAPC1608X100X20ML10        2100.000      3240.000      0        "Chip Capacitor, 22 uF, +/- 20%, 6.3 V, -55 to 85 degC, 1608 (0603 Metric), RoHS, Tape and Reel"                        
+C9         C1608X5R0J226M080AC      TopLayer CAPC1608X100X20ML10        1971.018      3230.000      90       "Chip Capacitor, 22 uF, +/- 20%, 6.3 V, -55 to 85 degC, 1608 (0603 Metric), RoHS, Tape and Reel"                        
+C8         ""                       TopLayer FP-C1608-080-0_1-IPC_A     3359.155      3145.000      0        "Multilayer Ceramic Capacitors 8pF ±0.5pF 50V C0G SMD 0603"                                                             
+C7         ""                       TopLayer FP-C1608-080-0_1-IPC_A     3420.000      2879.999      0        "Multilayer Ceramic Capacitors 8pF ±0.5pF 50V C0G SMD 0603"                                                             
+C6         100n                     TopLayer CAPC1608X90X35ML15T15      2500.374      2920.000      270      ""                                                                                                                      
+C5         100n                     TopLayer CAPC1608X90X35ML15T15      2985.000      2735.000      0        ""                                                                                                                      
+C4         100n                     TopLayer CAPC1608X90X35ML15T15      3170.000      2840.000      90       ""                                                                                                                      
+C3         100n                     TopLayer CAPC1608X90X35ML15T15      2980.000      3405.000      180      ""                                                                                                                      
+C2         100n                     TopLayer CAPC1608X90X35ML15T15      2715.000      3420.000      180      ""                                                                                                                      
+C1         ""                       TopLayer FP-C0603-CG-MFG            2700.000      3535.000      0        "CAP CER 4.7UF 6.3V X5R 0603"                                                                                           

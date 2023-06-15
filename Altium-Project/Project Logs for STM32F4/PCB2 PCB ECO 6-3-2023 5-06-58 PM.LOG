@@ -1,0 +1,23 @@
+Removed Pin From Net: NetName=PC0 Pin=P8-1
+Removed Pin From Net: NetName=PC1 Pin=P8-2
+Removed Pin From Net: NetName=PC2 Pin=P8-3
+Removed Pin From Net: NetName=PC3 Pin=P8-4
+Removed Pin From Net: NetName=PC4 Pin=P8-5
+Removed Pin From Net: NetName=PC5 Pin=P8-6
+Removed Pin From Net: NetName=EEPROM_WP Pin=P9-1
+Removed Pin From Net: NetName=IMU_INT1 Pin=P9-4
+Removed Pin From Net: NetName=IMU_INT2 Pin=P9-5
+Removed Pin From Net: NetName=EEPROM_WP Pin=U1-39
+Removed Pin From Net: NetName=IMU_INT1 Pin=U1-52
+Removed Pin From Net: NetName=IMU_INT2 Pin=U1-53
+Removed Member From Class: ClassName=MCU Member=P8
+Added Pin To Net: NetName=IMU_INT2 Pin=P9-1
+Added Pin To Net: NetName=EEPROM_WP Pin=U1-37
+Added Pin To Net: NetName=IMU_INT1 Pin=U1-38
+Added Pin To Net: NetName=IMU_INT2 Pin=U1-39
+Added Pin To Net: NetName=NetP9_4 Pin=P9-4
+Added Pin To Net: NetName=NetP9_4 Pin=U1-52
+Added Net: Name=NetP9_4
+Added Pin To Net: NetName=NetP9_5 Pin=P9-5
+Added Pin To Net: NetName=NetP9_5 Pin=U1-53
+Added Net: Name=NetP9_5

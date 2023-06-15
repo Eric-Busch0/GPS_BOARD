@@ -1,0 +1,22 @@
+Added Component: Designator=U7(SAM-M10Q-00B)
+Added Pin To Net: NetName=GND Pin=U7-1
+Added Pin To Net: NetName=3v3 Pin=U7-2
+Added Pin To Net: NetName=3v3 Pin=U7-3
+Added Pin To Net: NetName=GND Pin=U7-4
+Added Pin To Net: NetName=GND Pin=U7-5
+Added Pin To Net: NetName=GND Pin=U7-6
+Added Pin To Net: NetName=TP Pin=U7-7
+Added Pin To Net: NetName=S\A\F\E\B\O\O\T\ Pin=U7-8
+Added Pin To Net: NetName=SDA Pin=U7-9
+Added Pin To Net: NetName=GND Pin=U7-10
+Added Pin To Net: NetName=GND Pin=U7-11
+Add Pin To Net: Unknown Pin: Pin U7-12
+Added Pin To Net: NetName=MCU_RX_GPS_TX Pin=U7-13
+Added Pin To Net: NetName=MCU_TX_GPS_RX Pin=U7-14
+Added Pin To Net: NetName=GND Pin=U7-15
+Added Pin To Net: NetName=GND Pin=U7-16
+Added Pin To Net: NetName=3v3 Pin=U7-17
+Added Pin To Net: NetName=G\P\S\_\R\S\T\ Pin=U7-18
+Added Pin To Net: NetName=GPS_INT Pin=U7-19
+Added Pin To Net: NetName=GND Pin=U7-20
+Added Member To Class: ClassName=MCU Member=Component U7 SAM-M10Q-00B-Breakout
