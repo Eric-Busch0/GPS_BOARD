@@ -78,7 +78,32 @@ static void MX_RTC_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void i2c_scan(void)
+{
+	  uint8_t Buffer[25] = {0};
+	  uint8_t Space[] = " - ";
+	  uint8_t StartMSG[] = "Starting I2C Scanning: \r\n";
+	  uint8_t EndMSG[] = "Done! \r\n\r\n";
 
+	  /*-[ I2C Bus Scanning ]-*/
+	  uint8_t ret;
+	   HAL_UART_Transmit(&huart1, StartMSG, sizeof(StartMSG), 10000);
+	   for(uint8_t i=1; i<128; i++)
+	   {
+	       ret = HAL_I2C_IsDeviceReady(&hi2c3, (uint16_t)(i<<1), 3, 5);
+	       if (ret != HAL_OK) /* No ACK Received At That Address */
+	       {
+	           HAL_UART_Transmit(&huart1, Space, sizeof(Space), 10000);
+	       }
+	       else if(ret == HAL_OK)
+	       {
+	           sprintf(Buffer, "0x%X", i);
+	           HAL_UART_Transmit(&huart1, Buffer, sizeof(Buffer), 10000);
+	       }
+	   }
+	   HAL_UART_Transmit(&huart1, EndMSG, sizeof(EndMSG), 10000);
+	   /*--[ Scanning Done ]--*/
+}
 /* USER CODE END 0 */
 
 /**
@@ -117,7 +142,21 @@ int main(void)
   MX_CRC_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
+  	 i2c_scan();
+  	 uint8_t idbuf[16] = {0};
 
+
+  	uint8_t bmpId = 0xff;
+  	 if(bmp280_getid(&bmpId) == HAL_OK)
+  	 {
+  		 snprintf(idbuf, sizeof(idbuf), "\nBMP ID: %#02X\n", bmpId);
+  		 HAL_UART_Transmit(&huart1, idbuf, sizeof(idbuf), 10000);
+  	 }
+  	 else
+  	 {
+  		 	snprintf(idbuf, sizeof(idbuf), "Error reading BMP\n", bmpId);
+  		 	HAL_UART_Transmit(&huart1, idbuf, sizeof(idbuf), 10000);
+  	 }
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -125,6 +164,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+	  HAL_GPIO_TogglePin(USR_LED1_GPIO_Port, USR_LED1_Pin);
+	  HAL_Delay(500);
 
     /* USER CODE BEGIN 3 */
   }
@@ -220,7 +261,7 @@ static void MX_I2C3_Init(void)
 
   /* USER CODE END I2C3_Init 1 */
   hi2c3.Instance = I2C3;
-  hi2c3.Init.ClockSpeed = 100000;
+  hi2c3.Init.ClockSpeed = 400000;
   hi2c3.Init.DutyCycle = I2C_DUTYCYCLE_2;
   hi2c3.Init.OwnAddress1 = 0;
   hi2c3.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
@@ -323,7 +364,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -462,7 +503,10 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, TIMEPULSE_Pin|SAFEBOOT_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, USR_LED1_Pin|USR_LED2_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin : GPS_RST_Pin */
   GPIO_InitStruct.Pin = GPS_RST_Pin;
@@ -489,6 +533,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : USR_LED1_Pin USR_LED2_Pin */
+  GPIO_InitStruct.Pin = USR_LED1_Pin|USR_LED2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PB12 PB13 */
   GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13;

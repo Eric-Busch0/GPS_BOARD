@@ -91,11 +91,16 @@ static uint8_t bmp280_write_sync(uint8_t addr, uint8_t *data, size_t len,
 	HAL_SPI_Transmit(&hspi1, &addr, 1, timeout);
 	return HAL_SPI_Transmit(&hspi1, data, len, timeout);
 }
-static uint8_t bmp280_read_sync(uint8_t addr, uint8_t *data, size_t len,
-		uint32_t timeout) {
+static uint8_t bmp280_read_sync(uint8_t addr, uint8_t *data, size_t len, uint32_t timeout) {
+
+
+	HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 0);
+
 	rdLen = len;
 	HAL_SPI_Transmit(&hspi1, &addr, 1, timeout);
-	return HAL_SPI_Receive(&hspi1, data, len, timeout);
+	uint8_t ret =HAL_SPI_Receive(&hspi1, data, len, timeout);
+	HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 1);
+	return ret;
 }
 uint8_t bmp280_init(bmp_cplt_callback_t rxCb, bmp_cplt_callback_t txCb) {
 
@@ -116,7 +121,12 @@ uint8_t bmp280_init(bmp_cplt_callback_t rxCb, bmp_cplt_callback_t txCb) {
 }
 
 uint8_t bmp280_getid(uint8_t *id) {
-	return bmp280_read_sync(BMP280_ID_ADDR, id, 1, HAL_MAX_DELAY);
+
+	uint8_t ret = bmp280_read_sync(BMP280_ID_ADDR, id, 1, HAL_MAX_DELAY);
+
+//	*id &= ~(1 << 7);
+//	*id <<=1;
+	return ret;
 }
 
 void bmp280_reset(void) {

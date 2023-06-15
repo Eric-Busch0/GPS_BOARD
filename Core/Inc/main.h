@@ -70,6 +70,10 @@ void Error_Handler(void);
 #define TIMEPULSE_GPIO_Port GPIOA
 #define SAFEBOOT_Pin GPIO_PIN_6
 #define SAFEBOOT_GPIO_Port GPIOA
+#define USR_LED1_Pin GPIO_PIN_0
+#define USR_LED1_GPIO_Port GPIOB
+#define USR_LED2_Pin GPIO_PIN_1
+#define USR_LED2_GPIO_Port GPIOB
 #define BMP_CS_Pin GPIO_PIN_2
 #define BMP_CS_GPIO_Port GPIOD
 /* USER CODE BEGIN Private defines */
