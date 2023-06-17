@@ -1,0 +1,159 @@
+ARM GAS  /tmp/ccPt73wF.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"i2c.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.i2c_write,"ax",%progbits
+  20              		.align	1
+  21              		.global	i2c_write
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	i2c_write:
+  27              	.LVL0:
+  28              	.LFB130:
+  29              		.file 1 "Core/Src/i2c.c"
+   1:Core/Src/i2c.c **** #include "i2c.h"
+   2:Core/Src/i2c.c **** #include "main.h"
+   3:Core/Src/i2c.c **** 
+   4:Core/Src/i2c.c **** extern I2C_HandleTypeDef hi2c3;
+   5:Core/Src/i2c.c **** extern DMA_HandleTypeDef hdma_i2c3_rx;
+   6:Core/Src/i2c.c **** extern DMA_HandleTypeDef hdma_i2c3_tx;
+   7:Core/Src/i2c.c **** 
+   8:Core/Src/i2c.c **** uint8_t i2c_write(uint8_t addr, uint8_t* buf, uint32_t len)
+   9:Core/Src/i2c.c **** {
+  30              		.loc 1 9 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 9 1 is_stmt 0 view .LVU1
+  35 0000 00B5     		push	{lr}
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 14, -4
+  38 0002 83B0     		sub	sp, sp, #12
+  39              		.cfi_def_cfa_offset 16
+  10:Core/Src/i2c.c ****     return HAL_I2C_Master_Transmit(&hi2c3, addr,buf, len, HAL_MAX_DELAY);
+  40              		.loc 1 10 5 is_stmt 1 view .LVU2
+  41              		.loc 1 10 12 is_stmt 0 view .LVU3
+  42 0004 4FF0FF33 		mov	r3, #-1
+  43 0008 0093     		str	r3, [sp]
+  44 000a 93B2     		uxth	r3, r2
+  45 000c 0A46     		mov	r2, r1
+  46              	.LVL1:
+  47              		.loc 1 10 12 view .LVU4
+  48 000e 0146     		mov	r1, r0
+ARM GAS  /tmp/ccPt73wF.s 			page 2
+
+
+  49              	.LVL2:
+  50              		.loc 1 10 12 view .LVU5
+  51 0010 0248     		ldr	r0, .L3
+  52              	.LVL3:
+  53              		.loc 1 10 12 view .LVU6
+  54 0012 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+  55              	.LVL4:
+  11:Core/Src/i2c.c **** }
+  56              		.loc 1 11 1 view .LVU7
+  57 0016 03B0     		add	sp, sp, #12
+  58              		.cfi_def_cfa_offset 4
+  59              		@ sp needed
+  60 0018 5DF804FB 		ldr	pc, [sp], #4
+  61              	.L4:
+  62              		.align	2
+  63              	.L3:
+  64 001c 00000000 		.word	hi2c3
+  65              		.cfi_endproc
+  66              	.LFE130:
+  68              		.section	.text.i2c_read,"ax",%progbits
+  69              		.align	1
+  70              		.global	i2c_read
+  71              		.syntax unified
+  72              		.thumb
+  73              		.thumb_func
+  75              	i2c_read:
+  76              	.LVL5:
+  77              	.LFB131:
+  12:Core/Src/i2c.c **** uint8_t i2c_read(uint8_t addr, uint8_t* buf, uint32_t len)
+  13:Core/Src/i2c.c **** {
+  78              		.loc 1 13 1 is_stmt 1 view -0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		.loc 1 13 1 is_stmt 0 view .LVU9
+  83 0000 00B5     		push	{lr}
+  84              		.cfi_def_cfa_offset 4
+  85              		.cfi_offset 14, -4
+  86 0002 83B0     		sub	sp, sp, #12
+  87              		.cfi_def_cfa_offset 16
+  14:Core/Src/i2c.c ****     return HAL_I2C_Master_Receive(&hi2c3, addr, buf, len, HAL_MAX_DELAY);
+  88              		.loc 1 14 5 is_stmt 1 view .LVU10
+  89              		.loc 1 14 12 is_stmt 0 view .LVU11
+  90 0004 4FF0FF33 		mov	r3, #-1
+  91 0008 0093     		str	r3, [sp]
+  92 000a 93B2     		uxth	r3, r2
+  93 000c 0A46     		mov	r2, r1
+  94              	.LVL6:
+  95              		.loc 1 14 12 view .LVU12
+  96 000e 0146     		mov	r1, r0
+  97              	.LVL7:
+  98              		.loc 1 14 12 view .LVU13
+  99 0010 0248     		ldr	r0, .L7
+ 100              	.LVL8:
+ 101              		.loc 1 14 12 view .LVU14
+ 102 0012 FFF7FEFF 		bl	HAL_I2C_Master_Receive
+ 103              	.LVL9:
+ARM GAS  /tmp/ccPt73wF.s 			page 3
+
+
+  15:Core/Src/i2c.c **** }
+ 104              		.loc 1 15 1 view .LVU15
+ 105 0016 03B0     		add	sp, sp, #12
+ 106              		.cfi_def_cfa_offset 4
+ 107              		@ sp needed
+ 108 0018 5DF804FB 		ldr	pc, [sp], #4
+ 109              	.L8:
+ 110              		.align	2
+ 111              	.L7:
+ 112 001c 00000000 		.word	hi2c3
+ 113              		.cfi_endproc
+ 114              	.LFE131:
+ 116              		.text
+ 117              	.Letext0:
+ 118              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 119              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 120              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 121              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 122              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 123              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ARM GAS  /tmp/ccPt73wF.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 i2c.c
+     /tmp/ccPt73wF.s:20     .text.i2c_write:0000000000000000 $t
+     /tmp/ccPt73wF.s:26     .text.i2c_write:0000000000000000 i2c_write
+     /tmp/ccPt73wF.s:64     .text.i2c_write:000000000000001c $d
+     /tmp/ccPt73wF.s:69     .text.i2c_read:0000000000000000 $t
+     /tmp/ccPt73wF.s:75     .text.i2c_read:0000000000000000 i2c_read
+     /tmp/ccPt73wF.s:112    .text.i2c_read:000000000000001c $d
+
+UNDEFINED SYMBOLS
+HAL_I2C_Master_Transmit
+hi2c3
+HAL_I2C_Master_Receive

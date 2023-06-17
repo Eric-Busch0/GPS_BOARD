@@ -19,9 +19,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "bmp280.h"
+#include "lis2hd12.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -121,6 +123,25 @@ void print_bmp280_id()
   snprintf(buf, sizeof(buf), "BMP280 ID:%02X\r\n", id);
   HAL_UART_Transmit(&huart1, buf, sizeof(buf), 10000);
 }
+
+void print_lis2hd12_who_am_i(void)
+{
+  uint8_t id;
+
+  uint8_t ret = lis2hd12_who_am_i(&id);
+
+  uint8_t buffer[32] = {0};
+  if(ret != HAL_OK)
+  { 
+    snprintf(buffer, sizeof(buffer), "Error IMU\r\n");
+  }
+  else
+  {
+    snprintf(buffer, sizeof(buffer), "IMU ID: %#02X\r\n", id);
+  }
+
+  HAL_UART_Transmit(&huart1, buffer, strlen(buffer), HAL_MAX_DELAY);
+}
 /* USER CODE END 0 */
 
 /**
@@ -160,9 +181,9 @@ int main(void)
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
 
-  i2c_scan();
+  // i2c_scan();
   print_bmp280_id();
-
+  print_lis2hd12_who_am_i();
   /* USER CODE END 2 */
 
   /* Infinite loop */
