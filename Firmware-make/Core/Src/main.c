@@ -97,8 +97,15 @@ void i2c_scan(void)
     }
     else if (ret == HAL_OK)
     {
-      sprintf(Buffer, "0x%X\r\n", i);
+      sprintf(Buffer, "0x%X", i);
       HAL_UART_Transmit(&huart1, Buffer, sizeof(Buffer), HAL_MAX_DELAY);
+    }
+
+    if(i % 16 == 0)
+    {
+      sprintf(Buffer, "\r\n", i);
+      HAL_UART_Transmit(&huart1, Buffer, sizeof(Buffer), HAL_MAX_DELAY);
+
     }
   }
   HAL_UART_Transmit(&huart1, EndMSG, sizeof(EndMSG), HAL_MAX_DELAY);
