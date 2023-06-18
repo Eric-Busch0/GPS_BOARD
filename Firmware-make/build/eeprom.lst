@@ -1,0 +1,411 @@
+ARM GAS  /tmp/ccUc8CeY.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"eeprom.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.enable_wp,"ax",%progbits
+  20              		.align	1
+  21              		.global	enable_wp
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	enable_wp:
+  27              	.LFB131:
+  28              		.file 1 "Core/Src/eeprom.c"
+   1:Core/Src/eeprom.c **** #include "eeprom.h"
+   2:Core/Src/eeprom.c **** #include "i2c.h"
+   3:Core/Src/eeprom.c **** #include "main.h"
+   4:Core/Src/eeprom.c **** 
+   5:Core/Src/eeprom.c **** #define EEPROM_I2C_ADDR (0x50 << 1)
+   6:Core/Src/eeprom.c **** #define EEPROM_PAGE_SIZE 64
+   7:Core/Src/eeprom.c **** 
+   8:Core/Src/eeprom.c **** #define ADDR_LEN sizeof(uint16_t)
+   9:Core/Src/eeprom.c **** static volatile uint8_t write_buf[EEPROM_PAGE_SIZE + ADDR_LEN] = {0};
+  10:Core/Src/eeprom.c **** 
+  11:Core/Src/eeprom.c **** static inline uint32_t get_next_page(uint32_t addr)
+  12:Core/Src/eeprom.c **** {
+  13:Core/Src/eeprom.c ****     return addr + (EEPROM_PAGE_SIZE - addr % EEPROM_PAGE_SIZE);
+  14:Core/Src/eeprom.c **** }
+  15:Core/Src/eeprom.c **** 
+  16:Core/Src/eeprom.c **** void enable_wp(void)
+  17:Core/Src/eeprom.c **** {
+  29              		.loc 1 17 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  18:Core/Src/eeprom.c ****     HAL_GPIO_WritePin(EEPROM_WP_GPIO_Port, EEPROM_WP_Pin, GPIO_PIN_SET);
+  38              		.loc 1 18 5 view .LVU1
+  39 0002 0122     		movs	r2, #1
+  40 0004 4FF48051 		mov	r1, #4096
+ARM GAS  /tmp/ccUc8CeY.s 			page 2
+
+
+  41 0008 0148     		ldr	r0, .L3
+  42 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  43              	.LVL0:
+  19:Core/Src/eeprom.c **** }
+  44              		.loc 1 19 1 is_stmt 0 view .LVU2
+  45 000e 08BD     		pop	{r3, pc}
+  46              	.L4:
+  47              		.align	2
+  48              	.L3:
+  49 0010 00040240 		.word	1073873920
+  50              		.cfi_endproc
+  51              	.LFE131:
+  53              		.section	.text.disable_wp,"ax",%progbits
+  54              		.align	1
+  55              		.global	disable_wp
+  56              		.syntax unified
+  57              		.thumb
+  58              		.thumb_func
+  60              	disable_wp:
+  61              	.LFB132:
+  20:Core/Src/eeprom.c **** void disable_wp(void)
+  21:Core/Src/eeprom.c **** {
+  62              		.loc 1 21 1 is_stmt 1 view -0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66 0000 08B5     		push	{r3, lr}
+  67              	.LCFI1:
+  68              		.cfi_def_cfa_offset 8
+  69              		.cfi_offset 3, -8
+  70              		.cfi_offset 14, -4
+  22:Core/Src/eeprom.c ****     HAL_GPIO_WritePin(EEPROM_WP_GPIO_Port, EEPROM_WP_Pin, GPIO_PIN_RESET);
+  71              		.loc 1 22 5 view .LVU4
+  72 0002 0022     		movs	r2, #0
+  73 0004 4FF48051 		mov	r1, #4096
+  74 0008 0148     		ldr	r0, .L7
+  75 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  76              	.LVL1:
+  23:Core/Src/eeprom.c **** }
+  77              		.loc 1 23 1 is_stmt 0 view .LVU5
+  78 000e 08BD     		pop	{r3, pc}
+  79              	.L8:
+  80              		.align	2
+  81              	.L7:
+  82 0010 00040240 		.word	1073873920
+  83              		.cfi_endproc
+  84              	.LFE132:
+  86              		.section	.text.eeprom_write,"ax",%progbits
+  87              		.align	1
+  88              		.global	eeprom_write
+  89              		.syntax unified
+  90              		.thumb
+  91              		.thumb_func
+  93              	eeprom_write:
+  94              	.LVL2:
+  95              	.LFB133:
+  24:Core/Src/eeprom.c **** uint8_t eeprom_write(uint32_t addr, void *data, uint32_t len)
+ARM GAS  /tmp/ccUc8CeY.s 			page 3
+
+
+  25:Core/Src/eeprom.c **** {
+  96              		.loc 1 25 1 is_stmt 1 view -0
+  97              		.cfi_startproc
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              		.loc 1 25 1 is_stmt 0 view .LVU7
+ 101 0000 38B5     		push	{r3, r4, r5, lr}
+ 102              	.LCFI2:
+ 103              		.cfi_def_cfa_offset 16
+ 104              		.cfi_offset 3, -16
+ 105              		.cfi_offset 4, -12
+ 106              		.cfi_offset 5, -8
+ 107              		.cfi_offset 14, -4
+ 108 0002 1446     		mov	r4, r2
+  26:Core/Src/eeprom.c ****     /*
+  27:Core/Src/eeprom.c ****         If the write does not write over a page boundry it can be done using DMA
+  28:Core/Src/eeprom.c ****         Otherwise, it needs to be chunked and sent synchronously
+  29:Core/Src/eeprom.c ****     */
+  30:Core/Src/eeprom.c ****     uint32_t next_page = get_next_page(addr);
+ 109              		.loc 1 30 5 is_stmt 1 view .LVU8
+ 110              	.LVL3:
+ 111              	.LBB5:
+ 112              	.LBI5:
+  11:Core/Src/eeprom.c **** {
+ 113              		.loc 1 11 24 view .LVU9
+ 114              	.LBB6:
+  13:Core/Src/eeprom.c **** }
+ 115              		.loc 1 13 5 view .LVU10
+  13:Core/Src/eeprom.c **** }
+ 116              		.loc 1 13 17 is_stmt 0 view .LVU11
+ 117 0004 20F03F03 		bic	r3, r0, #63
+ 118 0008 4033     		adds	r3, r3, #64
+ 119              	.LVL4:
+  13:Core/Src/eeprom.c **** }
+ 120              		.loc 1 13 17 view .LVU12
+ 121              	.LBE6:
+ 122              	.LBE5:
+  31:Core/Src/eeprom.c **** 
+  32:Core/Src/eeprom.c ****     if (addr + len < next_page)
+ 123              		.loc 1 32 5 is_stmt 1 view .LVU13
+ 124              		.loc 1 32 14 is_stmt 0 view .LVU14
+ 125 000a 8218     		adds	r2, r0, r2
+ 126              	.LVL5:
+ 127              		.loc 1 32 8 view .LVU15
+ 128 000c 9A42     		cmp	r2, r3
+ 129 000e 02D3     		bcc	.L13
+  33:Core/Src/eeprom.c ****     {
+  34:Core/Src/eeprom.c ****         write_buf[0] = (addr & 0xff00) >> 8;
+  35:Core/Src/eeprom.c ****         write_buf[1] = addr & 0xff;
+  36:Core/Src/eeprom.c **** 
+  37:Core/Src/eeprom.c ****         memcpy(write_buf + ADDR_LEN, data, len % EEPROM_PAGE_SIZE);
+  38:Core/Src/eeprom.c **** 
+  39:Core/Src/eeprom.c ****         disable_wp();
+  40:Core/Src/eeprom.c ****         uint8_t ret = i2c_write(EEPROM_I2C_ADDR, write_buf, len + 1);
+  41:Core/Src/eeprom.c ****         enable_wp();
+  42:Core/Src/eeprom.c **** 
+  43:Core/Src/eeprom.c ****         if (ret != HAL_OK)
+ARM GAS  /tmp/ccUc8CeY.s 			page 4
+
+
+  44:Core/Src/eeprom.c ****         {
+  45:Core/Src/eeprom.c ****             return ret;
+  46:Core/Src/eeprom.c ****         }
+  47:Core/Src/eeprom.c ****         static const uint32_t WAIT_ATTEMPTS = 100;
+  48:Core/Src/eeprom.c **** 
+  49:Core/Src/eeprom.c ****         return i2c_device_acks(EEPROM_I2C_ADDR, WAIT_ATTEMPTS);
+  50:Core/Src/eeprom.c **** 
+  51:Core/Src/eeprom.c ****         // return i2c_write_dma(EEPROM_I2C_ADDR, write_buf, len + 1);
+  52:Core/Src/eeprom.c ****     }
+  53:Core/Src/eeprom.c ****     return HAL_OK;
+ 130              		.loc 1 53 12 view .LVU16
+ 131 0010 0024     		movs	r4, #0
+ 132              	.LVL6:
+ 133              	.L10:
+  54:Core/Src/eeprom.c **** }
+ 134              		.loc 1 54 1 view .LVU17
+ 135 0012 2046     		mov	r0, r4
+ 136 0014 38BD     		pop	{r3, r4, r5, pc}
+ 137              	.LVL7:
+ 138              	.L13:
+ 139              	.LBB7:
+  34:Core/Src/eeprom.c ****         write_buf[1] = addr & 0xff;
+ 140              		.loc 1 34 9 is_stmt 1 view .LVU18
+  34:Core/Src/eeprom.c ****         write_buf[1] = addr & 0xff;
+ 141              		.loc 1 34 22 is_stmt 0 view .LVU19
+ 142 0016 C0F30723 		ubfx	r3, r0, #8, #8
+ 143              	.LVL8:
+  34:Core/Src/eeprom.c ****         write_buf[1] = addr & 0xff;
+ 144              		.loc 1 34 22 view .LVU20
+ 145 001a 0D4D     		ldr	r5, .L14
+ 146 001c 2B70     		strb	r3, [r5]
+  35:Core/Src/eeprom.c **** 
+ 147              		.loc 1 35 9 is_stmt 1 view .LVU21
+  35:Core/Src/eeprom.c **** 
+ 148              		.loc 1 35 22 is_stmt 0 view .LVU22
+ 149 001e C0B2     		uxtb	r0, r0
+ 150              	.LVL9:
+  35:Core/Src/eeprom.c **** 
+ 151              		.loc 1 35 22 view .LVU23
+ 152 0020 6870     		strb	r0, [r5, #1]
+  37:Core/Src/eeprom.c **** 
+ 153              		.loc 1 37 9 is_stmt 1 view .LVU24
+ 154 0022 04F03F02 		and	r2, r4, #63
+ 155 0026 A81C     		adds	r0, r5, #2
+ 156 0028 FFF7FEFF 		bl	memcpy
+ 157              	.LVL10:
+  39:Core/Src/eeprom.c ****         uint8_t ret = i2c_write(EEPROM_I2C_ADDR, write_buf, len + 1);
+ 158              		.loc 1 39 9 view .LVU25
+ 159 002c FFF7FEFF 		bl	disable_wp
+ 160              	.LVL11:
+  40:Core/Src/eeprom.c ****         enable_wp();
+ 161              		.loc 1 40 9 view .LVU26
+  40:Core/Src/eeprom.c ****         enable_wp();
+ 162              		.loc 1 40 23 is_stmt 0 view .LVU27
+ 163 0030 621C     		adds	r2, r4, #1
+ 164 0032 2946     		mov	r1, r5
+ 165 0034 A020     		movs	r0, #160
+ARM GAS  /tmp/ccUc8CeY.s 			page 5
+
+
+ 166 0036 FFF7FEFF 		bl	i2c_write
+ 167              	.LVL12:
+ 168 003a 0446     		mov	r4, r0
+ 169              	.LVL13:
+  41:Core/Src/eeprom.c **** 
+ 170              		.loc 1 41 9 is_stmt 1 view .LVU28
+ 171 003c FFF7FEFF 		bl	enable_wp
+ 172              	.LVL14:
+  43:Core/Src/eeprom.c ****         {
+ 173              		.loc 1 43 9 view .LVU29
+  43:Core/Src/eeprom.c ****         {
+ 174              		.loc 1 43 12 is_stmt 0 view .LVU30
+ 175 0040 002C     		cmp	r4, #0
+ 176 0042 E6D1     		bne	.L10
+  47:Core/Src/eeprom.c **** 
+ 177              		.loc 1 47 9 is_stmt 1 view .LVU31
+  49:Core/Src/eeprom.c **** 
+ 178              		.loc 1 49 9 view .LVU32
+  49:Core/Src/eeprom.c **** 
+ 179              		.loc 1 49 16 is_stmt 0 view .LVU33
+ 180 0044 6421     		movs	r1, #100
+ 181 0046 A020     		movs	r0, #160
+ 182 0048 FFF7FEFF 		bl	i2c_device_acks
+ 183              	.LVL15:
+ 184 004c 0446     		mov	r4, r0
+ 185              	.LVL16:
+  49:Core/Src/eeprom.c **** 
+ 186              		.loc 1 49 16 view .LVU34
+ 187 004e E0E7     		b	.L10
+ 188              	.L15:
+ 189              		.align	2
+ 190              	.L14:
+ 191 0050 00000000 		.word	.LANCHOR0
+ 192              	.LBE7:
+ 193              		.cfi_endproc
+ 194              	.LFE133:
+ 196              		.section	.text.eeprom_read,"ax",%progbits
+ 197              		.align	1
+ 198              		.global	eeprom_read
+ 199              		.syntax unified
+ 200              		.thumb
+ 201              		.thumb_func
+ 203              	eeprom_read:
+ 204              	.LVL17:
+ 205              	.LFB134:
+  55:Core/Src/eeprom.c **** uint8_t eeprom_read(uint32_t addr, void *data, uint32_t len)
+  56:Core/Src/eeprom.c **** {
+ 206              		.loc 1 56 1 is_stmt 1 view -0
+ 207              		.cfi_startproc
+ 208              		@ args = 0, pretend = 0, frame = 0
+ 209              		@ frame_needed = 0, uses_anonymous_args = 0
+ 210              		.loc 1 56 1 is_stmt 0 view .LVU36
+ 211 0000 38B5     		push	{r3, r4, r5, lr}
+ 212              	.LCFI3:
+ 213              		.cfi_def_cfa_offset 16
+ 214              		.cfi_offset 3, -16
+ 215              		.cfi_offset 4, -12
+ARM GAS  /tmp/ccUc8CeY.s 			page 6
+
+
+ 216              		.cfi_offset 5, -8
+ 217              		.cfi_offset 14, -4
+ 218 0002 0C46     		mov	r4, r1
+ 219 0004 1546     		mov	r5, r2
+  57:Core/Src/eeprom.c **** 
+  58:Core/Src/eeprom.c ****     write_buf[0] = (addr & 0xff00) >> 8;
+ 220              		.loc 1 58 5 is_stmt 1 view .LVU37
+ 221              		.loc 1 58 18 is_stmt 0 view .LVU38
+ 222 0006 C0F30723 		ubfx	r3, r0, #8, #8
+ 223 000a 0849     		ldr	r1, .L20
+ 224              	.LVL18:
+ 225              		.loc 1 58 18 view .LVU39
+ 226 000c 0B70     		strb	r3, [r1]
+  59:Core/Src/eeprom.c ****     write_buf[1] = addr & 0xff;
+ 227              		.loc 1 59 5 is_stmt 1 view .LVU40
+ 228              		.loc 1 59 18 is_stmt 0 view .LVU41
+ 229 000e C0B2     		uxtb	r0, r0
+ 230              	.LVL19:
+ 231              		.loc 1 59 18 view .LVU42
+ 232 0010 4870     		strb	r0, [r1, #1]
+  60:Core/Src/eeprom.c ****     HAL_StatusTypeDef ret = i2c_write(EEPROM_I2C_ADDR, write_buf, ADDR_LEN);
+ 233              		.loc 1 60 5 is_stmt 1 view .LVU43
+ 234              		.loc 1 60 29 is_stmt 0 view .LVU44
+ 235 0012 0222     		movs	r2, #2
+ 236              	.LVL20:
+ 237              		.loc 1 60 29 view .LVU45
+ 238 0014 A020     		movs	r0, #160
+ 239 0016 FFF7FEFF 		bl	i2c_write
+ 240              	.LVL21:
+  61:Core/Src/eeprom.c **** 
+  62:Core/Src/eeprom.c ****     if (ret != HAL_OK)
+ 241              		.loc 1 62 5 is_stmt 1 view .LVU46
+ 242              		.loc 1 62 8 is_stmt 0 view .LVU47
+ 243 001a 00B1     		cbz	r0, .L19
+ 244              	.L17:
+  63:Core/Src/eeprom.c ****     {
+  64:Core/Src/eeprom.c ****         return ret;
+  65:Core/Src/eeprom.c ****     }
+  66:Core/Src/eeprom.c **** 
+  67:Core/Src/eeprom.c ****     return i2c_read(EEPROM_I2C_ADDR, data, len);
+  68:Core/Src/eeprom.c **** }
+ 245              		.loc 1 68 1 view .LVU48
+ 246 001c 38BD     		pop	{r3, r4, r5, pc}
+ 247              	.LVL22:
+ 248              	.L19:
+  67:Core/Src/eeprom.c **** }
+ 249              		.loc 1 67 5 is_stmt 1 view .LVU49
+  67:Core/Src/eeprom.c **** }
+ 250              		.loc 1 67 12 is_stmt 0 view .LVU50
+ 251 001e 2A46     		mov	r2, r5
+ 252 0020 2146     		mov	r1, r4
+ 253 0022 A020     		movs	r0, #160
+ 254 0024 FFF7FEFF 		bl	i2c_read
+ 255              	.LVL23:
+ 256 0028 F8E7     		b	.L17
+ 257              	.L21:
+ 258 002a 00BF     		.align	2
+ARM GAS  /tmp/ccUc8CeY.s 			page 7
+
+
+ 259              	.L20:
+ 260 002c 00000000 		.word	.LANCHOR0
+ 261              		.cfi_endproc
+ 262              	.LFE134:
+ 264              		.section	.bss.write_buf,"aw",%nobits
+ 265              		.align	2
+ 266              		.set	.LANCHOR0,. + 0
+ 269              	write_buf:
+ 270 0000 00000000 		.space	66
+ 270      00000000 
+ 270      00000000 
+ 270      00000000 
+ 270      00000000 
+ 271              		.text
+ 272              	.Letext0:
+ 273              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 274              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 275              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 276              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 277              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 278              		.file 7 "Core/Inc/i2c.h"
+ 279              		.file 8 "<built-in>"
+ARM GAS  /tmp/ccUc8CeY.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 eeprom.c
+     /tmp/ccUc8CeY.s:20     .text.enable_wp:0000000000000000 $t
+     /tmp/ccUc8CeY.s:26     .text.enable_wp:0000000000000000 enable_wp
+     /tmp/ccUc8CeY.s:49     .text.enable_wp:0000000000000010 $d
+     /tmp/ccUc8CeY.s:54     .text.disable_wp:0000000000000000 $t
+     /tmp/ccUc8CeY.s:60     .text.disable_wp:0000000000000000 disable_wp
+     /tmp/ccUc8CeY.s:82     .text.disable_wp:0000000000000010 $d
+     /tmp/ccUc8CeY.s:87     .text.eeprom_write:0000000000000000 $t
+     /tmp/ccUc8CeY.s:93     .text.eeprom_write:0000000000000000 eeprom_write
+     /tmp/ccUc8CeY.s:191    .text.eeprom_write:0000000000000050 $d
+     /tmp/ccUc8CeY.s:197    .text.eeprom_read:0000000000000000 $t
+     /tmp/ccUc8CeY.s:203    .text.eeprom_read:0000000000000000 eeprom_read
+     /tmp/ccUc8CeY.s:260    .text.eeprom_read:000000000000002c $d
+     /tmp/ccUc8CeY.s:265    .bss.write_buf:0000000000000000 $d
+     /tmp/ccUc8CeY.s:269    .bss.write_buf:0000000000000000 write_buf
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+memcpy
+i2c_write
+i2c_device_acks
+i2c_read

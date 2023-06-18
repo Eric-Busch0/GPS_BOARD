@@ -73,6 +73,8 @@ void Error_Handler(void);
 #define USR_LED1_GPIO_Port GPIOB
 #define USR_LED2_Pin GPIO_PIN_1
 #define USR_LED2_GPIO_Port GPIOB
+#define EEPROM_WP_Pin GPIO_PIN_12
+#define EEPROM_WP_GPIO_Port GPIOB
 #define BMP_CS_Pin GPIO_PIN_2
 #define BMP_CS_GPIO_Port GPIOD
 

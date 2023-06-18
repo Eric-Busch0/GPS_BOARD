@@ -37,6 +37,7 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Core/Src/bmp280.c \
+Core/Src/eeprom.c \
 Core/Src/i2c.c \
 Core/Src/lis2hd12.c \
 Core/Src/main.c \
