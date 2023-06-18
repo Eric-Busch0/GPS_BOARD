@@ -1,3 +1,4 @@
+#include <string.h>
 #include "eeprom.h"
 #include "i2c.h"
 #include "main.h"
@@ -34,10 +35,10 @@ uint8_t eeprom_write(uint32_t addr, void *data, uint32_t len)
         write_buf[0] = (addr & 0xff00) >> 8;
         write_buf[1] = addr & 0xff;
 
-        memcpy(write_buf + ADDR_LEN, data, len % EEPROM_PAGE_SIZE);
+        memcpy((uint8_t*)write_buf + ADDR_LEN, data, len % EEPROM_PAGE_SIZE);
 
         disable_wp();
-        uint8_t ret = i2c_write(EEPROM_I2C_ADDR, write_buf, len + 1);
+        uint8_t ret = i2c_write(EEPROM_I2C_ADDR, (uint8_t*) write_buf, len + 1);
         enable_wp();
 
         if (ret != HAL_OK)
@@ -57,7 +58,7 @@ uint8_t eeprom_read(uint32_t addr, void *data, uint32_t len)
 
     write_buf[0] = (addr & 0xff00) >> 8;
     write_buf[1] = addr & 0xff;
-    HAL_StatusTypeDef ret = i2c_write(EEPROM_I2C_ADDR, write_buf, ADDR_LEN);
+    HAL_StatusTypeDef ret = i2c_write(EEPROM_I2C_ADDR, (uint8_t*)write_buf, ADDR_LEN);
 
     if (ret != HAL_OK)
     {

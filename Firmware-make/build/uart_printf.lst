@@ -1,0 +1,165 @@
+ARM GAS  /tmp/ccDl30dS.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"uart_printf.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.uart_printf,"ax",%progbits
+  20              		.align	1
+  21              		.global	uart_printf
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	uart_printf:
+  27              	.LVL0:
+  28              	.LFB133:
+  29              		.file 1 "Core/Src/uart_printf.c"
+   1:Core/Src/uart_printf.c **** #include <stdarg.h>
+   2:Core/Src/uart_printf.c **** #include <stdio.h>
+   3:Core/Src/uart_printf.c **** #include <string.h>
+   4:Core/Src/uart_printf.c **** #include "uart_printf.h"
+   5:Core/Src/uart_printf.c **** #include "main.h"
+   6:Core/Src/uart_printf.c **** 
+   7:Core/Src/uart_printf.c **** extern UART_HandleTypeDef huart1;
+   8:Core/Src/uart_printf.c **** 
+   9:Core/Src/uart_printf.c **** uint8_t print_buf[256] = {0};
+  10:Core/Src/uart_printf.c **** 
+  11:Core/Src/uart_printf.c **** uint8_t uart_printf(const char *fmt, ...)
+  12:Core/Src/uart_printf.c **** {
+  30              		.loc 1 12 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 4, pretend = 16, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 1
+  34              		.loc 1 12 1 is_stmt 0 view .LVU1
+  35 0000 0FB4     		push	{r0, r1, r2, r3}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 0, -16
+  39              		.cfi_offset 1, -12
+  40              		.cfi_offset 2, -8
+  41              		.cfi_offset 3, -4
+  42 0002 10B5     		push	{r4, lr}
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_offset 24
+  45              		.cfi_offset 4, -24
+  46              		.cfi_offset 14, -20
+ARM GAS  /tmp/ccDl30dS.s 			page 2
+
+
+  47 0004 82B0     		sub	sp, sp, #8
+  48              	.LCFI2:
+  49              		.cfi_def_cfa_offset 32
+  50 0006 04AB     		add	r3, sp, #16
+  51 0008 53F8042B 		ldr	r2, [r3], #4
+  13:Core/Src/uart_printf.c **** 
+  14:Core/Src/uart_printf.c ****     va_list ap;
+  52              		.loc 1 14 5 is_stmt 1 view .LVU2
+  15:Core/Src/uart_printf.c **** 
+  16:Core/Src/uart_printf.c ****     va_start(ap, fmt);
+  53              		.loc 1 16 5 view .LVU3
+  54 000c 0193     		str	r3, [sp, #4]
+  17:Core/Src/uart_printf.c ****     (void)vsnprintf(print_buf, 128, fmt, ap);
+  55              		.loc 1 17 5 view .LVU4
+  56              		.loc 1 17 11 is_stmt 0 view .LVU5
+  57 000e 0A4C     		ldr	r4, .L3
+  58 0010 8021     		movs	r1, #128
+  59 0012 2046     		mov	r0, r4
+  60 0014 FFF7FEFF 		bl	vsnprintf
+  61              	.LVL1:
+  18:Core/Src/uart_printf.c ****     va_end(ap);
+  62              		.loc 1 18 5 is_stmt 1 view .LVU6
+  19:Core/Src/uart_printf.c ****     return HAL_UART_Transmit(&huart1, print_buf, strlen(print_buf), HAL_MAX_DELAY);
+  63              		.loc 1 19 5 view .LVU7
+  64              		.loc 1 19 50 is_stmt 0 view .LVU8
+  65 0018 2046     		mov	r0, r4
+  66 001a FFF7FEFF 		bl	strlen
+  67              	.LVL2:
+  68              		.loc 1 19 12 view .LVU9
+  69 001e 4FF0FF33 		mov	r3, #-1
+  70 0022 82B2     		uxth	r2, r0
+  71 0024 2146     		mov	r1, r4
+  72 0026 0548     		ldr	r0, .L3+4
+  73 0028 FFF7FEFF 		bl	HAL_UART_Transmit
+  74              	.LVL3:
+  20:Core/Src/uart_printf.c **** }...
+  75              		.loc 1 20 1 view .LVU10
+  76 002c 02B0     		add	sp, sp, #8
+  77              	.LCFI3:
+  78              		.cfi_def_cfa_offset 24
+  79              		@ sp needed
+  80 002e BDE81040 		pop	{r4, lr}
+  81              	.LCFI4:
+  82              		.cfi_restore 14
+  83              		.cfi_restore 4
+  84              		.cfi_def_cfa_offset 16
+  85 0032 04B0     		add	sp, sp, #16
+  86              	.LCFI5:
+  87              		.cfi_restore 3
+  88              		.cfi_restore 2
+  89              		.cfi_restore 1
+  90              		.cfi_restore 0
+  91              		.cfi_def_cfa_offset 0
+  92 0034 7047     		bx	lr
+  93              	.L4:
+  94 0036 00BF     		.align	2
+  95              	.L3:
+ARM GAS  /tmp/ccDl30dS.s 			page 3
+
+
+  96 0038 00000000 		.word	.LANCHOR0
+  97 003c 00000000 		.word	huart1
+  98              		.cfi_endproc
+  99              	.LFE133:
+ 101              		.global	print_buf
+ 102              		.section	.bss.print_buf,"aw",%nobits
+ 103              		.align	2
+ 104              		.set	.LANCHOR0,. + 0
+ 107              	print_buf:
+ 108 0000 00000000 		.space	256
+ 108      00000000 
+ 108      00000000 
+ 108      00000000 
+ 108      00000000 
+ 109              		.text
+ 110              	.Letext0:
+ 111              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 112              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 113              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 114              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 115              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 116              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 117              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 118              		.file 9 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdio.h"
+ 119              		.file 10 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h"
+ 120              		.file 11 "<built-in>"
+ARM GAS  /tmp/ccDl30dS.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 uart_printf.c
+     /tmp/ccDl30dS.s:20     .text.uart_printf:0000000000000000 $t
+     /tmp/ccDl30dS.s:26     .text.uart_printf:0000000000000000 uart_printf
+     /tmp/ccDl30dS.s:96     .text.uart_printf:0000000000000038 $d
+     /tmp/ccDl30dS.s:107    .bss.print_buf:0000000000000000 print_buf
+     /tmp/ccDl30dS.s:103    .bss.print_buf:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+vsnprintf
+strlen
+HAL_UART_Transmit
+huart1

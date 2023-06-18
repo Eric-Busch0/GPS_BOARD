@@ -21,7 +21,7 @@ static inline uint8_t lis2hd12_read(uint8_t *buf, uint32_t len)
 }
 static inline uint8_t lis2hd12_write_reg(uint8_t reg_addr, uint8_t data)
 {
-
+    return 0;
 }
 static inline uint8_t lis2hd12_read_reg(uint8_t reg_addr, uint8_t *data)
 {

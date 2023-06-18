@@ -65,7 +65,9 @@ Core/Src/system_stm32f4xx.c \
 Core/Src/bmp280.c \
 Core/Src/lis2hd12.c \
 Core/Src/i2c.c \
-Core/Src/eeprom.c
+Core/Src/eeprom.c \
+Core/Src/uart_printf.c \
+
 
 
 

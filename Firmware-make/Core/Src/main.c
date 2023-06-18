@@ -21,10 +21,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
 #include <string.h>
 #include "bmp280.h"
 #include "lis2hd12.h"
 #include "eeprom.h"
+#include "uart_printf.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -121,7 +123,7 @@ void print_bmp280_id()
 
   uint8_t buf[16] = {0};
 
-  snprintf(buf, sizeof(buf), "BMP280 ID:%02X\r\n", id);
+  snprintf((char*)buf, sizeof(buf), "BMP280 ID:%02X\r\n", id);
   HAL_UART_Transmit(&huart1, buf, sizeof(buf), 10000);
 }
 
@@ -134,14 +136,14 @@ void print_lis2hd12_who_am_i(void)
   uint8_t buffer[32] = {0};
   if(ret != HAL_OK)
   { 
-    snprintf(buffer, sizeof(buffer), "Error IMU\r\n");
+    snprintf((char*)buffer, sizeof(buffer), "Error IMU\r\n");
   }
   else
   {
-    snprintf(buffer, sizeof(buffer), "IMU ID: %#02X\r\n", id);
+    snprintf((char*)buffer, sizeof(buffer), "IMU ID: %#02X\r\n", id);
   }
 
-  HAL_UART_Transmit(&huart1, buffer, strlen(buffer), HAL_MAX_DELAY);
+  HAL_UART_Transmit(&huart1, buffer, strlen((char*)buffer), HAL_MAX_DELAY);
 }
 
 void read_pressure(void)
@@ -152,6 +154,12 @@ void read_pressure(void)
   uint8_t ret;
   ret = bmp280_start_press_read();
 
+  if(ret != HAL_OK)
+  {
+    snprintf((char*)buffer, sizeof(buffer), "BMP280 Error\r\n");
+    return;
+  }
+
   
 
 
@@ -160,11 +168,11 @@ void read_pressure(void)
 
   uint32_t pressure = bmp280_get_temp();
 
-  snprintf(buffer, sizeof(buffer), "Pressure %u\r\n", pressure);
-  HAL_UART_Transmit(&huart1, buffer, strlen(buffer), HAL_MAX_DELAY);
+  snprintf((char*)buffer, sizeof(buffer), "Pressure %lu\r\n", pressure);
+  HAL_UART_Transmit(&huart1, buffer, strlen((char*)buffer), HAL_MAX_DELAY);
 
 
-  memset(buffer, 0, strlen(buffer));
+  memset(buffer, 0, strlen((char*)buffer));
 
 }
 /* USER CODE END 0 */
@@ -205,7 +213,7 @@ int main(void)
   MX_CRC_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-
+  uart_printf("Beginning\r\n");
   // i2c_scan();
   // print_bmp280_id();
   // print_lis2hd12_who_am_i();
@@ -214,7 +222,7 @@ int main(void)
   uint8_t in[20] = {0};
 
 
-  disable_wp();
+  
 
   for(uint8_t i = 0; i < sizeof(data); i++)
   {
@@ -230,7 +238,7 @@ int main(void)
     while (1);
     
   }
-  HAL_Delay(10);
+  
   eeprom_read(0x00, in, sizeof(data));
 
 
@@ -248,7 +256,7 @@ int main(void)
 
     HAL_GPIO_TogglePin(USR_LED1_GPIO_Port, USR_LED1_Pin);
     HAL_Delay(500);
-    read_pressure();
+    // read_pressure();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
