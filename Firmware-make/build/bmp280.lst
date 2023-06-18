@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccVqFCdR.s 			page 1
+ARM GAS  /tmp/cc7XMChu.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccVqFCdR.s 			page 1
   28:Core/Src/bmp280.c **** #define BUF_SIZE 32
   29:Core/Src/bmp280.c **** static uint8_t wrbuf[BUF_SIZE] = {0};
   30:Core/Src/bmp280.c **** static uint8_t rdbuf[BUF_SIZE] = {0};
-ARM GAS  /tmp/ccVqFCdR.s 			page 2
+ARM GAS  /tmp/cc7XMChu.s 			page 2
 
 
   31:Core/Src/bmp280.c **** static uint32_t rdLen = 0, wrLen = 0;
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccVqFCdR.s 			page 1
   85:Core/Src/bmp280.c **** 
   86:Core/Src/bmp280.c **** 	wrLen = len + 1;
   87:Core/Src/bmp280.c **** 
-ARM GAS  /tmp/ccVqFCdR.s 			page 3
+ARM GAS  /tmp/cc7XMChu.s 			page 3
 
 
   88:Core/Src/bmp280.c **** 	return HAL_SPI_Transmit_DMA(&hspi1, wrbuf, wrLen);
@@ -158,334 +158,339 @@ ARM GAS  /tmp/ccVqFCdR.s 			page 1
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33              		.loc 1 118 1 is_stmt 0 view .LVU1
   34 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
-  35              		.cfi_def_cfa_offset 24
-  36              		.cfi_offset 4, -24
-  37              		.cfi_offset 5, -20
-  38              		.cfi_offset 6, -16
-  39              		.cfi_offset 7, -12
-  40              		.cfi_offset 8, -8
-  41              		.cfi_offset 14, -4
-  42 0004 82B0     		sub	sp, sp, #8
-  43              		.cfi_def_cfa_offset 32
-  44 0006 0E46     		mov	r6, r1
-  45 0008 1446     		mov	r4, r2
-  46 000a 1D46     		mov	r5, r3
-  47 000c 8DF80700 		strb	r0, [sp, #7]
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 24
+  37              		.cfi_offset 4, -24
+  38              		.cfi_offset 5, -20
+  39              		.cfi_offset 6, -16
+  40              		.cfi_offset 7, -12
+  41              		.cfi_offset 8, -8
+  42              		.cfi_offset 14, -4
+  43 0004 82B0     		sub	sp, sp, #8
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 32
+  46 0006 0E46     		mov	r6, r1
+  47 0008 1446     		mov	r4, r2
+  48 000a 1D46     		mov	r5, r3
+  49 000c 8DF80700 		strb	r0, [sp, #7]
  119:Core/Src/bmp280.c **** 
  120:Core/Src/bmp280.c **** 	HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 0);
-  48              		.loc 1 120 2 is_stmt 1 view .LVU2
-  49 0010 104F     		ldr	r7, .L3
-  50 0012 0022     		movs	r2, #0
-  51              	.LVL1:
-  52              		.loc 1 120 2 is_stmt 0 view .LVU3
-ARM GAS  /tmp/ccVqFCdR.s 			page 4
+  50              		.loc 1 120 2 is_stmt 1 view .LVU2
+  51 0010 104F     		ldr	r7, .L3
+  52 0012 0022     		movs	r2, #0
+ARM GAS  /tmp/cc7XMChu.s 			page 4
 
 
-  53 0014 0421     		movs	r1, #4
-  54              	.LVL2:
-  55              		.loc 1 120 2 view .LVU4
-  56 0016 3846     		mov	r0, r7
-  57              	.LVL3:
-  58              		.loc 1 120 2 view .LVU5
-  59 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  60              	.LVL4:
+  53              	.LVL1:
+  54              		.loc 1 120 2 is_stmt 0 view .LVU3
+  55 0014 0421     		movs	r1, #4
+  56              	.LVL2:
+  57              		.loc 1 120 2 view .LVU4
+  58 0016 3846     		mov	r0, r7
+  59              	.LVL3:
+  60              		.loc 1 120 2 view .LVU5
+  61 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  62              	.LVL4:
  121:Core/Src/bmp280.c **** 
  122:Core/Src/bmp280.c **** 	rdLen = len;
-  61              		.loc 1 122 2 is_stmt 1 view .LVU6
-  62              		.loc 1 122 8 is_stmt 0 view .LVU7
-  63 001c 0E4B     		ldr	r3, .L3+4
-  64 001e 1C60     		str	r4, [r3]
+  63              		.loc 1 122 2 is_stmt 1 view .LVU6
+  64              		.loc 1 122 8 is_stmt 0 view .LVU7
+  65 001c 0E4B     		ldr	r3, .L3+4
+  66 001e 1C60     		str	r4, [r3]
  123:Core/Src/bmp280.c **** 	HAL_SPI_Transmit(&hspi1, &addr, 1, timeout);
-  65              		.loc 1 123 2 is_stmt 1 view .LVU8
-  66 0020 DFF83880 		ldr	r8, .L3+8
-  67 0024 2B46     		mov	r3, r5
-  68 0026 0122     		movs	r2, #1
-  69 0028 0DF10701 		add	r1, sp, #7
-  70 002c 4046     		mov	r0, r8
-  71 002e FFF7FEFF 		bl	HAL_SPI_Transmit
-  72              	.LVL5:
+  67              		.loc 1 123 2 is_stmt 1 view .LVU8
+  68 0020 DFF83880 		ldr	r8, .L3+8
+  69 0024 2B46     		mov	r3, r5
+  70 0026 0122     		movs	r2, #1
+  71 0028 0DF10701 		add	r1, sp, #7
+  72 002c 4046     		mov	r0, r8
+  73 002e FFF7FEFF 		bl	HAL_SPI_Transmit
+  74              	.LVL5:
  124:Core/Src/bmp280.c **** 	uint8_t ret = HAL_SPI_Receive(&hspi1, data, len, timeout);
-  73              		.loc 1 124 2 view .LVU9
-  74              		.loc 1 124 16 is_stmt 0 view .LVU10
-  75 0032 2B46     		mov	r3, r5
-  76 0034 A2B2     		uxth	r2, r4
-  77 0036 3146     		mov	r1, r6
-  78 0038 4046     		mov	r0, r8
-  79 003a FFF7FEFF 		bl	HAL_SPI_Receive
-  80              	.LVL6:
-  81 003e 0446     		mov	r4, r0
-  82              	.LVL7:
+  75              		.loc 1 124 2 view .LVU9
+  76              		.loc 1 124 16 is_stmt 0 view .LVU10
+  77 0032 2B46     		mov	r3, r5
+  78 0034 A2B2     		uxth	r2, r4
+  79 0036 3146     		mov	r1, r6
+  80 0038 4046     		mov	r0, r8
+  81 003a FFF7FEFF 		bl	HAL_SPI_Receive
+  82              	.LVL6:
+  83 003e 0446     		mov	r4, r0
+  84              	.LVL7:
  125:Core/Src/bmp280.c **** 	HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 1);
-  83              		.loc 1 125 2 is_stmt 1 view .LVU11
-  84 0040 0122     		movs	r2, #1
-  85 0042 0421     		movs	r1, #4
-  86 0044 3846     		mov	r0, r7
-  87 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  88              	.LVL8:
+  85              		.loc 1 125 2 is_stmt 1 view .LVU11
+  86 0040 0122     		movs	r2, #1
+  87 0042 0421     		movs	r1, #4
+  88 0044 3846     		mov	r0, r7
+  89 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  90              	.LVL8:
  126:Core/Src/bmp280.c **** 	return ret;
-  89              		.loc 1 126 2 view .LVU12
+  91              		.loc 1 126 2 view .LVU12
  127:Core/Src/bmp280.c **** }
-  90              		.loc 1 127 1 is_stmt 0 view .LVU13
-  91 004a 2046     		mov	r0, r4
-  92 004c 02B0     		add	sp, sp, #8
-  93              		.cfi_def_cfa_offset 24
-  94              		@ sp needed
-  95 004e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
-  96              	.LVL9:
-  97              	.L4:
-  98              		.loc 1 127 1 view .LVU14
-  99 0052 00BF     		.align	2
- 100              	.L3:
- 101 0054 000C0240 		.word	1073875968
- 102 0058 00000000 		.word	.LANCHOR0
-ARM GAS  /tmp/ccVqFCdR.s 			page 5
+  92              		.loc 1 127 1 is_stmt 0 view .LVU13
+  93 004a 2046     		mov	r0, r4
+  94 004c 02B0     		add	sp, sp, #8
+  95              	.LCFI2:
+  96              		.cfi_def_cfa_offset 24
+  97              		@ sp needed
+  98 004e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+  99              	.LVL9:
+ 100              	.L4:
+ 101              		.loc 1 127 1 view .LVU14
+ 102 0052 00BF     		.align	2
+ARM GAS  /tmp/cc7XMChu.s 			page 5
 
 
- 103 005c 00000000 		.word	hspi1
- 104              		.cfi_endproc
- 105              	.LFE133:
- 107              		.section	.text.bmp280_write_async,"ax",%progbits
- 108              		.align	1
- 109              		.syntax unified
- 110              		.thumb
- 111              		.thumb_func
- 113              	bmp280_write_async:
- 114              	.LVL10:
- 115              	.LFB130:
+ 103              	.L3:
+ 104 0054 000C0240 		.word	1073875968
+ 105 0058 00000000 		.word	.LANCHOR0
+ 106 005c 00000000 		.word	hspi1
+ 107              		.cfi_endproc
+ 108              	.LFE133:
+ 110              		.section	.text.bmp280_write_async,"ax",%progbits
+ 111              		.align	1
+ 112              		.syntax unified
+ 113              		.thumb
+ 114              		.thumb_func
+ 116              	bmp280_write_async:
+ 117              	.LVL10:
+ 118              	.LFB130:
   72:Core/Src/bmp280.c **** 
- 116              		.loc 1 72 1 is_stmt 1 view -0
- 117              		.cfi_startproc
- 118              		@ args = 0, pretend = 0, frame = 0
- 119              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119              		.loc 1 72 1 is_stmt 1 view -0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
   72:Core/Src/bmp280.c **** 
- 120              		.loc 1 72 1 is_stmt 0 view .LVU16
- 121 0000 38B5     		push	{r3, r4, r5, lr}
- 122              		.cfi_def_cfa_offset 16
- 123              		.cfi_offset 3, -16
- 124              		.cfi_offset 4, -12
- 125              		.cfi_offset 5, -8
- 126              		.cfi_offset 14, -4
- 127 0002 8C46     		mov	ip, r1
- 128 0004 1146     		mov	r1, r2
- 129              	.LVL11:
+ 123              		.loc 1 72 1 is_stmt 0 view .LVU16
+ 124 0000 38B5     		push	{r3, r4, r5, lr}
+ 125              	.LCFI3:
+ 126              		.cfi_def_cfa_offset 16
+ 127              		.cfi_offset 3, -16
+ 128              		.cfi_offset 4, -12
+ 129              		.cfi_offset 5, -8
+ 130              		.cfi_offset 14, -4
+ 131 0002 8C46     		mov	ip, r1
+ 132 0004 1146     		mov	r1, r2
+ 133              	.LVL11:
   72:Core/Src/bmp280.c **** 
- 130              		.loc 1 72 1 view .LVU17
- 131 0006 1A46     		mov	r2, r3
- 132              	.LVL12:
+ 134              		.loc 1 72 1 view .LVU17
+ 135 0006 1A46     		mov	r2, r3
+ 136              	.LVL12:
   74:Core/Src/bmp280.c **** 	{
- 133              		.loc 1 74 2 is_stmt 1 view .LVU18
+ 137              		.loc 1 74 2 is_stmt 1 view .LVU18
   74:Core/Src/bmp280.c **** 	{
- 134              		.loc 1 74 10 is_stmt 0 view .LVU19
- 135 0008 5D1C     		adds	r5, r3, #1
+ 138              		.loc 1 74 10 is_stmt 0 view .LVU19
+ 139 0008 5D1C     		adds	r5, r3, #1
   74:Core/Src/bmp280.c **** 	{
- 136              		.loc 1 74 5 view .LVU20
- 137 000a 202D     		cmp	r5, #32
- 138 000c 13D8     		bhi	.L8
- 139              	.L7:
+ 140              		.loc 1 74 5 view .LVU20
+ 141 000a 202D     		cmp	r5, #32
+ 142 000c 13D8     		bhi	.L8
+ 143              	.L7:
   80:Core/Src/bmp280.c **** 	currentOp = op;
- 140              		.loc 1 80 3 is_stmt 1 discriminator 1 view .LVU21
+ 144              		.loc 1 80 3 is_stmt 1 discriminator 1 view .LVU21
   79:Core/Src/bmp280.c **** 		;
- 141              		.loc 1 79 8 discriminator 1 view .LVU22
+ 145              		.loc 1 79 8 discriminator 1 view .LVU22
   79:Core/Src/bmp280.c **** 		;
- 142              		.loc 1 79 19 is_stmt 0 discriminator 1 view .LVU23
- 143 000e 0B4C     		ldr	r4, .L10
- 144 0010 2478     		ldrb	r4, [r4]	@ zero_extendqisi2
+ 146              		.loc 1 79 19 is_stmt 0 discriminator 1 view .LVU23
+ 147 000e 0B4C     		ldr	r4, .L10
+ 148 0010 2478     		ldrb	r4, [r4]	@ zero_extendqisi2
   79:Core/Src/bmp280.c **** 		;
- 145              		.loc 1 79 8 discriminator 1 view .LVU24
- 146 0012 002C     		cmp	r4, #0
- 147 0014 FBD1     		bne	.L7
-  81:Core/Src/bmp280.c **** 
- 148              		.loc 1 81 2 is_stmt 1 view .LVU25
-  81:Core/Src/bmp280.c **** 
- 149              		.loc 1 81 12 is_stmt 0 view .LVU26
-ARM GAS  /tmp/ccVqFCdR.s 			page 6
+ 149              		.loc 1 79 8 discriminator 1 view .LVU24
+ 150 0012 002C     		cmp	r4, #0
+ 151 0014 FBD1     		bne	.L7
+ARM GAS  /tmp/cc7XMChu.s 			page 6
 
 
- 150 0016 094B     		ldr	r3, .L10
- 151              	.LVL13:
   81:Core/Src/bmp280.c **** 
- 152              		.loc 1 81 12 view .LVU27
- 153 0018 1870     		strb	r0, [r3]
+ 152              		.loc 1 81 2 is_stmt 1 view .LVU25
+  81:Core/Src/bmp280.c **** 
+ 153              		.loc 1 81 12 is_stmt 0 view .LVU26
+ 154 0016 094B     		ldr	r3, .L10
+ 155              	.LVL13:
+  81:Core/Src/bmp280.c **** 
+ 156              		.loc 1 81 12 view .LVU27
+ 157 0018 1870     		strb	r0, [r3]
   83:Core/Src/bmp280.c **** 	memcpy(wrbuf + 1, data, len);
- 154              		.loc 1 83 2 is_stmt 1 view .LVU28
+ 158              		.loc 1 83 2 is_stmt 1 view .LVU28
   83:Core/Src/bmp280.c **** 	memcpy(wrbuf + 1, data, len);
- 155              		.loc 1 83 11 is_stmt 0 view .LVU29
- 156 001a 094C     		ldr	r4, .L10+4
- 157 001c 2046     		mov	r0, r4
- 158              	.LVL14:
+ 159              		.loc 1 83 11 is_stmt 0 view .LVU29
+ 160 001a 094C     		ldr	r4, .L10+4
+ 161 001c 2046     		mov	r0, r4
+ 162              	.LVL14:
   83:Core/Src/bmp280.c **** 	memcpy(wrbuf + 1, data, len);
- 159              		.loc 1 83 11 view .LVU30
- 160 001e 00F801CB 		strb	ip, [r0], #1
+ 163              		.loc 1 83 11 view .LVU30
+ 164 001e 00F801CB 		strb	ip, [r0], #1
   84:Core/Src/bmp280.c **** 
- 161              		.loc 1 84 2 is_stmt 1 view .LVU31
- 162 0022 FFF7FEFF 		bl	memcpy
- 163              	.LVL15:
+ 165              		.loc 1 84 2 is_stmt 1 view .LVU31
+ 166 0022 FFF7FEFF 		bl	memcpy
+ 167              	.LVL15:
   86:Core/Src/bmp280.c **** 
- 164              		.loc 1 86 2 view .LVU32
+ 168              		.loc 1 86 2 view .LVU32
   86:Core/Src/bmp280.c **** 
- 165              		.loc 1 86 8 is_stmt 0 view .LVU33
- 166 0026 074B     		ldr	r3, .L10+8
- 167 0028 1D60     		str	r5, [r3]
+ 169              		.loc 1 86 8 is_stmt 0 view .LVU33
+ 170 0026 074B     		ldr	r3, .L10+8
+ 171 0028 1D60     		str	r5, [r3]
   88:Core/Src/bmp280.c **** }
- 168              		.loc 1 88 2 is_stmt 1 view .LVU34
+ 172              		.loc 1 88 2 is_stmt 1 view .LVU34
   88:Core/Src/bmp280.c **** }
- 169              		.loc 1 88 9 is_stmt 0 view .LVU35
- 170 002a AAB2     		uxth	r2, r5
- 171 002c 2146     		mov	r1, r4
- 172 002e 0648     		ldr	r0, .L10+12
- 173 0030 FFF7FEFF 		bl	HAL_SPI_Transmit_DMA
- 174              	.LVL16:
- 175              	.L6:
+ 173              		.loc 1 88 9 is_stmt 0 view .LVU35
+ 174 002a AAB2     		uxth	r2, r5
+ 175 002c 2146     		mov	r1, r4
+ 176 002e 0648     		ldr	r0, .L10+12
+ 177 0030 FFF7FEFF 		bl	HAL_SPI_Transmit_DMA
+ 178              	.LVL16:
+ 179              	.L6:
   89:Core/Src/bmp280.c **** static uint8_t bmp280_read_async(bpm280_op_t op, uint8_t addr, uint8_t *data, size_t len)
- 176              		.loc 1 89 1 view .LVU36
- 177 0034 38BD     		pop	{r3, r4, r5, pc}
- 178              	.LVL17:
- 179              	.L8:
+ 180              		.loc 1 89 1 view .LVU36
+ 181 0034 38BD     		pop	{r3, r4, r5, pc}
+ 182              	.LVL17:
+ 183              	.L8:
   76:Core/Src/bmp280.c **** 	}
- 180              		.loc 1 76 10 view .LVU37
- 181 0036 0120     		movs	r0, #1
- 182              	.LVL18:
+ 184              		.loc 1 76 10 view .LVU37
+ 185 0036 0120     		movs	r0, #1
+ 186              	.LVL18:
   76:Core/Src/bmp280.c **** 	}
- 183              		.loc 1 76 10 view .LVU38
- 184 0038 FCE7     		b	.L6
- 185              	.L11:
- 186 003a 00BF     		.align	2
- 187              	.L10:
- 188 003c 00000000 		.word	.LANCHOR1
- 189 0040 00000000 		.word	.LANCHOR2
- 190 0044 00000000 		.word	.LANCHOR3
- 191 0048 00000000 		.word	hspi1
- 192              		.cfi_endproc
- 193              	.LFE130:
- 195              		.section	.text.bmp280_read_async,"ax",%progbits
-ARM GAS  /tmp/ccVqFCdR.s 			page 7
+ 187              		.loc 1 76 10 view .LVU38
+ 188 0038 FCE7     		b	.L6
+ 189              	.L11:
+ 190 003a 00BF     		.align	2
+ 191              	.L10:
+ 192 003c 00000000 		.word	.LANCHOR1
+ 193 0040 00000000 		.word	.LANCHOR2
+ 194 0044 00000000 		.word	.LANCHOR3
+ARM GAS  /tmp/cc7XMChu.s 			page 7
 
 
- 196              		.align	1
- 197              		.syntax unified
- 198              		.thumb
- 199              		.thumb_func
- 201              	bmp280_read_async:
- 202              	.LVL19:
- 203              	.LFB131:
+ 195 0048 00000000 		.word	hspi1
+ 196              		.cfi_endproc
+ 197              	.LFE130:
+ 199              		.section	.text.bmp280_read_async,"ax",%progbits
+ 200              		.align	1
+ 201              		.syntax unified
+ 202              		.thumb
+ 203              		.thumb_func
+ 205              	bmp280_read_async:
+ 206              	.LVL19:
+ 207              	.LFB131:
   91:Core/Src/bmp280.c **** 	if (len + 1 > BUF_SIZE)
- 204              		.loc 1 91 1 is_stmt 1 view -0
- 205              		.cfi_startproc
- 206              		@ args = 0, pretend = 0, frame = 0
- 207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 208              		.loc 1 91 1 is_stmt 1 view -0
+ 209              		.cfi_startproc
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
   91:Core/Src/bmp280.c **** 	if (len + 1 > BUF_SIZE)
- 208              		.loc 1 91 1 is_stmt 0 view .LVU40
- 209 0000 70B5     		push	{r4, r5, r6, lr}
- 210              		.cfi_def_cfa_offset 16
- 211              		.cfi_offset 4, -16
- 212              		.cfi_offset 5, -12
- 213              		.cfi_offset 6, -8
- 214              		.cfi_offset 14, -4
- 215 0002 0E46     		mov	r6, r1
- 216 0004 1C46     		mov	r4, r3
+ 212              		.loc 1 91 1 is_stmt 0 view .LVU40
+ 213 0000 70B5     		push	{r4, r5, r6, lr}
+ 214              	.LCFI4:
+ 215              		.cfi_def_cfa_offset 16
+ 216              		.cfi_offset 4, -16
+ 217              		.cfi_offset 5, -12
+ 218              		.cfi_offset 6, -8
+ 219              		.cfi_offset 14, -4
+ 220 0002 0E46     		mov	r6, r1
+ 221 0004 1C46     		mov	r4, r3
   92:Core/Src/bmp280.c **** 	{
- 217              		.loc 1 92 2 is_stmt 1 view .LVU41
+ 222              		.loc 1 92 2 is_stmt 1 view .LVU41
   92:Core/Src/bmp280.c **** 	{
- 218              		.loc 1 92 10 is_stmt 0 view .LVU42
- 219 0006 0133     		adds	r3, r3, #1
- 220              	.LVL20:
+ 223              		.loc 1 92 10 is_stmt 0 view .LVU42
+ 224 0006 0133     		adds	r3, r3, #1
+ 225              	.LVL20:
   92:Core/Src/bmp280.c **** 	{
- 221              		.loc 1 92 5 view .LVU43
- 222 0008 202B     		cmp	r3, #32
- 223 000a 15D8     		bhi	.L15
- 224              	.LVL21:
- 225              	.L14:
+ 226              		.loc 1 92 5 view .LVU43
+ 227 0008 202B     		cmp	r3, #32
+ 228 000a 15D8     		bhi	.L15
+ 229              	.LVL21:
+ 230              	.L14:
   98:Core/Src/bmp280.c **** 	currentOp = op;
- 226              		.loc 1 98 3 is_stmt 1 discriminator 1 view .LVU44
+ 231              		.loc 1 98 3 is_stmt 1 discriminator 1 view .LVU44
   97:Core/Src/bmp280.c **** 		;
- 227              		.loc 1 97 8 discriminator 1 view .LVU45
+ 232              		.loc 1 97 8 discriminator 1 view .LVU45
   97:Core/Src/bmp280.c **** 		;
- 228              		.loc 1 97 19 is_stmt 0 discriminator 1 view .LVU46
- 229 000c 0B4A     		ldr	r2, .L17
- 230 000e 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 233              		.loc 1 97 19 is_stmt 0 discriminator 1 view .LVU46
+ 234 000c 0B4A     		ldr	r2, .L17
+ 235 000e 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
   97:Core/Src/bmp280.c **** 		;
- 231              		.loc 1 97 8 discriminator 1 view .LVU47
- 232 0010 002A     		cmp	r2, #0
- 233 0012 FBD1     		bne	.L14
+ 236              		.loc 1 97 8 discriminator 1 view .LVU47
+ 237 0010 002A     		cmp	r2, #0
+ 238 0012 FBD1     		bne	.L14
   99:Core/Src/bmp280.c **** 
- 234              		.loc 1 99 2 is_stmt 1 view .LVU48
+ 239              		.loc 1 99 2 is_stmt 1 view .LVU48
   99:Core/Src/bmp280.c **** 
- 235              		.loc 1 99 12 is_stmt 0 view .LVU49
- 236 0014 094B     		ldr	r3, .L17
- 237 0016 1870     		strb	r0, [r3]
- 101:Core/Src/bmp280.c **** 
- 238              		.loc 1 101 2 is_stmt 1 view .LVU50
- 239 0018 094D     		ldr	r5, .L17+4
- 240 001a 2022     		movs	r2, #32
- 241 001c 0021     		movs	r1, #0
-ARM GAS  /tmp/ccVqFCdR.s 			page 8
+ 240              		.loc 1 99 12 is_stmt 0 view .LVU49
+ 241 0014 094B     		ldr	r3, .L17
+ 242 0016 1870     		strb	r0, [r3]
+ARM GAS  /tmp/cc7XMChu.s 			page 8
 
 
- 242              	.LVL22:
  101:Core/Src/bmp280.c **** 
- 243              		.loc 1 101 2 is_stmt 0 view .LVU51
- 244 001e 2846     		mov	r0, r5
- 245              	.LVL23:
+ 243              		.loc 1 101 2 is_stmt 1 view .LVU50
+ 244 0018 094D     		ldr	r5, .L17+4
+ 245 001a 2022     		movs	r2, #32
+ 246 001c 0021     		movs	r1, #0
+ 247              	.LVL22:
  101:Core/Src/bmp280.c **** 
- 246              		.loc 1 101 2 view .LVU52
- 247 0020 FFF7FEFF 		bl	memset
- 248              	.LVL24:
+ 248              		.loc 1 101 2 is_stmt 0 view .LVU51
+ 249 001e 2846     		mov	r0, r5
+ 250              	.LVL23:
+ 101:Core/Src/bmp280.c **** 
+ 251              		.loc 1 101 2 view .LVU52
+ 252 0020 FFF7FEFF 		bl	memset
+ 253              	.LVL24:
  103:Core/Src/bmp280.c **** 
- 249              		.loc 1 103 2 is_stmt 1 view .LVU53
+ 254              		.loc 1 103 2 is_stmt 1 view .LVU53
  103:Core/Src/bmp280.c **** 
- 250              		.loc 1 103 11 is_stmt 0 view .LVU54
- 251 0024 2E70     		strb	r6, [r5]
+ 255              		.loc 1 103 11 is_stmt 0 view .LVU54
+ 256 0024 2E70     		strb	r6, [r5]
  105:Core/Src/bmp280.c **** 	return HAL_SPI_TransmitReceive_DMA(&hspi1, wrbuf, rdbuf, rdLen);
- 252              		.loc 1 105 2 is_stmt 1 view .LVU55
+ 257              		.loc 1 105 2 is_stmt 1 view .LVU55
  105:Core/Src/bmp280.c **** 	return HAL_SPI_TransmitReceive_DMA(&hspi1, wrbuf, rdbuf, rdLen);
- 253              		.loc 1 105 8 is_stmt 0 view .LVU56
- 254 0026 074B     		ldr	r3, .L17+8
- 255 0028 1C60     		str	r4, [r3]
+ 258              		.loc 1 105 8 is_stmt 0 view .LVU56
+ 259 0026 074B     		ldr	r3, .L17+8
+ 260 0028 1C60     		str	r4, [r3]
  106:Core/Src/bmp280.c **** }
- 256              		.loc 1 106 2 is_stmt 1 view .LVU57
+ 261              		.loc 1 106 2 is_stmt 1 view .LVU57
  106:Core/Src/bmp280.c **** }
- 257              		.loc 1 106 9 is_stmt 0 view .LVU58
- 258 002a A3B2     		uxth	r3, r4
- 259 002c 064A     		ldr	r2, .L17+12
- 260 002e 2946     		mov	r1, r5
- 261 0030 0648     		ldr	r0, .L17+16
- 262 0032 FFF7FEFF 		bl	HAL_SPI_TransmitReceive_DMA
- 263              	.LVL25:
- 264              	.L13:
+ 262              		.loc 1 106 9 is_stmt 0 view .LVU58
+ 263 002a A3B2     		uxth	r3, r4
+ 264 002c 064A     		ldr	r2, .L17+12
+ 265 002e 2946     		mov	r1, r5
+ 266 0030 0648     		ldr	r0, .L17+16
+ 267 0032 FFF7FEFF 		bl	HAL_SPI_TransmitReceive_DMA
+ 268              	.LVL25:
+ 269              	.L13:
  107:Core/Src/bmp280.c **** static uint8_t bmp280_write_sync(uint8_t addr, uint8_t *data, size_t len,
- 265              		.loc 1 107 1 view .LVU59
- 266 0036 70BD     		pop	{r4, r5, r6, pc}
- 267              	.LVL26:
- 268              	.L15:
+ 270              		.loc 1 107 1 view .LVU59
+ 271 0036 70BD     		pop	{r4, r5, r6, pc}
+ 272              	.LVL26:
+ 273              	.L15:
   94:Core/Src/bmp280.c **** 	}
- 269              		.loc 1 94 10 view .LVU60
- 270 0038 0120     		movs	r0, #1
- 271              	.LVL27:
+ 274              		.loc 1 94 10 view .LVU60
+ 275 0038 0120     		movs	r0, #1
+ 276              	.LVL27:
   94:Core/Src/bmp280.c **** 	}
- 272              		.loc 1 94 10 view .LVU61
- 273 003a FCE7     		b	.L13
- 274              	.L18:
- 275              		.align	2
- 276              	.L17:
- 277 003c 00000000 		.word	.LANCHOR1
- 278 0040 00000000 		.word	.LANCHOR2
- 279 0044 00000000 		.word	.LANCHOR0
- 280 0048 00000000 		.word	.LANCHOR4
- 281 004c 00000000 		.word	hspi1
- 282              		.cfi_endproc
- 283              	.LFE131:
- 285              		.section	.text.bmp280_getid,"ax",%progbits
- 286              		.align	1
- 287              		.global	bmp280_getid
- 288              		.syntax unified
-ARM GAS  /tmp/ccVqFCdR.s 			page 9
+ 277              		.loc 1 94 10 view .LVU61
+ 278 003a FCE7     		b	.L13
+ 279              	.L18:
+ 280              		.align	2
+ 281              	.L17:
+ 282 003c 00000000 		.word	.LANCHOR1
+ 283 0040 00000000 		.word	.LANCHOR2
+ 284 0044 00000000 		.word	.LANCHOR0
+ 285 0048 00000000 		.word	.LANCHOR4
+ 286 004c 00000000 		.word	hspi1
+ 287              		.cfi_endproc
+ARM GAS  /tmp/cc7XMChu.s 			page 9
 
 
- 289              		.thumb
- 290              		.thumb_func
- 292              	bmp280_getid:
- 293              	.LVL28:
- 294              	.LFB136:
+ 288              	.LFE131:
+ 290              		.section	.text.bmp280_getid,"ax",%progbits
+ 291              		.align	1
+ 292              		.global	bmp280_getid
+ 293              		.syntax unified
+ 294              		.thumb
+ 295              		.thumb_func
+ 297              	bmp280_getid:
+ 298              	.LVL28:
+ 299              	.LFB136:
  128:Core/Src/bmp280.c **** static void bmp280_get_trim_values(void)
  129:Core/Src/bmp280.c **** {
  130:Core/Src/bmp280.c **** }
@@ -516,610 +521,626 @@ ARM GAS  /tmp/ccVqFCdR.s 			page 1
  155:Core/Src/bmp280.c **** 
  156:Core/Src/bmp280.c **** uint8_t bmp280_getid(uint8_t *id)
  157:Core/Src/bmp280.c **** {
- 295              		.loc 1 157 1 is_stmt 1 view -0
- 296              		.cfi_startproc
- 297              		@ args = 0, pretend = 0, frame = 0
- 298              		@ frame_needed = 0, uses_anonymous_args = 0
- 299              		.loc 1 157 1 is_stmt 0 view .LVU63
- 300 0000 08B5     		push	{r3, lr}
- 301              		.cfi_def_cfa_offset 8
- 302              		.cfi_offset 3, -8
- 303              		.cfi_offset 14, -4
- 304 0002 0146     		mov	r1, r0
+ 300              		.loc 1 157 1 is_stmt 1 view -0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304              		.loc 1 157 1 is_stmt 0 view .LVU63
+ 305 0000 08B5     		push	{r3, lr}
+ 306              	.LCFI5:
+ 307              		.cfi_def_cfa_offset 8
+ 308              		.cfi_offset 3, -8
+ 309              		.cfi_offset 14, -4
+ 310 0002 0146     		mov	r1, r0
  158:Core/Src/bmp280.c **** 
  159:Core/Src/bmp280.c **** 	uint8_t ret = bmp280_read_sync(BMP280_ID_ADDR, id, 1, HAL_MAX_DELAY);
- 305              		.loc 1 159 2 is_stmt 1 view .LVU64
- 306              		.loc 1 159 16 is_stmt 0 view .LVU65
- 307 0004 4FF0FF33 		mov	r3, #-1
- 308 0008 0122     		movs	r2, #1
- 309 000a D020     		movs	r0, #208
- 310              	.LVL29:
- 311              		.loc 1 159 16 view .LVU66
- 312 000c FFF7FEFF 		bl	bmp280_read_sync
- 313              	.LVL30:
+ 311              		.loc 1 159 2 is_stmt 1 view .LVU64
+ 312              		.loc 1 159 16 is_stmt 0 view .LVU65
+ 313 0004 4FF0FF33 		mov	r3, #-1
+ 314 0008 0122     		movs	r2, #1
+ARM GAS  /tmp/cc7XMChu.s 			page 10
+
+
+ 315 000a D020     		movs	r0, #208
+ 316              	.LVL29:
+ 317              		.loc 1 159 16 view .LVU66
+ 318 000c FFF7FEFF 		bl	bmp280_read_sync
+ 319              	.LVL30:
  160:Core/Src/bmp280.c **** 
-ARM GAS  /tmp/ccVqFCdR.s 			page 10
-
-
  161:Core/Src/bmp280.c **** 	//	*id &= ~(1 << 7);
  162:Core/Src/bmp280.c **** 	//	*id <<=1;
  163:Core/Src/bmp280.c **** 	return ret;
- 314              		.loc 1 163 2 is_stmt 1 view .LVU67
+ 320              		.loc 1 163 2 is_stmt 1 view .LVU67
  164:Core/Src/bmp280.c **** }
- 315              		.loc 1 164 1 is_stmt 0 view .LVU68
- 316 0010 08BD     		pop	{r3, pc}
- 317              		.cfi_endproc
- 318              	.LFE136:
- 320              		.section	.text.bmp280_init,"ax",%progbits
- 321              		.align	1
- 322              		.global	bmp280_init
- 323              		.syntax unified
- 324              		.thumb
- 325              		.thumb_func
- 327              	bmp280_init:
- 328              	.LVL31:
- 329              	.LFB135:
+ 321              		.loc 1 164 1 is_stmt 0 view .LVU68
+ 322 0010 08BD     		pop	{r3, pc}
+ 323              		.cfi_endproc
+ 324              	.LFE136:
+ 326              		.section	.text.bmp280_init,"ax",%progbits
+ 327              		.align	1
+ 328              		.global	bmp280_init
+ 329              		.syntax unified
+ 330              		.thumb
+ 331              		.thumb_func
+ 333              	bmp280_init:
+ 334              	.LVL31:
+ 335              	.LFB135:
  132:Core/Src/bmp280.c **** 
- 330              		.loc 1 132 1 is_stmt 1 view -0
- 331              		.cfi_startproc
- 332              		@ args = 0, pretend = 0, frame = 8
- 333              		@ frame_needed = 0, uses_anonymous_args = 0
+ 336              		.loc 1 132 1 is_stmt 1 view -0
+ 337              		.cfi_startproc
+ 338              		@ args = 0, pretend = 0, frame = 8
+ 339              		@ frame_needed = 0, uses_anonymous_args = 0
  132:Core/Src/bmp280.c **** 
- 334              		.loc 1 132 1 is_stmt 0 view .LVU70
- 335 0000 30B5     		push	{r4, r5, lr}
- 336              		.cfi_def_cfa_offset 12
- 337              		.cfi_offset 4, -12
- 338              		.cfi_offset 5, -8
- 339              		.cfi_offset 14, -4
- 340 0002 83B0     		sub	sp, sp, #12
- 341              		.cfi_def_cfa_offset 24
- 342 0004 0546     		mov	r5, r0
- 343 0006 0C46     		mov	r4, r1
+ 340              		.loc 1 132 1 is_stmt 0 view .LVU70
+ 341 0000 30B5     		push	{r4, r5, lr}
+ 342              	.LCFI6:
+ 343              		.cfi_def_cfa_offset 12
+ 344              		.cfi_offset 4, -12
+ 345              		.cfi_offset 5, -8
+ 346              		.cfi_offset 14, -4
+ 347 0002 83B0     		sub	sp, sp, #12
+ 348              	.LCFI7:
+ 349              		.cfi_def_cfa_offset 24
+ 350 0004 0546     		mov	r5, r0
+ 351 0006 0C46     		mov	r4, r1
  135:Core/Src/bmp280.c **** 
- 344              		.loc 1 135 2 is_stmt 1 view .LVU71
- 345 0008 2022     		movs	r2, #32
- 346 000a 0021     		movs	r1, #0
- 347              	.LVL32:
+ 352              		.loc 1 135 2 is_stmt 1 view .LVU71
+ 353 0008 2022     		movs	r2, #32
+ 354 000a 0021     		movs	r1, #0
+ 355              	.LVL32:
  135:Core/Src/bmp280.c **** 
- 348              		.loc 1 135 2 is_stmt 0 view .LVU72
- 349 000c 0B48     		ldr	r0, .L26
- 350              	.LVL33:
+ 356              		.loc 1 135 2 is_stmt 0 view .LVU72
+ 357 000c 0B48     		ldr	r0, .L26
+ 358              	.LVL33:
  135:Core/Src/bmp280.c **** 
- 351              		.loc 1 135 2 view .LVU73
- 352 000e FFF7FEFF 		bl	memset
- 353              	.LVL34:
+ 359              		.loc 1 135 2 view .LVU73
+ 360 000e FFF7FEFF 		bl	memset
+ 361              	.LVL34:
  137:Core/Src/bmp280.c **** 	userTxCb = txCb;
- 354              		.loc 1 137 2 is_stmt 1 view .LVU74
- 137:Core/Src/bmp280.c **** 	userTxCb = txCb;
- 355              		.loc 1 137 11 is_stmt 0 view .LVU75
- 356 0012 0B4B     		ldr	r3, .L26+4
- 357 0014 1D60     		str	r5, [r3]
- 138:Core/Src/bmp280.c **** 
- 358              		.loc 1 138 2 is_stmt 1 view .LVU76
- 138:Core/Src/bmp280.c **** 
- 359              		.loc 1 138 11 is_stmt 0 view .LVU77
-ARM GAS  /tmp/ccVqFCdR.s 			page 11
+ 362              		.loc 1 137 2 is_stmt 1 view .LVU74
+ARM GAS  /tmp/cc7XMChu.s 			page 11
 
 
- 360 0016 0B4B     		ldr	r3, .L26+8
- 361 0018 1C60     		str	r4, [r3]
+ 137:Core/Src/bmp280.c **** 	userTxCb = txCb;
+ 363              		.loc 1 137 11 is_stmt 0 view .LVU75
+ 364 0012 0B4B     		ldr	r3, .L26+4
+ 365 0014 1D60     		str	r5, [r3]
+ 138:Core/Src/bmp280.c **** 
+ 366              		.loc 1 138 2 is_stmt 1 view .LVU76
+ 138:Core/Src/bmp280.c **** 
+ 367              		.loc 1 138 11 is_stmt 0 view .LVU77
+ 368 0016 0B4B     		ldr	r3, .L26+8
+ 369 0018 1C60     		str	r4, [r3]
  143:Core/Src/bmp280.c **** 	if (bmp280_getid(&id) != HAL_OK)
- 362              		.loc 1 143 2 is_stmt 1 view .LVU78
+ 370              		.loc 1 143 2 is_stmt 1 view .LVU78
  143:Core/Src/bmp280.c **** 	if (bmp280_getid(&id) != HAL_OK)
- 363              		.loc 1 143 10 is_stmt 0 view .LVU79
- 364 001a 0023     		movs	r3, #0
- 365 001c 8DF80730 		strb	r3, [sp, #7]
+ 371              		.loc 1 143 10 is_stmt 0 view .LVU79
+ 372 001a 0023     		movs	r3, #0
+ 373 001c 8DF80730 		strb	r3, [sp, #7]
  144:Core/Src/bmp280.c **** 	{
- 366              		.loc 1 144 2 is_stmt 1 view .LVU80
+ 374              		.loc 1 144 2 is_stmt 1 view .LVU80
  144:Core/Src/bmp280.c **** 	{
- 367              		.loc 1 144 6 is_stmt 0 view .LVU81
- 368 0020 0DF10700 		add	r0, sp, #7
- 369 0024 FFF7FEFF 		bl	bmp280_getid
- 370              	.LVL35:
+ 375              		.loc 1 144 6 is_stmt 0 view .LVU81
+ 376 0020 0DF10700 		add	r0, sp, #7
+ 377 0024 FFF7FEFF 		bl	bmp280_getid
+ 378              	.LVL35:
  144:Core/Src/bmp280.c **** 	{
- 371              		.loc 1 144 5 view .LVU82
- 372 0028 28B9     		cbnz	r0, .L23
+ 379              		.loc 1 144 5 view .LVU82
+ 380 0028 28B9     		cbnz	r0, .L23
  148:Core/Src/bmp280.c **** 	{
- 373              		.loc 1 148 7 is_stmt 1 view .LVU83
+ 381              		.loc 1 148 7 is_stmt 1 view .LVU83
  148:Core/Src/bmp280.c **** 	{
- 374              		.loc 1 148 14 is_stmt 0 view .LVU84
- 375 002a 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 382              		.loc 1 148 14 is_stmt 0 view .LVU84
+ 383 002a 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
  148:Core/Src/bmp280.c **** 	{
- 376              		.loc 1 148 10 view .LVU85
- 377 002e 582B     		cmp	r3, #88
- 378 0030 02D0     		beq	.L22
+ 384              		.loc 1 148 10 view .LVU85
+ 385 002e 582B     		cmp	r3, #88
+ 386 0030 02D0     		beq	.L22
  150:Core/Src/bmp280.c **** 	}
- 379              		.loc 1 150 10 view .LVU86
- 380 0032 0120     		movs	r0, #1
- 381 0034 00E0     		b	.L22
- 382              	.L23:
+ 387              		.loc 1 150 10 view .LVU86
+ 388 0032 0120     		movs	r0, #1
+ 389 0034 00E0     		b	.L22
+ 390              	.L23:
  146:Core/Src/bmp280.c **** 	}
- 383              		.loc 1 146 10 view .LVU87
- 384 0036 0120     		movs	r0, #1
- 385              	.L22:
+ 391              		.loc 1 146 10 view .LVU87
+ 392 0036 0120     		movs	r0, #1
+ 393              	.L22:
  154:Core/Src/bmp280.c **** 
- 386              		.loc 1 154 1 view .LVU88
- 387 0038 03B0     		add	sp, sp, #12
- 388              		.cfi_def_cfa_offset 12
- 389              		@ sp needed
- 390 003a 30BD     		pop	{r4, r5, pc}
- 391              	.LVL36:
- 392              	.L27:
+ 394              		.loc 1 154 1 view .LVU88
+ 395 0038 03B0     		add	sp, sp, #12
+ 396              	.LCFI8:
+ 397              		.cfi_def_cfa_offset 12
+ 398              		@ sp needed
+ 399 003a 30BD     		pop	{r4, r5, pc}
+ 400              	.LVL36:
+ 401              	.L27:
  154:Core/Src/bmp280.c **** 
- 393              		.loc 1 154 1 view .LVU89
- 394              		.align	2
- 395              	.L26:
- 396 003c 00000000 		.word	.LANCHOR5
- 397 0040 00000000 		.word	.LANCHOR6
- 398 0044 00000000 		.word	.LANCHOR7
- 399              		.cfi_endproc
- 400              	.LFE135:
- 402              		.section	.text.bmp280_reset,"ax",%progbits
- 403              		.align	1
- 404              		.global	bmp280_reset
- 405              		.syntax unified
-ARM GAS  /tmp/ccVqFCdR.s 			page 12
+ 402              		.loc 1 154 1 view .LVU89
+ 403              		.align	2
+ 404              	.L26:
+ARM GAS  /tmp/cc7XMChu.s 			page 12
 
 
- 406              		.thumb
- 407              		.thumb_func
- 409              	bmp280_reset:
- 410              	.LFB137:
+ 405 003c 00000000 		.word	.LANCHOR5
+ 406 0040 00000000 		.word	.LANCHOR6
+ 407 0044 00000000 		.word	.LANCHOR7
+ 408              		.cfi_endproc
+ 409              	.LFE135:
+ 411              		.section	.text.bmp280_reset,"ax",%progbits
+ 412              		.align	1
+ 413              		.global	bmp280_reset
+ 414              		.syntax unified
+ 415              		.thumb
+ 416              		.thumb_func
+ 418              	bmp280_reset:
+ 419              	.LFB137:
  165:Core/Src/bmp280.c **** 
  166:Core/Src/bmp280.c **** void bmp280_reset(void)
  167:Core/Src/bmp280.c **** {
- 411              		.loc 1 167 1 is_stmt 1 view -0
- 412              		.cfi_startproc
- 413              		@ args = 0, pretend = 0, frame = 0
- 414              		@ frame_needed = 0, uses_anonymous_args = 0
- 415 0000 08B5     		push	{r3, lr}
- 416              		.cfi_def_cfa_offset 8
- 417              		.cfi_offset 3, -8
- 418              		.cfi_offset 14, -4
+ 420              		.loc 1 167 1 is_stmt 1 view -0
+ 421              		.cfi_startproc
+ 422              		@ args = 0, pretend = 0, frame = 0
+ 423              		@ frame_needed = 0, uses_anonymous_args = 0
+ 424 0000 08B5     		push	{r3, lr}
+ 425              	.LCFI9:
+ 426              		.cfi_def_cfa_offset 8
+ 427              		.cfi_offset 3, -8
+ 428              		.cfi_offset 14, -4
  168:Core/Src/bmp280.c **** 	static const uint8_t RESET_CMD = 0xB6;
- 419              		.loc 1 168 2 view .LVU91
+ 429              		.loc 1 168 2 view .LVU91
  169:Core/Src/bmp280.c **** 
  170:Core/Src/bmp280.c **** 	bmp280_write_async(BMP280_RESET, BMP280_RESET_ADDR, &RESET_CMD, 1);
- 420              		.loc 1 170 2 view .LVU92
- 421 0002 0123     		movs	r3, #1
- 422 0004 024A     		ldr	r2, .L30
- 423 0006 E021     		movs	r1, #224
- 424 0008 0220     		movs	r0, #2
- 425 000a FFF7FEFF 		bl	bmp280_write_async
- 426              	.LVL37:
+ 430              		.loc 1 170 2 view .LVU92
+ 431 0002 0123     		movs	r3, #1
+ 432 0004 024A     		ldr	r2, .L30
+ 433 0006 E021     		movs	r1, #224
+ 434 0008 0220     		movs	r0, #2
+ 435 000a FFF7FEFF 		bl	bmp280_write_async
+ 436              	.LVL37:
  171:Core/Src/bmp280.c **** }
- 427              		.loc 1 171 1 is_stmt 0 view .LVU93
- 428 000e 08BD     		pop	{r3, pc}
- 429              	.L31:
- 430              		.align	2
- 431              	.L30:
- 432 0010 00000000 		.word	.LANCHOR8
- 433              		.cfi_endproc
- 434              	.LFE137:
- 436              		.section	.text.bmp280_set_ctrl_meas,"ax",%progbits
- 437              		.align	1
- 438              		.global	bmp280_set_ctrl_meas
- 439              		.syntax unified
- 440              		.thumb
- 441              		.thumb_func
- 443              	bmp280_set_ctrl_meas:
- 444              	.LVL38:
- 445              	.LFB138:
+ 437              		.loc 1 171 1 is_stmt 0 view .LVU93
+ 438 000e 08BD     		pop	{r3, pc}
+ 439              	.L31:
+ 440              		.align	2
+ 441              	.L30:
+ 442 0010 00000000 		.word	.LANCHOR8
+ 443              		.cfi_endproc
+ 444              	.LFE137:
+ 446              		.section	.text.bmp280_set_ctrl_meas,"ax",%progbits
+ 447              		.align	1
+ 448              		.global	bmp280_set_ctrl_meas
+ 449              		.syntax unified
+ 450              		.thumb
+ 451              		.thumb_func
+ 453              	bmp280_set_ctrl_meas:
+ 454              	.LVL38:
+ 455              	.LFB138:
  172:Core/Src/bmp280.c **** 
  173:Core/Src/bmp280.c **** void bmp280_set_ctrl_meas(bmp280_ctrl_cfg_t *ctrlCfg)
  174:Core/Src/bmp280.c **** {
- 446              		.loc 1 174 1 is_stmt 1 view -0
- 447              		.cfi_startproc
- 448              		@ args = 0, pretend = 0, frame = 0
- 449              		@ frame_needed = 0, uses_anonymous_args = 0
- 450              		.loc 1 174 1 is_stmt 0 view .LVU95
- 451 0000 08B5     		push	{r3, lr}
- 452              		.cfi_def_cfa_offset 8
- 453              		.cfi_offset 3, -8
- 454              		.cfi_offset 14, -4
+ARM GAS  /tmp/cc7XMChu.s 			page 13
+
+
+ 456              		.loc 1 174 1 is_stmt 1 view -0
+ 457              		.cfi_startproc
+ 458              		@ args = 0, pretend = 0, frame = 0
+ 459              		@ frame_needed = 0, uses_anonymous_args = 0
+ 460              		.loc 1 174 1 is_stmt 0 view .LVU95
+ 461 0000 08B5     		push	{r3, lr}
+ 462              	.LCFI10:
+ 463              		.cfi_def_cfa_offset 8
+ 464              		.cfi_offset 3, -8
+ 465              		.cfi_offset 14, -4
  175:Core/Src/bmp280.c **** 	static uint8_t ctrlVal = 0x00;
-ARM GAS  /tmp/ccVqFCdR.s 			page 13
-
-
- 455              		.loc 1 175 2 is_stmt 1 view .LVU96
+ 466              		.loc 1 175 2 is_stmt 1 view .LVU96
  176:Core/Src/bmp280.c **** 	ctrlVal = (ctrlCfg->tempOversampling << 5) | (ctrlCfg->pressOversapling << 2) | ctrlCfg->mode;
- 456              		.loc 1 176 2 view .LVU97
- 457              		.loc 1 176 20 is_stmt 0 view .LVU98
- 458 0002 4278     		ldrb	r2, [r0, #1]	@ zero_extendqisi2
- 459              		.loc 1 176 55 view .LVU99
- 460 0004 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
- 461              		.loc 1 176 74 view .LVU100
- 462 0006 9B00     		lsls	r3, r3, #2
- 463              		.loc 1 176 45 view .LVU101
- 464 0008 43EA4213 		orr	r3, r3, r2, lsl #5
- 465 000c 5BB2     		sxtb	r3, r3
- 466              		.loc 1 176 89 view .LVU102
- 467 000e 90F90220 		ldrsb	r2, [r0, #2]
- 468              		.loc 1 176 80 view .LVU103
- 469 0012 1343     		orrs	r3, r3, r2
- 470              		.loc 1 176 10 view .LVU104
- 471 0014 034A     		ldr	r2, .L34
- 472 0016 1370     		strb	r3, [r2]
+ 467              		.loc 1 176 2 view .LVU97
+ 468              		.loc 1 176 20 is_stmt 0 view .LVU98
+ 469 0002 4278     		ldrb	r2, [r0, #1]	@ zero_extendqisi2
+ 470              		.loc 1 176 55 view .LVU99
+ 471 0004 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 472              		.loc 1 176 74 view .LVU100
+ 473 0006 9B00     		lsls	r3, r3, #2
+ 474              		.loc 1 176 45 view .LVU101
+ 475 0008 43EA4213 		orr	r3, r3, r2, lsl #5
+ 476 000c 5BB2     		sxtb	r3, r3
+ 477              		.loc 1 176 89 view .LVU102
+ 478 000e 90F90220 		ldrsb	r2, [r0, #2]
+ 479              		.loc 1 176 80 view .LVU103
+ 480 0012 1343     		orrs	r3, r3, r2
+ 481              		.loc 1 176 10 view .LVU104
+ 482 0014 034A     		ldr	r2, .L34
+ 483 0016 1370     		strb	r3, [r2]
  177:Core/Src/bmp280.c **** 	bmp280_write_async(BMP280_SET_CTRL, BMP280_CTRL_MEAS_ADDR, &ctrlVal, 1);
- 473              		.loc 1 177 2 is_stmt 1 view .LVU105
- 474 0018 0123     		movs	r3, #1
- 475 001a F421     		movs	r1, #244
- 476 001c 0320     		movs	r0, #3
- 477              	.LVL39:
- 478              		.loc 1 177 2 is_stmt 0 view .LVU106
- 479 001e FFF7FEFF 		bl	bmp280_write_async
- 480              	.LVL40:
+ 484              		.loc 1 177 2 is_stmt 1 view .LVU105
+ 485 0018 0123     		movs	r3, #1
+ 486 001a F421     		movs	r1, #244
+ 487 001c 0320     		movs	r0, #3
+ 488              	.LVL39:
+ 489              		.loc 1 177 2 is_stmt 0 view .LVU106
+ 490 001e FFF7FEFF 		bl	bmp280_write_async
+ 491              	.LVL40:
  178:Core/Src/bmp280.c **** }
- 481              		.loc 1 178 1 view .LVU107
- 482 0022 08BD     		pop	{r3, pc}
- 483              	.L35:
- 484              		.align	2
- 485              	.L34:
- 486 0024 00000000 		.word	.LANCHOR9
- 487              		.cfi_endproc
- 488              	.LFE138:
- 490              		.section	.text.bmp280_set_config,"ax",%progbits
- 491              		.align	1
- 492              		.global	bmp280_set_config
- 493              		.syntax unified
- 494              		.thumb
- 495              		.thumb_func
- 497              	bmp280_set_config:
- 498              	.LVL41:
- 499              	.LFB139:
+ 492              		.loc 1 178 1 view .LVU107
+ 493 0022 08BD     		pop	{r3, pc}
+ 494              	.L35:
+ 495              		.align	2
+ 496              	.L34:
+ 497 0024 00000000 		.word	.LANCHOR9
+ 498              		.cfi_endproc
+ 499              	.LFE138:
+ 501              		.section	.text.bmp280_set_config,"ax",%progbits
+ 502              		.align	1
+ 503              		.global	bmp280_set_config
+ 504              		.syntax unified
+ 505              		.thumb
+ 506              		.thumb_func
+ 508              	bmp280_set_config:
+ 509              	.LVL41:
+ 510              	.LFB139:
+ARM GAS  /tmp/cc7XMChu.s 			page 14
+
+
  179:Core/Src/bmp280.c **** void bmp280_set_config(bmp280_config_t *config)
  180:Core/Src/bmp280.c **** {
- 500              		.loc 1 180 1 is_stmt 1 view -0
- 501              		.cfi_startproc
- 502              		@ args = 0, pretend = 0, frame = 0
- 503              		@ frame_needed = 0, uses_anonymous_args = 0
- 504              		.loc 1 180 1 is_stmt 0 view .LVU109
- 505 0000 08B5     		push	{r3, lr}
- 506              		.cfi_def_cfa_offset 8
- 507              		.cfi_offset 3, -8
- 508              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccVqFCdR.s 			page 14
-
-
+ 511              		.loc 1 180 1 is_stmt 1 view -0
+ 512              		.cfi_startproc
+ 513              		@ args = 0, pretend = 0, frame = 0
+ 514              		@ frame_needed = 0, uses_anonymous_args = 0
+ 515              		.loc 1 180 1 is_stmt 0 view .LVU109
+ 516 0000 08B5     		push	{r3, lr}
+ 517              	.LCFI11:
+ 518              		.cfi_def_cfa_offset 8
+ 519              		.cfi_offset 3, -8
+ 520              		.cfi_offset 14, -4
  181:Core/Src/bmp280.c **** 
  182:Core/Src/bmp280.c **** 	static uint8_t configVal = 0;
- 509              		.loc 1 182 2 is_stmt 1 view .LVU110
+ 521              		.loc 1 182 2 is_stmt 1 view .LVU110
  183:Core/Src/bmp280.c **** 
  184:Core/Src/bmp280.c **** 	configVal = (config->standbyTime << 5) | (config->iirFilterTc << 2) | config->spi3wEn;
- 510              		.loc 1 184 2 view .LVU111
- 511              		.loc 1 184 21 is_stmt 0 view .LVU112
- 512 0002 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
- 513              		.loc 1 184 50 view .LVU113
- 514 0004 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2
- 515              		.loc 1 184 64 view .LVU114
- 516 0006 9B00     		lsls	r3, r3, #2
- 517              		.loc 1 184 41 view .LVU115
- 518 0008 43EA4213 		orr	r3, r3, r2, lsl #5
- 519 000c 5BB2     		sxtb	r3, r3
- 520              		.loc 1 184 78 view .LVU116
- 521 000e 90F90220 		ldrsb	r2, [r0, #2]
- 522              		.loc 1 184 70 view .LVU117
- 523 0012 1343     		orrs	r3, r3, r2
- 524              		.loc 1 184 12 view .LVU118
- 525 0014 034A     		ldr	r2, .L38
- 526 0016 1370     		strb	r3, [r2]
+ 522              		.loc 1 184 2 view .LVU111
+ 523              		.loc 1 184 21 is_stmt 0 view .LVU112
+ 524 0002 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+ 525              		.loc 1 184 50 view .LVU113
+ 526 0004 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2
+ 527              		.loc 1 184 64 view .LVU114
+ 528 0006 9B00     		lsls	r3, r3, #2
+ 529              		.loc 1 184 41 view .LVU115
+ 530 0008 43EA4213 		orr	r3, r3, r2, lsl #5
+ 531 000c 5BB2     		sxtb	r3, r3
+ 532              		.loc 1 184 78 view .LVU116
+ 533 000e 90F90220 		ldrsb	r2, [r0, #2]
+ 534              		.loc 1 184 70 view .LVU117
+ 535 0012 1343     		orrs	r3, r3, r2
+ 536              		.loc 1 184 12 view .LVU118
+ 537 0014 034A     		ldr	r2, .L38
+ 538 0016 1370     		strb	r3, [r2]
  185:Core/Src/bmp280.c **** 
  186:Core/Src/bmp280.c **** 	return bmp280_write_async(BMP280_SET_CONFIG, BMP280_CONFIG_ADDR, &configVal, 1);
- 527              		.loc 1 186 2 is_stmt 1 view .LVU119
- 528              		.loc 1 186 9 is_stmt 0 view .LVU120
- 529 0018 0123     		movs	r3, #1
- 530 001a F521     		movs	r1, #245
- 531 001c 0420     		movs	r0, #4
- 532              	.LVL42:
- 533              		.loc 1 186 9 view .LVU121
- 534 001e FFF7FEFF 		bl	bmp280_write_async
- 535              	.LVL43:
+ 539              		.loc 1 186 2 is_stmt 1 view .LVU119
+ 540              		.loc 1 186 9 is_stmt 0 view .LVU120
+ 541 0018 0123     		movs	r3, #1
+ 542 001a F521     		movs	r1, #245
+ 543 001c 0420     		movs	r0, #4
+ 544              	.LVL42:
+ 545              		.loc 1 186 9 view .LVU121
+ 546 001e FFF7FEFF 		bl	bmp280_write_async
+ 547              	.LVL43:
  187:Core/Src/bmp280.c **** }
- 536              		.loc 1 187 1 view .LVU122
- 537 0022 08BD     		pop	{r3, pc}
- 538              	.L39:
- 539              		.align	2
- 540              	.L38:
- 541 0024 00000000 		.word	.LANCHOR10
- 542              		.cfi_endproc
- 543              	.LFE139:
- 545              		.section	.text.bmp280_start_press_read,"ax",%progbits
- 546              		.align	1
- 547              		.global	bmp280_start_press_read
- 548              		.syntax unified
- 549              		.thumb
- 550              		.thumb_func
- 552              	bmp280_start_press_read:
- 553              	.LFB140:
+ 548              		.loc 1 187 1 view .LVU122
+ 549 0022 08BD     		pop	{r3, pc}
+ 550              	.L39:
+ 551              		.align	2
+ 552              	.L38:
+ 553 0024 00000000 		.word	.LANCHOR10
+ 554              		.cfi_endproc
+ 555              	.LFE139:
+ 557              		.section	.text.bmp280_start_press_read,"ax",%progbits
+ 558              		.align	1
+ 559              		.global	bmp280_start_press_read
+ARM GAS  /tmp/cc7XMChu.s 			page 15
+
+
+ 560              		.syntax unified
+ 561              		.thumb
+ 562              		.thumb_func
+ 564              	bmp280_start_press_read:
+ 565              	.LFB140:
  188:Core/Src/bmp280.c **** 
  189:Core/Src/bmp280.c **** uint8_t bmp280_start_press_read(void)
  190:Core/Src/bmp280.c **** {
- 554              		.loc 1 190 1 is_stmt 1 view -0
- 555              		.cfi_startproc
- 556              		@ args = 0, pretend = 0, frame = 0
- 557              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccVqFCdR.s 			page 15
-
-
- 558 0000 08B5     		push	{r3, lr}
- 559              		.cfi_def_cfa_offset 8
- 560              		.cfi_offset 3, -8
- 561              		.cfi_offset 14, -4
+ 566              		.loc 1 190 1 is_stmt 1 view -0
+ 567              		.cfi_startproc
+ 568              		@ args = 0, pretend = 0, frame = 0
+ 569              		@ frame_needed = 0, uses_anonymous_args = 0
+ 570 0000 08B5     		push	{r3, lr}
+ 571              	.LCFI12:
+ 572              		.cfi_def_cfa_offset 8
+ 573              		.cfi_offset 3, -8
+ 574              		.cfi_offset 14, -4
  191:Core/Src/bmp280.c **** 	static const uint32_t PRESS_SIZE = 3;
- 562              		.loc 1 191 2 view .LVU124
+ 575              		.loc 1 191 2 view .LVU124
  192:Core/Src/bmp280.c **** 	return bmp280_read_async(BMP280_GET_PRESS, BMP280_PRESS_ADDR_MSB, rdbuf, PRESS_SIZE);
- 563              		.loc 1 192 2 view .LVU125
- 564              		.loc 1 192 9 is_stmt 0 view .LVU126
- 565 0002 0323     		movs	r3, #3
- 566 0004 024A     		ldr	r2, .L42
- 567 0006 F721     		movs	r1, #247
- 568 0008 0620     		movs	r0, #6
- 569 000a FFF7FEFF 		bl	bmp280_read_async
- 570              	.LVL44:
+ 576              		.loc 1 192 2 view .LVU125
+ 577              		.loc 1 192 9 is_stmt 0 view .LVU126
+ 578 0002 0323     		movs	r3, #3
+ 579 0004 024A     		ldr	r2, .L42
+ 580 0006 F721     		movs	r1, #247
+ 581 0008 0620     		movs	r0, #6
+ 582 000a FFF7FEFF 		bl	bmp280_read_async
+ 583              	.LVL44:
  193:Core/Src/bmp280.c **** }
- 571              		.loc 1 193 1 view .LVU127
- 572 000e 08BD     		pop	{r3, pc}
- 573              	.L43:
- 574              		.align	2
- 575              	.L42:
- 576 0010 00000000 		.word	.LANCHOR4
- 577              		.cfi_endproc
- 578              	.LFE140:
- 580              		.section	.text.bmp280_start_temp_read,"ax",%progbits
- 581              		.align	1
- 582              		.global	bmp280_start_temp_read
- 583              		.syntax unified
- 584              		.thumb
- 585              		.thumb_func
- 587              	bmp280_start_temp_read:
- 588              	.LFB141:
+ 584              		.loc 1 193 1 view .LVU127
+ 585 000e 08BD     		pop	{r3, pc}
+ 586              	.L43:
+ 587              		.align	2
+ 588              	.L42:
+ 589 0010 00000000 		.word	.LANCHOR4
+ 590              		.cfi_endproc
+ 591              	.LFE140:
+ 593              		.section	.text.bmp280_start_temp_read,"ax",%progbits
+ 594              		.align	1
+ 595              		.global	bmp280_start_temp_read
+ 596              		.syntax unified
+ 597              		.thumb
+ 598              		.thumb_func
+ 600              	bmp280_start_temp_read:
+ 601              	.LFB141:
  194:Core/Src/bmp280.c **** uint8_t bmp280_start_temp_read(void)
  195:Core/Src/bmp280.c **** {
- 589              		.loc 1 195 1 is_stmt 1 view -0
- 590              		.cfi_startproc
- 591              		@ args = 0, pretend = 0, frame = 0
- 592              		@ frame_needed = 0, uses_anonymous_args = 0
- 593 0000 08B5     		push	{r3, lr}
- 594              		.cfi_def_cfa_offset 8
- 595              		.cfi_offset 3, -8
- 596              		.cfi_offset 14, -4
+ 602              		.loc 1 195 1 is_stmt 1 view -0
+ 603              		.cfi_startproc
+ 604              		@ args = 0, pretend = 0, frame = 0
+ 605              		@ frame_needed = 0, uses_anonymous_args = 0
+ 606 0000 08B5     		push	{r3, lr}
+ 607              	.LCFI13:
+ 608              		.cfi_def_cfa_offset 8
+ 609              		.cfi_offset 3, -8
+ 610              		.cfi_offset 14, -4
  196:Core/Src/bmp280.c **** 	static const uint32_t TEMP_SIZE = 3;
- 597              		.loc 1 196 2 view .LVU129
+ARM GAS  /tmp/cc7XMChu.s 			page 16
+
+
+ 611              		.loc 1 196 2 view .LVU129
  197:Core/Src/bmp280.c **** 
  198:Core/Src/bmp280.c **** 	return bmp280_read_async(BMP280_GET_TEMP, BMP280_TEMP_ADDR_MSB, rdbuf, TEMP_SIZE);
- 598              		.loc 1 198 2 view .LVU130
- 599              		.loc 1 198 9 is_stmt 0 view .LVU131
- 600 0002 0323     		movs	r3, #3
- 601 0004 024A     		ldr	r2, .L46
- 602 0006 FA21     		movs	r1, #250
- 603 0008 0520     		movs	r0, #5
- 604 000a FFF7FEFF 		bl	bmp280_read_async
- 605              	.LVL45:
+ 612              		.loc 1 198 2 view .LVU130
+ 613              		.loc 1 198 9 is_stmt 0 view .LVU131
+ 614 0002 0323     		movs	r3, #3
+ 615 0004 024A     		ldr	r2, .L46
+ 616 0006 FA21     		movs	r1, #250
+ 617 0008 0520     		movs	r0, #5
+ 618 000a FFF7FEFF 		bl	bmp280_read_async
+ 619              	.LVL45:
  199:Core/Src/bmp280.c **** }
- 606              		.loc 1 199 1 view .LVU132
- 607 000e 08BD     		pop	{r3, pc}
-ARM GAS  /tmp/ccVqFCdR.s 			page 16
-
-
- 608              	.L47:
- 609              		.align	2
- 610              	.L46:
- 611 0010 00000000 		.word	.LANCHOR4
- 612              		.cfi_endproc
- 613              	.LFE141:
- 615              		.section	.text.bmp280_read_pressure_and_temperature,"ax",%progbits
- 616              		.align	1
- 617              		.global	bmp280_read_pressure_and_temperature
- 618              		.syntax unified
- 619              		.thumb
- 620              		.thumb_func
- 622              	bmp280_read_pressure_and_temperature:
- 623              	.LFB142:
+ 620              		.loc 1 199 1 view .LVU132
+ 621 000e 08BD     		pop	{r3, pc}
+ 622              	.L47:
+ 623              		.align	2
+ 624              	.L46:
+ 625 0010 00000000 		.word	.LANCHOR4
+ 626              		.cfi_endproc
+ 627              	.LFE141:
+ 629              		.section	.text.bmp280_read_pressure_and_temperature,"ax",%progbits
+ 630              		.align	1
+ 631              		.global	bmp280_read_pressure_and_temperature
+ 632              		.syntax unified
+ 633              		.thumb
+ 634              		.thumb_func
+ 636              	bmp280_read_pressure_and_temperature:
+ 637              	.LFB142:
  200:Core/Src/bmp280.c **** uint8_t bmp280_read_pressure_and_temperature(void)
  201:Core/Src/bmp280.c **** {
- 624              		.loc 1 201 1 is_stmt 1 view -0
- 625              		.cfi_startproc
- 626              		@ args = 0, pretend = 0, frame = 0
- 627              		@ frame_needed = 0, uses_anonymous_args = 0
- 628 0000 08B5     		push	{r3, lr}
- 629              		.cfi_def_cfa_offset 8
- 630              		.cfi_offset 3, -8
- 631              		.cfi_offset 14, -4
+ 638              		.loc 1 201 1 is_stmt 1 view -0
+ 639              		.cfi_startproc
+ 640              		@ args = 0, pretend = 0, frame = 0
+ 641              		@ frame_needed = 0, uses_anonymous_args = 0
+ 642 0000 08B5     		push	{r3, lr}
+ 643              	.LCFI14:
+ 644              		.cfi_def_cfa_offset 8
+ 645              		.cfi_offset 3, -8
+ 646              		.cfi_offset 14, -4
  202:Core/Src/bmp280.c **** 
  203:Core/Src/bmp280.c **** 	static const uint32_t PRESS_TEMP_SIZE = 6;
- 632              		.loc 1 203 2 view .LVU134
+ 647              		.loc 1 203 2 view .LVU134
  204:Core/Src/bmp280.c **** 	return bmp280_read_async(BMP280_GET_PRESS_TEMP, BMP280_PRESS_ADDR_MSB, rdbuf, PRESS_TEMP_SIZE);
- 633              		.loc 1 204 2 view .LVU135
- 634              		.loc 1 204 9 is_stmt 0 view .LVU136
- 635 0002 0623     		movs	r3, #6
- 636 0004 024A     		ldr	r2, .L50
- 637 0006 F721     		movs	r1, #247
- 638 0008 0720     		movs	r0, #7
- 639 000a FFF7FEFF 		bl	bmp280_read_async
- 640              	.LVL46:
+ 648              		.loc 1 204 2 view .LVU135
+ 649              		.loc 1 204 9 is_stmt 0 view .LVU136
+ 650 0002 0623     		movs	r3, #6
+ 651 0004 024A     		ldr	r2, .L50
+ 652 0006 F721     		movs	r1, #247
+ 653 0008 0720     		movs	r0, #7
+ 654 000a FFF7FEFF 		bl	bmp280_read_async
+ 655              	.LVL46:
  205:Core/Src/bmp280.c **** }
- 641              		.loc 1 205 1 view .LVU137
- 642 000e 08BD     		pop	{r3, pc}
- 643              	.L51:
- 644              		.align	2
- 645              	.L50:
- 646 0010 00000000 		.word	.LANCHOR4
- 647              		.cfi_endproc
- 648              	.LFE142:
- 650              		.section	.text.bmp280_get_pressure,"ax",%progbits
- 651              		.align	1
- 652              		.global	bmp280_get_pressure
- 653              		.syntax unified
- 654              		.thumb
- 655              		.thumb_func
- 657              	bmp280_get_pressure:
- 658              	.LFB143:
+ 656              		.loc 1 205 1 view .LVU137
+ 657 000e 08BD     		pop	{r3, pc}
+ 658              	.L51:
+ 659              		.align	2
+ 660              	.L50:
+ARM GAS  /tmp/cc7XMChu.s 			page 17
+
+
+ 661 0010 00000000 		.word	.LANCHOR4
+ 662              		.cfi_endproc
+ 663              	.LFE142:
+ 665              		.section	.text.bmp280_get_pressure,"ax",%progbits
+ 666              		.align	1
+ 667              		.global	bmp280_get_pressure
+ 668              		.syntax unified
+ 669              		.thumb
+ 670              		.thumb_func
+ 672              	bmp280_get_pressure:
+ 673              	.LFB143:
  206:Core/Src/bmp280.c **** uint32_t bmp280_get_pressure(void)
  207:Core/Src/bmp280.c **** {
- 659              		.loc 1 207 1 is_stmt 1 view -0
- 660              		.cfi_startproc
-ARM GAS  /tmp/ccVqFCdR.s 			page 17
-
-
- 661              		@ args = 0, pretend = 0, frame = 0
- 662              		@ frame_needed = 0, uses_anonymous_args = 0
- 663              		@ link register save eliminated.
+ 674              		.loc 1 207 1 is_stmt 1 view -0
+ 675              		.cfi_startproc
+ 676              		@ args = 0, pretend = 0, frame = 0
+ 677              		@ frame_needed = 0, uses_anonymous_args = 0
+ 678              		@ link register save eliminated.
  208:Core/Src/bmp280.c **** 
  209:Core/Src/bmp280.c **** 	return currentPress;
- 664              		.loc 1 209 2 view .LVU139
+ 679              		.loc 1 209 2 view .LVU139
  210:Core/Src/bmp280.c **** }
- 665              		.loc 1 210 1 is_stmt 0 view .LVU140
- 666 0000 014B     		ldr	r3, .L53
- 667 0002 1868     		ldr	r0, [r3]
- 668 0004 7047     		bx	lr
- 669              	.L54:
- 670 0006 00BF     		.align	2
- 671              	.L53:
- 672 0008 00000000 		.word	.LANCHOR11
- 673              		.cfi_endproc
- 674              	.LFE143:
- 676              		.section	.text.bmp280_get_temp,"ax",%progbits
- 677              		.align	1
- 678              		.global	bmp280_get_temp
- 679              		.syntax unified
- 680              		.thumb
- 681              		.thumb_func
- 683              	bmp280_get_temp:
- 684              	.LFB144:
+ 680              		.loc 1 210 1 is_stmt 0 view .LVU140
+ 681 0000 014B     		ldr	r3, .L53
+ 682 0002 1868     		ldr	r0, [r3]
+ 683 0004 7047     		bx	lr
+ 684              	.L54:
+ 685 0006 00BF     		.align	2
+ 686              	.L53:
+ 687 0008 00000000 		.word	.LANCHOR11
+ 688              		.cfi_endproc
+ 689              	.LFE143:
+ 691              		.section	.text.bmp280_get_temp,"ax",%progbits
+ 692              		.align	1
+ 693              		.global	bmp280_get_temp
+ 694              		.syntax unified
+ 695              		.thumb
+ 696              		.thumb_func
+ 698              	bmp280_get_temp:
+ 699              	.LFB144:
  211:Core/Src/bmp280.c **** uint32_t bmp280_get_temp(void)
  212:Core/Src/bmp280.c **** {
- 685              		.loc 1 212 1 is_stmt 1 view -0
- 686              		.cfi_startproc
- 687              		@ args = 0, pretend = 0, frame = 8
- 688              		@ frame_needed = 0, uses_anonymous_args = 0
- 689 0000 00B5     		push	{lr}
- 690              		.cfi_def_cfa_offset 4
- 691              		.cfi_offset 14, -4
- 692 0002 83B0     		sub	sp, sp, #12
- 693              		.cfi_def_cfa_offset 16
+ 700              		.loc 1 212 1 is_stmt 1 view -0
+ 701              		.cfi_startproc
+ 702              		@ args = 0, pretend = 0, frame = 8
+ 703              		@ frame_needed = 0, uses_anonymous_args = 0
+ 704 0000 00B5     		push	{lr}
+ 705              	.LCFI15:
+ 706              		.cfi_def_cfa_offset 4
+ 707              		.cfi_offset 14, -4
+ 708 0002 83B0     		sub	sp, sp, #12
+ 709              	.LCFI16:
+ 710              		.cfi_def_cfa_offset 16
  213:Core/Src/bmp280.c **** 
  214:Core/Src/bmp280.c **** 	static const uint32_t TEMP_SIZE = 3;
- 694              		.loc 1 214 2 view .LVU142
+ 711              		.loc 1 214 2 view .LVU142
  215:Core/Src/bmp280.c **** 	uint8_t temp[3] = {0};
- 695              		.loc 1 215 2 view .LVU143
- 696              		.loc 1 215 10 is_stmt 0 view .LVU144
- 697 0004 0D4B     		ldr	r3, .L57
- 698 0006 1B88     		ldrh	r3, [r3]
- 699 0008 ADF80430 		strh	r3, [sp, #4]	@ movhi
- 700 000c 0023     		movs	r3, #0
- 701 000e 8DF80630 		strb	r3, [sp, #6]
+ARM GAS  /tmp/cc7XMChu.s 			page 18
+
+
+ 712              		.loc 1 215 2 view .LVU143
+ 713              		.loc 1 215 10 is_stmt 0 view .LVU144
+ 714 0004 0D4B     		ldr	r3, .L57
+ 715 0006 1B88     		ldrh	r3, [r3]
+ 716 0008 ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 717 000c 0023     		movs	r3, #0
+ 718 000e 8DF80630 		strb	r3, [sp, #6]
  216:Core/Src/bmp280.c **** 
  217:Core/Src/bmp280.c **** 	static const uint8_t addr = BMP280_TEMP_ADDR_MSB;
- 702              		.loc 1 217 2 is_stmt 1 view .LVU145
+ 719              		.loc 1 217 2 is_stmt 1 view .LVU145
  218:Core/Src/bmp280.c **** 	uint8_t ret = bmp280_read_sync(addr, temp, 3, HAL_MAX_DELAY);
- 703              		.loc 1 218 2 view .LVU146
- 704              		.loc 1 218 16 is_stmt 0 view .LVU147
- 705 0012 4FF0FF33 		mov	r3, #-1
- 706 0016 0322     		movs	r2, #3
- 707 0018 01A9     		add	r1, sp, #4
- 708 001a FA20     		movs	r0, #250
-ARM GAS  /tmp/ccVqFCdR.s 			page 18
-
-
- 709 001c FFF7FEFF 		bl	bmp280_read_sync
- 710              	.LVL47:
+ 720              		.loc 1 218 2 view .LVU146
+ 721              		.loc 1 218 16 is_stmt 0 view .LVU147
+ 722 0012 4FF0FF33 		mov	r3, #-1
+ 723 0016 0322     		movs	r2, #3
+ 724 0018 01A9     		add	r1, sp, #4
+ 725 001a FA20     		movs	r0, #250
+ 726 001c FFF7FEFF 		bl	bmp280_read_sync
+ 727              	.LVL47:
  219:Core/Src/bmp280.c **** 
  220:Core/Src/bmp280.c **** 	return temp[2] << 16 | temp[1] << 8 | temp[0];
- 711              		.loc 1 220 2 is_stmt 1 view .LVU148
- 712              		.loc 1 220 13 is_stmt 0 view .LVU149
- 713 0020 9DF80600 		ldrb	r0, [sp, #6]	@ zero_extendqisi2
- 714              		.loc 1 220 29 view .LVU150
- 715 0024 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
- 716              		.loc 1 220 33 view .LVU151
- 717 0028 1B02     		lsls	r3, r3, #8
- 718              		.loc 1 220 23 view .LVU152
- 719 002a 43EA0043 		orr	r3, r3, r0, lsl #16
- 720              		.loc 1 220 44 view .LVU153
- 721 002e 9DF80400 		ldrb	r0, [sp, #4]	@ zero_extendqisi2
+ 728              		.loc 1 220 2 is_stmt 1 view .LVU148
+ 729              		.loc 1 220 13 is_stmt 0 view .LVU149
+ 730 0020 9DF80600 		ldrb	r0, [sp, #6]	@ zero_extendqisi2
+ 731              		.loc 1 220 29 view .LVU150
+ 732 0024 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 733              		.loc 1 220 33 view .LVU151
+ 734 0028 1B02     		lsls	r3, r3, #8
+ 735              		.loc 1 220 23 view .LVU152
+ 736 002a 43EA0043 		orr	r3, r3, r0, lsl #16
+ 737              		.loc 1 220 44 view .LVU153
+ 738 002e 9DF80400 		ldrb	r0, [sp, #4]	@ zero_extendqisi2
  221:Core/Src/bmp280.c **** }
- 722              		.loc 1 221 1 view .LVU154
- 723 0032 1843     		orrs	r0, r0, r3
- 724 0034 03B0     		add	sp, sp, #12
- 725              		.cfi_def_cfa_offset 4
- 726              		@ sp needed
- 727 0036 5DF804FB 		ldr	pc, [sp], #4
- 728              	.L58:
- 729 003a 00BF     		.align	2
- 730              	.L57:
- 731 003c 00000000 		.word	.LANCHOR12
- 732              		.cfi_endproc
- 733              	.LFE144:
- 735              		.section	.text.bmp280_get_pressure_and_temp,"ax",%progbits
- 736              		.align	1
- 737              		.global	bmp280_get_pressure_and_temp
- 738              		.syntax unified
- 739              		.thumb
- 740              		.thumb_func
- 742              	bmp280_get_pressure_and_temp:
- 743              	.LVL48:
- 744              	.LFB145:
+ 739              		.loc 1 221 1 view .LVU154
+ 740 0032 1843     		orrs	r0, r0, r3
+ 741 0034 03B0     		add	sp, sp, #12
+ 742              	.LCFI17:
+ 743              		.cfi_def_cfa_offset 4
+ 744              		@ sp needed
+ 745 0036 5DF804FB 		ldr	pc, [sp], #4
+ 746              	.L58:
+ 747 003a 00BF     		.align	2
+ 748              	.L57:
+ 749 003c 00000000 		.word	.LANCHOR12
+ 750              		.cfi_endproc
+ 751              	.LFE144:
+ 753              		.section	.text.bmp280_get_pressure_and_temp,"ax",%progbits
+ 754              		.align	1
+ 755              		.global	bmp280_get_pressure_and_temp
+ 756              		.syntax unified
+ 757              		.thumb
+ 758              		.thumb_func
+ 760              	bmp280_get_pressure_and_temp:
+ 761              	.LVL48:
+ 762              	.LFB145:
  222:Core/Src/bmp280.c **** void bmp280_get_pressure_and_temp(uint32_t *pressure, uint32_t *temp)
  223:Core/Src/bmp280.c **** {
- 745              		.loc 1 223 1 is_stmt 1 view -0
- 746              		.cfi_startproc
- 747              		@ args = 0, pretend = 0, frame = 0
- 748              		@ frame_needed = 0, uses_anonymous_args = 0
- 749              		@ link register save eliminated.
+ARM GAS  /tmp/cc7XMChu.s 			page 19
+
+
+ 763              		.loc 1 223 1 is_stmt 1 view -0
+ 764              		.cfi_startproc
+ 765              		@ args = 0, pretend = 0, frame = 0
+ 766              		@ frame_needed = 0, uses_anonymous_args = 0
+ 767              		@ link register save eliminated.
  224:Core/Src/bmp280.c **** 	*pressure = currentPress;
- 750              		.loc 1 224 2 view .LVU156
- 751              		.loc 1 224 12 is_stmt 0 view .LVU157
- 752 0000 034B     		ldr	r3, .L60
- 753 0002 1B68     		ldr	r3, [r3]
- 754 0004 0360     		str	r3, [r0]
+ 768              		.loc 1 224 2 view .LVU156
+ 769              		.loc 1 224 12 is_stmt 0 view .LVU157
+ 770 0000 034B     		ldr	r3, .L60
+ 771 0002 1B68     		ldr	r3, [r3]
+ 772 0004 0360     		str	r3, [r0]
  225:Core/Src/bmp280.c **** 	*temp = currentTemp;
- 755              		.loc 1 225 2 is_stmt 1 view .LVU158
- 756              		.loc 1 225 8 is_stmt 0 view .LVU159
- 757 0006 034B     		ldr	r3, .L60+4
- 758 0008 1B68     		ldr	r3, [r3]
- 759 000a 0B60     		str	r3, [r1]
+ 773              		.loc 1 225 2 is_stmt 1 view .LVU158
+ 774              		.loc 1 225 8 is_stmt 0 view .LVU159
+ 775 0006 034B     		ldr	r3, .L60+4
+ 776 0008 1B68     		ldr	r3, [r3]
+ 777 000a 0B60     		str	r3, [r1]
  226:Core/Src/bmp280.c **** }
-ARM GAS  /tmp/ccVqFCdR.s 			page 19
-
-
- 760              		.loc 1 226 1 view .LVU160
- 761 000c 7047     		bx	lr
- 762              	.L61:
- 763 000e 00BF     		.align	2
- 764              	.L60:
- 765 0010 00000000 		.word	.LANCHOR11
- 766 0014 00000000 		.word	.LANCHOR13
- 767              		.cfi_endproc
- 768              	.LFE145:
- 770              		.section	.text.HAL_SPI_RxCpltCallback,"ax",%progbits
- 771              		.align	1
- 772              		.global	HAL_SPI_RxCpltCallback
- 773              		.syntax unified
- 774              		.thumb
- 775              		.thumb_func
- 777              	HAL_SPI_RxCpltCallback:
- 778              	.LVL49:
- 779              	.LFB146:
+ 778              		.loc 1 226 1 view .LVU160
+ 779 000c 7047     		bx	lr
+ 780              	.L61:
+ 781 000e 00BF     		.align	2
+ 782              	.L60:
+ 783 0010 00000000 		.word	.LANCHOR11
+ 784 0014 00000000 		.word	.LANCHOR13
+ 785              		.cfi_endproc
+ 786              	.LFE145:
+ 788              		.section	.text.HAL_SPI_RxCpltCallback,"ax",%progbits
+ 789              		.align	1
+ 790              		.global	HAL_SPI_RxCpltCallback
+ 791              		.syntax unified
+ 792              		.thumb
+ 793              		.thumb_func
+ 795              	HAL_SPI_RxCpltCallback:
+ 796              	.LVL49:
+ 797              	.LFB146:
  227:Core/Src/bmp280.c **** 
  228:Core/Src/bmp280.c **** void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
  229:Core/Src/bmp280.c **** {
- 780              		.loc 1 229 1 is_stmt 1 view -0
- 781              		.cfi_startproc
- 782              		@ args = 0, pretend = 0, frame = 0
- 783              		@ frame_needed = 0, uses_anonymous_args = 0
- 784              		@ link register save eliminated.
+ 798              		.loc 1 229 1 is_stmt 1 view -0
+ 799              		.cfi_startproc
+ 800              		@ args = 0, pretend = 0, frame = 0
+ 801              		@ frame_needed = 0, uses_anonymous_args = 0
+ 802              		@ link register save eliminated.
  230:Core/Src/bmp280.c **** 
  231:Core/Src/bmp280.c **** 	switch (currentOp)
- 785              		.loc 1 231 2 view .LVU162
- 786 0000 1A4B     		ldr	r3, .L68
- 787 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 788 0004 062B     		cmp	r3, #6
- 789 0006 07D0     		beq	.L63
- 790 0008 072B     		cmp	r3, #7
- 791 000a 1BD0     		beq	.L64
- 792 000c 052B     		cmp	r3, #5
- 793 000e 0ED0     		beq	.L67
- 794              	.L66:
+ 803              		.loc 1 231 2 view .LVU162
+ 804 0000 1A4B     		ldr	r3, .L68
+ 805 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 806 0004 062B     		cmp	r3, #6
+ 807 0006 07D0     		beq	.L63
+ 808 0008 072B     		cmp	r3, #7
+ 809 000a 1BD0     		beq	.L64
+ 810 000c 052B     		cmp	r3, #5
+ 811 000e 0ED0     		beq	.L67
+ 812              	.L66:
  232:Core/Src/bmp280.c **** 	{
+ARM GAS  /tmp/cc7XMChu.s 			page 20
+
+
  233:Core/Src/bmp280.c **** 
  234:Core/Src/bmp280.c **** 	case BMP280_GET_PRESS:
  235:Core/Src/bmp280.c **** 
@@ -1138,395 +1159,392 @@ ARM GAS  /tmp/ccVqFCdR.s 			page 1
  248:Core/Src/bmp280.c **** 	}
  249:Core/Src/bmp280.c **** 
  250:Core/Src/bmp280.c **** 	currentOp = BMP280_IDLE;
-ARM GAS  /tmp/ccVqFCdR.s 			page 20
-
-
- 795              		.loc 1 250 2 view .LVU163
- 796              		.loc 1 250 12 is_stmt 0 view .LVU164
- 797 0010 164B     		ldr	r3, .L68
- 798 0012 0022     		movs	r2, #0
- 799 0014 1A70     		strb	r2, [r3]
+ 813              		.loc 1 250 2 view .LVU163
+ 814              		.loc 1 250 12 is_stmt 0 view .LVU164
+ 815 0010 164B     		ldr	r3, .L68
+ 816 0012 0022     		movs	r2, #0
+ 817 0014 1A70     		strb	r2, [r3]
  251:Core/Src/bmp280.c **** }
- 800              		.loc 1 251 1 view .LVU165
- 801 0016 7047     		bx	lr
- 802              	.L63:
+ 818              		.loc 1 251 1 view .LVU165
+ 819 0016 7047     		bx	lr
+ 820              	.L63:
  236:Core/Src/bmp280.c **** 
- 803              		.loc 1 236 3 is_stmt 1 view .LVU166
+ 821              		.loc 1 236 3 is_stmt 1 view .LVU166
  236:Core/Src/bmp280.c **** 
- 804              		.loc 1 236 23 is_stmt 0 view .LVU167
- 805 0018 154A     		ldr	r2, .L68+4
- 806 001a 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 822              		.loc 1 236 23 is_stmt 0 view .LVU167
+ 823 0018 154A     		ldr	r2, .L68+4
+ 824 001a 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
  236:Core/Src/bmp280.c **** 
- 807              		.loc 1 236 40 view .LVU168
- 808 001c 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
+ 825              		.loc 1 236 40 view .LVU168
+ 826 001c 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
  236:Core/Src/bmp280.c **** 
- 809              		.loc 1 236 44 view .LVU169
- 810 001e DB00     		lsls	r3, r3, #3
+ 827              		.loc 1 236 44 view .LVU169
+ 828 001e DB00     		lsls	r3, r3, #3
  236:Core/Src/bmp280.c **** 
- 811              		.loc 1 236 33 view .LVU170
- 812 0020 43EAC123 		orr	r3, r3, r1, lsl #11
+ 829              		.loc 1 236 33 view .LVU170
+ 830 0020 43EAC123 		orr	r3, r3, r1, lsl #11
  236:Core/Src/bmp280.c **** 
- 813              		.loc 1 236 56 view .LVU171
- 814 0024 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
+ 831              		.loc 1 236 56 view .LVU171
+ 832 0024 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
  236:Core/Src/bmp280.c **** 
- 815              		.loc 1 236 49 view .LVU172
- 816 0026 1343     		orrs	r3, r3, r2
+ 833              		.loc 1 236 49 view .LVU172
+ 834 0026 1343     		orrs	r3, r3, r2
  236:Core/Src/bmp280.c **** 
- 817              		.loc 1 236 16 view .LVU173
- 818 0028 124A     		ldr	r2, .L68+8
- 819 002a 1360     		str	r3, [r2]
+ 835              		.loc 1 236 16 view .LVU173
+ 836 0028 124A     		ldr	r2, .L68+8
+ 837 002a 1360     		str	r3, [r2]
  238:Core/Src/bmp280.c **** 	case BMP280_GET_TEMP:
- 820              		.loc 1 238 3 is_stmt 1 view .LVU174
- 821 002c F0E7     		b	.L66
- 822              	.L67:
+ 838              		.loc 1 238 3 is_stmt 1 view .LVU174
+ 839 002c F0E7     		b	.L66
+ 840              	.L67:
  240:Core/Src/bmp280.c **** 		break;
- 823              		.loc 1 240 3 view .LVU175
- 240:Core/Src/bmp280.c **** 		break;
- 824              		.loc 1 240 22 is_stmt 0 view .LVU176
- 825 002e 104A     		ldr	r2, .L68+4
- 826 0030 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
- 240:Core/Src/bmp280.c **** 		break;
- 827              		.loc 1 240 39 view .LVU177
- 828 0032 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
- 240:Core/Src/bmp280.c **** 		break;
- 829              		.loc 1 240 43 view .LVU178
- 830 0034 DB00     		lsls	r3, r3, #3
- 240:Core/Src/bmp280.c **** 		break;
- 831              		.loc 1 240 32 view .LVU179
- 832 0036 43EAC123 		orr	r3, r3, r1, lsl #11
- 240:Core/Src/bmp280.c **** 		break;
- 833              		.loc 1 240 55 view .LVU180
- 834 003a 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
- 240:Core/Src/bmp280.c **** 		break;
-ARM GAS  /tmp/ccVqFCdR.s 			page 21
+ARM GAS  /tmp/cc7XMChu.s 			page 21
 
 
- 835              		.loc 1 240 48 view .LVU181
- 836 003c 1343     		orrs	r3, r3, r2
+ 841              		.loc 1 240 3 view .LVU175
  240:Core/Src/bmp280.c **** 		break;
- 837              		.loc 1 240 15 view .LVU182
- 838 003e 0E4A     		ldr	r2, .L68+12
- 839 0040 1360     		str	r3, [r2]
+ 842              		.loc 1 240 22 is_stmt 0 view .LVU176
+ 843 002e 104A     		ldr	r2, .L68+4
+ 844 0030 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 240:Core/Src/bmp280.c **** 		break;
+ 845              		.loc 1 240 39 view .LVU177
+ 846 0032 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
+ 240:Core/Src/bmp280.c **** 		break;
+ 847              		.loc 1 240 43 view .LVU178
+ 848 0034 DB00     		lsls	r3, r3, #3
+ 240:Core/Src/bmp280.c **** 		break;
+ 849              		.loc 1 240 32 view .LVU179
+ 850 0036 43EAC123 		orr	r3, r3, r1, lsl #11
+ 240:Core/Src/bmp280.c **** 		break;
+ 851              		.loc 1 240 55 view .LVU180
+ 852 003a 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
+ 240:Core/Src/bmp280.c **** 		break;
+ 853              		.loc 1 240 48 view .LVU181
+ 854 003c 1343     		orrs	r3, r3, r2
+ 240:Core/Src/bmp280.c **** 		break;
+ 855              		.loc 1 240 15 view .LVU182
+ 856 003e 0E4A     		ldr	r2, .L68+12
+ 857 0040 1360     		str	r3, [r2]
  241:Core/Src/bmp280.c **** 	case BMP280_GET_PRESS_TEMP:
- 840              		.loc 1 241 3 is_stmt 1 view .LVU183
- 841 0042 E5E7     		b	.L66
- 842              	.L64:
+ 858              		.loc 1 241 3 is_stmt 1 view .LVU183
+ 859 0042 E5E7     		b	.L66
+ 860              	.L64:
  243:Core/Src/bmp280.c **** 		currentTemp = rdbuf[3] << 11 | rdbuf[4] << 3 | rdbuf[5];
- 843              		.loc 1 243 3 view .LVU184
+ 861              		.loc 1 243 3 view .LVU184
  243:Core/Src/bmp280.c **** 		currentTemp = rdbuf[3] << 11 | rdbuf[4] << 3 | rdbuf[5];
- 844              		.loc 1 243 23 is_stmt 0 view .LVU185
- 845 0044 0A4A     		ldr	r2, .L68+4
- 846 0046 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 862              		.loc 1 243 23 is_stmt 0 view .LVU185
+ 863 0044 0A4A     		ldr	r2, .L68+4
+ 864 0046 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
  243:Core/Src/bmp280.c **** 		currentTemp = rdbuf[3] << 11 | rdbuf[4] << 3 | rdbuf[5];
- 847              		.loc 1 243 40 view .LVU186
- 848 0048 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
+ 865              		.loc 1 243 40 view .LVU186
+ 866 0048 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
  243:Core/Src/bmp280.c **** 		currentTemp = rdbuf[3] << 11 | rdbuf[4] << 3 | rdbuf[5];
- 849              		.loc 1 243 44 view .LVU187
- 850 004a DB00     		lsls	r3, r3, #3
+ 867              		.loc 1 243 44 view .LVU187
+ 868 004a DB00     		lsls	r3, r3, #3
  243:Core/Src/bmp280.c **** 		currentTemp = rdbuf[3] << 11 | rdbuf[4] << 3 | rdbuf[5];
- 851              		.loc 1 243 33 view .LVU188
- 852 004c 43EAC123 		orr	r3, r3, r1, lsl #11
+ 869              		.loc 1 243 33 view .LVU188
+ 870 004c 43EAC123 		orr	r3, r3, r1, lsl #11
  243:Core/Src/bmp280.c **** 		currentTemp = rdbuf[3] << 11 | rdbuf[4] << 3 | rdbuf[5];
- 853              		.loc 1 243 56 view .LVU189
- 854 0050 9178     		ldrb	r1, [r2, #2]	@ zero_extendqisi2
+ 871              		.loc 1 243 56 view .LVU189
+ 872 0050 9178     		ldrb	r1, [r2, #2]	@ zero_extendqisi2
  243:Core/Src/bmp280.c **** 		currentTemp = rdbuf[3] << 11 | rdbuf[4] << 3 | rdbuf[5];
- 855              		.loc 1 243 49 view .LVU190
- 856 0052 0B43     		orrs	r3, r3, r1
+ 873              		.loc 1 243 49 view .LVU190
+ 874 0052 0B43     		orrs	r3, r3, r1
  243:Core/Src/bmp280.c **** 		currentTemp = rdbuf[3] << 11 | rdbuf[4] << 3 | rdbuf[5];
- 857              		.loc 1 243 16 view .LVU191
- 858 0054 0749     		ldr	r1, .L68+8
- 859 0056 0B60     		str	r3, [r1]
+ 875              		.loc 1 243 16 view .LVU191
+ 876 0054 0749     		ldr	r1, .L68+8
+ 877 0056 0B60     		str	r3, [r1]
  244:Core/Src/bmp280.c **** 		break;
- 860              		.loc 1 244 3 is_stmt 1 view .LVU192
+ 878              		.loc 1 244 3 is_stmt 1 view .LVU192
  244:Core/Src/bmp280.c **** 		break;
- 861              		.loc 1 244 22 is_stmt 0 view .LVU193
- 862 0058 D178     		ldrb	r1, [r2, #3]	@ zero_extendqisi2
- 244:Core/Src/bmp280.c **** 		break;
- 863              		.loc 1 244 39 view .LVU194
- 864 005a 1379     		ldrb	r3, [r2, #4]	@ zero_extendqisi2
- 244:Core/Src/bmp280.c **** 		break;
- 865              		.loc 1 244 43 view .LVU195
- 866 005c DB00     		lsls	r3, r3, #3
- 244:Core/Src/bmp280.c **** 		break;
- 867              		.loc 1 244 32 view .LVU196
- 868 005e 43EAC123 		orr	r3, r3, r1, lsl #11
- 244:Core/Src/bmp280.c **** 		break;
- 869              		.loc 1 244 55 view .LVU197
- 870 0062 5279     		ldrb	r2, [r2, #5]	@ zero_extendqisi2
- 244:Core/Src/bmp280.c **** 		break;
- 871              		.loc 1 244 48 view .LVU198
- 872 0064 1343     		orrs	r3, r3, r2
- 244:Core/Src/bmp280.c **** 		break;
- 873              		.loc 1 244 15 view .LVU199
-ARM GAS  /tmp/ccVqFCdR.s 			page 22
+ 879              		.loc 1 244 22 is_stmt 0 view .LVU193
+ARM GAS  /tmp/cc7XMChu.s 			page 22
 
 
- 874 0066 044A     		ldr	r2, .L68+12
- 875 0068 1360     		str	r3, [r2]
+ 880 0058 D178     		ldrb	r1, [r2, #3]	@ zero_extendqisi2
+ 244:Core/Src/bmp280.c **** 		break;
+ 881              		.loc 1 244 39 view .LVU194
+ 882 005a 1379     		ldrb	r3, [r2, #4]	@ zero_extendqisi2
+ 244:Core/Src/bmp280.c **** 		break;
+ 883              		.loc 1 244 43 view .LVU195
+ 884 005c DB00     		lsls	r3, r3, #3
+ 244:Core/Src/bmp280.c **** 		break;
+ 885              		.loc 1 244 32 view .LVU196
+ 886 005e 43EAC123 		orr	r3, r3, r1, lsl #11
+ 244:Core/Src/bmp280.c **** 		break;
+ 887              		.loc 1 244 55 view .LVU197
+ 888 0062 5279     		ldrb	r2, [r2, #5]	@ zero_extendqisi2
+ 244:Core/Src/bmp280.c **** 		break;
+ 889              		.loc 1 244 48 view .LVU198
+ 890 0064 1343     		orrs	r3, r3, r2
+ 244:Core/Src/bmp280.c **** 		break;
+ 891              		.loc 1 244 15 view .LVU199
+ 892 0066 044A     		ldr	r2, .L68+12
+ 893 0068 1360     		str	r3, [r2]
  245:Core/Src/bmp280.c **** 	default:
- 876              		.loc 1 245 3 is_stmt 1 view .LVU200
- 877 006a D1E7     		b	.L66
- 878              	.L69:
- 879              		.align	2
- 880              	.L68:
- 881 006c 00000000 		.word	.LANCHOR1
- 882 0070 00000000 		.word	.LANCHOR4
- 883 0074 00000000 		.word	.LANCHOR11
- 884 0078 00000000 		.word	.LANCHOR13
- 885              		.cfi_endproc
- 886              	.LFE146:
- 888              		.section	.text.HAL_SPI_TxCpltCallback,"ax",%progbits
- 889              		.align	1
- 890              		.global	HAL_SPI_TxCpltCallback
- 891              		.syntax unified
- 892              		.thumb
- 893              		.thumb_func
- 895              	HAL_SPI_TxCpltCallback:
- 896              	.LVL50:
- 897              	.LFB147:
+ 894              		.loc 1 245 3 is_stmt 1 view .LVU200
+ 895 006a D1E7     		b	.L66
+ 896              	.L69:
+ 897              		.align	2
+ 898              	.L68:
+ 899 006c 00000000 		.word	.LANCHOR1
+ 900 0070 00000000 		.word	.LANCHOR4
+ 901 0074 00000000 		.word	.LANCHOR11
+ 902 0078 00000000 		.word	.LANCHOR13
+ 903              		.cfi_endproc
+ 904              	.LFE146:
+ 906              		.section	.text.HAL_SPI_TxCpltCallback,"ax",%progbits
+ 907              		.align	1
+ 908              		.global	HAL_SPI_TxCpltCallback
+ 909              		.syntax unified
+ 910              		.thumb
+ 911              		.thumb_func
+ 913              	HAL_SPI_TxCpltCallback:
+ 914              	.LVL50:
+ 915              	.LFB147:
  252:Core/Src/bmp280.c **** void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
  253:Core/Src/bmp280.c **** {
- 898              		.loc 1 253 1 view -0
- 899              		.cfi_startproc
- 900              		@ args = 0, pretend = 0, frame = 0
- 901              		@ frame_needed = 0, uses_anonymous_args = 0
- 902              		@ link register save eliminated.
+ 916              		.loc 1 253 1 view -0
+ 917              		.cfi_startproc
+ 918              		@ args = 0, pretend = 0, frame = 0
+ 919              		@ frame_needed = 0, uses_anonymous_args = 0
+ 920              		@ link register save eliminated.
  254:Core/Src/bmp280.c **** 	currentOp = BMP280_IDLE;
- 903              		.loc 1 254 2 view .LVU202
- 904              		.loc 1 254 12 is_stmt 0 view .LVU203
- 905 0000 014B     		ldr	r3, .L71
- 906 0002 0022     		movs	r2, #0
- 907 0004 1A70     		strb	r2, [r3]
+ 921              		.loc 1 254 2 view .LVU202
+ 922              		.loc 1 254 12 is_stmt 0 view .LVU203
+ 923 0000 014B     		ldr	r3, .L71
+ 924 0002 0022     		movs	r2, #0
+ 925 0004 1A70     		strb	r2, [r3]
  255:Core/Src/bmp280.c **** }
- 908              		.loc 1 255 1 view .LVU204
- 909 0006 7047     		bx	lr
- 910              	.L72:
- 911              		.align	2
- 912              	.L71:
- 913 0008 00000000 		.word	.LANCHOR1
- 914              		.cfi_endproc
- 915              	.LFE147:
- 917              		.section	.text.HAL_SPI_TxRxCpltCallback,"ax",%progbits
- 918              		.align	1
- 919              		.global	HAL_SPI_TxRxCpltCallback
- 920              		.syntax unified
- 921              		.thumb
- 922              		.thumb_func
- 924              	HAL_SPI_TxRxCpltCallback:
- 925              	.LVL51:
- 926              	.LFB148:
+ 926              		.loc 1 255 1 view .LVU204
+ 927 0006 7047     		bx	lr
+ARM GAS  /tmp/cc7XMChu.s 			page 23
+
+
+ 928              	.L72:
+ 929              		.align	2
+ 930              	.L71:
+ 931 0008 00000000 		.word	.LANCHOR1
+ 932              		.cfi_endproc
+ 933              	.LFE147:
+ 935              		.section	.text.HAL_SPI_TxRxCpltCallback,"ax",%progbits
+ 936              		.align	1
+ 937              		.global	HAL_SPI_TxRxCpltCallback
+ 938              		.syntax unified
+ 939              		.thumb
+ 940              		.thumb_func
+ 942              	HAL_SPI_TxRxCpltCallback:
+ 943              	.LVL51:
+ 944              	.LFB148:
  256:Core/Src/bmp280.c **** void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
  257:Core/Src/bmp280.c **** {
- 927              		.loc 1 257 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccVqFCdR.s 			page 23
-
-
- 928              		.cfi_startproc
- 929              		@ args = 0, pretend = 0, frame = 0
- 930              		@ frame_needed = 0, uses_anonymous_args = 0
- 931              		@ link register save eliminated.
+ 945              		.loc 1 257 1 is_stmt 1 view -0
+ 946              		.cfi_startproc
+ 947              		@ args = 0, pretend = 0, frame = 0
+ 948              		@ frame_needed = 0, uses_anonymous_args = 0
+ 949              		@ link register save eliminated.
  258:Core/Src/bmp280.c **** 	currentOp = BMP280_IDLE;
- 932              		.loc 1 258 2 view .LVU206
- 933              		.loc 1 258 12 is_stmt 0 view .LVU207
- 934 0000 014B     		ldr	r3, .L74
- 935 0002 0022     		movs	r2, #0
- 936 0004 1A70     		strb	r2, [r3]
+ 950              		.loc 1 258 2 view .LVU206
+ 951              		.loc 1 258 12 is_stmt 0 view .LVU207
+ 952 0000 014B     		ldr	r3, .L74
+ 953 0002 0022     		movs	r2, #0
+ 954 0004 1A70     		strb	r2, [r3]
  259:Core/Src/bmp280.c **** }
- 937              		.loc 1 259 1 view .LVU208
- 938 0006 7047     		bx	lr
- 939              	.L75:
- 940              		.align	2
- 941              	.L74:
- 942 0008 00000000 		.word	.LANCHOR1
- 943              		.cfi_endproc
- 944              	.LFE148:
- 946              		.global	currentPress
- 947              		.global	currentTemp
- 948              		.global	currentOp
- 949              		.global	trim_values
- 950              		.global	userTxCb
- 951              		.global	userRxCb
- 952              		.section	.rodata
- 953              		.align	2
- 954              		.set	.LANCHOR12,. + 0
- 955              	.LC0:
- 956 0000 0000     		.ascii	"\000\000"
- 957 0002 00       		.space	1
- 958              		.section	.bss.configVal.0,"aw",%nobits
- 959              		.set	.LANCHOR10,. + 0
- 962              	configVal.0:
- 963 0000 00       		.space	1
- 964              		.section	.bss.ctrlVal.1,"aw",%nobits
- 965              		.set	.LANCHOR9,. + 0
- 968              	ctrlVal.1:
- 969 0000 00       		.space	1
- 970              		.section	.bss.currentOp,"aw",%nobits
- 971              		.set	.LANCHOR1,. + 0
- 974              	currentOp:
- 975 0000 00       		.space	1
- 976              		.section	.bss.currentPress,"aw",%nobits
- 977              		.align	2
- 978              		.set	.LANCHOR11,. + 0
- 981              	currentPress:
- 982 0000 00000000 		.space	4
- 983              		.section	.bss.currentTemp,"aw",%nobits
- 984              		.align	2
- 985              		.set	.LANCHOR13,. + 0
- 988              	currentTemp:
- 989 0000 00000000 		.space	4
- 990              		.section	.bss.rdLen,"aw",%nobits
- 991              		.align	2
- 992              		.set	.LANCHOR0,. + 0
- 995              	rdLen:
-ARM GAS  /tmp/ccVqFCdR.s 			page 24
+ 955              		.loc 1 259 1 view .LVU208
+ 956 0006 7047     		bx	lr
+ 957              	.L75:
+ 958              		.align	2
+ 959              	.L74:
+ 960 0008 00000000 		.word	.LANCHOR1
+ 961              		.cfi_endproc
+ 962              	.LFE148:
+ 964              		.global	currentPress
+ 965              		.global	currentTemp
+ 966              		.global	currentOp
+ 967              		.global	trim_values
+ 968              		.global	userTxCb
+ 969              		.global	userRxCb
+ 970              		.section	.rodata
+ 971              		.align	2
+ 972              		.set	.LANCHOR12,. + 0
+ 973              	.LC0:
+ 974 0000 0000     		.ascii	"\000\000"
+ 975 0002 00       		.space	1
+ 976              		.section	.bss.configVal.0,"aw",%nobits
+ 977              		.set	.LANCHOR10,. + 0
+ 980              	configVal.0:
+ 981 0000 00       		.space	1
+ 982              		.section	.bss.ctrlVal.1,"aw",%nobits
+ 983              		.set	.LANCHOR9,. + 0
+ 986              	ctrlVal.1:
+ 987 0000 00       		.space	1
+ARM GAS  /tmp/cc7XMChu.s 			page 24
 
 
- 996 0000 00000000 		.space	4
- 997              		.section	.bss.rdbuf,"aw",%nobits
- 998              		.align	2
- 999              		.set	.LANCHOR4,. + 0
- 1002              	rdbuf:
- 1003 0000 00000000 		.space	32
- 1003      00000000 
- 1003      00000000 
- 1003      00000000 
- 1003      00000000 
- 1004              		.section	.bss.trim_values,"aw",%nobits
- 1005              		.align	2
- 1006              		.set	.LANCHOR5,. + 0
- 1009              	trim_values:
- 1010 0000 00000000 		.space	32
- 1010      00000000 
- 1010      00000000 
- 1010      00000000 
- 1010      00000000 
- 1011              		.section	.bss.userRxCb,"aw",%nobits
- 1012              		.align	2
- 1013              		.set	.LANCHOR6,. + 0
- 1016              	userRxCb:
- 1017 0000 00000000 		.space	4
- 1018              		.section	.bss.userTxCb,"aw",%nobits
- 1019              		.align	2
- 1020              		.set	.LANCHOR7,. + 0
- 1023              	userTxCb:
- 1024 0000 00000000 		.space	4
- 1025              		.section	.bss.wrLen,"aw",%nobits
- 1026              		.align	2
- 1027              		.set	.LANCHOR3,. + 0
- 1030              	wrLen:
- 1031 0000 00000000 		.space	4
- 1032              		.section	.bss.wrbuf,"aw",%nobits
- 1033              		.align	2
- 1034              		.set	.LANCHOR2,. + 0
- 1037              	wrbuf:
- 1038 0000 00000000 		.space	32
- 1038      00000000 
- 1038      00000000 
- 1038      00000000 
- 1038      00000000 
- 1039              		.section	.rodata.RESET_CMD.2,"a"
- 1040              		.set	.LANCHOR8,. + 0
- 1043              	RESET_CMD.2:
- 1044 0000 B6       		.byte	-74
- 1045              		.text
- 1046              	.Letext0:
- 1047              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 1048              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 1049              		.file 4 "Core/Inc/bmp280.h"
- 1050              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
- 1051              		.file 6 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 1052              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1053              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 1054              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
-ARM GAS  /tmp/ccVqFCdR.s 			page 25
+ 988              		.section	.bss.currentOp,"aw",%nobits
+ 989              		.set	.LANCHOR1,. + 0
+ 992              	currentOp:
+ 993 0000 00       		.space	1
+ 994              		.section	.bss.currentPress,"aw",%nobits
+ 995              		.align	2
+ 996              		.set	.LANCHOR11,. + 0
+ 999              	currentPress:
+ 1000 0000 00000000 		.space	4
+ 1001              		.section	.bss.currentTemp,"aw",%nobits
+ 1002              		.align	2
+ 1003              		.set	.LANCHOR13,. + 0
+ 1006              	currentTemp:
+ 1007 0000 00000000 		.space	4
+ 1008              		.section	.bss.rdLen,"aw",%nobits
+ 1009              		.align	2
+ 1010              		.set	.LANCHOR0,. + 0
+ 1013              	rdLen:
+ 1014 0000 00000000 		.space	4
+ 1015              		.section	.bss.rdbuf,"aw",%nobits
+ 1016              		.align	2
+ 1017              		.set	.LANCHOR4,. + 0
+ 1020              	rdbuf:
+ 1021 0000 00000000 		.space	32
+ 1021      00000000 
+ 1021      00000000 
+ 1021      00000000 
+ 1021      00000000 
+ 1022              		.section	.bss.trim_values,"aw",%nobits
+ 1023              		.align	2
+ 1024              		.set	.LANCHOR5,. + 0
+ 1027              	trim_values:
+ 1028 0000 00000000 		.space	32
+ 1028      00000000 
+ 1028      00000000 
+ 1028      00000000 
+ 1028      00000000 
+ 1029              		.section	.bss.userRxCb,"aw",%nobits
+ 1030              		.align	2
+ 1031              		.set	.LANCHOR6,. + 0
+ 1034              	userRxCb:
+ 1035 0000 00000000 		.space	4
+ 1036              		.section	.bss.userTxCb,"aw",%nobits
+ 1037              		.align	2
+ 1038              		.set	.LANCHOR7,. + 0
+ 1041              	userTxCb:
+ 1042 0000 00000000 		.space	4
+ 1043              		.section	.bss.wrLen,"aw",%nobits
+ 1044              		.align	2
+ 1045              		.set	.LANCHOR3,. + 0
+ 1048              	wrLen:
+ 1049 0000 00000000 		.space	4
+ 1050              		.section	.bss.wrbuf,"aw",%nobits
+ 1051              		.align	2
+ 1052              		.set	.LANCHOR2,. + 0
+ 1055              	wrbuf:
+ 1056 0000 00000000 		.space	32
+ARM GAS  /tmp/cc7XMChu.s 			page 25
 
 
- 1055              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 1056              		.file 11 "<built-in>"
-ARM GAS  /tmp/ccVqFCdR.s 			page 26
+ 1056      00000000 
+ 1056      00000000 
+ 1056      00000000 
+ 1056      00000000 
+ 1057              		.section	.rodata.RESET_CMD.2,"a"
+ 1058              		.set	.LANCHOR8,. + 0
+ 1061              	RESET_CMD.2:
+ 1062 0000 B6       		.byte	-74
+ 1063              		.text
+ 1064              	.Letext0:
+ 1065              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 1066              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 1067              		.file 4 "Core/Inc/bmp280.h"
+ 1068              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 1069              		.file 6 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1070              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1071              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1072              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 1073              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1074              		.file 11 "<built-in>"
+ARM GAS  /tmp/cc7XMChu.s 			page 26
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bmp280.c
-     /tmp/ccVqFCdR.s:20     .text.bmp280_read_sync:0000000000000000 $t
-     /tmp/ccVqFCdR.s:25     .text.bmp280_read_sync:0000000000000000 bmp280_read_sync
-     /tmp/ccVqFCdR.s:101    .text.bmp280_read_sync:0000000000000054 $d
-     /tmp/ccVqFCdR.s:108    .text.bmp280_write_async:0000000000000000 $t
-     /tmp/ccVqFCdR.s:113    .text.bmp280_write_async:0000000000000000 bmp280_write_async
-     /tmp/ccVqFCdR.s:188    .text.bmp280_write_async:000000000000003c $d
-     /tmp/ccVqFCdR.s:196    .text.bmp280_read_async:0000000000000000 $t
-     /tmp/ccVqFCdR.s:201    .text.bmp280_read_async:0000000000000000 bmp280_read_async
-     /tmp/ccVqFCdR.s:277    .text.bmp280_read_async:000000000000003c $d
-     /tmp/ccVqFCdR.s:286    .text.bmp280_getid:0000000000000000 $t
-     /tmp/ccVqFCdR.s:292    .text.bmp280_getid:0000000000000000 bmp280_getid
-     /tmp/ccVqFCdR.s:321    .text.bmp280_init:0000000000000000 $t
-     /tmp/ccVqFCdR.s:327    .text.bmp280_init:0000000000000000 bmp280_init
-     /tmp/ccVqFCdR.s:396    .text.bmp280_init:000000000000003c $d
-     /tmp/ccVqFCdR.s:403    .text.bmp280_reset:0000000000000000 $t
-     /tmp/ccVqFCdR.s:409    .text.bmp280_reset:0000000000000000 bmp280_reset
-     /tmp/ccVqFCdR.s:432    .text.bmp280_reset:0000000000000010 $d
-     /tmp/ccVqFCdR.s:437    .text.bmp280_set_ctrl_meas:0000000000000000 $t
-     /tmp/ccVqFCdR.s:443    .text.bmp280_set_ctrl_meas:0000000000000000 bmp280_set_ctrl_meas
-     /tmp/ccVqFCdR.s:486    .text.bmp280_set_ctrl_meas:0000000000000024 $d
-     /tmp/ccVqFCdR.s:491    .text.bmp280_set_config:0000000000000000 $t
-     /tmp/ccVqFCdR.s:497    .text.bmp280_set_config:0000000000000000 bmp280_set_config
-     /tmp/ccVqFCdR.s:541    .text.bmp280_set_config:0000000000000024 $d
-     /tmp/ccVqFCdR.s:546    .text.bmp280_start_press_read:0000000000000000 $t
-     /tmp/ccVqFCdR.s:552    .text.bmp280_start_press_read:0000000000000000 bmp280_start_press_read
-     /tmp/ccVqFCdR.s:576    .text.bmp280_start_press_read:0000000000000010 $d
-     /tmp/ccVqFCdR.s:581    .text.bmp280_start_temp_read:0000000000000000 $t
-     /tmp/ccVqFCdR.s:587    .text.bmp280_start_temp_read:0000000000000000 bmp280_start_temp_read
-     /tmp/ccVqFCdR.s:611    .text.bmp280_start_temp_read:0000000000000010 $d
-     /tmp/ccVqFCdR.s:616    .text.bmp280_read_pressure_and_temperature:0000000000000000 $t
-     /tmp/ccVqFCdR.s:622    .text.bmp280_read_pressure_and_temperature:0000000000000000 bmp280_read_pressure_and_temperature
-     /tmp/ccVqFCdR.s:646    .text.bmp280_read_pressure_and_temperature:0000000000000010 $d
-     /tmp/ccVqFCdR.s:651    .text.bmp280_get_pressure:0000000000000000 $t
-     /tmp/ccVqFCdR.s:657    .text.bmp280_get_pressure:0000000000000000 bmp280_get_pressure
-     /tmp/ccVqFCdR.s:672    .text.bmp280_get_pressure:0000000000000008 $d
-     /tmp/ccVqFCdR.s:677    .text.bmp280_get_temp:0000000000000000 $t
-     /tmp/ccVqFCdR.s:683    .text.bmp280_get_temp:0000000000000000 bmp280_get_temp
-     /tmp/ccVqFCdR.s:731    .text.bmp280_get_temp:000000000000003c $d
-     /tmp/ccVqFCdR.s:736    .text.bmp280_get_pressure_and_temp:0000000000000000 $t
-     /tmp/ccVqFCdR.s:742    .text.bmp280_get_pressure_and_temp:0000000000000000 bmp280_get_pressure_and_temp
-     /tmp/ccVqFCdR.s:765    .text.bmp280_get_pressure_and_temp:0000000000000010 $d
-     /tmp/ccVqFCdR.s:771    .text.HAL_SPI_RxCpltCallback:0000000000000000 $t
-     /tmp/ccVqFCdR.s:777    .text.HAL_SPI_RxCpltCallback:0000000000000000 HAL_SPI_RxCpltCallback
-     /tmp/ccVqFCdR.s:881    .text.HAL_SPI_RxCpltCallback:000000000000006c $d
-     /tmp/ccVqFCdR.s:889    .text.HAL_SPI_TxCpltCallback:0000000000000000 $t
-     /tmp/ccVqFCdR.s:895    .text.HAL_SPI_TxCpltCallback:0000000000000000 HAL_SPI_TxCpltCallback
-     /tmp/ccVqFCdR.s:913    .text.HAL_SPI_TxCpltCallback:0000000000000008 $d
-     /tmp/ccVqFCdR.s:918    .text.HAL_SPI_TxRxCpltCallback:0000000000000000 $t
-     /tmp/ccVqFCdR.s:924    .text.HAL_SPI_TxRxCpltCallback:0000000000000000 HAL_SPI_TxRxCpltCallback
-     /tmp/ccVqFCdR.s:942    .text.HAL_SPI_TxRxCpltCallback:0000000000000008 $d
-     /tmp/ccVqFCdR.s:981    .bss.currentPress:0000000000000000 currentPress
-     /tmp/ccVqFCdR.s:988    .bss.currentTemp:0000000000000000 currentTemp
-     /tmp/ccVqFCdR.s:974    .bss.currentOp:0000000000000000 currentOp
-     /tmp/ccVqFCdR.s:1009   .bss.trim_values:0000000000000000 trim_values
-     /tmp/ccVqFCdR.s:1023   .bss.userTxCb:0000000000000000 userTxCb
-ARM GAS  /tmp/ccVqFCdR.s 			page 27
+     /tmp/cc7XMChu.s:20     .text.bmp280_read_sync:0000000000000000 $t
+     /tmp/cc7XMChu.s:25     .text.bmp280_read_sync:0000000000000000 bmp280_read_sync
+     /tmp/cc7XMChu.s:104    .text.bmp280_read_sync:0000000000000054 $d
+     /tmp/cc7XMChu.s:111    .text.bmp280_write_async:0000000000000000 $t
+     /tmp/cc7XMChu.s:116    .text.bmp280_write_async:0000000000000000 bmp280_write_async
+     /tmp/cc7XMChu.s:192    .text.bmp280_write_async:000000000000003c $d
+     /tmp/cc7XMChu.s:200    .text.bmp280_read_async:0000000000000000 $t
+     /tmp/cc7XMChu.s:205    .text.bmp280_read_async:0000000000000000 bmp280_read_async
+     /tmp/cc7XMChu.s:282    .text.bmp280_read_async:000000000000003c $d
+     /tmp/cc7XMChu.s:291    .text.bmp280_getid:0000000000000000 $t
+     /tmp/cc7XMChu.s:297    .text.bmp280_getid:0000000000000000 bmp280_getid
+     /tmp/cc7XMChu.s:327    .text.bmp280_init:0000000000000000 $t
+     /tmp/cc7XMChu.s:333    .text.bmp280_init:0000000000000000 bmp280_init
+     /tmp/cc7XMChu.s:405    .text.bmp280_init:000000000000003c $d
+     /tmp/cc7XMChu.s:412    .text.bmp280_reset:0000000000000000 $t
+     /tmp/cc7XMChu.s:418    .text.bmp280_reset:0000000000000000 bmp280_reset
+     /tmp/cc7XMChu.s:442    .text.bmp280_reset:0000000000000010 $d
+     /tmp/cc7XMChu.s:447    .text.bmp280_set_ctrl_meas:0000000000000000 $t
+     /tmp/cc7XMChu.s:453    .text.bmp280_set_ctrl_meas:0000000000000000 bmp280_set_ctrl_meas
+     /tmp/cc7XMChu.s:497    .text.bmp280_set_ctrl_meas:0000000000000024 $d
+     /tmp/cc7XMChu.s:502    .text.bmp280_set_config:0000000000000000 $t
+     /tmp/cc7XMChu.s:508    .text.bmp280_set_config:0000000000000000 bmp280_set_config
+     /tmp/cc7XMChu.s:553    .text.bmp280_set_config:0000000000000024 $d
+     /tmp/cc7XMChu.s:558    .text.bmp280_start_press_read:0000000000000000 $t
+     /tmp/cc7XMChu.s:564    .text.bmp280_start_press_read:0000000000000000 bmp280_start_press_read
+     /tmp/cc7XMChu.s:589    .text.bmp280_start_press_read:0000000000000010 $d
+     /tmp/cc7XMChu.s:594    .text.bmp280_start_temp_read:0000000000000000 $t
+     /tmp/cc7XMChu.s:600    .text.bmp280_start_temp_read:0000000000000000 bmp280_start_temp_read
+     /tmp/cc7XMChu.s:625    .text.bmp280_start_temp_read:0000000000000010 $d
+     /tmp/cc7XMChu.s:630    .text.bmp280_read_pressure_and_temperature:0000000000000000 $t
+     /tmp/cc7XMChu.s:636    .text.bmp280_read_pressure_and_temperature:0000000000000000 bmp280_read_pressure_and_temperature
+     /tmp/cc7XMChu.s:661    .text.bmp280_read_pressure_and_temperature:0000000000000010 $d
+     /tmp/cc7XMChu.s:666    .text.bmp280_get_pressure:0000000000000000 $t
+     /tmp/cc7XMChu.s:672    .text.bmp280_get_pressure:0000000000000000 bmp280_get_pressure
+     /tmp/cc7XMChu.s:687    .text.bmp280_get_pressure:0000000000000008 $d
+     /tmp/cc7XMChu.s:692    .text.bmp280_get_temp:0000000000000000 $t
+     /tmp/cc7XMChu.s:698    .text.bmp280_get_temp:0000000000000000 bmp280_get_temp
+     /tmp/cc7XMChu.s:749    .text.bmp280_get_temp:000000000000003c $d
+     /tmp/cc7XMChu.s:754    .text.bmp280_get_pressure_and_temp:0000000000000000 $t
+     /tmp/cc7XMChu.s:760    .text.bmp280_get_pressure_and_temp:0000000000000000 bmp280_get_pressure_and_temp
+     /tmp/cc7XMChu.s:783    .text.bmp280_get_pressure_and_temp:0000000000000010 $d
+     /tmp/cc7XMChu.s:789    .text.HAL_SPI_RxCpltCallback:0000000000000000 $t
+     /tmp/cc7XMChu.s:795    .text.HAL_SPI_RxCpltCallback:0000000000000000 HAL_SPI_RxCpltCallback
+     /tmp/cc7XMChu.s:899    .text.HAL_SPI_RxCpltCallback:000000000000006c $d
+     /tmp/cc7XMChu.s:907    .text.HAL_SPI_TxCpltCallback:0000000000000000 $t
+     /tmp/cc7XMChu.s:913    .text.HAL_SPI_TxCpltCallback:0000000000000000 HAL_SPI_TxCpltCallback
+     /tmp/cc7XMChu.s:931    .text.HAL_SPI_TxCpltCallback:0000000000000008 $d
+     /tmp/cc7XMChu.s:936    .text.HAL_SPI_TxRxCpltCallback:0000000000000000 $t
+     /tmp/cc7XMChu.s:942    .text.HAL_SPI_TxRxCpltCallback:0000000000000000 HAL_SPI_TxRxCpltCallback
+     /tmp/cc7XMChu.s:960    .text.HAL_SPI_TxRxCpltCallback:0000000000000008 $d
+     /tmp/cc7XMChu.s:999    .bss.currentPress:0000000000000000 currentPress
+     /tmp/cc7XMChu.s:1006   .bss.currentTemp:0000000000000000 currentTemp
+     /tmp/cc7XMChu.s:992    .bss.currentOp:0000000000000000 currentOp
+     /tmp/cc7XMChu.s:1027   .bss.trim_values:0000000000000000 trim_values
+     /tmp/cc7XMChu.s:1041   .bss.userTxCb:0000000000000000 userTxCb
+ARM GAS  /tmp/cc7XMChu.s 			page 27
 
 
-     /tmp/ccVqFCdR.s:1016   .bss.userRxCb:0000000000000000 userRxCb
-     /tmp/ccVqFCdR.s:953    .rodata:0000000000000000 $d
-     /tmp/ccVqFCdR.s:962    .bss.configVal.0:0000000000000000 configVal.0
-     /tmp/ccVqFCdR.s:963    .bss.configVal.0:0000000000000000 $d
-     /tmp/ccVqFCdR.s:968    .bss.ctrlVal.1:0000000000000000 ctrlVal.1
-     /tmp/ccVqFCdR.s:969    .bss.ctrlVal.1:0000000000000000 $d
-     /tmp/ccVqFCdR.s:975    .bss.currentOp:0000000000000000 $d
-     /tmp/ccVqFCdR.s:977    .bss.currentPress:0000000000000000 $d
-     /tmp/ccVqFCdR.s:984    .bss.currentTemp:0000000000000000 $d
-     /tmp/ccVqFCdR.s:991    .bss.rdLen:0000000000000000 $d
-     /tmp/ccVqFCdR.s:995    .bss.rdLen:0000000000000000 rdLen
-     /tmp/ccVqFCdR.s:998    .bss.rdbuf:0000000000000000 $d
-     /tmp/ccVqFCdR.s:1002   .bss.rdbuf:0000000000000000 rdbuf
-     /tmp/ccVqFCdR.s:1005   .bss.trim_values:0000000000000000 $d
-     /tmp/ccVqFCdR.s:1012   .bss.userRxCb:0000000000000000 $d
-     /tmp/ccVqFCdR.s:1019   .bss.userTxCb:0000000000000000 $d
-     /tmp/ccVqFCdR.s:1026   .bss.wrLen:0000000000000000 $d
-     /tmp/ccVqFCdR.s:1030   .bss.wrLen:0000000000000000 wrLen
-     /tmp/ccVqFCdR.s:1033   .bss.wrbuf:0000000000000000 $d
-     /tmp/ccVqFCdR.s:1037   .bss.wrbuf:0000000000000000 wrbuf
-     /tmp/ccVqFCdR.s:1043   .rodata.RESET_CMD.2:0000000000000000 RESET_CMD.2
+     /tmp/cc7XMChu.s:1034   .bss.userRxCb:0000000000000000 userRxCb
+     /tmp/cc7XMChu.s:971    .rodata:0000000000000000 $d
+     /tmp/cc7XMChu.s:980    .bss.configVal.0:0000000000000000 configVal.0
+     /tmp/cc7XMChu.s:981    .bss.configVal.0:0000000000000000 $d
+     /tmp/cc7XMChu.s:986    .bss.ctrlVal.1:0000000000000000 ctrlVal.1
+     /tmp/cc7XMChu.s:987    .bss.ctrlVal.1:0000000000000000 $d
+     /tmp/cc7XMChu.s:993    .bss.currentOp:0000000000000000 $d
+     /tmp/cc7XMChu.s:995    .bss.currentPress:0000000000000000 $d
+     /tmp/cc7XMChu.s:1002   .bss.currentTemp:0000000000000000 $d
+     /tmp/cc7XMChu.s:1009   .bss.rdLen:0000000000000000 $d
+     /tmp/cc7XMChu.s:1013   .bss.rdLen:0000000000000000 rdLen
+     /tmp/cc7XMChu.s:1016   .bss.rdbuf:0000000000000000 $d
+     /tmp/cc7XMChu.s:1020   .bss.rdbuf:0000000000000000 rdbuf
+     /tmp/cc7XMChu.s:1023   .bss.trim_values:0000000000000000 $d
+     /tmp/cc7XMChu.s:1030   .bss.userRxCb:0000000000000000 $d
+     /tmp/cc7XMChu.s:1037   .bss.userTxCb:0000000000000000 $d
+     /tmp/cc7XMChu.s:1044   .bss.wrLen:0000000000000000 $d
+     /tmp/cc7XMChu.s:1048   .bss.wrLen:0000000000000000 wrLen
+     /tmp/cc7XMChu.s:1051   .bss.wrbuf:0000000000000000 $d
+     /tmp/cc7XMChu.s:1055   .bss.wrbuf:0000000000000000 wrbuf
+     /tmp/cc7XMChu.s:1061   .rodata.RESET_CMD.2:0000000000000000 RESET_CMD.2
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

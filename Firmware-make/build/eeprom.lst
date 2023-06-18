@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cciz3FSu.s 			page 1
+ARM GAS  /tmp/ccVmqFfS.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -51,120 +51,123 @@ ARM GAS  /tmp/cciz3FSu.s 			page 1
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33 0000 08B5     		push	{r3, lr}
-  34              		.cfi_def_cfa_offset 8
-  35              		.cfi_offset 3, -8
-  36              		.cfi_offset 14, -4
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
   19:Core/Src/eeprom.c ****     HAL_GPIO_WritePin(EEPROM_WP_GPIO_Port, EEPROM_WP_Pin, GPIO_PIN_SET);
-  37              		.loc 1 19 5 view .LVU1
-  38 0002 0122     		movs	r2, #1
-  39 0004 4FF48051 		mov	r1, #4096
-ARM GAS  /tmp/cciz3FSu.s 			page 2
+  38              		.loc 1 19 5 view .LVU1
+  39 0002 0122     		movs	r2, #1
+ARM GAS  /tmp/ccVmqFfS.s 			page 2
 
 
-  40 0008 0148     		ldr	r0, .L3
-  41 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
-  42              	.LVL0:
+  40 0004 4FF48051 		mov	r1, #4096
+  41 0008 0148     		ldr	r0, .L3
+  42 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  43              	.LVL0:
   20:Core/Src/eeprom.c **** }
-  43              		.loc 1 20 1 is_stmt 0 view .LVU2
-  44 000e 08BD     		pop	{r3, pc}
-  45              	.L4:
-  46              		.align	2
-  47              	.L3:
-  48 0010 00040240 		.word	1073873920
-  49              		.cfi_endproc
-  50              	.LFE131:
-  52              		.section	.text.disable_wp,"ax",%progbits
-  53              		.align	1
-  54              		.global	disable_wp
-  55              		.syntax unified
-  56              		.thumb
-  57              		.thumb_func
-  59              	disable_wp:
-  60              	.LFB132:
+  44              		.loc 1 20 1 is_stmt 0 view .LVU2
+  45 000e 08BD     		pop	{r3, pc}
+  46              	.L4:
+  47              		.align	2
+  48              	.L3:
+  49 0010 00040240 		.word	1073873920
+  50              		.cfi_endproc
+  51              	.LFE131:
+  53              		.section	.text.disable_wp,"ax",%progbits
+  54              		.align	1
+  55              		.global	disable_wp
+  56              		.syntax unified
+  57              		.thumb
+  58              		.thumb_func
+  60              	disable_wp:
+  61              	.LFB132:
   21:Core/Src/eeprom.c **** void disable_wp(void)
   22:Core/Src/eeprom.c **** {
-  61              		.loc 1 22 1 is_stmt 1 view -0
-  62              		.cfi_startproc
-  63              		@ args = 0, pretend = 0, frame = 0
-  64              		@ frame_needed = 0, uses_anonymous_args = 0
-  65 0000 08B5     		push	{r3, lr}
-  66              		.cfi_def_cfa_offset 8
-  67              		.cfi_offset 3, -8
-  68              		.cfi_offset 14, -4
+  62              		.loc 1 22 1 is_stmt 1 view -0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66 0000 08B5     		push	{r3, lr}
+  67              	.LCFI1:
+  68              		.cfi_def_cfa_offset 8
+  69              		.cfi_offset 3, -8
+  70              		.cfi_offset 14, -4
   23:Core/Src/eeprom.c ****     HAL_GPIO_WritePin(EEPROM_WP_GPIO_Port, EEPROM_WP_Pin, GPIO_PIN_RESET);
-  69              		.loc 1 23 5 view .LVU4
-  70 0002 0022     		movs	r2, #0
-  71 0004 4FF48051 		mov	r1, #4096
-  72 0008 0148     		ldr	r0, .L7
-  73 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
-  74              	.LVL1:
+  71              		.loc 1 23 5 view .LVU4
+  72 0002 0022     		movs	r2, #0
+  73 0004 4FF48051 		mov	r1, #4096
+  74 0008 0148     		ldr	r0, .L7
+  75 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  76              	.LVL1:
   24:Core/Src/eeprom.c **** }
-  75              		.loc 1 24 1 is_stmt 0 view .LVU5
-  76 000e 08BD     		pop	{r3, pc}
-  77              	.L8:
-  78              		.align	2
-  79              	.L7:
-  80 0010 00040240 		.word	1073873920
-  81              		.cfi_endproc
-  82              	.LFE132:
-  84              		.section	.text.eeprom_write,"ax",%progbits
-  85              		.align	1
-  86              		.global	eeprom_write
-  87              		.syntax unified
-  88              		.thumb
-  89              		.thumb_func
-  91              	eeprom_write:
-  92              	.LVL2:
-  93              	.LFB133:
+  77              		.loc 1 24 1 is_stmt 0 view .LVU5
+  78 000e 08BD     		pop	{r3, pc}
+  79              	.L8:
+  80              		.align	2
+  81              	.L7:
+  82 0010 00040240 		.word	1073873920
+  83              		.cfi_endproc
+  84              	.LFE132:
+  86              		.section	.text.eeprom_write,"ax",%progbits
+  87              		.align	1
+  88              		.global	eeprom_write
+  89              		.syntax unified
+  90              		.thumb
+  91              		.thumb_func
+  93              	eeprom_write:
+  94              	.LVL2:
+  95              	.LFB133:
+ARM GAS  /tmp/ccVmqFfS.s 			page 3
+
+
   25:Core/Src/eeprom.c **** uint8_t eeprom_write(uint32_t addr, void *data, uint32_t len)
   26:Core/Src/eeprom.c **** {
-ARM GAS  /tmp/cciz3FSu.s 			page 3
-
-
-  94              		.loc 1 26 1 is_stmt 1 view -0
-  95              		.cfi_startproc
-  96              		@ args = 0, pretend = 0, frame = 0
-  97              		@ frame_needed = 0, uses_anonymous_args = 0
-  98              		.loc 1 26 1 is_stmt 0 view .LVU7
-  99 0000 38B5     		push	{r3, r4, r5, lr}
- 100              		.cfi_def_cfa_offset 16
- 101              		.cfi_offset 3, -16
- 102              		.cfi_offset 4, -12
- 103              		.cfi_offset 5, -8
- 104              		.cfi_offset 14, -4
- 105 0002 1446     		mov	r4, r2
+  96              		.loc 1 26 1 is_stmt 1 view -0
+  97              		.cfi_startproc
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              		.loc 1 26 1 is_stmt 0 view .LVU7
+ 101 0000 38B5     		push	{r3, r4, r5, lr}
+ 102              	.LCFI2:
+ 103              		.cfi_def_cfa_offset 16
+ 104              		.cfi_offset 3, -16
+ 105              		.cfi_offset 4, -12
+ 106              		.cfi_offset 5, -8
+ 107              		.cfi_offset 14, -4
+ 108 0002 1446     		mov	r4, r2
   27:Core/Src/eeprom.c ****     /*
   28:Core/Src/eeprom.c ****         If the write does not write over a page boundry it can be done using DMA
   29:Core/Src/eeprom.c ****         Otherwise, it needs to be chunked and sent synchronously
   30:Core/Src/eeprom.c ****     */
   31:Core/Src/eeprom.c ****     uint32_t next_page = get_next_page(addr);
- 106              		.loc 1 31 5 is_stmt 1 view .LVU8
- 107              	.LVL3:
- 108              	.LBB5:
- 109              	.LBI5:
+ 109              		.loc 1 31 5 is_stmt 1 view .LVU8
+ 110              	.LVL3:
+ 111              	.LBB5:
+ 112              	.LBI5:
   12:Core/Src/eeprom.c **** {
- 110              		.loc 1 12 24 view .LVU9
- 111              	.LBB6:
+ 113              		.loc 1 12 24 view .LVU9
+ 114              	.LBB6:
   14:Core/Src/eeprom.c **** }
- 112              		.loc 1 14 5 view .LVU10
+ 115              		.loc 1 14 5 view .LVU10
   14:Core/Src/eeprom.c **** }
- 113              		.loc 1 14 17 is_stmt 0 view .LVU11
- 114 0004 20F03F03 		bic	r3, r0, #63
- 115 0008 4033     		adds	r3, r3, #64
- 116              	.LVL4:
+ 116              		.loc 1 14 17 is_stmt 0 view .LVU11
+ 117 0004 20F03F03 		bic	r3, r0, #63
+ 118 0008 4033     		adds	r3, r3, #64
+ 119              	.LVL4:
   14:Core/Src/eeprom.c **** }
- 117              		.loc 1 14 17 view .LVU12
- 118              	.LBE6:
- 119              	.LBE5:
+ 120              		.loc 1 14 17 view .LVU12
+ 121              	.LBE6:
+ 122              	.LBE5:
   32:Core/Src/eeprom.c **** 
   33:Core/Src/eeprom.c ****     if (addr + len < next_page)
- 120              		.loc 1 33 5 is_stmt 1 view .LVU13
- 121              		.loc 1 33 14 is_stmt 0 view .LVU14
- 122 000a 8218     		adds	r2, r0, r2
- 123              	.LVL5:
- 124              		.loc 1 33 8 view .LVU15
- 125 000c 9A42     		cmp	r2, r3
- 126 000e 02D3     		bcc	.L13
+ 123              		.loc 1 33 5 is_stmt 1 view .LVU13
+ 124              		.loc 1 33 14 is_stmt 0 view .LVU14
+ 125 000a 8218     		adds	r2, r0, r2
+ 126              	.LVL5:
+ 127              		.loc 1 33 8 view .LVU15
+ 128 000c 9A42     		cmp	r2, r3
+ 129 000e 02D3     		bcc	.L13
   34:Core/Src/eeprom.c ****     {
   35:Core/Src/eeprom.c ****         write_buf[0] = (addr & 0xff00) >> 8;
   36:Core/Src/eeprom.c ****         write_buf[1] = addr & 0xff;
@@ -175,230 +178,231 @@ ARM GAS  /tmp/cciz3FSu.s 			page 1
   41:Core/Src/eeprom.c ****         uint8_t ret = i2c_write(EEPROM_I2C_ADDR, (uint8_t*) write_buf, len + 1);
   42:Core/Src/eeprom.c ****         enable_wp();
   43:Core/Src/eeprom.c **** 
+ARM GAS  /tmp/ccVmqFfS.s 			page 4
+
+
   44:Core/Src/eeprom.c ****         if (ret != HAL_OK)
   45:Core/Src/eeprom.c ****         {
   46:Core/Src/eeprom.c ****             return ret;
-ARM GAS  /tmp/cciz3FSu.s 			page 4
-
-
   47:Core/Src/eeprom.c ****         }
   48:Core/Src/eeprom.c ****         static const uint32_t WAIT_ATTEMPTS = 100;
   49:Core/Src/eeprom.c **** 
   50:Core/Src/eeprom.c ****         return i2c_device_acks(EEPROM_I2C_ADDR, WAIT_ATTEMPTS);
   51:Core/Src/eeprom.c **** 
-  52:Core/Src/eeprom.c ****         // return i2c_write_dma(EEPROM_I2C_ADDR, write_buf, len + 1);
+  52:Core/Src/eeprom.c ****         // return i2c_mem_write_dma(EEPROM_I2C_ADDR, write_buf, len + 1);
   53:Core/Src/eeprom.c ****     }
   54:Core/Src/eeprom.c ****     return HAL_OK;
- 127              		.loc 1 54 12 view .LVU16
- 128 0010 0024     		movs	r4, #0
- 129              	.LVL6:
- 130              	.L10:
+ 130              		.loc 1 54 12 view .LVU16
+ 131 0010 0024     		movs	r4, #0
+ 132              	.LVL6:
+ 133              	.L10:
   55:Core/Src/eeprom.c **** }
- 131              		.loc 1 55 1 view .LVU17
- 132 0012 2046     		mov	r0, r4
- 133 0014 38BD     		pop	{r3, r4, r5, pc}
- 134              	.LVL7:
- 135              	.L13:
- 136              	.LBB7:
+ 134              		.loc 1 55 1 view .LVU17
+ 135 0012 2046     		mov	r0, r4
+ 136 0014 38BD     		pop	{r3, r4, r5, pc}
+ 137              	.LVL7:
+ 138              	.L13:
+ 139              	.LBB7:
   35:Core/Src/eeprom.c ****         write_buf[1] = addr & 0xff;
- 137              		.loc 1 35 9 is_stmt 1 view .LVU18
+ 140              		.loc 1 35 9 is_stmt 1 view .LVU18
   35:Core/Src/eeprom.c ****         write_buf[1] = addr & 0xff;
- 138              		.loc 1 35 22 is_stmt 0 view .LVU19
- 139 0016 C0F30723 		ubfx	r3, r0, #8, #8
- 140              	.LVL8:
+ 141              		.loc 1 35 22 is_stmt 0 view .LVU19
+ 142 0016 C0F30723 		ubfx	r3, r0, #8, #8
+ 143              	.LVL8:
   35:Core/Src/eeprom.c ****         write_buf[1] = addr & 0xff;
- 141              		.loc 1 35 22 view .LVU20
- 142 001a 0D4D     		ldr	r5, .L14
- 143 001c 2B70     		strb	r3, [r5]
+ 144              		.loc 1 35 22 view .LVU20
+ 145 001a 0D4D     		ldr	r5, .L14
+ 146 001c 2B70     		strb	r3, [r5]
   36:Core/Src/eeprom.c **** 
- 144              		.loc 1 36 9 is_stmt 1 view .LVU21
+ 147              		.loc 1 36 9 is_stmt 1 view .LVU21
   36:Core/Src/eeprom.c **** 
- 145              		.loc 1 36 22 is_stmt 0 view .LVU22
- 146 001e C0B2     		uxtb	r0, r0
- 147              	.LVL9:
+ 148              		.loc 1 36 22 is_stmt 0 view .LVU22
+ 149 001e C0B2     		uxtb	r0, r0
+ 150              	.LVL9:
   36:Core/Src/eeprom.c **** 
- 148              		.loc 1 36 22 view .LVU23
- 149 0020 6870     		strb	r0, [r5, #1]
+ 151              		.loc 1 36 22 view .LVU23
+ 152 0020 6870     		strb	r0, [r5, #1]
   38:Core/Src/eeprom.c **** 
- 150              		.loc 1 38 9 is_stmt 1 view .LVU24
- 151 0022 04F03F02 		and	r2, r4, #63
- 152 0026 A81C     		adds	r0, r5, #2
- 153 0028 FFF7FEFF 		bl	memcpy
- 154              	.LVL10:
+ 153              		.loc 1 38 9 is_stmt 1 view .LVU24
+ 154 0022 04F03F02 		and	r2, r4, #63
+ 155 0026 A81C     		adds	r0, r5, #2
+ 156 0028 FFF7FEFF 		bl	memcpy
+ 157              	.LVL10:
   40:Core/Src/eeprom.c ****         uint8_t ret = i2c_write(EEPROM_I2C_ADDR, (uint8_t*) write_buf, len + 1);
- 155              		.loc 1 40 9 view .LVU25
- 156 002c FFF7FEFF 		bl	disable_wp
- 157              	.LVL11:
+ 158              		.loc 1 40 9 view .LVU25
+ 159 002c FFF7FEFF 		bl	disable_wp
+ 160              	.LVL11:
   41:Core/Src/eeprom.c ****         enable_wp();
- 158              		.loc 1 41 9 view .LVU26
+ 161              		.loc 1 41 9 view .LVU26
   41:Core/Src/eeprom.c ****         enable_wp();
- 159              		.loc 1 41 23 is_stmt 0 view .LVU27
- 160 0030 621C     		adds	r2, r4, #1
- 161 0032 2946     		mov	r1, r5
- 162 0034 A020     		movs	r0, #160
- 163 0036 FFF7FEFF 		bl	i2c_write
- 164              	.LVL12:
-ARM GAS  /tmp/cciz3FSu.s 			page 5
+ 162              		.loc 1 41 23 is_stmt 0 view .LVU27
+ 163 0030 621C     		adds	r2, r4, #1
+ 164 0032 2946     		mov	r1, r5
+ARM GAS  /tmp/ccVmqFfS.s 			page 5
 
 
- 165 003a 0446     		mov	r4, r0
- 166              	.LVL13:
+ 165 0034 A020     		movs	r0, #160
+ 166 0036 FFF7FEFF 		bl	i2c_write
+ 167              	.LVL12:
+ 168 003a 0446     		mov	r4, r0
+ 169              	.LVL13:
   42:Core/Src/eeprom.c **** 
- 167              		.loc 1 42 9 is_stmt 1 view .LVU28
- 168 003c FFF7FEFF 		bl	enable_wp
- 169              	.LVL14:
+ 170              		.loc 1 42 9 is_stmt 1 view .LVU28
+ 171 003c FFF7FEFF 		bl	enable_wp
+ 172              	.LVL14:
   44:Core/Src/eeprom.c ****         {
- 170              		.loc 1 44 9 view .LVU29
+ 173              		.loc 1 44 9 view .LVU29
   44:Core/Src/eeprom.c ****         {
- 171              		.loc 1 44 12 is_stmt 0 view .LVU30
- 172 0040 002C     		cmp	r4, #0
- 173 0042 E6D1     		bne	.L10
+ 174              		.loc 1 44 12 is_stmt 0 view .LVU30
+ 175 0040 002C     		cmp	r4, #0
+ 176 0042 E6D1     		bne	.L10
   48:Core/Src/eeprom.c **** 
- 174              		.loc 1 48 9 is_stmt 1 view .LVU31
+ 177              		.loc 1 48 9 is_stmt 1 view .LVU31
   50:Core/Src/eeprom.c **** 
- 175              		.loc 1 50 9 view .LVU32
+ 178              		.loc 1 50 9 view .LVU32
   50:Core/Src/eeprom.c **** 
- 176              		.loc 1 50 16 is_stmt 0 view .LVU33
- 177 0044 6421     		movs	r1, #100
- 178 0046 A020     		movs	r0, #160
- 179 0048 FFF7FEFF 		bl	i2c_device_acks
- 180              	.LVL15:
- 181 004c 0446     		mov	r4, r0
- 182              	.LVL16:
+ 179              		.loc 1 50 16 is_stmt 0 view .LVU33
+ 180 0044 6421     		movs	r1, #100
+ 181 0046 A020     		movs	r0, #160
+ 182 0048 FFF7FEFF 		bl	i2c_device_acks
+ 183              	.LVL15:
+ 184 004c 0446     		mov	r4, r0
+ 185              	.LVL16:
   50:Core/Src/eeprom.c **** 
- 183              		.loc 1 50 16 view .LVU34
- 184 004e E0E7     		b	.L10
- 185              	.L15:
- 186              		.align	2
- 187              	.L14:
- 188 0050 00000000 		.word	.LANCHOR0
- 189              	.LBE7:
- 190              		.cfi_endproc
- 191              	.LFE133:
- 193              		.section	.text.eeprom_read,"ax",%progbits
- 194              		.align	1
- 195              		.global	eeprom_read
- 196              		.syntax unified
- 197              		.thumb
- 198              		.thumb_func
- 200              	eeprom_read:
- 201              	.LVL17:
- 202              	.LFB134:
+ 186              		.loc 1 50 16 view .LVU34
+ 187 004e E0E7     		b	.L10
+ 188              	.L15:
+ 189              		.align	2
+ 190              	.L14:
+ 191 0050 00000000 		.word	.LANCHOR0
+ 192              	.LBE7:
+ 193              		.cfi_endproc
+ 194              	.LFE133:
+ 196              		.section	.text.eeprom_read,"ax",%progbits
+ 197              		.align	1
+ 198              		.global	eeprom_read
+ 199              		.syntax unified
+ 200              		.thumb
+ 201              		.thumb_func
+ 203              	eeprom_read:
+ 204              	.LVL17:
+ 205              	.LFB134:
   56:Core/Src/eeprom.c **** uint8_t eeprom_read(uint32_t addr, void *data, uint32_t len)
   57:Core/Src/eeprom.c **** {
- 203              		.loc 1 57 1 is_stmt 1 view -0
- 204              		.cfi_startproc
- 205              		@ args = 0, pretend = 0, frame = 0
- 206              		@ frame_needed = 0, uses_anonymous_args = 0
- 207              		.loc 1 57 1 is_stmt 0 view .LVU36
- 208 0000 38B5     		push	{r3, r4, r5, lr}
- 209              		.cfi_def_cfa_offset 16
- 210              		.cfi_offset 3, -16
- 211              		.cfi_offset 4, -12
- 212              		.cfi_offset 5, -8
- 213              		.cfi_offset 14, -4
- 214 0002 0C46     		mov	r4, r1
-ARM GAS  /tmp/cciz3FSu.s 			page 6
+ 206              		.loc 1 57 1 is_stmt 1 view -0
+ 207              		.cfi_startproc
+ 208              		@ args = 0, pretend = 0, frame = 0
+ 209              		@ frame_needed = 0, uses_anonymous_args = 0
+ 210              		.loc 1 57 1 is_stmt 0 view .LVU36
+ 211 0000 38B5     		push	{r3, r4, r5, lr}
+ 212              	.LCFI3:
+ 213              		.cfi_def_cfa_offset 16
+ 214              		.cfi_offset 3, -16
+ARM GAS  /tmp/ccVmqFfS.s 			page 6
 
 
- 215 0004 1546     		mov	r5, r2
+ 215              		.cfi_offset 4, -12
+ 216              		.cfi_offset 5, -8
+ 217              		.cfi_offset 14, -4
+ 218 0002 0C46     		mov	r4, r1
+ 219 0004 1546     		mov	r5, r2
   58:Core/Src/eeprom.c **** 
   59:Core/Src/eeprom.c ****     write_buf[0] = (addr & 0xff00) >> 8;
- 216              		.loc 1 59 5 is_stmt 1 view .LVU37
- 217              		.loc 1 59 18 is_stmt 0 view .LVU38
- 218 0006 C0F30723 		ubfx	r3, r0, #8, #8
- 219 000a 0849     		ldr	r1, .L20
- 220              	.LVL18:
- 221              		.loc 1 59 18 view .LVU39
- 222 000c 0B70     		strb	r3, [r1]
+ 220              		.loc 1 59 5 is_stmt 1 view .LVU37
+ 221              		.loc 1 59 18 is_stmt 0 view .LVU38
+ 222 0006 C0F30723 		ubfx	r3, r0, #8, #8
+ 223 000a 0849     		ldr	r1, .L20
+ 224              	.LVL18:
+ 225              		.loc 1 59 18 view .LVU39
+ 226 000c 0B70     		strb	r3, [r1]
   60:Core/Src/eeprom.c ****     write_buf[1] = addr & 0xff;
- 223              		.loc 1 60 5 is_stmt 1 view .LVU40
- 224              		.loc 1 60 18 is_stmt 0 view .LVU41
- 225 000e C0B2     		uxtb	r0, r0
- 226              	.LVL19:
- 227              		.loc 1 60 18 view .LVU42
- 228 0010 4870     		strb	r0, [r1, #1]
+ 227              		.loc 1 60 5 is_stmt 1 view .LVU40
+ 228              		.loc 1 60 18 is_stmt 0 view .LVU41
+ 229 000e C0B2     		uxtb	r0, r0
+ 230              	.LVL19:
+ 231              		.loc 1 60 18 view .LVU42
+ 232 0010 4870     		strb	r0, [r1, #1]
   61:Core/Src/eeprom.c ****     HAL_StatusTypeDef ret = i2c_write(EEPROM_I2C_ADDR, (uint8_t*)write_buf, ADDR_LEN);
- 229              		.loc 1 61 5 is_stmt 1 view .LVU43
- 230              		.loc 1 61 29 is_stmt 0 view .LVU44
- 231 0012 0222     		movs	r2, #2
- 232              	.LVL20:
- 233              		.loc 1 61 29 view .LVU45
- 234 0014 A020     		movs	r0, #160
- 235 0016 FFF7FEFF 		bl	i2c_write
- 236              	.LVL21:
+ 233              		.loc 1 61 5 is_stmt 1 view .LVU43
+ 234              		.loc 1 61 29 is_stmt 0 view .LVU44
+ 235 0012 0222     		movs	r2, #2
+ 236              	.LVL20:
+ 237              		.loc 1 61 29 view .LVU45
+ 238 0014 A020     		movs	r0, #160
+ 239 0016 FFF7FEFF 		bl	i2c_write
+ 240              	.LVL21:
   62:Core/Src/eeprom.c **** 
   63:Core/Src/eeprom.c ****     if (ret != HAL_OK)
- 237              		.loc 1 63 5 is_stmt 1 view .LVU46
- 238              		.loc 1 63 8 is_stmt 0 view .LVU47
- 239 001a 00B1     		cbz	r0, .L19
- 240              	.L17:
+ 241              		.loc 1 63 5 is_stmt 1 view .LVU46
+ 242              		.loc 1 63 8 is_stmt 0 view .LVU47
+ 243 001a 00B1     		cbz	r0, .L19
+ 244              	.L17:
   64:Core/Src/eeprom.c ****     {
   65:Core/Src/eeprom.c ****         return ret;
   66:Core/Src/eeprom.c ****     }
   67:Core/Src/eeprom.c **** 
   68:Core/Src/eeprom.c ****     return i2c_read(EEPROM_I2C_ADDR, data, len);
   69:Core/Src/eeprom.c **** }
- 241              		.loc 1 69 1 view .LVU48
- 242 001c 38BD     		pop	{r3, r4, r5, pc}
- 243              	.LVL22:
- 244              	.L19:
+ 245              		.loc 1 69 1 view .LVU48
+ 246 001c 38BD     		pop	{r3, r4, r5, pc}
+ 247              	.LVL22:
+ 248              	.L19:
   68:Core/Src/eeprom.c **** }
- 245              		.loc 1 68 5 is_stmt 1 view .LVU49
+ 249              		.loc 1 68 5 is_stmt 1 view .LVU49
   68:Core/Src/eeprom.c **** }
- 246              		.loc 1 68 12 is_stmt 0 view .LVU50
- 247 001e 2A46     		mov	r2, r5
- 248 0020 2146     		mov	r1, r4
- 249 0022 A020     		movs	r0, #160
- 250 0024 FFF7FEFF 		bl	i2c_read
- 251              	.LVL23:
- 252 0028 F8E7     		b	.L17
- 253              	.L21:
- 254 002a 00BF     		.align	2
- 255              	.L20:
- 256 002c 00000000 		.word	.LANCHOR0
- 257              		.cfi_endproc
-ARM GAS  /tmp/cciz3FSu.s 			page 7
+ 250              		.loc 1 68 12 is_stmt 0 view .LVU50
+ 251 001e 2A46     		mov	r2, r5
+ 252 0020 2146     		mov	r1, r4
+ 253 0022 A020     		movs	r0, #160
+ 254 0024 FFF7FEFF 		bl	i2c_read
+ 255              	.LVL23:
+ 256 0028 F8E7     		b	.L17
+ 257              	.L21:
+ARM GAS  /tmp/ccVmqFfS.s 			page 7
 
 
- 258              	.LFE134:
- 260              		.section	.bss.write_buf,"aw",%nobits
- 261              		.align	2
- 262              		.set	.LANCHOR0,. + 0
- 265              	write_buf:
- 266 0000 00000000 		.space	66
- 266      00000000 
- 266      00000000 
- 266      00000000 
- 266      00000000 
- 267              		.text
- 268              	.Letext0:
- 269              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 270              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 271              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
- 272              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 273              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 274              		.file 7 "Core/Inc/i2c.h"
- 275              		.file 8 "<built-in>"
-ARM GAS  /tmp/cciz3FSu.s 			page 8
+ 258 002a 00BF     		.align	2
+ 259              	.L20:
+ 260 002c 00000000 		.word	.LANCHOR0
+ 261              		.cfi_endproc
+ 262              	.LFE134:
+ 264              		.section	.bss.write_buf,"aw",%nobits
+ 265              		.align	2
+ 266              		.set	.LANCHOR0,. + 0
+ 269              	write_buf:
+ 270 0000 00000000 		.space	66
+ 270      00000000 
+ 270      00000000 
+ 270      00000000 
+ 270      00000000 
+ 271              		.text
+ 272              	.Letext0:
+ 273              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 274              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 275              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 276              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 277              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 278              		.file 7 "Core/Inc/i2c.h"
+ 279              		.file 8 "<built-in>"
+ARM GAS  /tmp/ccVmqFfS.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 eeprom.c
-     /tmp/cciz3FSu.s:20     .text.enable_wp:0000000000000000 $t
-     /tmp/cciz3FSu.s:26     .text.enable_wp:0000000000000000 enable_wp
-     /tmp/cciz3FSu.s:48     .text.enable_wp:0000000000000010 $d
-     /tmp/cciz3FSu.s:53     .text.disable_wp:0000000000000000 $t
-     /tmp/cciz3FSu.s:59     .text.disable_wp:0000000000000000 disable_wp
-     /tmp/cciz3FSu.s:80     .text.disable_wp:0000000000000010 $d
-     /tmp/cciz3FSu.s:85     .text.eeprom_write:0000000000000000 $t
-     /tmp/cciz3FSu.s:91     .text.eeprom_write:0000000000000000 eeprom_write
-     /tmp/cciz3FSu.s:188    .text.eeprom_write:0000000000000050 $d
-     /tmp/cciz3FSu.s:194    .text.eeprom_read:0000000000000000 $t
-     /tmp/cciz3FSu.s:200    .text.eeprom_read:0000000000000000 eeprom_read
-     /tmp/cciz3FSu.s:256    .text.eeprom_read:000000000000002c $d
-     /tmp/cciz3FSu.s:261    .bss.write_buf:0000000000000000 $d
-     /tmp/cciz3FSu.s:265    .bss.write_buf:0000000000000000 write_buf
+     /tmp/ccVmqFfS.s:20     .text.enable_wp:0000000000000000 $t
+     /tmp/ccVmqFfS.s:26     .text.enable_wp:0000000000000000 enable_wp
+     /tmp/ccVmqFfS.s:49     .text.enable_wp:0000000000000010 $d
+     /tmp/ccVmqFfS.s:54     .text.disable_wp:0000000000000000 $t
+     /tmp/ccVmqFfS.s:60     .text.disable_wp:0000000000000000 disable_wp
+     /tmp/ccVmqFfS.s:82     .text.disable_wp:0000000000000010 $d
+     /tmp/ccVmqFfS.s:87     .text.eeprom_write:0000000000000000 $t
+     /tmp/ccVmqFfS.s:93     .text.eeprom_write:0000000000000000 eeprom_write
+     /tmp/ccVmqFfS.s:191    .text.eeprom_write:0000000000000050 $d
+     /tmp/ccVmqFfS.s:197    .text.eeprom_read:0000000000000000 $t
+     /tmp/ccVmqFfS.s:203    .text.eeprom_read:0000000000000000 eeprom_read
+     /tmp/ccVmqFfS.s:260    .text.eeprom_read:000000000000002c $d
+     /tmp/ccVmqFfS.s:265    .bss.write_buf:0000000000000000 $d
+     /tmp/ccVmqFfS.s:269    .bss.write_buf:0000000000000000 write_buf
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

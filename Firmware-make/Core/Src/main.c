@@ -213,33 +213,33 @@ int main(void)
   MX_CRC_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-  uart_printf("Beginning\r\n");
+  // uart_printf("Beginning\r\n");
   // i2c_scan();
   // print_bmp280_id();
-  // print_lis2hd12_who_am_i();
+  print_lis2hd12_who_am_i();
 
-  uint8_t data[20] = {0};
-  uint8_t in[20] = {0};
+  // uint8_t data[20] = {0};
+  // uint8_t in[20] = {0};
 
 
   
 
-  for(uint8_t i = 0; i < sizeof(data); i++)
-  {
-    data[i] = i;
-  }
+  // for(uint8_t i = 0; i < sizeof(data); i++)
+  // {
+  //   data[i] = i;
+  // }
 
 
 
-  uint8_t ret = eeprom_write(0x00, data, sizeof(data));
+  // uint8_t ret = eeprom_write(0x00, data, sizeof(data));
 
-  if(ret != HAL_OK)
-  {
-    while (1);
+  // if(ret != HAL_OK)
+  // {
+  //   while (1);
     
-  }
+  // }
   
-  eeprom_read(0x00, in, sizeof(data));
+  // eeprom_read(0x00, in, sizeof(data));
 
 
 

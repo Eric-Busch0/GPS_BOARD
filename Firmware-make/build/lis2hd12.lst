@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccOLEOUC.s 			page 1
+ARM GAS  /tmp/ccVndF83.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -27,185 +27,114 @@ ARM GAS  /tmp/ccOLEOUC.s 			page 1
   24              		.thumb_func
   26              	lis2hd12_who_am_i:
   27              	.LVL0:
-  28              	.LFB134:
+  28              	.LFB133:
   29              		.file 1 "Core/Src/lis2hd12.c"
    1:Core/Src/lis2hd12.c **** #include "i2c.h"
    2:Core/Src/lis2hd12.c **** #include "lis2hd12.h"
    3:Core/Src/lis2hd12.c **** #include "main.h"
    4:Core/Src/lis2hd12.c **** 
-   5:Core/Src/lis2hd12.c **** 
-   6:Core/Src/lis2hd12.c **** volatile uint8_t write_complete = 0;
-   7:Core/Src/lis2hd12.c **** volatile uint8_t read_complete = 0;
-   8:Core/Src/lis2hd12.c **** 
+   5:Core/Src/lis2hd12.c **** volatile uint8_t write_complete = 0;
+   6:Core/Src/lis2hd12.c **** volatile uint8_t read_complete = 0;
+   7:Core/Src/lis2hd12.c **** 
+   8:Core/Src/lis2hd12.c **** #define LIS2HD12_I2C_ADDR (0x19 << 1)
    9:Core/Src/lis2hd12.c **** 
-  10:Core/Src/lis2hd12.c **** #define LIS2HD12_I2C_ADDR (0x19 << 1)
-  11:Core/Src/lis2hd12.c **** 
-  12:Core/Src/lis2hd12.c **** 
-  13:Core/Src/lis2hd12.c **** 
-  14:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_write(uint8_t *buf, uint32_t len)
+  10:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_write(uint8_t *buf, uint32_t len)
+  11:Core/Src/lis2hd12.c **** {
+  12:Core/Src/lis2hd12.c ****     return i2c_write(LIS2HD12_I2C_ADDR, buf, len);
+  13:Core/Src/lis2hd12.c **** }
+  14:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_read_reg(uint8_t memaddr, uint8_t *buf, uint32_t len)
   15:Core/Src/lis2hd12.c **** {
-  16:Core/Src/lis2hd12.c ****     return i2c_write(LIS2HD12_I2C_ADDR, buf, len);
+  16:Core/Src/lis2hd12.c ****     return i2c_mem_read(LIS2HD12_I2C_ADDR, memaddr, sizeof(uint8_t), buf, len);
   17:Core/Src/lis2hd12.c **** }
-  18:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_read(uint8_t *buf, uint32_t len)
+  18:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_write_reg(uint8_t reg_addr, uint8_t data)
   19:Core/Src/lis2hd12.c **** {
-  20:Core/Src/lis2hd12.c ****     return i2c_read(LIS2HD12_I2C_ADDR, buf, len);
+  20:Core/Src/lis2hd12.c ****     return 0;
   21:Core/Src/lis2hd12.c **** }
-  22:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_write_reg(uint8_t reg_addr, uint8_t data)
-  23:Core/Src/lis2hd12.c **** {
-  24:Core/Src/lis2hd12.c ****     return 0;
-  25:Core/Src/lis2hd12.c **** }
-  26:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_read_reg(uint8_t reg_addr, uint8_t *data)
-  27:Core/Src/lis2hd12.c **** {
-  28:Core/Src/lis2hd12.c ****     HAL_StatusTypeDef ret =  lis2hd12_write(&reg_addr, 1);
-  29:Core/Src/lis2hd12.c **** 
-ARM GAS  /tmp/ccOLEOUC.s 			page 2
-
-
-  30:Core/Src/lis2hd12.c ****     if(ret != HAL_OK)
-  31:Core/Src/lis2hd12.c ****     {
-  32:Core/Src/lis2hd12.c ****         return ret;
-  33:Core/Src/lis2hd12.c ****     }
-  34:Core/Src/lis2hd12.c **** 
-  35:Core/Src/lis2hd12.c **** 
-  36:Core/Src/lis2hd12.c ****     return lis2hd12_read(data, 1);
-  37:Core/Src/lis2hd12.c **** 
-  38:Core/Src/lis2hd12.c **** }
-  39:Core/Src/lis2hd12.c **** void lis2hd12_init(void);
-  40:Core/Src/lis2hd12.c **** uint8_t lis2hd12_who_am_i(uint8_t *who_am_i)
-  41:Core/Src/lis2hd12.c **** {
-  30              		.loc 1 41 1 view -0
+  22:Core/Src/lis2hd12.c **** 
+  23:Core/Src/lis2hd12.c **** void lis2hd12_init(void);
+  24:Core/Src/lis2hd12.c **** uint8_t lis2hd12_who_am_i(uint8_t *who_am_i)
+  25:Core/Src/lis2hd12.c **** {
+  30              		.loc 1 25 1 view -0
   31              		.cfi_startproc
-  32              		@ args = 0, pretend = 0, frame = 8
+  32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		.loc 1 41 1 is_stmt 0 view .LVU1
-  35 0000 10B5     		push	{r4, lr}
-  36              		.cfi_def_cfa_offset 8
-  37              		.cfi_offset 4, -8
+ARM GAS  /tmp/ccVndF83.s 			page 2
+
+
+  34              		.loc 1 25 1 is_stmt 0 view .LVU1
+  35 0000 00B5     		push	{lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 4
   38              		.cfi_offset 14, -4
-  39 0002 82B0     		sub	sp, sp, #8
-  40              		.cfi_def_cfa_offset 16
-  41 0004 0446     		mov	r4, r0
-  42:Core/Src/lis2hd12.c ****     static const uint8_t reg_addr = 0x0f;
-  42              		.loc 1 42 5 is_stmt 1 view .LVU2
-  43:Core/Src/lis2hd12.c **** 
-  44:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(reg_addr, who_am_i);
-  43              		.loc 1 44 5 view .LVU3
-  44 0006 0F23     		movs	r3, #15
-  45 0008 8DF80730 		strb	r3, [sp, #7]
-  46              	.LVL1:
-  47              	.LBB12:
-  48              	.LBI12:
-  26:Core/Src/lis2hd12.c **** {
-  49              		.loc 1 26 23 view .LVU4
-  50              	.LBB13:
+  39 0002 83B0     		sub	sp, sp, #12
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 16
+  42 0004 0346     		mov	r3, r0
+  26:Core/Src/lis2hd12.c **** 
+  27:Core/Src/lis2hd12.c ****     static const uint8_t REG_ADDR = 0x0f;
+  43              		.loc 1 27 5 is_stmt 1 view .LVU2
   28:Core/Src/lis2hd12.c **** 
-  51              		.loc 1 28 5 view .LVU5
-  52              	.LBB14:
-  53              	.LBI14:
+  29:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(REG_ADDR, who_am_i, 1);
+  44              		.loc 1 29 5 view .LVU3
+  45              	.LVL1:
+  46              	.LBB4:
+  47              	.LBI4:
   14:Core/Src/lis2hd12.c **** {
-  54              		.loc 1 14 23 view .LVU6
-  55              	.LBB15:
+  48              		.loc 1 14 23 view .LVU4
+  49              	.LBB5:
   16:Core/Src/lis2hd12.c **** }
-  56              		.loc 1 16 5 view .LVU7
+  50              		.loc 1 16 5 view .LVU5
   16:Core/Src/lis2hd12.c **** }
-  57              		.loc 1 16 12 is_stmt 0 view .LVU8
-  58 000c 0122     		movs	r2, #1
-  59 000e 0DF10701 		add	r1, sp, #7
-  60              	.LVL2:
+  51              		.loc 1 16 12 is_stmt 0 view .LVU6
+  52 0006 0122     		movs	r2, #1
+  53 0008 0092     		str	r2, [sp]
+  54 000a 0F21     		movs	r1, #15
+  55 000c 3220     		movs	r0, #50
+  56              	.LVL2:
   16:Core/Src/lis2hd12.c **** }
-  61              		.loc 1 16 12 view .LVU9
-  62 0012 3220     		movs	r0, #50
-  63              	.LVL3:
+  57              		.loc 1 16 12 view .LVU7
+  58 000e FFF7FEFF 		bl	i2c_mem_read
+  59              	.LVL3:
   16:Core/Src/lis2hd12.c **** }
-  64              		.loc 1 16 12 view .LVU10
-ARM GAS  /tmp/ccOLEOUC.s 			page 3
+  60              		.loc 1 16 12 view .LVU8
+  61              	.LBE5:
+  62              	.LBE4:
+  30:Core/Src/lis2hd12.c **** }...
+  63              		.loc 1 30 1 view .LVU9
+  64 0012 03B0     		add	sp, sp, #12
+  65              	.LCFI2:
+  66              		.cfi_def_cfa_offset 4
+  67              		@ sp needed
+  68 0014 5DF804FB 		ldr	pc, [sp], #4
+  69              		.cfi_endproc
+  70              	.LFE133:
+  72              		.global	read_complete
+  73              		.global	write_complete
+  74              		.section	.bss.read_complete,"aw",%nobits
+  77              	read_complete:
+  78 0000 00       		.space	1
+  79              		.section	.bss.write_complete,"aw",%nobits
+  82              	write_complete:
+  83 0000 00       		.space	1
+  84              		.text
+  85              	.Letext0:
+ARM GAS  /tmp/ccVndF83.s 			page 3
 
 
-  65 0014 FFF7FEFF 		bl	i2c_write
-  66              	.LVL4:
-  16:Core/Src/lis2hd12.c **** }
-  67              		.loc 1 16 12 view .LVU11
-  68              	.LBE15:
-  69              	.LBE14:
-  30:Core/Src/lis2hd12.c ****     {
-  70              		.loc 1 30 5 is_stmt 1 view .LVU12
-  30:Core/Src/lis2hd12.c ****     {
-  71              		.loc 1 30 7 is_stmt 0 view .LVU13
-  72 0018 08B1     		cbz	r0, .L4
-  73              	.L2:
-  74              	.LVL5:
-  30:Core/Src/lis2hd12.c ****     {
-  75              		.loc 1 30 7 view .LVU14
-  76              	.LBE13:
-  77              	.LBE12:
-  45:Core/Src/lis2hd12.c **** }...
-  78              		.loc 1 45 1 view .LVU15
-  79 001a 02B0     		add	sp, sp, #8
-  80              		.cfi_remember_state
-  81              		.cfi_def_cfa_offset 8
-  82              		@ sp needed
-  83 001c 10BD     		pop	{r4, pc}
-  84              	.LVL6:
-  85              	.L4:
-  86              		.cfi_restore_state
-  87              	.LBB19:
-  88              	.LBB18:
-  36:Core/Src/lis2hd12.c ****     return lis2hd12_read(data, 1);
-  89              		.loc 1 36 5 is_stmt 1 view .LVU16
-  90              	.LBB16:
-  91              	.LBI16:
-  18:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_read(uint8_t *buf, uint32_t len)
-  92              		.loc 1 18 23 view .LVU17
-  93              	.LBB17:
-  20:Core/Src/lis2hd12.c ****     return i2c_read(LIS2HD12_I2C_ADDR, buf, len);
-  94              		.loc 1 20 5 view .LVU18
-  20:Core/Src/lis2hd12.c ****     return i2c_read(LIS2HD12_I2C_ADDR, buf, len);
-  95              		.loc 1 20 12 is_stmt 0 view .LVU19
-  96 001e 0122     		movs	r2, #1
-  97 0020 2146     		mov	r1, r4
-  98 0022 3220     		movs	r0, #50
-  99 0024 FFF7FEFF 		bl	i2c_read
- 100              	.LVL7:
-  20:Core/Src/lis2hd12.c ****     return i2c_read(LIS2HD12_I2C_ADDR, buf, len);
- 101              		.loc 1 20 12 view .LVU20
- 102              	.LBE17:
- 103              	.LBE16:
-  36:Core/Src/lis2hd12.c ****     return lis2hd12_read(data, 1);
- 104              		.loc 1 36 12 view .LVU21
- 105 0028 F7E7     		b	.L2
- 106              	.LBE18:
- 107              	.LBE19:
- 108              		.cfi_endproc
- 109              	.LFE134:
- 111              		.global	read_complete
-ARM GAS  /tmp/ccOLEOUC.s 			page 4
-
-
- 112              		.global	write_complete
- 113              		.section	.bss.read_complete,"aw",%nobits
- 116              	read_complete:
- 117 0000 00       		.space	1
- 118              		.section	.bss.write_complete,"aw",%nobits
- 121              	write_complete:
- 122 0000 00       		.space	1
- 123              		.text
- 124              	.Letext0:
- 125              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 126              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 127              		.file 4 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 128              		.file 5 "Core/Inc/i2c.h"
-ARM GAS  /tmp/ccOLEOUC.s 			page 5
+  86              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+  87              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+  88              		.file 4 "Core/Inc/i2c.h"
+ARM GAS  /tmp/ccVndF83.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 lis2hd12.c
-     /tmp/ccOLEOUC.s:20     .text.lis2hd12_who_am_i:0000000000000000 $t
-     /tmp/ccOLEOUC.s:26     .text.lis2hd12_who_am_i:0000000000000000 lis2hd12_who_am_i
-     /tmp/ccOLEOUC.s:116    .bss.read_complete:0000000000000000 read_complete
-     /tmp/ccOLEOUC.s:121    .bss.write_complete:0000000000000000 write_complete
-     /tmp/ccOLEOUC.s:117    .bss.read_complete:0000000000000000 $d
-     /tmp/ccOLEOUC.s:122    .bss.write_complete:0000000000000000 $d
+     /tmp/ccVndF83.s:20     .text.lis2hd12_who_am_i:0000000000000000 $t
+     /tmp/ccVndF83.s:26     .text.lis2hd12_who_am_i:0000000000000000 lis2hd12_who_am_i
+     /tmp/ccVndF83.s:77     .bss.read_complete:0000000000000000 read_complete
+     /tmp/ccVndF83.s:82     .bss.write_complete:0000000000000000 write_complete
+     /tmp/ccVndF83.s:78     .bss.read_complete:0000000000000000 $d
+     /tmp/ccVndF83.s:83     .bss.write_complete:0000000000000000 $d
 
 UNDEFINED SYMBOLS
-i2c_write
-i2c_read
+i2c_mem_read

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc3WkPK8.s 			page 1
+ARM GAS  /tmp/ccMzZbz5.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -29,311 +29,862 @@ ARM GAS  /tmp/cc3WkPK8.s 			page 1
   27              	.LVL0:
   28              	.LFB130:
   29              		.file 1 "Core/Src/i2c.c"
-   1:Core/Src/i2c.c **** #include "i2c.h"
-   2:Core/Src/i2c.c **** #include "main.h"
-   3:Core/Src/i2c.c **** 
-   4:Core/Src/i2c.c **** extern I2C_HandleTypeDef hi2c3;
-   5:Core/Src/i2c.c **** extern DMA_HandleTypeDef hdma_i2c3_rx;
-   6:Core/Src/i2c.c **** extern DMA_HandleTypeDef hdma_i2c3_tx;
-   7:Core/Src/i2c.c **** 
-   8:Core/Src/i2c.c **** uint8_t i2c_write(uint8_t addr, uint8_t* buf, uint32_t len)
-   9:Core/Src/i2c.c **** {
-  30              		.loc 1 9 1 view -0
+   1:Core/Src/i2c.c **** #include <string.h>
+   2:Core/Src/i2c.c **** #include "i2c.h"
+   3:Core/Src/i2c.c **** #include "uart_printf.h"
+   4:Core/Src/i2c.c **** #include "main.h"
+   5:Core/Src/i2c.c **** 
+   6:Core/Src/i2c.c **** extern I2C_HandleTypeDef hi2c3;
+   7:Core/Src/i2c.c **** extern DMA_HandleTypeDef hdma_i2c3_rx;
+   8:Core/Src/i2c.c **** extern DMA_HandleTypeDef hdma_i2c3_tx;
+   9:Core/Src/i2c.c **** 
+  10:Core/Src/i2c.c **** volatile struct{
+  11:Core/Src/i2c.c ****     uint8_t txCplt;
+  12:Core/Src/i2c.c ****     uint8_t rxCplt;
+  13:Core/Src/i2c.c ****     uint8_t txMemCplt;
+  14:Core/Src/i2c.c ****     uint8_t rxMemCplt;
+  15:Core/Src/i2c.c **** }dmaStatusCb;
+  16:Core/Src/i2c.c **** 
+  17:Core/Src/i2c.c **** uint8_t i2c_write(uint8_t addr, uint8_t *buf, uint32_t len)
+  18:Core/Src/i2c.c **** {
+  30              		.loc 1 18 1 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		.loc 1 9 1 is_stmt 0 view .LVU1
+  34              		.loc 1 18 1 is_stmt 0 view .LVU1
   35 0000 00B5     		push	{lr}
-  36              		.cfi_def_cfa_offset 4
-  37              		.cfi_offset 14, -4
-  38 0002 83B0     		sub	sp, sp, #12
-  39              		.cfi_def_cfa_offset 16
-  10:Core/Src/i2c.c ****     return HAL_I2C_Master_Transmit(&hi2c3, addr,buf, len, HAL_MAX_DELAY);
-  40              		.loc 1 10 5 is_stmt 1 view .LVU2
-  41              		.loc 1 10 12 is_stmt 0 view .LVU3
-  42 0004 4FF0FF33 		mov	r3, #-1
-  43 0008 0093     		str	r3, [sp]
-  44 000a 93B2     		uxth	r3, r2
-  45 000c 0A46     		mov	r2, r1
-  46              	.LVL1:
-  47              		.loc 1 10 12 view .LVU4
-  48 000e 0146     		mov	r1, r0
-ARM GAS  /tmp/cc3WkPK8.s 			page 2
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 4
+  38              		.cfi_offset 14, -4
+  39 0002 83B0     		sub	sp, sp, #12
+  40              	.LCFI1:
+ARM GAS  /tmp/ccMzZbz5.s 			page 2
 
 
-  49              	.LVL2:
-  50              		.loc 1 10 12 view .LVU5
-  51 0010 0248     		ldr	r0, .L3
-  52              	.LVL3:
-  53              		.loc 1 10 12 view .LVU6
-  54 0012 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
-  55              	.LVL4:
-  11:Core/Src/i2c.c **** }
-  56              		.loc 1 11 1 view .LVU7
-  57 0016 03B0     		add	sp, sp, #12
-  58              		.cfi_def_cfa_offset 4
-  59              		@ sp needed
-  60 0018 5DF804FB 		ldr	pc, [sp], #4
-  61              	.L4:
-  62              		.align	2
-  63              	.L3:
-  64 001c 00000000 		.word	hi2c3
-  65              		.cfi_endproc
-  66              	.LFE130:
-  68              		.section	.text.i2c_read,"ax",%progbits
-  69              		.align	1
-  70              		.global	i2c_read
-  71              		.syntax unified
-  72              		.thumb
-  73              		.thumb_func
-  75              	i2c_read:
-  76              	.LVL5:
-  77              	.LFB131:
-  12:Core/Src/i2c.c **** 
-  13:Core/Src/i2c.c **** uint8_t i2c_read(uint8_t addr, uint8_t* buf, uint32_t len)
-  14:Core/Src/i2c.c **** {
-  78              		.loc 1 14 1 is_stmt 1 view -0
-  79              		.cfi_startproc
-  80              		@ args = 0, pretend = 0, frame = 0
-  81              		@ frame_needed = 0, uses_anonymous_args = 0
-  82              		.loc 1 14 1 is_stmt 0 view .LVU9
-  83 0000 00B5     		push	{lr}
-  84              		.cfi_def_cfa_offset 4
-  85              		.cfi_offset 14, -4
-  86 0002 83B0     		sub	sp, sp, #12
-  87              		.cfi_def_cfa_offset 16
-  15:Core/Src/i2c.c ****     return HAL_I2C_Master_Receive(&hi2c3, addr, buf, len, HAL_MAX_DELAY);
-  88              		.loc 1 15 5 is_stmt 1 view .LVU10
-  89              		.loc 1 15 12 is_stmt 0 view .LVU11
-  90 0004 4FF0FF33 		mov	r3, #-1
-  91 0008 0093     		str	r3, [sp]
-  92 000a 93B2     		uxth	r3, r2
-  93 000c 0A46     		mov	r2, r1
-  94              	.LVL6:
-  95              		.loc 1 15 12 view .LVU12
-  96 000e 0146     		mov	r1, r0
-  97              	.LVL7:
-  98              		.loc 1 15 12 view .LVU13
-  99 0010 0248     		ldr	r0, .L7
- 100              	.LVL8:
- 101              		.loc 1 15 12 view .LVU14
- 102 0012 FFF7FEFF 		bl	HAL_I2C_Master_Receive
-ARM GAS  /tmp/cc3WkPK8.s 			page 3
-
-
- 103              	.LVL9:
-  16:Core/Src/i2c.c **** }
- 104              		.loc 1 16 1 view .LVU15
- 105 0016 03B0     		add	sp, sp, #12
- 106              		.cfi_def_cfa_offset 4
- 107              		@ sp needed
- 108 0018 5DF804FB 		ldr	pc, [sp], #4
- 109              	.L8:
- 110              		.align	2
- 111              	.L7:
- 112 001c 00000000 		.word	hi2c3
- 113              		.cfi_endproc
- 114              	.LFE131:
- 116              		.section	.text.i2c_write_dma,"ax",%progbits
- 117              		.align	1
- 118              		.global	i2c_write_dma
- 119              		.syntax unified
- 120              		.thumb
- 121              		.thumb_func
- 123              	i2c_write_dma:
- 124              	.LVL10:
- 125              	.LFB132:
-  17:Core/Src/i2c.c **** uint8_t i2c_write_dma(uint8_t addr, uint8_t* buf, uint32_t len)
-  18:Core/Src/i2c.c **** {
- 126              		.loc 1 18 1 is_stmt 1 view -0
- 127              		.cfi_startproc
- 128              		@ args = 0, pretend = 0, frame = 0
- 129              		@ frame_needed = 0, uses_anonymous_args = 0
- 130              		.loc 1 18 1 is_stmt 0 view .LVU17
- 131 0000 08B5     		push	{r3, lr}
- 132              		.cfi_def_cfa_offset 8
- 133              		.cfi_offset 3, -8
- 134              		.cfi_offset 14, -4
-  19:Core/Src/i2c.c ****     return HAL_I2C_Master_Transmit_DMA(&hi2c3, addr, buf, len);
- 135              		.loc 1 19 5 is_stmt 1 view .LVU18
- 136              		.loc 1 19 12 is_stmt 0 view .LVU19
- 137 0002 93B2     		uxth	r3, r2
- 138 0004 0A46     		mov	r2, r1
- 139              	.LVL11:
- 140              		.loc 1 19 12 view .LVU20
- 141 0006 0146     		mov	r1, r0
- 142              	.LVL12:
- 143              		.loc 1 19 12 view .LVU21
- 144 0008 0148     		ldr	r0, .L11
- 145              	.LVL13:
- 146              		.loc 1 19 12 view .LVU22
- 147 000a FFF7FEFF 		bl	HAL_I2C_Master_Transmit_DMA
- 148              	.LVL14:
+  41              		.cfi_def_cfa_offset 16
+  19:Core/Src/i2c.c ****     return HAL_I2C_Master_Transmit(&hi2c3, addr, buf, len, HAL_MAX_DELAY);
+  42              		.loc 1 19 5 is_stmt 1 view .LVU2
+  43              		.loc 1 19 12 is_stmt 0 view .LVU3
+  44 0004 4FF0FF33 		mov	r3, #-1
+  45 0008 0093     		str	r3, [sp]
+  46 000a 93B2     		uxth	r3, r2
+  47 000c 0A46     		mov	r2, r1
+  48              	.LVL1:
+  49              		.loc 1 19 12 view .LVU4
+  50 000e 0146     		mov	r1, r0
+  51              	.LVL2:
+  52              		.loc 1 19 12 view .LVU5
+  53 0010 0248     		ldr	r0, .L3
+  54              	.LVL3:
+  55              		.loc 1 19 12 view .LVU6
+  56 0012 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+  57              	.LVL4:
   20:Core/Src/i2c.c **** }
- 149              		.loc 1 20 1 view .LVU23
- 150 000e 08BD     		pop	{r3, pc}
- 151              	.L12:
- 152              		.align	2
- 153              	.L11:
- 154 0010 00000000 		.word	hi2c3
- 155              		.cfi_endproc
- 156              	.LFE132:
-ARM GAS  /tmp/cc3WkPK8.s 			page 4
+  58              		.loc 1 20 1 view .LVU7
+  59 0016 03B0     		add	sp, sp, #12
+  60              	.LCFI2:
+  61              		.cfi_def_cfa_offset 4
+  62              		@ sp needed
+  63 0018 5DF804FB 		ldr	pc, [sp], #4
+  64              	.L4:
+  65              		.align	2
+  66              	.L3:
+  67 001c 00000000 		.word	hi2c3
+  68              		.cfi_endproc
+  69              	.LFE130:
+  71              		.section	.text.i2c_read,"ax",%progbits
+  72              		.align	1
+  73              		.global	i2c_read
+  74              		.syntax unified
+  75              		.thumb
+  76              		.thumb_func
+  78              	i2c_read:
+  79              	.LVL5:
+  80              	.LFB131:
+  21:Core/Src/i2c.c **** 
+  22:Core/Src/i2c.c **** uint8_t i2c_read(uint8_t addr, uint8_t *buf, uint32_t len)
+  23:Core/Src/i2c.c **** {
+  81              		.loc 1 23 1 is_stmt 1 view -0
+  82              		.cfi_startproc
+  83              		@ args = 0, pretend = 0, frame = 0
+  84              		@ frame_needed = 0, uses_anonymous_args = 0
+  85              		.loc 1 23 1 is_stmt 0 view .LVU9
+  86 0000 00B5     		push	{lr}
+  87              	.LCFI3:
+  88              		.cfi_def_cfa_offset 4
+  89              		.cfi_offset 14, -4
+  90 0002 83B0     		sub	sp, sp, #12
+  91              	.LCFI4:
+  92              		.cfi_def_cfa_offset 16
+  24:Core/Src/i2c.c ****     return HAL_I2C_Master_Receive(&hi2c3, addr, buf, len, HAL_MAX_DELAY);
+  93              		.loc 1 24 5 is_stmt 1 view .LVU10
+ARM GAS  /tmp/ccMzZbz5.s 			page 3
 
 
- 158              		.section	.text.i2c_read_dma,"ax",%progbits
- 159              		.align	1
- 160              		.global	i2c_read_dma
- 161              		.syntax unified
- 162              		.thumb
- 163              		.thumb_func
- 165              	i2c_read_dma:
- 166              	.LVL15:
- 167              	.LFB133:
-  21:Core/Src/i2c.c **** uint8_t i2c_read_dma(uint8_t addr, uint8_t* buf, uint32_t len)
-  22:Core/Src/i2c.c **** {
- 168              		.loc 1 22 1 is_stmt 1 view -0
- 169              		.cfi_startproc
- 170              		@ args = 0, pretend = 0, frame = 0
- 171              		@ frame_needed = 0, uses_anonymous_args = 0
- 172              		.loc 1 22 1 is_stmt 0 view .LVU25
- 173 0000 08B5     		push	{r3, lr}
- 174              		.cfi_def_cfa_offset 8
- 175              		.cfi_offset 3, -8
- 176              		.cfi_offset 14, -4
-  23:Core/Src/i2c.c ****     return HAL_I2C_Master_Receive_DMA(&hi2c3, addr, buf, len);
- 177              		.loc 1 23 5 is_stmt 1 view .LVU26
- 178              		.loc 1 23 12 is_stmt 0 view .LVU27
- 179 0002 93B2     		uxth	r3, r2
- 180 0004 0A46     		mov	r2, r1
- 181              	.LVL16:
- 182              		.loc 1 23 12 view .LVU28
- 183 0006 0146     		mov	r1, r0
- 184              	.LVL17:
- 185              		.loc 1 23 12 view .LVU29
- 186 0008 0148     		ldr	r0, .L15
- 187              	.LVL18:
- 188              		.loc 1 23 12 view .LVU30
- 189 000a FFF7FEFF 		bl	HAL_I2C_Master_Receive_DMA
- 190              	.LVL19:
-  24:Core/Src/i2c.c **** }
- 191              		.loc 1 24 1 view .LVU31
- 192 000e 08BD     		pop	{r3, pc}
- 193              	.L16:
- 194              		.align	2
- 195              	.L15:
- 196 0010 00000000 		.word	hi2c3
- 197              		.cfi_endproc
- 198              	.LFE133:
- 200              		.section	.text.i2c_device_acks,"ax",%progbits
- 201              		.align	1
- 202              		.global	i2c_device_acks
- 203              		.syntax unified
- 204              		.thumb
- 205              		.thumb_func
- 207              	i2c_device_acks:
- 208              	.LVL20:
- 209              	.LFB134:
-  25:Core/Src/i2c.c **** 
-  26:Core/Src/i2c.c **** uint8_t i2c_device_acks(uint8_t addr, uint32_t attempts)
+  94              		.loc 1 24 12 is_stmt 0 view .LVU11
+  95 0004 4FF0FF33 		mov	r3, #-1
+  96 0008 0093     		str	r3, [sp]
+  97 000a 93B2     		uxth	r3, r2
+  98 000c 0A46     		mov	r2, r1
+  99              	.LVL6:
+ 100              		.loc 1 24 12 view .LVU12
+ 101 000e 0146     		mov	r1, r0
+ 102              	.LVL7:
+ 103              		.loc 1 24 12 view .LVU13
+ 104 0010 0248     		ldr	r0, .L7
+ 105              	.LVL8:
+ 106              		.loc 1 24 12 view .LVU14
+ 107 0012 FFF7FEFF 		bl	HAL_I2C_Master_Receive
+ 108              	.LVL9:
+  25:Core/Src/i2c.c **** }
+ 109              		.loc 1 25 1 view .LVU15
+ 110 0016 03B0     		add	sp, sp, #12
+ 111              	.LCFI5:
+ 112              		.cfi_def_cfa_offset 4
+ 113              		@ sp needed
+ 114 0018 5DF804FB 		ldr	pc, [sp], #4
+ 115              	.L8:
+ 116              		.align	2
+ 117              	.L7:
+ 118 001c 00000000 		.word	hi2c3
+ 119              		.cfi_endproc
+ 120              	.LFE131:
+ 122              		.section	.text.i2c_mem_write,"ax",%progbits
+ 123              		.align	1
+ 124              		.global	i2c_mem_write
+ 125              		.syntax unified
+ 126              		.thumb
+ 127              		.thumb_func
+ 129              	i2c_mem_write:
+ 130              	.LVL10:
+ 131              	.LFB132:
+  26:Core/Src/i2c.c **** uint8_t i2c_mem_write(uint8_t devaddr, uint8_t memaddr, uint16_t memaddr_size, uint8_t *buf, uint32
   27:Core/Src/i2c.c **** {
- 210              		.loc 1 27 1 is_stmt 1 view -0
-ARM GAS  /tmp/cc3WkPK8.s 			page 5
+ 132              		.loc 1 27 1 is_stmt 1 view -0
+ 133              		.cfi_startproc
+ 134              		@ args = 4, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136              		.loc 1 27 1 is_stmt 0 view .LVU17
+ 137 0000 10B5     		push	{r4, lr}
+ 138              	.LCFI6:
+ 139              		.cfi_def_cfa_offset 8
+ 140              		.cfi_offset 4, -8
+ 141              		.cfi_offset 14, -4
+ 142 0002 84B0     		sub	sp, sp, #16
+ 143              	.LCFI7:
+ 144              		.cfi_def_cfa_offset 24
+  28:Core/Src/i2c.c ****     dmaStatusCb.txMemCplt = 0;
+ 145              		.loc 1 28 5 is_stmt 1 view .LVU18
+ 146              		.loc 1 28 27 is_stmt 0 view .LVU19
+ 147 0004 094C     		ldr	r4, .L11
+ 148 0006 4FF0000C 		mov	ip, #0
+ARM GAS  /tmp/ccMzZbz5.s 			page 4
 
 
- 211              		.cfi_startproc
- 212              		@ args = 0, pretend = 0, frame = 0
- 213              		@ frame_needed = 0, uses_anonymous_args = 0
- 214              		.loc 1 27 1 is_stmt 0 view .LVU33
- 215 0000 08B5     		push	{r3, lr}
- 216              		.cfi_def_cfa_offset 8
- 217              		.cfi_offset 3, -8
- 218              		.cfi_offset 14, -4
- 219 0002 0A46     		mov	r2, r1
-  28:Core/Src/i2c.c ****     return HAL_I2C_IsDeviceReady(&hi2c3, addr, attempts, HAL_MAX_DELAY);
- 220              		.loc 1 28 5 is_stmt 1 view .LVU34
- 221              		.loc 1 28 12 is_stmt 0 view .LVU35
- 222 0004 4FF0FF33 		mov	r3, #-1
- 223 0008 0146     		mov	r1, r0
- 224              	.LVL21:
- 225              		.loc 1 28 12 view .LVU36
- 226 000a 0248     		ldr	r0, .L19
- 227              	.LVL22:
- 228              		.loc 1 28 12 view .LVU37
- 229 000c FFF7FEFF 		bl	HAL_I2C_IsDeviceReady
- 230              	.LVL23:
-  29:Core/Src/i2c.c **** }
- 231              		.loc 1 29 1 view .LVU38
- 232 0010 08BD     		pop	{r3, pc}
- 233              	.L20:
- 234 0012 00BF     		.align	2
- 235              	.L19:
- 236 0014 00000000 		.word	hi2c3
- 237              		.cfi_endproc
- 238              	.LFE134:
- 240              		.section	.text.HAL_I2C_MasterTxCpltCallback,"ax",%progbits
- 241              		.align	1
- 242              		.global	HAL_I2C_MasterTxCpltCallback
- 243              		.syntax unified
- 244              		.thumb
- 245              		.thumb_func
- 247              	HAL_I2C_MasterTxCpltCallback:
- 248              	.LFB135:
-  30:Core/Src/i2c.c **** void HAL_I2C_MasterTxCpltCallback (I2C_HandleTypeDef * hi2c)
-  31:Core/Src/i2c.c **** {
- 249              		.loc 1 31 1 is_stmt 1 view -0
- 250              		.cfi_startproc
- 251              		@ Volatile: function does not return.
- 252              		@ args = 0, pretend = 0, frame = 0
- 253              		@ frame_needed = 0, uses_anonymous_args = 0
- 254              		@ link register save eliminated.
- 255              	.LVL24:
- 256              	.L22:
-  32:Core/Src/i2c.c ****   while(1);
- 257              		.loc 1 32 3 discriminator 1 view .LVU40
- 258              		.loc 1 32 11 discriminator 1 view .LVU41
- 259              		.loc 1 32 8 discriminator 1 view .LVU42
- 260 0000 FEE7     		b	.L22
- 261              		.cfi_endproc
- 262              	.LFE135:
- 264              		.text
- 265              	.Letext0:
-ARM GAS  /tmp/cc3WkPK8.s 			page 6
+ 149 000a 84F802C0 		strb	ip, [r4, #2]
+  29:Core/Src/i2c.c **** 
+  30:Core/Src/i2c.c ****     return HAL_I2C_Mem_Write(&hi2c3, devaddr, memaddr, memaddr_size, buf, len, HAL_MAX_DELAY);
+ 150              		.loc 1 30 5 is_stmt 1 view .LVU20
+ 151              		.loc 1 30 12 is_stmt 0 view .LVU21
+ 152 000e 4FF0FF34 		mov	r4, #-1
+ 153 0012 0294     		str	r4, [sp, #8]
+ 154 0014 BDF81840 		ldrh	r4, [sp, #24]
+ 155 0018 0194     		str	r4, [sp, #4]
+ 156 001a 0093     		str	r3, [sp]
+ 157 001c 1346     		mov	r3, r2
+ 158              	.LVL11:
+ 159              		.loc 1 30 12 view .LVU22
+ 160 001e 0A46     		mov	r2, r1
+ 161              	.LVL12:
+ 162              		.loc 1 30 12 view .LVU23
+ 163 0020 0146     		mov	r1, r0
+ 164              	.LVL13:
+ 165              		.loc 1 30 12 view .LVU24
+ 166 0022 0348     		ldr	r0, .L11+4
+ 167              	.LVL14:
+ 168              		.loc 1 30 12 view .LVU25
+ 169 0024 FFF7FEFF 		bl	HAL_I2C_Mem_Write
+ 170              	.LVL15:
+  31:Core/Src/i2c.c **** }
+ 171              		.loc 1 31 1 view .LVU26
+ 172 0028 04B0     		add	sp, sp, #16
+ 173              	.LCFI8:
+ 174              		.cfi_def_cfa_offset 8
+ 175              		@ sp needed
+ 176 002a 10BD     		pop	{r4, pc}
+ 177              	.LVL16:
+ 178              	.L12:
+ 179              		.loc 1 31 1 view .LVU27
+ 180              		.align	2
+ 181              	.L11:
+ 182 002c 00000000 		.word	.LANCHOR0
+ 183 0030 00000000 		.word	hi2c3
+ 184              		.cfi_endproc
+ 185              	.LFE132:
+ 187              		.section	.text.i2c_mem_read,"ax",%progbits
+ 188              		.align	1
+ 189              		.global	i2c_mem_read
+ 190              		.syntax unified
+ 191              		.thumb
+ 192              		.thumb_func
+ 194              	i2c_mem_read:
+ 195              	.LVL17:
+ 196              	.LFB133:
+  32:Core/Src/i2c.c **** uint8_t i2c_mem_read(uint8_t devaddr, uint8_t memaddr, uint16_t memaddr_size, uint8_t *buf, uint32_
+  33:Core/Src/i2c.c **** {
+ 197              		.loc 1 33 1 is_stmt 1 view -0
+ 198              		.cfi_startproc
+ 199              		@ args = 4, pretend = 0, frame = 0
+ 200              		@ frame_needed = 0, uses_anonymous_args = 0
+ 201              		.loc 1 33 1 is_stmt 0 view .LVU29
+ 202 0000 10B5     		push	{r4, lr}
+ARM GAS  /tmp/ccMzZbz5.s 			page 5
 
 
- 266              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 267              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 268              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
- 269              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 270              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 271              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
-ARM GAS  /tmp/cc3WkPK8.s 			page 7
+ 203              	.LCFI9:
+ 204              		.cfi_def_cfa_offset 8
+ 205              		.cfi_offset 4, -8
+ 206              		.cfi_offset 14, -4
+ 207 0002 84B0     		sub	sp, sp, #16
+ 208              	.LCFI10:
+ 209              		.cfi_def_cfa_offset 24
+  34:Core/Src/i2c.c ****     dmaStatusCb.rxMemCplt = 0;
+ 210              		.loc 1 34 5 is_stmt 1 view .LVU30
+ 211              		.loc 1 34 27 is_stmt 0 view .LVU31
+ 212 0004 094C     		ldr	r4, .L15
+ 213 0006 4FF0000C 		mov	ip, #0
+ 214 000a 84F803C0 		strb	ip, [r4, #3]
+  35:Core/Src/i2c.c **** 
+  36:Core/Src/i2c.c ****     return HAL_I2C_Mem_Read(&hi2c3, devaddr, memaddr, memaddr_size, buf, len, HAL_MAX_DELAY);
+ 215              		.loc 1 36 5 is_stmt 1 view .LVU32
+ 216              		.loc 1 36 12 is_stmt 0 view .LVU33
+ 217 000e 4FF0FF34 		mov	r4, #-1
+ 218 0012 0294     		str	r4, [sp, #8]
+ 219 0014 BDF81840 		ldrh	r4, [sp, #24]
+ 220 0018 0194     		str	r4, [sp, #4]
+ 221 001a 0093     		str	r3, [sp]
+ 222 001c 1346     		mov	r3, r2
+ 223              	.LVL18:
+ 224              		.loc 1 36 12 view .LVU34
+ 225 001e 0A46     		mov	r2, r1
+ 226              	.LVL19:
+ 227              		.loc 1 36 12 view .LVU35
+ 228 0020 0146     		mov	r1, r0
+ 229              	.LVL20:
+ 230              		.loc 1 36 12 view .LVU36
+ 231 0022 0348     		ldr	r0, .L15+4
+ 232              	.LVL21:
+ 233              		.loc 1 36 12 view .LVU37
+ 234 0024 FFF7FEFF 		bl	HAL_I2C_Mem_Read
+ 235              	.LVL22:
+  37:Core/Src/i2c.c **** }
+ 236              		.loc 1 37 1 view .LVU38
+ 237 0028 04B0     		add	sp, sp, #16
+ 238              	.LCFI11:
+ 239              		.cfi_def_cfa_offset 8
+ 240              		@ sp needed
+ 241 002a 10BD     		pop	{r4, pc}
+ 242              	.LVL23:
+ 243              	.L16:
+ 244              		.loc 1 37 1 view .LVU39
+ 245              		.align	2
+ 246              	.L15:
+ 247 002c 00000000 		.word	.LANCHOR0
+ 248 0030 00000000 		.word	hi2c3
+ 249              		.cfi_endproc
+ 250              	.LFE133:
+ 252              		.section	.text.i2c_mem_write_dma,"ax",%progbits
+ 253              		.align	1
+ 254              		.global	i2c_mem_write_dma
+ 255              		.syntax unified
+ 256              		.thumb
+ARM GAS  /tmp/ccMzZbz5.s 			page 6
+
+
+ 257              		.thumb_func
+ 259              	i2c_mem_write_dma:
+ 260              	.LVL24:
+ 261              	.LFB134:
+  38:Core/Src/i2c.c **** uint8_t i2c_mem_write_dma(uint8_t devaddr, uint8_t memaddr, uint16_t memaddr_size, uint8_t *buf, ui
+  39:Core/Src/i2c.c **** {
+ 262              		.loc 1 39 1 is_stmt 1 view -0
+ 263              		.cfi_startproc
+ 264              		@ args = 4, pretend = 0, frame = 0
+ 265              		@ frame_needed = 0, uses_anonymous_args = 0
+ 266              		.loc 1 39 1 is_stmt 0 view .LVU41
+ 267 0000 10B5     		push	{r4, lr}
+ 268              	.LCFI12:
+ 269              		.cfi_def_cfa_offset 8
+ 270              		.cfi_offset 4, -8
+ 271              		.cfi_offset 14, -4
+ 272 0002 82B0     		sub	sp, sp, #8
+ 273              	.LCFI13:
+ 274              		.cfi_def_cfa_offset 16
+  40:Core/Src/i2c.c ****     dmaStatusCb.txMemCplt = 0;
+ 275              		.loc 1 40 5 is_stmt 1 view .LVU42
+ 276              		.loc 1 40 27 is_stmt 0 view .LVU43
+ 277 0004 084C     		ldr	r4, .L19
+ 278 0006 4FF0000C 		mov	ip, #0
+ 279 000a 84F802C0 		strb	ip, [r4, #2]
+  41:Core/Src/i2c.c **** 
+  42:Core/Src/i2c.c ****     return HAL_I2C_Mem_Write_DMA(&hi2c3, devaddr, memaddr, memaddr_size, buf, len);
+ 280              		.loc 1 42 5 is_stmt 1 view .LVU44
+ 281              		.loc 1 42 12 is_stmt 0 view .LVU45
+ 282 000e BDF81040 		ldrh	r4, [sp, #16]
+ 283 0012 0194     		str	r4, [sp, #4]
+ 284 0014 0093     		str	r3, [sp]
+ 285 0016 1346     		mov	r3, r2
+ 286              	.LVL25:
+ 287              		.loc 1 42 12 view .LVU46
+ 288 0018 0A46     		mov	r2, r1
+ 289              	.LVL26:
+ 290              		.loc 1 42 12 view .LVU47
+ 291 001a 0146     		mov	r1, r0
+ 292              	.LVL27:
+ 293              		.loc 1 42 12 view .LVU48
+ 294 001c 0348     		ldr	r0, .L19+4
+ 295              	.LVL28:
+ 296              		.loc 1 42 12 view .LVU49
+ 297 001e FFF7FEFF 		bl	HAL_I2C_Mem_Write_DMA
+ 298              	.LVL29:
+  43:Core/Src/i2c.c **** }
+ 299              		.loc 1 43 1 view .LVU50
+ 300 0022 02B0     		add	sp, sp, #8
+ 301              	.LCFI14:
+ 302              		.cfi_def_cfa_offset 8
+ 303              		@ sp needed
+ 304 0024 10BD     		pop	{r4, pc}
+ 305              	.LVL30:
+ 306              	.L20:
+ 307              		.loc 1 43 1 view .LVU51
+ 308 0026 00BF     		.align	2
+ARM GAS  /tmp/ccMzZbz5.s 			page 7
+
+
+ 309              	.L19:
+ 310 0028 00000000 		.word	.LANCHOR0
+ 311 002c 00000000 		.word	hi2c3
+ 312              		.cfi_endproc
+ 313              	.LFE134:
+ 315              		.section	.text.i2c_mem_read_dma,"ax",%progbits
+ 316              		.align	1
+ 317              		.global	i2c_mem_read_dma
+ 318              		.syntax unified
+ 319              		.thumb
+ 320              		.thumb_func
+ 322              	i2c_mem_read_dma:
+ 323              	.LVL31:
+ 324              	.LFB135:
+  44:Core/Src/i2c.c **** uint8_t i2c_mem_read_dma(uint8_t devaddr, uint8_t memaddr, uint16_t memaddr_size, uint8_t *buf, uin
+  45:Core/Src/i2c.c **** {
+ 325              		.loc 1 45 1 is_stmt 1 view -0
+ 326              		.cfi_startproc
+ 327              		@ args = 4, pretend = 0, frame = 0
+ 328              		@ frame_needed = 0, uses_anonymous_args = 0
+ 329              		.loc 1 45 1 is_stmt 0 view .LVU53
+ 330 0000 10B5     		push	{r4, lr}
+ 331              	.LCFI15:
+ 332              		.cfi_def_cfa_offset 8
+ 333              		.cfi_offset 4, -8
+ 334              		.cfi_offset 14, -4
+ 335 0002 82B0     		sub	sp, sp, #8
+ 336              	.LCFI16:
+ 337              		.cfi_def_cfa_offset 16
+  46:Core/Src/i2c.c ****     dmaStatusCb.rxMemCplt = 0;
+ 338              		.loc 1 46 5 is_stmt 1 view .LVU54
+ 339              		.loc 1 46 27 is_stmt 0 view .LVU55
+ 340 0004 084C     		ldr	r4, .L23
+ 341 0006 4FF0000C 		mov	ip, #0
+ 342 000a 84F803C0 		strb	ip, [r4, #3]
+  47:Core/Src/i2c.c **** 
+  48:Core/Src/i2c.c ****     return HAL_I2C_Mem_Read_DMA(&hi2c3, devaddr, memaddr, memaddr_size, buf, len);
+ 343              		.loc 1 48 5 is_stmt 1 view .LVU56
+ 344              		.loc 1 48 12 is_stmt 0 view .LVU57
+ 345 000e BDF81040 		ldrh	r4, [sp, #16]
+ 346 0012 0194     		str	r4, [sp, #4]
+ 347 0014 0093     		str	r3, [sp]
+ 348 0016 1346     		mov	r3, r2
+ 349              	.LVL32:
+ 350              		.loc 1 48 12 view .LVU58
+ 351 0018 0A46     		mov	r2, r1
+ 352              	.LVL33:
+ 353              		.loc 1 48 12 view .LVU59
+ 354 001a 0146     		mov	r1, r0
+ 355              	.LVL34:
+ 356              		.loc 1 48 12 view .LVU60
+ 357 001c 0348     		ldr	r0, .L23+4
+ 358              	.LVL35:
+ 359              		.loc 1 48 12 view .LVU61
+ 360 001e FFF7FEFF 		bl	HAL_I2C_Mem_Read_DMA
+ 361              	.LVL36:
+  49:Core/Src/i2c.c **** }
+ARM GAS  /tmp/ccMzZbz5.s 			page 8
+
+
+ 362              		.loc 1 49 1 view .LVU62
+ 363 0022 02B0     		add	sp, sp, #8
+ 364              	.LCFI17:
+ 365              		.cfi_def_cfa_offset 8
+ 366              		@ sp needed
+ 367 0024 10BD     		pop	{r4, pc}
+ 368              	.LVL37:
+ 369              	.L24:
+ 370              		.loc 1 49 1 view .LVU63
+ 371 0026 00BF     		.align	2
+ 372              	.L23:
+ 373 0028 00000000 		.word	.LANCHOR0
+ 374 002c 00000000 		.word	hi2c3
+ 375              		.cfi_endproc
+ 376              	.LFE135:
+ 378              		.section	.text.i2c_device_acks,"ax",%progbits
+ 379              		.align	1
+ 380              		.global	i2c_device_acks
+ 381              		.syntax unified
+ 382              		.thumb
+ 383              		.thumb_func
+ 385              	i2c_device_acks:
+ 386              	.LVL38:
+ 387              	.LFB136:
+  50:Core/Src/i2c.c **** 
+  51:Core/Src/i2c.c **** uint8_t i2c_device_acks(uint8_t addr, uint32_t attempts)
+  52:Core/Src/i2c.c **** {
+ 388              		.loc 1 52 1 is_stmt 1 view -0
+ 389              		.cfi_startproc
+ 390              		@ args = 0, pretend = 0, frame = 0
+ 391              		@ frame_needed = 0, uses_anonymous_args = 0
+ 392              		.loc 1 52 1 is_stmt 0 view .LVU65
+ 393 0000 08B5     		push	{r3, lr}
+ 394              	.LCFI18:
+ 395              		.cfi_def_cfa_offset 8
+ 396              		.cfi_offset 3, -8
+ 397              		.cfi_offset 14, -4
+ 398 0002 0A46     		mov	r2, r1
+  53:Core/Src/i2c.c ****     return HAL_I2C_IsDeviceReady(&hi2c3, addr, attempts, HAL_MAX_DELAY);
+ 399              		.loc 1 53 5 is_stmt 1 view .LVU66
+ 400              		.loc 1 53 12 is_stmt 0 view .LVU67
+ 401 0004 4FF0FF33 		mov	r3, #-1
+ 402 0008 0146     		mov	r1, r0
+ 403              	.LVL39:
+ 404              		.loc 1 53 12 view .LVU68
+ 405 000a 0248     		ldr	r0, .L27
+ 406              	.LVL40:
+ 407              		.loc 1 53 12 view .LVU69
+ 408 000c FFF7FEFF 		bl	HAL_I2C_IsDeviceReady
+ 409              	.LVL41:
+  54:Core/Src/i2c.c **** }
+ 410              		.loc 1 54 1 view .LVU70
+ 411 0010 08BD     		pop	{r3, pc}
+ 412              	.L28:
+ 413 0012 00BF     		.align	2
+ 414              	.L27:
+ 415 0014 00000000 		.word	hi2c3
+ARM GAS  /tmp/ccMzZbz5.s 			page 9
+
+
+ 416              		.cfi_endproc
+ 417              	.LFE136:
+ 419              		.section	.text.i2c_dma_mem_read_cplt,"ax",%progbits
+ 420              		.align	1
+ 421              		.global	i2c_dma_mem_read_cplt
+ 422              		.syntax unified
+ 423              		.thumb
+ 424              		.thumb_func
+ 426              	i2c_dma_mem_read_cplt:
+ 427              	.LFB137:
+  55:Core/Src/i2c.c **** uint8_t i2c_dma_mem_read_cplt(void)
+  56:Core/Src/i2c.c **** {
+ 428              		.loc 1 56 1 is_stmt 1 view -0
+ 429              		.cfi_startproc
+ 430              		@ args = 0, pretend = 0, frame = 0
+ 431              		@ frame_needed = 0, uses_anonymous_args = 0
+ 432              		@ link register save eliminated.
+  57:Core/Src/i2c.c ****     return dmaStatusCb.rxMemCplt;
+ 433              		.loc 1 57 5 view .LVU72
+ 434              		.loc 1 57 23 is_stmt 0 view .LVU73
+ 435 0000 014B     		ldr	r3, .L30
+ 436 0002 D878     		ldrb	r0, [r3, #3]	@ zero_extendqisi2
+  58:Core/Src/i2c.c **** 
+  59:Core/Src/i2c.c **** }
+ 437              		.loc 1 59 1 view .LVU74
+ 438 0004 7047     		bx	lr
+ 439              	.L31:
+ 440 0006 00BF     		.align	2
+ 441              	.L30:
+ 442 0008 00000000 		.word	.LANCHOR0
+ 443              		.cfi_endproc
+ 444              	.LFE137:
+ 446              		.section	.text.i2c_dma_mem_write_cplt,"ax",%progbits
+ 447              		.align	1
+ 448              		.global	i2c_dma_mem_write_cplt
+ 449              		.syntax unified
+ 450              		.thumb
+ 451              		.thumb_func
+ 453              	i2c_dma_mem_write_cplt:
+ 454              	.LFB138:
+  60:Core/Src/i2c.c **** uint8_t i2c_dma_mem_write_cplt(void)
+  61:Core/Src/i2c.c **** {
+ 455              		.loc 1 61 1 is_stmt 1 view -0
+ 456              		.cfi_startproc
+ 457              		@ args = 0, pretend = 0, frame = 0
+ 458              		@ frame_needed = 0, uses_anonymous_args = 0
+ 459              		@ link register save eliminated.
+  62:Core/Src/i2c.c ****     return dmaStatusCb.txMemCplt;
+ 460              		.loc 1 62 5 view .LVU76
+ 461              		.loc 1 62 23 is_stmt 0 view .LVU77
+ 462 0000 014B     		ldr	r3, .L33
+ 463 0002 9878     		ldrb	r0, [r3, #2]	@ zero_extendqisi2
+  63:Core/Src/i2c.c **** 
+  64:Core/Src/i2c.c **** }
+ 464              		.loc 1 64 1 view .LVU78
+ 465 0004 7047     		bx	lr
+ 466              	.L34:
+ARM GAS  /tmp/ccMzZbz5.s 			page 10
+
+
+ 467 0006 00BF     		.align	2
+ 468              	.L33:
+ 469 0008 00000000 		.word	.LANCHOR0
+ 470              		.cfi_endproc
+ 471              	.LFE138:
+ 473              		.section	.text.i2c_dma_read_cplt,"ax",%progbits
+ 474              		.align	1
+ 475              		.global	i2c_dma_read_cplt
+ 476              		.syntax unified
+ 477              		.thumb
+ 478              		.thumb_func
+ 480              	i2c_dma_read_cplt:
+ 481              	.LFB139:
+  65:Core/Src/i2c.c **** uint8_t i2c_dma_read_cplt(void)
+  66:Core/Src/i2c.c **** {
+ 482              		.loc 1 66 1 is_stmt 1 view -0
+ 483              		.cfi_startproc
+ 484              		@ args = 0, pretend = 0, frame = 0
+ 485              		@ frame_needed = 0, uses_anonymous_args = 0
+ 486              		@ link register save eliminated.
+  67:Core/Src/i2c.c ****     return dmaStatusCb.rxCplt;
+ 487              		.loc 1 67 5 view .LVU80
+ 488              		.loc 1 67 23 is_stmt 0 view .LVU81
+ 489 0000 014B     		ldr	r3, .L36
+ 490 0002 5878     		ldrb	r0, [r3, #1]	@ zero_extendqisi2
+  68:Core/Src/i2c.c **** 
+  69:Core/Src/i2c.c **** }
+ 491              		.loc 1 69 1 view .LVU82
+ 492 0004 7047     		bx	lr
+ 493              	.L37:
+ 494 0006 00BF     		.align	2
+ 495              	.L36:
+ 496 0008 00000000 		.word	.LANCHOR0
+ 497              		.cfi_endproc
+ 498              	.LFE139:
+ 500              		.section	.text.i2c_dma_write_cplt,"ax",%progbits
+ 501              		.align	1
+ 502              		.global	i2c_dma_write_cplt
+ 503              		.syntax unified
+ 504              		.thumb
+ 505              		.thumb_func
+ 507              	i2c_dma_write_cplt:
+ 508              	.LFB140:
+  70:Core/Src/i2c.c **** uint8_t i2c_dma_write_cplt(void)
+  71:Core/Src/i2c.c **** {
+ 509              		.loc 1 71 1 is_stmt 1 view -0
+ 510              		.cfi_startproc
+ 511              		@ args = 0, pretend = 0, frame = 0
+ 512              		@ frame_needed = 0, uses_anonymous_args = 0
+ 513              		@ link register save eliminated.
+  72:Core/Src/i2c.c ****     return dmaStatusCb.txCplt;
+ 514              		.loc 1 72 5 view .LVU84
+ 515              		.loc 1 72 23 is_stmt 0 view .LVU85
+ 516 0000 014B     		ldr	r3, .L39
+ 517 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  73:Core/Src/i2c.c **** }
+ 518              		.loc 1 73 1 view .LVU86
+ARM GAS  /tmp/ccMzZbz5.s 			page 11
+
+
+ 519 0004 7047     		bx	lr
+ 520              	.L40:
+ 521 0006 00BF     		.align	2
+ 522              	.L39:
+ 523 0008 00000000 		.word	.LANCHOR0
+ 524              		.cfi_endproc
+ 525              	.LFE140:
+ 527              		.section	.text.HAL_I2C_MasterTxCpltCallback,"ax",%progbits
+ 528              		.align	1
+ 529              		.global	HAL_I2C_MasterTxCpltCallback
+ 530              		.syntax unified
+ 531              		.thumb
+ 532              		.thumb_func
+ 534              	HAL_I2C_MasterTxCpltCallback:
+ 535              	.LVL42:
+ 536              	.LFB141:
+  74:Core/Src/i2c.c **** void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c)
+  75:Core/Src/i2c.c **** {
+ 537              		.loc 1 75 1 is_stmt 1 view -0
+ 538              		.cfi_startproc
+ 539              		@ args = 0, pretend = 0, frame = 0
+ 540              		@ frame_needed = 0, uses_anonymous_args = 0
+ 541              		@ link register save eliminated.
+  76:Core/Src/i2c.c ****         dmaStatusCb.rxCplt = 1;
+ 542              		.loc 1 76 9 view .LVU88
+ 543              		.loc 1 76 28 is_stmt 0 view .LVU89
+ 544 0000 014B     		ldr	r3, .L42
+ 545 0002 0122     		movs	r2, #1
+ 546 0004 5A70     		strb	r2, [r3, #1]
+  77:Core/Src/i2c.c **** }
+ 547              		.loc 1 77 1 view .LVU90
+ 548 0006 7047     		bx	lr
+ 549              	.L43:
+ 550              		.align	2
+ 551              	.L42:
+ 552 0008 00000000 		.word	.LANCHOR0
+ 553              		.cfi_endproc
+ 554              	.LFE141:
+ 556              		.section	.text.HAL_I2C_MasterRxCpltCallback,"ax",%progbits
+ 557              		.align	1
+ 558              		.global	HAL_I2C_MasterRxCpltCallback
+ 559              		.syntax unified
+ 560              		.thumb
+ 561              		.thumb_func
+ 563              	HAL_I2C_MasterRxCpltCallback:
+ 564              	.LVL43:
+ 565              	.LFB142:
+  78:Core/Src/i2c.c **** void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c)
+  79:Core/Src/i2c.c **** {
+ 566              		.loc 1 79 1 is_stmt 1 view -0
+ 567              		.cfi_startproc
+ 568              		@ args = 0, pretend = 0, frame = 0
+ 569              		@ frame_needed = 0, uses_anonymous_args = 0
+ 570              		@ link register save eliminated.
+  80:Core/Src/i2c.c ****     dmaStatusCb.rxCplt = 1;
+ 571              		.loc 1 80 5 view .LVU92
+ 572              		.loc 1 80 24 is_stmt 0 view .LVU93
+ARM GAS  /tmp/ccMzZbz5.s 			page 12
+
+
+ 573 0000 014B     		ldr	r3, .L45
+ 574 0002 0122     		movs	r2, #1
+ 575 0004 5A70     		strb	r2, [r3, #1]
+  81:Core/Src/i2c.c **** }
+ 576              		.loc 1 81 1 view .LVU94
+ 577 0006 7047     		bx	lr
+ 578              	.L46:
+ 579              		.align	2
+ 580              	.L45:
+ 581 0008 00000000 		.word	.LANCHOR0
+ 582              		.cfi_endproc
+ 583              	.LFE142:
+ 585              		.section	.text.HAL_I2C_MemTxCpltCallback,"ax",%progbits
+ 586              		.align	1
+ 587              		.global	HAL_I2C_MemTxCpltCallback
+ 588              		.syntax unified
+ 589              		.thumb
+ 590              		.thumb_func
+ 592              	HAL_I2C_MemTxCpltCallback:
+ 593              	.LVL44:
+ 594              	.LFB143:
+  82:Core/Src/i2c.c **** void HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef *hi2c)
+  83:Core/Src/i2c.c **** {
+ 595              		.loc 1 83 1 is_stmt 1 view -0
+ 596              		.cfi_startproc
+ 597              		@ args = 0, pretend = 0, frame = 0
+ 598              		@ frame_needed = 0, uses_anonymous_args = 0
+ 599              		@ link register save eliminated.
+  84:Core/Src/i2c.c ****         dmaStatusCb.txMemCplt = 1;
+ 600              		.loc 1 84 9 view .LVU96
+ 601              		.loc 1 84 31 is_stmt 0 view .LVU97
+ 602 0000 014B     		ldr	r3, .L48
+ 603 0002 0122     		movs	r2, #1
+ 604 0004 9A70     		strb	r2, [r3, #2]
+  85:Core/Src/i2c.c ****     
+  86:Core/Src/i2c.c **** }
+ 605              		.loc 1 86 1 view .LVU98
+ 606 0006 7047     		bx	lr
+ 607              	.L49:
+ 608              		.align	2
+ 609              	.L48:
+ 610 0008 00000000 		.word	.LANCHOR0
+ 611              		.cfi_endproc
+ 612              	.LFE143:
+ 614              		.section	.text.HAL_I2C_MemRxCpltCallback,"ax",%progbits
+ 615              		.align	1
+ 616              		.global	HAL_I2C_MemRxCpltCallback
+ 617              		.syntax unified
+ 618              		.thumb
+ 619              		.thumb_func
+ 621              	HAL_I2C_MemRxCpltCallback:
+ 622              	.LVL45:
+ 623              	.LFB144:
+  87:Core/Src/i2c.c **** void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
+  88:Core/Src/i2c.c **** {
+ 624              		.loc 1 88 1 is_stmt 1 view -0
+ 625              		.cfi_startproc
+ARM GAS  /tmp/ccMzZbz5.s 			page 13
+
+
+ 626              		@ args = 0, pretend = 0, frame = 0
+ 627              		@ frame_needed = 0, uses_anonymous_args = 0
+ 628              		@ link register save eliminated.
+  89:Core/Src/i2c.c ****         dmaStatusCb.rxMemCplt = 1;
+ 629              		.loc 1 89 9 view .LVU100
+ 630              		.loc 1 89 31 is_stmt 0 view .LVU101
+ 631 0000 014B     		ldr	r3, .L51
+ 632 0002 0122     		movs	r2, #1
+ 633 0004 DA70     		strb	r2, [r3, #3]
+  90:Core/Src/i2c.c **** }
+ 634              		.loc 1 90 1 view .LVU102
+ 635 0006 7047     		bx	lr
+ 636              	.L52:
+ 637              		.align	2
+ 638              	.L51:
+ 639 0008 00000000 		.word	.LANCHOR0
+ 640              		.cfi_endproc
+ 641              	.LFE144:
+ 643              		.section	.text.HAL_I2C_ErrorCallback,"ax",%progbits
+ 644              		.align	1
+ 645              		.global	HAL_I2C_ErrorCallback
+ 646              		.syntax unified
+ 647              		.thumb
+ 648              		.thumb_func
+ 650              	HAL_I2C_ErrorCallback:
+ 651              	.LVL46:
+ 652              	.LFB145:
+  91:Core/Src/i2c.c **** void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
+  92:Core/Src/i2c.c **** {
+ 653              		.loc 1 92 1 is_stmt 1 view -0
+ 654              		.cfi_startproc
+ 655              		@ args = 0, pretend = 0, frame = 0
+ 656              		@ frame_needed = 0, uses_anonymous_args = 0
+ 657              		@ link register save eliminated.
+  93:Core/Src/i2c.c ****         memset((void*)&dmaStatusCb, 1, sizeof(dmaStatusCb));
+ 658              		.loc 1 93 9 view .LVU104
+ 659 0000 024B     		ldr	r3, .L54
+ 660 0002 4FF00132 		mov	r2, #16843009
+ 661 0006 1A60     		str	r2, [r3]
+  94:Core/Src/i2c.c **** }
+ 662              		.loc 1 94 1 is_stmt 0 view .LVU105
+ 663 0008 7047     		bx	lr
+ 664              	.L55:
+ 665 000a 00BF     		.align	2
+ 666              	.L54:
+ 667 000c 00000000 		.word	.LANCHOR0
+ 668              		.cfi_endproc
+ 669              	.LFE145:
+ 671              		.section	.text.HAL_I2C_AbortCpltCallback,"ax",%progbits
+ 672              		.align	1
+ 673              		.global	HAL_I2C_AbortCpltCallback
+ 674              		.syntax unified
+ 675              		.thumb
+ 676              		.thumb_func
+ 678              	HAL_I2C_AbortCpltCallback:
+ 679              	.LVL47:
+ 680              	.LFB146:
+ARM GAS  /tmp/ccMzZbz5.s 			page 14
+
+
+  95:Core/Src/i2c.c **** void HAL_I2C_AbortCpltCallback(I2C_HandleTypeDef *hi2c)
+  96:Core/Src/i2c.c **** {
+ 681              		.loc 1 96 1 is_stmt 1 view -0
+ 682              		.cfi_startproc
+ 683              		@ args = 0, pretend = 0, frame = 0
+ 684              		@ frame_needed = 0, uses_anonymous_args = 0
+ 685              		@ link register save eliminated.
+  97:Core/Src/i2c.c ****         memset((void*)&dmaStatusCb, 1, sizeof(dmaStatusCb));
+ 686              		.loc 1 97 9 view .LVU107
+ 687 0000 024B     		ldr	r3, .L57
+ 688 0002 4FF00132 		mov	r2, #16843009
+ 689 0006 1A60     		str	r2, [r3]
+  98:Core/Src/i2c.c **** 
+  99:Core/Src/i2c.c **** }...
+ 690              		.loc 1 99 1 is_stmt 0 view .LVU108
+ 691 0008 7047     		bx	lr
+ 692              	.L58:
+ 693 000a 00BF     		.align	2
+ 694              	.L57:
+ 695 000c 00000000 		.word	.LANCHOR0
+ 696              		.cfi_endproc
+ 697              	.LFE146:
+ 699              		.global	dmaStatusCb
+ 700              		.section	.bss.dmaStatusCb,"aw",%nobits
+ 701              		.align	2
+ 702              		.set	.LANCHOR0,. + 0
+ 705              	dmaStatusCb:
+ 706 0000 00000000 		.space	4
+ 707              		.text
+ 708              	.Letext0:
+ 709              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 710              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 711              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 712              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 713              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 714              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ARM GAS  /tmp/ccMzZbz5.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 i2c.c
-     /tmp/cc3WkPK8.s:20     .text.i2c_write:0000000000000000 $t
-     /tmp/cc3WkPK8.s:26     .text.i2c_write:0000000000000000 i2c_write
-     /tmp/cc3WkPK8.s:64     .text.i2c_write:000000000000001c $d
-     /tmp/cc3WkPK8.s:69     .text.i2c_read:0000000000000000 $t
-     /tmp/cc3WkPK8.s:75     .text.i2c_read:0000000000000000 i2c_read
-     /tmp/cc3WkPK8.s:112    .text.i2c_read:000000000000001c $d
-     /tmp/cc3WkPK8.s:117    .text.i2c_write_dma:0000000000000000 $t
-     /tmp/cc3WkPK8.s:123    .text.i2c_write_dma:0000000000000000 i2c_write_dma
-     /tmp/cc3WkPK8.s:154    .text.i2c_write_dma:0000000000000010 $d
-     /tmp/cc3WkPK8.s:159    .text.i2c_read_dma:0000000000000000 $t
-     /tmp/cc3WkPK8.s:165    .text.i2c_read_dma:0000000000000000 i2c_read_dma
-     /tmp/cc3WkPK8.s:196    .text.i2c_read_dma:0000000000000010 $d
-     /tmp/cc3WkPK8.s:201    .text.i2c_device_acks:0000000000000000 $t
-     /tmp/cc3WkPK8.s:207    .text.i2c_device_acks:0000000000000000 i2c_device_acks
-     /tmp/cc3WkPK8.s:236    .text.i2c_device_acks:0000000000000014 $d
-     /tmp/cc3WkPK8.s:241    .text.HAL_I2C_MasterTxCpltCallback:0000000000000000 $t
-     /tmp/cc3WkPK8.s:247    .text.HAL_I2C_MasterTxCpltCallback:0000000000000000 HAL_I2C_MasterTxCpltCallback
+     /tmp/ccMzZbz5.s:20     .text.i2c_write:0000000000000000 $t
+     /tmp/ccMzZbz5.s:26     .text.i2c_write:0000000000000000 i2c_write
+     /tmp/ccMzZbz5.s:67     .text.i2c_write:000000000000001c $d
+     /tmp/ccMzZbz5.s:72     .text.i2c_read:0000000000000000 $t
+     /tmp/ccMzZbz5.s:78     .text.i2c_read:0000000000000000 i2c_read
+     /tmp/ccMzZbz5.s:118    .text.i2c_read:000000000000001c $d
+     /tmp/ccMzZbz5.s:123    .text.i2c_mem_write:0000000000000000 $t
+     /tmp/ccMzZbz5.s:129    .text.i2c_mem_write:0000000000000000 i2c_mem_write
+     /tmp/ccMzZbz5.s:182    .text.i2c_mem_write:000000000000002c $d
+     /tmp/ccMzZbz5.s:188    .text.i2c_mem_read:0000000000000000 $t
+     /tmp/ccMzZbz5.s:194    .text.i2c_mem_read:0000000000000000 i2c_mem_read
+     /tmp/ccMzZbz5.s:247    .text.i2c_mem_read:000000000000002c $d
+     /tmp/ccMzZbz5.s:253    .text.i2c_mem_write_dma:0000000000000000 $t
+     /tmp/ccMzZbz5.s:259    .text.i2c_mem_write_dma:0000000000000000 i2c_mem_write_dma
+     /tmp/ccMzZbz5.s:310    .text.i2c_mem_write_dma:0000000000000028 $d
+     /tmp/ccMzZbz5.s:316    .text.i2c_mem_read_dma:0000000000000000 $t
+     /tmp/ccMzZbz5.s:322    .text.i2c_mem_read_dma:0000000000000000 i2c_mem_read_dma
+     /tmp/ccMzZbz5.s:373    .text.i2c_mem_read_dma:0000000000000028 $d
+     /tmp/ccMzZbz5.s:379    .text.i2c_device_acks:0000000000000000 $t
+     /tmp/ccMzZbz5.s:385    .text.i2c_device_acks:0000000000000000 i2c_device_acks
+     /tmp/ccMzZbz5.s:415    .text.i2c_device_acks:0000000000000014 $d
+     /tmp/ccMzZbz5.s:420    .text.i2c_dma_mem_read_cplt:0000000000000000 $t
+     /tmp/ccMzZbz5.s:426    .text.i2c_dma_mem_read_cplt:0000000000000000 i2c_dma_mem_read_cplt
+     /tmp/ccMzZbz5.s:442    .text.i2c_dma_mem_read_cplt:0000000000000008 $d
+     /tmp/ccMzZbz5.s:447    .text.i2c_dma_mem_write_cplt:0000000000000000 $t
+     /tmp/ccMzZbz5.s:453    .text.i2c_dma_mem_write_cplt:0000000000000000 i2c_dma_mem_write_cplt
+     /tmp/ccMzZbz5.s:469    .text.i2c_dma_mem_write_cplt:0000000000000008 $d
+     /tmp/ccMzZbz5.s:474    .text.i2c_dma_read_cplt:0000000000000000 $t
+     /tmp/ccMzZbz5.s:480    .text.i2c_dma_read_cplt:0000000000000000 i2c_dma_read_cplt
+     /tmp/ccMzZbz5.s:496    .text.i2c_dma_read_cplt:0000000000000008 $d
+     /tmp/ccMzZbz5.s:501    .text.i2c_dma_write_cplt:0000000000000000 $t
+     /tmp/ccMzZbz5.s:507    .text.i2c_dma_write_cplt:0000000000000000 i2c_dma_write_cplt
+     /tmp/ccMzZbz5.s:523    .text.i2c_dma_write_cplt:0000000000000008 $d
+     /tmp/ccMzZbz5.s:528    .text.HAL_I2C_MasterTxCpltCallback:0000000000000000 $t
+     /tmp/ccMzZbz5.s:534    .text.HAL_I2C_MasterTxCpltCallback:0000000000000000 HAL_I2C_MasterTxCpltCallback
+     /tmp/ccMzZbz5.s:552    .text.HAL_I2C_MasterTxCpltCallback:0000000000000008 $d
+     /tmp/ccMzZbz5.s:557    .text.HAL_I2C_MasterRxCpltCallback:0000000000000000 $t
+     /tmp/ccMzZbz5.s:563    .text.HAL_I2C_MasterRxCpltCallback:0000000000000000 HAL_I2C_MasterRxCpltCallback
+     /tmp/ccMzZbz5.s:581    .text.HAL_I2C_MasterRxCpltCallback:0000000000000008 $d
+     /tmp/ccMzZbz5.s:586    .text.HAL_I2C_MemTxCpltCallback:0000000000000000 $t
+     /tmp/ccMzZbz5.s:592    .text.HAL_I2C_MemTxCpltCallback:0000000000000000 HAL_I2C_MemTxCpltCallback
+     /tmp/ccMzZbz5.s:610    .text.HAL_I2C_MemTxCpltCallback:0000000000000008 $d
+     /tmp/ccMzZbz5.s:615    .text.HAL_I2C_MemRxCpltCallback:0000000000000000 $t
+     /tmp/ccMzZbz5.s:621    .text.HAL_I2C_MemRxCpltCallback:0000000000000000 HAL_I2C_MemRxCpltCallback
+     /tmp/ccMzZbz5.s:639    .text.HAL_I2C_MemRxCpltCallback:0000000000000008 $d
+     /tmp/ccMzZbz5.s:644    .text.HAL_I2C_ErrorCallback:0000000000000000 $t
+     /tmp/ccMzZbz5.s:650    .text.HAL_I2C_ErrorCallback:0000000000000000 HAL_I2C_ErrorCallback
+     /tmp/ccMzZbz5.s:667    .text.HAL_I2C_ErrorCallback:000000000000000c $d
+     /tmp/ccMzZbz5.s:672    .text.HAL_I2C_AbortCpltCallback:0000000000000000 $t
+     /tmp/ccMzZbz5.s:678    .text.HAL_I2C_AbortCpltCallback:0000000000000000 HAL_I2C_AbortCpltCallback
+     /tmp/ccMzZbz5.s:695    .text.HAL_I2C_AbortCpltCallback:000000000000000c $d
+     /tmp/ccMzZbz5.s:705    .bss.dmaStatusCb:0000000000000000 dmaStatusCb
+     /tmp/ccMzZbz5.s:701    .bss.dmaStatusCb:0000000000000000 $d
 
 UNDEFINED SYMBOLS
+ARM GAS  /tmp/ccMzZbz5.s 			page 16
+
+
 HAL_I2C_Master_Transmit
 hi2c3
 HAL_I2C_Master_Receive
-HAL_I2C_Master_Transmit_DMA
-HAL_I2C_Master_Receive_DMA
+HAL_I2C_Mem_Write
+HAL_I2C_Mem_Read
+HAL_I2C_Mem_Write_DMA
+HAL_I2C_Mem_Read_DMA
 HAL_I2C_IsDeviceReady

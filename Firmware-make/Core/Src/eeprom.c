@@ -49,7 +49,7 @@ uint8_t eeprom_write(uint32_t addr, void *data, uint32_t len)
 
         return i2c_device_acks(EEPROM_I2C_ADDR, WAIT_ATTEMPTS);
 
-        // return i2c_write_dma(EEPROM_I2C_ADDR, write_buf, len + 1);
+        // return i2c_mem_write_dma(EEPROM_I2C_ADDR, write_buf, len + 1);
     }
     return HAL_OK;
 }
