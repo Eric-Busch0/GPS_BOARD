@@ -1,7 +1,7 @@
 #ifndef UART_PRINTF_H
 #define UART_PRINTF_H
 
-
+#include <stdint.h>
 #ifdef __cplusplus
 extern "C"{
 #endif
