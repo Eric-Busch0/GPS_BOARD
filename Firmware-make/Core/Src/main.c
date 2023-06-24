@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -27,6 +28,7 @@
 #include "lis2hd12.h"
 #include "eeprom.h"
 #include "uart_printf.h"
+#include "bmp280_defs.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -63,6 +65,8 @@ DMA_HandleTypeDef hdma_usart1_tx;
 DMA_HandleTypeDef hdma_usart2_rx;
 DMA_HandleTypeDef hdma_usart2_tx;
 
+DMA_HandleTypeDef hdma_memtomem_dma2_stream1;
+osThreadId defaultTaskHandle;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -77,6 +81,8 @@ static void MX_USART1_UART_Init(void);
 static void MX_I2C3_Init(void);
 static void MX_CRC_Init(void);
 static void MX_RTC_Init(void);
+void StartDefaultTask(void const *argument);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -115,6 +121,7 @@ void i2c_scan(void)
   HAL_UART_Transmit(&huart1, EndMSG, sizeof(EndMSG), HAL_MAX_DELAY);
   /*--[ Scanning Done ]--*/
 }
+
 void print_bmp280_id()
 {
   uint8_t id;
@@ -143,36 +150,36 @@ void print_lis2hd12_who_am_i(void)
   }
   else
   {
-    uart_printf("IMU ID: %#02X\rn", id);
+    uart_printf("IMU ID: %#02X\r\n", id);
   }
 }
 
-void read_pressure(void)
-{
+// void read_pressure(void)
+// {
 
-  uint8_t ret;
-  ret = bmp280_start_press_read();
+//   uint8_t ret;
+//   ret = bmp280_read_pressure();
 
-  if (ret != HAL_OK)
-  {
-    uart_printf("BMP280 Error\r\n");
-    return;
-  }
+//   if (ret != HAL_OK)
+//   {
+//     uart_printf("BMP280 Error\r\n");
+//     return;
+//   }
 
-  HAL_Delay(100);
+//   HAL_Delay(100);
 
-  uint32_t pressure = UINT32_MAX;
-  ret = bmp280_get_temp(&pressure);
+//   uint32_t pressure = UINT32_MAX;
+//   ret = bmp280_get_temp(&pressure);
 
-  if (ret != HAL_OK)
-  {
-    uart_printf("Error getting temp");
-  }
-  else
-  {
-    uart_printf("Pressure %lu", pressure);
-  }
-}
+//   if (ret != HAL_OK)
+//   {
+//     uart_printf("Error getting temp");
+//   }
+//   else
+//   {
+//     uart_printf("Pressure %lu", pressure);
+//   }
+// }
 /* USER CODE END 0 */
 
 /**
@@ -212,7 +219,7 @@ int main(void)
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
   // uart_printf("Beginning\r\n");
-  // i2c_scan();
+  i2c_scan();
   // print_bmp280_id();
   print_lis2hd12_who_am_i();
 
@@ -236,6 +243,34 @@ int main(void)
 
   /* USER CODE END 2 */
 
+  /* USER CODE BEGIN RTOS_MUTEX */
+  /* add mutexes, ... */
+  /* USER CODE END RTOS_MUTEX */
+
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* add semaphores, ... */
+  /* USER CODE END RTOS_SEMAPHORES */
+
+  /* USER CODE BEGIN RTOS_TIMERS */
+  /* start timers, add new ones, ... */
+  /* USER CODE END RTOS_TIMERS */
+
+  /* USER CODE BEGIN RTOS_QUEUES */
+  /* add queues, ... */
+  /* USER CODE END RTOS_QUEUES */
+
+  /* Create the thread(s) */
+  /* definition and creation of defaultTask */
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+
+  /* USER CODE BEGIN RTOS_THREADS */
+  /* add threads, ... */
+  /* USER CODE END RTOS_THREADS */
+
+  /* Start scheduler */
+  osKernelStart();
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -519,6 +554,8 @@ static void MX_USART2_UART_Init(void)
 
 /**
  * Enable DMA controller clock
+ * Configure DMA for memory to memory transfers
+ *   hdma_memtomem_dma2_stream1
  */
 static void MX_DMA_Init(void)
 {
@@ -527,27 +564,46 @@ static void MX_DMA_Init(void)
   __HAL_RCC_DMA1_CLK_ENABLE();
   __HAL_RCC_DMA2_CLK_ENABLE();
 
+  /* Configure DMA request hdma_memtomem_dma2_stream1 on DMA2_Stream1 */
+  hdma_memtomem_dma2_stream1.Instance = DMA2_Stream1;
+  hdma_memtomem_dma2_stream1.Init.Channel = DMA_CHANNEL_0;
+  hdma_memtomem_dma2_stream1.Init.Direction = DMA_MEMORY_TO_MEMORY;
+  hdma_memtomem_dma2_stream1.Init.PeriphInc = DMA_PINC_ENABLE;
+  hdma_memtomem_dma2_stream1.Init.MemInc = DMA_MINC_ENABLE;
+  hdma_memtomem_dma2_stream1.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+  hdma_memtomem_dma2_stream1.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+  hdma_memtomem_dma2_stream1.Init.Mode = DMA_NORMAL;
+  hdma_memtomem_dma2_stream1.Init.Priority = DMA_PRIORITY_LOW;
+  hdma_memtomem_dma2_stream1.Init.FIFOMode = DMA_FIFOMODE_ENABLE;
+  hdma_memtomem_dma2_stream1.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+  hdma_memtomem_dma2_stream1.Init.MemBurst = DMA_MBURST_SINGLE;
+  hdma_memtomem_dma2_stream1.Init.PeriphBurst = DMA_PBURST_SINGLE;
+  if (HAL_DMA_Init(&hdma_memtomem_dma2_stream1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
   /* DMA interrupt init */
   /* DMA1_Stream1_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
   /* DMA1_Stream4_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream4_IRQn);
   /* DMA1_Stream5_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
   /* DMA1_Stream6_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream6_IRQn);
   /* DMA2_Stream0_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
   /* DMA2_Stream3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
   /* DMA2_Stream7_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream7_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA2_Stream7_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream7_IRQn);
 }
 
@@ -570,7 +626,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPS_RST_GPIO_Port, GPS_RST_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPS_RST_GPIO_Port, GPS_RST_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, TIMEPULSE_Pin | SAFEBOOT_Pin, GPIO_PIN_RESET);
@@ -587,12 +643,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPS_RST_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PC14 */
-  GPIO_InitStruct.Pin = GPIO_PIN_14;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : GPS_INT_Pin */
   GPIO_InitStruct.Pin = GPS_INT_Pin;
@@ -632,8 +682,134 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+static bmp280_com_fptr_t bmp280_write(uint8_t dev_id, uint8_t reg_addr, uint8_t *data, uint16_t len)
+{
+
+  uint8_t ret;
+  // This may be faster to just combine the two?
+  HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 0);
+  ret = HAL_SPI_Transmit(&hspi1, &reg_addr, 1, HAL_MAX_DELAY);
+  ret = HAL_SPI_Transmit(&hspi1, data, len, HAL_MAX_DELAY);
+  HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 1);
+
+  return ret;
+}
+
+static bmp280_com_fptr_t bmp280_read(uint8_t dev_id, uint8_t reg_addr, uint8_t *data, uint16_t len)
+{
+
+  HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 0);
+  HAL_SPI_Transmit(&hspi1, &reg_addr, 1, HAL_MAX_DELAY);
+  uint8_t ret = HAL_SPI_Receive(&hspi1, data, len, HAL_MAX_DELAY);
+  HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 1);
+  return ret;
+}
 
 /* USER CODE END 4 */
+
+/* USER CODE BEGIN Header_StartDefaultTask */
+/**
+ * @brief  Function implementing the defaultTask thread.
+ * @param  argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_StartDefaultTask */
+void StartDefaultTask(void const *argument)
+{
+  /* USER CODE BEGIN 5 */
+  /* Infinite loop */
+  uint32_t pressure;
+  uint8_t ret;
+
+  struct bmp280_dev bmp = {
+      .dev_id = 0x00,
+      .intf = BMP280_SPI_INTF,
+      .read = bmp280_read,
+      .write = bmp280_write,
+      .delay_ms = HAL_Delay};
+
+  struct bmp280_config conf;
+  struct bmp280_uncomp_data ucomp_data;
+  uint32_t pres32, pres64;
+  double pres;
+  int32_t temp32;
+  double temp;
+
+  int8_t rslt = bmp280_init(&bmp);
+  uart_printf(" bmp280_init status %d\r\n", rslt);
+
+  rslt = bmp280_get_config(&conf, &bmp);
+
+  conf.filter = BMP280_FILTER_COEFF_2;
+
+  conf.os_pres = BMP280_OS_4X;
+    conf.os_temp = BMP280_OS_4X;
+
+
+  conf.odr = BMP280_ODR_1000_MS;
+  rslt = bmp280_set_config(&conf, &bmp);
+
+  rslt = bmp280_set_power_mode(BMP280_NORMAL_MODE, &bmp);
+
+  for (;;)
+  {
+
+    // /* Reading the raw data from sensor */
+    // rslt = bmp280_get_uncomp_data(&ucomp_data, &bmp);
+
+    // /* Getting the compensated pressure using 32 bit precision */
+    // rslt = bmp280_get_comp_pres_32bit(&pres32, ucomp_data.uncomp_press, &bmp);
+
+    // /* Getting the compensated pressure using 64 bit precision */
+    // rslt = bmp280_get_comp_pres_64bit(&pres64, ucomp_data.uncomp_press, &bmp);
+
+    // /* Getting the compensated pressure as floating point value */
+    // rslt = bmp280_get_comp_pres_double(&pres, ucomp_data.uncomp_press, &bmp);
+
+    // uart_printf("UP: %ld, P32: %ld, P64: %ld, P64N: %ld, P: %f\r\n",
+    //             ucomp_data.uncomp_press,
+    //             pres32,
+    //             pres64,
+    //             pres64 / 256,
+    //             pres);
+
+    // /* Reading the raw data from sensor */
+    // rslt = bmp280_get_uncomp_data(&ucomp_data, &bmp);
+
+    // /* Getting the 32 bit compensated temperature */
+    // rslt = bmp280_get_comp_temp_32bit(&temp32, ucomp_data.uncomp_temp, &bmp);
+
+    // /* Getting the compensated temperature as floating point value */
+    // rslt = bmp280_get_comp_temp_double(&temp, ucomp_data.uncomp_temp, &bmp);
+    // uart_printf("UT: %ld, T32: %ld, T: %f \r\n", ucomp_data.uncomp_temp, temp32, temp);
+
+    // uart_printf("Pressure %u\r\n", pressure);
+    osDelay(100);
+  }
+  /* USER CODE END 5 */
+}
+
+/**
+ * @brief  Period elapsed callback in non blocking mode
+ * @note   This function is called  when TIM4 interrupt took place, inside
+ * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+ * a global variable "uwTick" used as application time base.
+ * @param  htim : TIM handle
+ * @retval None
+ */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM4)
+  {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
  * @brief  This function is executed in case of error occurrence.

@@ -59,8 +59,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define GPS_RST_Pin GPIO_PIN_13
 #define GPS_RST_GPIO_Port GPIOC
-#define GPS_INT_Pin GPIO_PIN_1
-#define GPS_INT_GPIO_Port GPIOA
+#define GPS_INT_Pin GPIO_PIN_14
+#define GPS_INT_GPIO_Port GPIOC
 #define MCU_TX_GPS_RX_Pin GPIO_PIN_2
 #define MCU_TX_GPS_RX_GPIO_Port GPIOA
 #define MCU_RX_GPS_TX_Pin GPIO_PIN_3

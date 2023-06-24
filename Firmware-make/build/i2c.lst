@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
   38              		.cfi_offset 14, -4
   39 0002 83B0     		sub	sp, sp, #12
   40              	.LCFI1:
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 2
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 2
 
 
   41              		.cfi_def_cfa_offset 16
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
   92              		.cfi_def_cfa_offset 16
   24:Core/Src/i2c.c ****     return HAL_I2C_Master_Receive(&hi2c3, addr, buf, len, HAL_MAX_DELAY);
   93              		.loc 1 24 5 is_stmt 1 view .LVU10
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 3
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 3
 
 
   94              		.loc 1 24 12 is_stmt 0 view .LVU11
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
  146              		.loc 1 28 27 is_stmt 0 view .LVU19
  147 0004 094C     		ldr	r4, .L11
  148 0006 4FF0000C 		mov	ip, #0
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 4
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 4
 
 
  149 000a 84F802C0 		strb	ip, [r4, #2]
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
  200              		@ frame_needed = 0, uses_anonymous_args = 0
  201              		.loc 1 33 1 is_stmt 0 view .LVU29
  202 0000 10B5     		push	{r4, lr}
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 5
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 5
 
 
  203              	.LCFI9:
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
  254              		.global	i2c_mem_write_dma
  255              		.syntax unified
  256              		.thumb
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 6
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 6
 
 
  257              		.thumb_func
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
  306              	.L20:
  307              		.loc 1 43 1 view .LVU51
  308 0026 00BF     		.align	2
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 7
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 7
 
 
  309              	.L19:
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
  360 001e FFF7FEFF 		bl	HAL_I2C_Mem_Read_DMA
  361              	.LVL36:
   49:Core/Src/i2c.c **** }
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 8
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 8
 
 
  362              		.loc 1 49 1 view .LVU62
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
  413 0012 00BF     		.align	2
  414              	.L27:
  415 0014 00000000 		.word	hi2c3
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 9
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 9
 
 
  416              		.cfi_endproc
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
  464              		.loc 1 64 1 view .LVU78
  465 0004 7047     		bx	lr
  466              	.L34:
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 10
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 10
 
 
  467 0006 00BF     		.align	2
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
  517 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
   73:Core/Src/i2c.c **** }
  518              		.loc 1 73 1 view .LVU86
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 11
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 11
 
 
  519 0004 7047     		bx	lr
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
   80:Core/Src/i2c.c ****     dmaStatusCb.rxCplt = 1;
  571              		.loc 1 80 5 view .LVU92
  572              		.loc 1 80 24 is_stmt 0 view .LVU93
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 12
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 12
 
 
  573 0000 014B     		ldr	r3, .L45
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
   88:Core/Src/i2c.c **** {
  624              		.loc 1 88 1 is_stmt 1 view -0
  625              		.cfi_startproc
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 13
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 13
 
 
  626              		@ args = 0, pretend = 0, frame = 0
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
  678              	HAL_I2C_AbortCpltCallback:
  679              	.LVL47:
  680              	.LFB146:
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 14
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 14
 
 
   95:Core/Src/i2c.c **** void HAL_I2C_AbortCpltCallback(I2C_HandleTypeDef *hi2c)
@@ -818,67 +818,67 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 1
  713              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
  714              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
  715              		.file 9 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/strin
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 15
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 i2c.c
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:21     .text.i2c_write:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:27     .text.i2c_write:00000000 i2c_write
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:67     .text.i2c_write:0000001c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:72     .text.i2c_read:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:78     .text.i2c_read:00000000 i2c_read
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:118    .text.i2c_read:0000001c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:123    .text.i2c_mem_write:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:129    .text.i2c_mem_write:00000000 i2c_mem_write
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:182    .text.i2c_mem_write:0000002c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:704    .bss.dmaStatusCb:00000000 dmaStatusCb
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:188    .text.i2c_mem_read:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:194    .text.i2c_mem_read:00000000 i2c_mem_read
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:247    .text.i2c_mem_read:0000002c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:253    .text.i2c_mem_write_dma:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:259    .text.i2c_mem_write_dma:00000000 i2c_mem_write_dma
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:310    .text.i2c_mem_write_dma:00000028 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:316    .text.i2c_mem_read_dma:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:322    .text.i2c_mem_read_dma:00000000 i2c_mem_read_dma
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:373    .text.i2c_mem_read_dma:00000028 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:379    .text.i2c_device_acks:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:385    .text.i2c_device_acks:00000000 i2c_device_acks
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:415    .text.i2c_device_acks:00000014 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:420    .text.i2c_dma_mem_read_cplt:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:426    .text.i2c_dma_mem_read_cplt:00000000 i2c_dma_mem_read_cplt
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:442    .text.i2c_dma_mem_read_cplt:00000008 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:447    .text.i2c_dma_mem_write_cplt:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:453    .text.i2c_dma_mem_write_cplt:00000000 i2c_dma_mem_write_cplt
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:469    .text.i2c_dma_mem_write_cplt:00000008 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:474    .text.i2c_dma_read_cplt:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:480    .text.i2c_dma_read_cplt:00000000 i2c_dma_read_cplt
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:496    .text.i2c_dma_read_cplt:00000008 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:501    .text.i2c_dma_write_cplt:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:507    .text.i2c_dma_write_cplt:00000000 i2c_dma_write_cplt
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:523    .text.i2c_dma_write_cplt:00000008 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:528    .text.HAL_I2C_MasterTxCpltCallback:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:534    .text.HAL_I2C_MasterTxCpltCallback:00000000 HAL_I2C_MasterTxCpltCallback
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:552    .text.HAL_I2C_MasterTxCpltCallback:00000008 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:557    .text.HAL_I2C_MasterRxCpltCallback:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:563    .text.HAL_I2C_MasterRxCpltCallback:00000000 HAL_I2C_MasterRxCpltCallback
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:581    .text.HAL_I2C_MasterRxCpltCallback:00000008 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:586    .text.HAL_I2C_MemTxCpltCallback:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:592    .text.HAL_I2C_MemTxCpltCallback:00000000 HAL_I2C_MemTxCpltCallback
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:610    .text.HAL_I2C_MemTxCpltCallback:00000008 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:615    .text.HAL_I2C_MemRxCpltCallback:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:621    .text.HAL_I2C_MemRxCpltCallback:00000000 HAL_I2C_MemRxCpltCallback
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:639    .text.HAL_I2C_MemRxCpltCallback:00000008 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:644    .text.HAL_I2C_ErrorCallback:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:650    .text.HAL_I2C_ErrorCallback:00000000 HAL_I2C_ErrorCallback
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:667    .text.HAL_I2C_ErrorCallback:0000000c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:672    .text.HAL_I2C_AbortCpltCallback:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:678    .text.HAL_I2C_AbortCpltCallback:00000000 HAL_I2C_AbortCpltCallback
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:695    .text.HAL_I2C_AbortCpltCallback:0000000c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s:701    .bss.dmaStatusCb:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:21     .text.i2c_write:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:27     .text.i2c_write:00000000 i2c_write
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:67     .text.i2c_write:0000001c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:72     .text.i2c_read:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:78     .text.i2c_read:00000000 i2c_read
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:118    .text.i2c_read:0000001c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:123    .text.i2c_mem_write:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:129    .text.i2c_mem_write:00000000 i2c_mem_write
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:182    .text.i2c_mem_write:0000002c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:704    .bss.dmaStatusCb:00000000 dmaStatusCb
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:188    .text.i2c_mem_read:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:194    .text.i2c_mem_read:00000000 i2c_mem_read
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:247    .text.i2c_mem_read:0000002c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:253    .text.i2c_mem_write_dma:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:259    .text.i2c_mem_write_dma:00000000 i2c_mem_write_dma
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:310    .text.i2c_mem_write_dma:00000028 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:316    .text.i2c_mem_read_dma:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:322    .text.i2c_mem_read_dma:00000000 i2c_mem_read_dma
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:373    .text.i2c_mem_read_dma:00000028 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:379    .text.i2c_device_acks:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:385    .text.i2c_device_acks:00000000 i2c_device_acks
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:415    .text.i2c_device_acks:00000014 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:420    .text.i2c_dma_mem_read_cplt:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:426    .text.i2c_dma_mem_read_cplt:00000000 i2c_dma_mem_read_cplt
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:442    .text.i2c_dma_mem_read_cplt:00000008 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:447    .text.i2c_dma_mem_write_cplt:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:453    .text.i2c_dma_mem_write_cplt:00000000 i2c_dma_mem_write_cplt
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:469    .text.i2c_dma_mem_write_cplt:00000008 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:474    .text.i2c_dma_read_cplt:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:480    .text.i2c_dma_read_cplt:00000000 i2c_dma_read_cplt
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:496    .text.i2c_dma_read_cplt:00000008 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:501    .text.i2c_dma_write_cplt:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:507    .text.i2c_dma_write_cplt:00000000 i2c_dma_write_cplt
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:523    .text.i2c_dma_write_cplt:00000008 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:528    .text.HAL_I2C_MasterTxCpltCallback:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:534    .text.HAL_I2C_MasterTxCpltCallback:00000000 HAL_I2C_MasterTxCpltCallback
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:552    .text.HAL_I2C_MasterTxCpltCallback:00000008 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:557    .text.HAL_I2C_MasterRxCpltCallback:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:563    .text.HAL_I2C_MasterRxCpltCallback:00000000 HAL_I2C_MasterRxCpltCallback
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:581    .text.HAL_I2C_MasterRxCpltCallback:00000008 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:586    .text.HAL_I2C_MemTxCpltCallback:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:592    .text.HAL_I2C_MemTxCpltCallback:00000000 HAL_I2C_MemTxCpltCallback
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:610    .text.HAL_I2C_MemTxCpltCallback:00000008 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:615    .text.HAL_I2C_MemRxCpltCallback:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:621    .text.HAL_I2C_MemRxCpltCallback:00000000 HAL_I2C_MemRxCpltCallback
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:639    .text.HAL_I2C_MemRxCpltCallback:00000008 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:644    .text.HAL_I2C_ErrorCallback:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:650    .text.HAL_I2C_ErrorCallback:00000000 HAL_I2C_ErrorCallback
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:667    .text.HAL_I2C_ErrorCallback:0000000c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:672    .text.HAL_I2C_AbortCpltCallback:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:678    .text.HAL_I2C_AbortCpltCallback:00000000 HAL_I2C_AbortCpltCallback
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:695    .text.HAL_I2C_AbortCpltCallback:0000000c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s:701    .bss.dmaStatusCb:00000000 $d
 
 UNDEFINED SYMBOLS
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cclu8mdV.s 			page 16
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccQgAvX8.s 			page 16
 
 
 HAL_I2C_Master_Transmit
