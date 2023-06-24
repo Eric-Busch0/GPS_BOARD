@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccVndF83.s 			page 1
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccDiURMe.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -19,16 +19,16 @@ ARM GAS  /tmp/ccVndF83.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.section	.text.lis2hd12_who_am_i,"ax",%progbits
-  20              		.align	1
-  21              		.global	lis2hd12_who_am_i
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
-  26              	lis2hd12_who_am_i:
-  27              	.LVL0:
-  28              	.LFB133:
-  29              		.file 1 "Core/Src/lis2hd12.c"
+  19              		.file 1 "Core/Src/lis2hd12.c"
+  20              		.section	.text.lis2hd12_who_am_i,"ax",%progbits
+  21              		.align	1
+  22              		.global	lis2hd12_who_am_i
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	lis2hd12_who_am_i:
+  28              	.LVL0:
+  29              	.LFB133:
    1:Core/Src/lis2hd12.c **** #include "i2c.h"
    2:Core/Src/lis2hd12.c **** #include "lis2hd12.h"
    3:Core/Src/lis2hd12.c **** #include "main.h"
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccVndF83.s 			page 1
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccVndF83.s 			page 2
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccDiURMe.s 			page 2
 
 
   34              		.loc 1 25 1 is_stmt 0 view .LVU1
@@ -109,32 +109,32 @@ ARM GAS  /tmp/ccVndF83.s 			page 1
   69              		.cfi_endproc
   70              	.LFE133:
   72              		.global	read_complete
-  73              		.global	write_complete
-  74              		.section	.bss.read_complete,"aw",%nobits
-  77              	read_complete:
-  78 0000 00       		.space	1
+  73              		.section	.bss.read_complete,"aw",%nobits
+  76              	read_complete:
+  77 0000 00       		.space	1
+  78              		.global	write_complete
   79              		.section	.bss.write_complete,"aw",%nobits
   82              	write_complete:
   83 0000 00       		.space	1
   84              		.text
   85              	.Letext0:
-ARM GAS  /tmp/ccVndF83.s 			page 3
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccDiURMe.s 			page 3
 
 
-  86              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
-  87              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+  86              		.file 2 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/machi
+  87              		.file 3 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/sys/_
   88              		.file 4 "Core/Inc/i2c.h"
-ARM GAS  /tmp/ccVndF83.s 			page 4
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccDiURMe.s 			page 4
 
 
 DEFINED SYMBOLS
-                            *ABS*:0000000000000000 lis2hd12.c
-     /tmp/ccVndF83.s:20     .text.lis2hd12_who_am_i:0000000000000000 $t
-     /tmp/ccVndF83.s:26     .text.lis2hd12_who_am_i:0000000000000000 lis2hd12_who_am_i
-     /tmp/ccVndF83.s:77     .bss.read_complete:0000000000000000 read_complete
-     /tmp/ccVndF83.s:82     .bss.write_complete:0000000000000000 write_complete
-     /tmp/ccVndF83.s:78     .bss.read_complete:0000000000000000 $d
-     /tmp/ccVndF83.s:83     .bss.write_complete:0000000000000000 $d
+                            *ABS*:00000000 lis2hd12.c
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccDiURMe.s:21     .text.lis2hd12_who_am_i:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccDiURMe.s:27     .text.lis2hd12_who_am_i:00000000 lis2hd12_who_am_i
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccDiURMe.s:76     .bss.read_complete:00000000 read_complete
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccDiURMe.s:77     .bss.read_complete:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccDiURMe.s:82     .bss.write_complete:00000000 write_complete
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccDiURMe.s:83     .bss.write_complete:00000000 $d
 
 UNDEFINED SYMBOLS
 i2c_mem_read

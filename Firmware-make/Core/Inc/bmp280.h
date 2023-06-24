@@ -48,11 +48,11 @@ uint8_t bmp280_init(bmp_cplt_callback_t rxCb, bmp_cplt_callback_t txCb);
 uint8_t bmp280_getid(uint8_t *id);
 void bmp280_reset(void);
 void bmp280_set_ctrl_meas(bmp280_ctrl_cfg_t *ctrlCfg);
-void bmp280_set_config(bmp280_config_t *config);
+uint8_t bmp280_set_config(bmp280_config_t *config);
 uint8_t bmp280_start_press_read(void);
 uint8_t bmp280_start_temp_read(void);
 uint8_t bmp280_read_pressure_and_temperature(void);
 uint32_t bmp280_get_pressure(void);
-uint32_t bmp280_get_temp(void);
+uint8_t bmp280_get_temp(uint32_t *temperature);
 void bmp280_get_pressure_and_temp(uint32_t *pressure , uint32_t *temp);
 #endif /* INC_BMP280_H_ */

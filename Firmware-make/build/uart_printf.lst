@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccy0HZs5.s 			page 1
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cctQf6XJ.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -19,16 +19,16 @@ ARM GAS  /tmp/ccy0HZs5.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.section	.text.uart_printf,"ax",%progbits
-  20              		.align	1
-  21              		.global	uart_printf
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
-  26              	uart_printf:
-  27              	.LVL0:
-  28              	.LFB133:
-  29              		.file 1 "Core/Src/uart_printf.c"
+  19              		.file 1 "Core/Src/uart_printf.c"
+  20              		.section	.text.uart_printf,"ax",%progbits
+  21              		.align	1
+  22              		.global	uart_printf
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	uart_printf:
+  28              	.LVL0:
+  29              	.LFB133:
    1:Core/Src/uart_printf.c **** #include <stdarg.h>
    2:Core/Src/uart_printf.c **** #include <stdio.h>
    3:Core/Src/uart_printf.c **** #include <string.h>
@@ -37,7 +37,7 @@ ARM GAS  /tmp/ccy0HZs5.s 			page 1
    6:Core/Src/uart_printf.c **** 
    7:Core/Src/uart_printf.c **** extern UART_HandleTypeDef huart1;
    8:Core/Src/uart_printf.c **** 
-   9:Core/Src/uart_printf.c **** uint8_t print_buf[256] = {0};
+   9:Core/Src/uart_printf.c **** char print_buf[256] = {0};
   10:Core/Src/uart_printf.c **** 
   11:Core/Src/uart_printf.c **** uint8_t uart_printf(const char *fmt, ...)
   12:Core/Src/uart_printf.c **** {
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccy0HZs5.s 			page 1
   44              		.cfi_def_cfa_offset 24
   45              		.cfi_offset 4, -24
   46              		.cfi_offset 14, -20
-ARM GAS  /tmp/ccy0HZs5.s 			page 2
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cctQf6XJ.s 			page 2
 
 
   47 0004 82B0     		sub	sp, sp, #8
@@ -83,9 +83,9 @@ ARM GAS  /tmp/ccy0HZs5.s 			page 1
   61              	.LVL1:
   18:Core/Src/uart_printf.c ****     va_end(ap);
   62              		.loc 1 18 5 is_stmt 1 view .LVU6
-  19:Core/Src/uart_printf.c ****     return HAL_UART_Transmit(&huart1, print_buf, strlen(print_buf), HAL_MAX_DELAY);
+  19:Core/Src/uart_printf.c ****     return HAL_UART_Transmit(&huart1, (uint8_t*)print_buf, strlen(print_buf), HAL_MAX_DELAY);
   63              		.loc 1 19 5 view .LVU7
-  64              		.loc 1 19 50 is_stmt 0 view .LVU8
+  64              		.loc 1 19 60 is_stmt 0 view .LVU8
   65 0018 2046     		mov	r0, r4
   66 001a FFF7FEFF 		bl	strlen
   67              	.LVL2:
@@ -118,45 +118,45 @@ ARM GAS  /tmp/ccy0HZs5.s 			page 1
   93              	.L4:
   94 0036 00BF     		.align	2
   95              	.L3:
-ARM GAS  /tmp/ccy0HZs5.s 			page 3
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cctQf6XJ.s 			page 3
 
 
-  96 0038 00000000 		.word	.LANCHOR0
+  96 0038 00000000 		.word	print_buf
   97 003c 00000000 		.word	huart1
   98              		.cfi_endproc
   99              	.LFE133:
  101              		.global	print_buf
  102              		.section	.bss.print_buf,"aw",%nobits
  103              		.align	2
- 104              		.set	.LANCHOR0,. + 0
- 107              	print_buf:
- 108 0000 00000000 		.space	256
- 108      00000000 
- 108      00000000 
- 108      00000000 
- 108      00000000 
- 109              		.text
- 110              	.Letext0:
- 111              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
- 112              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 113              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 114              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
- 115              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 116              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 117              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 118              		.file 9 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdio.h"
- 119              		.file 10 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h"
- 120              		.file 11 "<built-in>"
-ARM GAS  /tmp/ccy0HZs5.s 			page 4
+ 106              	print_buf:
+ 107 0000 00000000 		.space	256
+ 107      00000000 
+ 107      00000000 
+ 107      00000000 
+ 107      00000000 
+ 108              		.text
+ 109              	.Letext0:
+ 110              		.file 2 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/lib/gcc/arm-none-eabi/12.2.
+ 111              		.file 3 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/machi
+ 112              		.file 4 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/lib/gcc/arm-none-eabi/12.2.
+ 113              		.file 5 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/sys/_
+ 114              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 115              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 116              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 117              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 118              		.file 10 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/stri
+ 119              		.file 11 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/stdi
+ 120              		.file 12 "<built-in>"
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cctQf6XJ.s 			page 4
 
 
 DEFINED SYMBOLS
-                            *ABS*:0000000000000000 uart_printf.c
-     /tmp/ccy0HZs5.s:20     .text.uart_printf:0000000000000000 $t
-     /tmp/ccy0HZs5.s:26     .text.uart_printf:0000000000000000 uart_printf
-     /tmp/ccy0HZs5.s:96     .text.uart_printf:0000000000000038 $d
-     /tmp/ccy0HZs5.s:107    .bss.print_buf:0000000000000000 print_buf
-     /tmp/ccy0HZs5.s:103    .bss.print_buf:0000000000000000 $d
+                            *ABS*:00000000 uart_printf.c
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cctQf6XJ.s:21     .text.uart_printf:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cctQf6XJ.s:27     .text.uart_printf:00000000 uart_printf
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cctQf6XJ.s:96     .text.uart_printf:00000038 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cctQf6XJ.s:106    .bss.print_buf:00000000 print_buf
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//cctQf6XJ.s:103    .bss.print_buf:00000000 $d
 
 UNDEFINED SYMBOLS
 vsnprintf

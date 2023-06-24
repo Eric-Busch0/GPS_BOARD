@@ -61,7 +61,6 @@ struct
 	int32_t var1;
 	int32_t var2;
 
-	
 } trim_values;
 
 bpm280_op_t currentOp = BMP280_IDLE;
@@ -131,8 +130,7 @@ static void bmp280_get_trim_values(void)
 uint8_t bmp280_init(bmp_cplt_callback_t rxCb, bmp_cplt_callback_t txCb)
 {
 
-
-	memset((void*)&trim_values, 0, sizeof(trim_values));
+	memset((void *)&trim_values, 0, sizeof(trim_values));
 
 	userRxCb = rxCb;
 	userTxCb = txCb;
@@ -167,7 +165,7 @@ void bmp280_reset(void)
 {
 	static const uint8_t RESET_CMD = 0xB6;
 
-	bmp280_write_async(BMP280_RESET, BMP280_RESET_ADDR, &RESET_CMD, 1);
+	bmp280_write_async(BMP280_RESET, BMP280_RESET_ADDR, (uint8_t *)&RESET_CMD, 1);
 }
 
 void bmp280_set_ctrl_meas(bmp280_ctrl_cfg_t *ctrlCfg)
@@ -176,7 +174,7 @@ void bmp280_set_ctrl_meas(bmp280_ctrl_cfg_t *ctrlCfg)
 	ctrlVal = (ctrlCfg->tempOversampling << 5) | (ctrlCfg->pressOversapling << 2) | ctrlCfg->mode;
 	bmp280_write_async(BMP280_SET_CTRL, BMP280_CTRL_MEAS_ADDR, &ctrlVal, 1);
 }
-void bmp280_set_config(bmp280_config_t *config)
+uint8_t bmp280_set_config(bmp280_config_t *config)
 {
 
 	static uint8_t configVal = 0;
@@ -208,16 +206,18 @@ uint32_t bmp280_get_pressure(void)
 
 	return currentPress;
 }
-uint32_t bmp280_get_temp(void)
+uint8_t bmp280_get_temp(uint32_t *temperature)
 {
 
 	static const uint32_t TEMP_SIZE = 3;
 	uint8_t temp[3] = {0};
 
 	static const uint8_t addr = BMP280_TEMP_ADDR_MSB;
-	uint8_t ret = bmp280_read_sync(addr, temp, 3, HAL_MAX_DELAY);
+	uint8_t ret = bmp280_read_sync(addr, temp, TEMP_SIZE, HAL_MAX_DELAY);
 
-	return temp[2] << 16 | temp[1] << 8 | temp[0];
+	*temperature = temp[2] << 16 | temp[1] << 8 | temp[0];
+
+	return ret;
 }
 void bmp280_get_pressure_and_temp(uint32_t *pressure, uint32_t *temp)
 {

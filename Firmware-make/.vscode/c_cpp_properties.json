@@ -13,7 +13,7 @@
         "STM32F401xC",
         "USE_HAL_DRIVER"
       ],
-      "compilerPath": "/usr/bin/arm-none-eabi-gcc"
+      "compilerPath": "/opt/homebrew/bin/arm-none-eabi-gcc"
     }
   ],
   "version": 4

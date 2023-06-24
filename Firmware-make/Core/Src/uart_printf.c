@@ -6,7 +6,7 @@
 
 extern UART_HandleTypeDef huart1;
 
-uint8_t print_buf[256] = {0};
+char print_buf[256] = {0};
 
 uint8_t uart_printf(const char *fmt, ...)
 {
@@ -16,5 +16,5 @@ uint8_t uart_printf(const char *fmt, ...)
     va_start(ap, fmt);
     (void)vsnprintf(print_buf, 128, fmt, ap);
     va_end(ap);
-    return HAL_UART_Transmit(&huart1, print_buf, strlen(print_buf), HAL_MAX_DELAY);
+    return HAL_UART_Transmit(&huart1, (uint8_t *)print_buf, strlen(print_buf), HAL_MAX_DELAY);
 }
