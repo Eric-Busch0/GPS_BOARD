@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
   29:Core/Src/main.c **** #include "eeprom.h"
   30:Core/Src/main.c **** #include "uart_printf.h"
   31:Core/Src/main.c **** #include "bmp280_defs.h"
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 2
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 2
 
 
   32:Core/Src/main.c **** /* USER CODE END Includes */
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
   86:Core/Src/main.c **** /* USER CODE BEGIN PFP */
   87:Core/Src/main.c **** 
   88:Core/Src/main.c **** /* USER CODE END PFP */
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 3
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 3
 
 
   89:Core/Src/main.c **** 
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  143:Core/Src/main.c **** 
  144:Core/Src/main.c **** //   uint8_t ret;
  145:Core/Src/main.c **** //   ret = bmp280_read_pressure();
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 4
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 4
 
 
  146:Core/Src/main.c **** 
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  200:Core/Src/main.c ****   MX_USART1_UART_Init();
  201:Core/Src/main.c ****   MX_I2C3_Init();
  202:Core/Src/main.c ****   MX_CRC_Init();
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 5
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 5
 
 
  203:Core/Src/main.c ****   MX_RTC_Init();
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  257:Core/Src/main.c ****   /* We should never get here as control is now taken by the scheduler */
  258:Core/Src/main.c ****   /* Infinite loop */
  259:Core/Src/main.c ****   /* USER CODE BEGIN WHILE */
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 6
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 6
 
 
  260:Core/Src/main.c ****   while (1)
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  314:Core/Src/main.c ****     Error_Handler();
  315:Core/Src/main.c ****   }
  316:Core/Src/main.c **** }
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 7
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 7
 
 
  317:Core/Src/main.c **** 
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  371:Core/Src/main.c ****   /* USER CODE BEGIN I2C3_Init 2 */
  372:Core/Src/main.c **** 
  373:Core/Src/main.c ****   /* USER CODE END I2C3_Init 2 */
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 8
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 8
 
 
  374:Core/Src/main.c **** }
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  428:Core/Src/main.c **** 
  429:Core/Src/main.c ****   if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
  430:Core/Src/main.c ****   {
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 9
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 9
 
 
  431:Core/Src/main.c ****     Error_Handler();
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  485:Core/Src/main.c ****   /* USER CODE END USART1_Init 0 */
  486:Core/Src/main.c **** 
  487:Core/Src/main.c ****   /* USER CODE BEGIN USART1_Init 1 */
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 10
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 10
 
 
  488:Core/Src/main.c **** 
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  542:Core/Src/main.c ****  *   hdma_memtomem_dma2_stream1
  543:Core/Src/main.c ****  */
  544:Core/Src/main.c **** static void MX_DMA_Init(void)
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 11
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 11
 
 
  545:Core/Src/main.c **** {
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  599:Core/Src/main.c **** static void MX_GPIO_Init(void)
  600:Core/Src/main.c **** {
   28              		.loc 1 600 1 view -0
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 12
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 12
 
 
   29              		.cfi_startproc
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
   76 002a 1A6B     		ldr	r2, [r3, #48]
   77 002c 42F08002 		orr	r2, r2, #128
   78 0030 1A63     		str	r2, [r3, #48]
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 13
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 13
 
 
   79              		.loc 1 607 3 view .LVU12
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  130 0074 0493     		str	r3, [sp, #16]
  131              		.loc 1 610 3 view .LVU31
  132 0076 049B     		ldr	r3, [sp, #16]
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 14
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 14
 
 
  133              	.LBE8:
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  627:Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
  171              		.loc 1 627 3 is_stmt 1 view .LVU41
  172              		.loc 1 627 24 is_stmt 0 view .LVU42
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 15
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 15
 
 
  173 00bc 0794     		str	r4, [sp, #28]
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  212 00e6 5046     		mov	r0, r10
  213 00e8 FFF7FEFF 		bl	HAL_GPIO_Init
  214              	.LVL6:
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 16
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 16
 
 
  643:Core/Src/main.c **** 
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  252              		.loc 1 659 24 is_stmt 0 view .LVU81
  253 0114 0695     		str	r5, [sp, #24]
  660:Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 17
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 17
 
 
  254              		.loc 1 660 3 is_stmt 1 view .LVU82
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  291      640D0A00 
  292              		.section	.text.StartDefaultTask,"ax",%progbits
  293              		.align	1
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 18
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 18
 
 
  294              		.global	StartDefaultTask
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  313              	.LCFI4:
  314              		.cfi_def_cfa_offset 96
  703:Core/Src/main.c ****   /* USER CODE BEGIN 5 */
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 19
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 19
 
 
  704:Core/Src/main.c ****   /* Infinite loop */
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  722:Core/Src/main.c ****   conf.filter = BMP280_FILTER_COEFF_2;
  351              		.loc 1 722 3 is_stmt 1 view .LVU102
  352              		.loc 1 722 15 is_stmt 0 view .LVU103
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 20
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 20
 
 
  353 0030 0123     		movs	r3, #1
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  391 0064 FFF7FEFF 		bl	bmp280_get_comp_pres_32bit
  392              	.LVL20:
  739:Core/Src/main.c **** 
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 21
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 21
 
 
  740:Core/Src/main.c ****     /* Getting the compensated pressure using 64 bit precision */
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  429 009e 6420     		movs	r0, #100
  430 00a0 FFF7FEFF 		bl	osDelay
  431              	.LVL26:
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 22
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 22
 
 
  731:Core/Src/main.c ****   {
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  674:Core/Src/main.c ****   ret = HAL_SPI_Transmit(&hspi1, &reg_addr, 1, HAL_MAX_DELAY);
  482              		.loc 1 674 3 view .LVU134
  483 0012 3046     		mov	r0, r6
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 23
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 23
 
 
  484              	.LVL30:
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  529              	.LFE150:
  531              		.section	.text.bmp280_read,"ax",%progbits
  532              		.align	1
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 24
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 24
 
 
  533              		.syntax unified
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  580              		.loc 1 687 3 view .LVU151
  687:Core/Src/main.c ****   HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 1);
  581              		.loc 1 687 17 is_stmt 0 view .LVU152
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 25
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 25
 
 
  582 002a 4FF0FF33 		mov	r3, #-1
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  626      0D0A00
  627              		.section	.text.i2c_scan,"ax",%progbits
  628              		.align	1
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 26
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 26
 
 
  629              		.global	i2c_scan
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  675 002c 6B46     		mov	r3, sp
  676 002e 07CA     		ldm	r2, {r0, r1, r2}
  677 0030 03C3     		stmia	r3!, {r0, r1}
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 27
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 27
 
 
  678 0032 23F8022B 		strh	r2, [r3], #2	@ movhi
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  102:Core/Src/main.c ****   {
  720              		.loc 1 102 33 is_stmt 1 discriminator 2 view .LVU178
  721 006a 0134     		adds	r4, r4, #1
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 28
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 28
 
 
  722              	.LVL52:
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  766 00b0 DBE7     		b	.L22
  767              	.LVL58:
  768              	.L26:
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 29
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 29
 
 
  118:Core/Src/main.c ****     }
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  815              		.loc 1 126 1 is_stmt 1 view -0
  816              		.cfi_startproc
  817              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 30
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 30
 
 
  818              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  861 0024 F6E7     		b	.L29
  862              	.L34:
  863 0026 00BF     		.align	2
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 31
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 31
 
 
  864              	.L33:
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  779:Core/Src/main.c ****   /* USER CODE BEGIN Callback 1 */
  780:Core/Src/main.c **** 
  781:Core/Src/main.c ****   /* USER CODE END Callback 1 */
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 32
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 32
 
 
  782:Core/Src/main.c **** }
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
   10:Drivers/CMSIS/Include/cmsis_gcc.h ****  * SPDX-License-Identifier: Apache-2.0
   11:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
   12:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 33
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 33
 
 
   13:Drivers/CMSIS/Include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
   67:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_UNION
   68:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
   69:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 34
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 34
 
 
   70:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  124:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  125:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
  126:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 35
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 35
 
 
  127:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  969 0002 83B0     		sub	sp, sp, #12
  970              	.LCFI20:
  971              		.cfi_def_cfa_offset 16
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 36
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 36
 
 
  548:Core/Src/main.c ****   __HAL_RCC_DMA2_CLK_ENABLE();
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1011              		.loc 1 553 3 is_stmt 1 view .LVU235
  553:Core/Src/main.c ****   hdma_memtomem_dma2_stream1.Init.Direction = DMA_MEMORY_TO_MEMORY;
  1012              		.loc 1 553 43 is_stmt 0 view .LVU236
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 37
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 37
 
 
  1013 0036 4360     		str	r3, [r0, #4]
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1047              		.loc 1 563 44 is_stmt 0 view .LVU256
  1048 0058 C362     		str	r3, [r0, #44]
  564:Core/Src/main.c ****   if (HAL_DMA_Init(&hdma_memtomem_dma2_stream1) != HAL_OK)
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 38
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 38
 
 
  1049              		.loc 1 564 3 is_stmt 1 view .LVU257
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1092 0098 FFF7FEFF 		bl	HAL_NVIC_SetPriority
  1093              	.LVL78:
  582:Core/Src/main.c ****   /* DMA2_Stream0_IRQn interrupt configuration */
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 39
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 39
 
 
  1094              		.loc 1 582 3 view .LVU269
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1140              	.LVL86:
  1141              	.L48:
  1142              		.align	2
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 40
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 40
 
 
  1143              	.L47:
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  527:Core/Src/main.c ****   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
  1187              		.loc 1 527 20 is_stmt 0 view .LVU290
  1188 0016 0C22     		movs	r2, #12
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 41
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 41
 
 
  1189 0018 4261     		str	r2, [r0, #20]
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  454:Core/Src/main.c ****   hspi1.Init.Mode = SPI_MODE_MASTER;
  1234              		.loc 1 454 18 is_stmt 0 view .LVU302
  1235 0002 0D48     		ldr	r0, .L59
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 42
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 42
 
 
  1236 0004 0D4B     		ldr	r3, .L59+4
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1270              		.loc 1 464 29 is_stmt 0 view .LVU322
  1271 0026 8362     		str	r3, [r0, #40]
  465:Core/Src/main.c ****   if (HAL_SPI_Init(&hspi1) != HAL_OK)
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 43
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 43
 
 
  1272              		.loc 1 465 3 is_stmt 1 view .LVU323
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1318              		.loc 1 491 3 is_stmt 1 view .LVU333
  491:Core/Src/main.c ****   huart1.Init.WordLength = UART_WORDLENGTH_8B;
  1319              		.loc 1 491 24 is_stmt 0 view .LVU334
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 44
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 44
 
 
  1320 0008 4FF4E133 		mov	r3, #115200
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1357 002c 00000000 		.word	huart1
  1358 0030 00100140 		.word	1073811456
  1359              		.cfi_endproc
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 45
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 45
 
 
  1360              	.LFE146:
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1402              		.loc 1 364 3 is_stmt 1 view .LVU365
  364:Core/Src/main.c ****   hi2c3.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
  1403              		.loc 1 364 26 is_stmt 0 view .LVU366
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 46
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 46
 
 
  1404 001a 8361     		str	r3, [r0, #24]
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1449              		.loc 1 333 3 view .LVU377
  333:Core/Src/main.c ****   if (HAL_CRC_Init(&hcrc) != HAL_OK)
  1450              		.loc 1 333 17 is_stmt 0 view .LVU378
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 47
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 47
 
 
  1451 0002 0448     		ldr	r0, .L77
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1499 000c 0493     		str	r3, [sp, #16]
  1500 000e 0593     		str	r3, [sp, #20]
  389:Core/Src/main.c **** 
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 48
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 48
 
 
  1501              		.loc 1 389 3 is_stmt 1 view .LVU387
@@ -2878,7 +2878,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  415:Core/Src/main.c ****   sTime.Minutes = 0x0;
  1536              		.loc 1 415 15 is_stmt 0 view .LVU407
  1537 002e 0023     		movs	r3, #0
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 49
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 49
 
 
  1538 0030 8DF80430 		strb	r3, [sp, #4]
@@ -2938,7 +2938,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1573 005c 8DF80330 		strb	r3, [sp, #3]
  429:Core/Src/main.c ****   {
  1574              		.loc 1 429 3 is_stmt 1 view .LVU427
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 50
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 50
 
 
  429:Core/Src/main.c ****   {
@@ -2998,7 +2998,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1624 0000 00B5     		push	{lr}
  1625              	.LCFI32:
  1626              		.cfi_def_cfa_offset 4
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 51
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 51
 
 
  1627              		.cfi_offset 14, -4
@@ -3058,7 +3058,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1668 0032 1D4A     		ldr	r2, .L95+4
  1669 0034 1368     		ldr	r3, [r2]
  1670 0036 23F44043 		bic	r3, r3, #49152
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 52
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 52
 
 
  1671 003a 43F40043 		orr	r3, r3, #32768
@@ -3118,7 +3118,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1708 0068 1192     		str	r2, [sp, #68]
  297:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLQ = 4;
  1709              		.loc 1 297 3 is_stmt 1 view .LVU465
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 53
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 53
 
 
  297:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLQ = 4;
@@ -3178,7 +3178,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1746              	.LVL105:
  312:Core/Src/main.c ****   {
  1747              		.loc 1 312 6 view .LVU484
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 54
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 54
 
 
  1748 0092 20B9     		cbnz	r0, .L94
@@ -3238,7 +3238,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1798              		.loc 1 189 3 view .LVU490
  1799 0008 FFF7FEFF 		bl	SystemClock_Config
  1800              	.LVL109:
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 55
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 55
 
 
  196:Core/Src/main.c ****   MX_DMA_Init();
@@ -3298,7 +3298,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1842 004c FFF7FEFF 		bl	osThreadCreate
  1843              	.LVL120:
  249:Core/Src/main.c **** 
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 56
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 56
 
 
  1844              		.loc 1 249 21 view .LVU504
@@ -3358,7 +3358,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1892              		.align	2
  1895              	hdma_usart2_tx:
  1896 0000 00000000 		.space	96
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 57
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 57
 
 
  1896      00000000 
@@ -3418,7 +3418,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1938      00000000 
  1938      00000000 
  1938      00000000 
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 58
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 58
 
 
  1938      00000000 
@@ -3478,7 +3478,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  1983              		.set	.LANCHOR0,. + 0
  1984              	.LC11:
  1985 0000 00000000 		.word	.LC0
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 59
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 59
 
 
  1986 0004 00000000 		.word	StartDefaultTask
@@ -3516,99 +3516,99 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 1
  2018              		.file 26 "Core/Inc/lis2hd12.h"
  2019              		.file 27 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/stdi
  2020              		.file 28 "<built-in>"
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 60
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 60
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:21     .text.MX_GPIO_Init:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:26     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:274    .text.MX_GPIO_Init:00000128 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:283    .rodata.StartDefaultTask.str1.4:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:293    .text.StartDefaultTask:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:299    .text.StartDefaultTask:00000000 StartDefaultTask
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:437    .text.StartDefaultTask:000000a8 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:537    .text.bmp280_read:00000000 bmp280_read
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:452    .text.bmp280_write:00000000 bmp280_write
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:447    .text.bmp280_write:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:526    .text.bmp280_write:0000004c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1944   .bss.hspi1:00000000 hspi1
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:532    .text.bmp280_read:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:609    .text.bmp280_read:0000004c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:615    .rodata.i2c_scan.str1.4:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:628    .text.i2c_scan:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:634    .text.i2c_scan:00000000 i2c_scan
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:789    .text.i2c_scan:000000c4 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1923   .bss.huart1:00000000 huart1
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1972   .bss.hi2c3:00000000 hi2c3
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:800    .rodata.print_lis2hd12_who_am_i.str1.4:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:807    .text.print_lis2hd12_who_am_i:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:813    .text.print_lis2hd12_who_am_i:00000000 print_lis2hd12_who_am_i
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:865    .text.print_lis2hd12_who_am_i:00000028 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:871    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:877    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:911    .text.HAL_TIM_PeriodElapsedCallback:00000014 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:916    .text.Error_Handler:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:922    .text.Error_Handler:00000000 Error_Handler
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:954    .text.MX_DMA_Init:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:959    .text.MX_DMA_Init:00000000 MX_DMA_Init
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1144   .text.MX_DMA_Init:000000dc $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1888   .bss.hdma_memtomem_dma2_stream1:00000000 hdma_memtomem_dma2_stream1
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1151   .text.MX_USART2_UART_Init:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1156   .text.MX_USART2_UART_Init:00000000 MX_USART2_UART_Init
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1211   .text.MX_USART2_UART_Init:0000002c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1916   .bss.huart2:00000000 huart2
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1217   .text.MX_SPI1_Init:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1222   .text.MX_SPI1_Init:00000000 MX_SPI1_Init
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1291   .text.MX_SPI1_Init:00000038 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1297   .text.MX_USART1_UART_Init:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1302   .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1357   .text.MX_USART1_UART_Init:0000002c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1363   .text.MX_I2C3_Init:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1368   .text.MX_I2C3_Init:00000000 MX_I2C3_Init
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1426   .text.MX_I2C3_Init:0000002c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1433   .text.MX_CRC_Init:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1438   .text.MX_CRC_Init:00000000 MX_CRC_Init
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1469   .text.MX_CRC_Init:00000014 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1979   .bss.hcrc:00000000 hcrc
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1475   .text.MX_RTC_Init:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1480   .text.MX_RTC_Init:00000000 MX_RTC_Init
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1606   .text.MX_RTC_Init:0000007c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1951   .bss.hrtc:00000000 hrtc
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1612   .text.SystemClock_Config:00000000 $t
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 61
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:21     .text.MX_GPIO_Init:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:26     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:274    .text.MX_GPIO_Init:00000128 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:283    .rodata.StartDefaultTask.str1.4:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:293    .text.StartDefaultTask:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:299    .text.StartDefaultTask:00000000 StartDefaultTask
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:437    .text.StartDefaultTask:000000a8 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:537    .text.bmp280_read:00000000 bmp280_read
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:452    .text.bmp280_write:00000000 bmp280_write
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:447    .text.bmp280_write:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:526    .text.bmp280_write:0000004c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1944   .bss.hspi1:00000000 hspi1
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:532    .text.bmp280_read:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:609    .text.bmp280_read:0000004c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:615    .rodata.i2c_scan.str1.4:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:628    .text.i2c_scan:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:634    .text.i2c_scan:00000000 i2c_scan
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:789    .text.i2c_scan:000000c4 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1923   .bss.huart1:00000000 huart1
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1972   .bss.hi2c3:00000000 hi2c3
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:800    .rodata.print_lis2hd12_who_am_i.str1.4:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:807    .text.print_lis2hd12_who_am_i:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:813    .text.print_lis2hd12_who_am_i:00000000 print_lis2hd12_who_am_i
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:865    .text.print_lis2hd12_who_am_i:00000028 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:871    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:877    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:911    .text.HAL_TIM_PeriodElapsedCallback:00000014 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:916    .text.Error_Handler:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:922    .text.Error_Handler:00000000 Error_Handler
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:954    .text.MX_DMA_Init:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:959    .text.MX_DMA_Init:00000000 MX_DMA_Init
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1144   .text.MX_DMA_Init:000000dc $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1888   .bss.hdma_memtomem_dma2_stream1:00000000 hdma_memtomem_dma2_stream1
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1151   .text.MX_USART2_UART_Init:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1156   .text.MX_USART2_UART_Init:00000000 MX_USART2_UART_Init
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1211   .text.MX_USART2_UART_Init:0000002c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1916   .bss.huart2:00000000 huart2
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1217   .text.MX_SPI1_Init:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1222   .text.MX_SPI1_Init:00000000 MX_SPI1_Init
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1291   .text.MX_SPI1_Init:00000038 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1297   .text.MX_USART1_UART_Init:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1302   .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1357   .text.MX_USART1_UART_Init:0000002c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1363   .text.MX_I2C3_Init:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1368   .text.MX_I2C3_Init:00000000 MX_I2C3_Init
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1426   .text.MX_I2C3_Init:0000002c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1433   .text.MX_CRC_Init:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1438   .text.MX_CRC_Init:00000000 MX_CRC_Init
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1469   .text.MX_CRC_Init:00000014 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1979   .bss.hcrc:00000000 hcrc
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1475   .text.MX_RTC_Init:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1480   .text.MX_RTC_Init:00000000 MX_RTC_Init
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1606   .text.MX_RTC_Init:0000007c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1951   .bss.hrtc:00000000 hrtc
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1612   .text.SystemClock_Config:00000000 $t
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 61
 
 
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1618   .text.SystemClock_Config:00000000 SystemClock_Config
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1769   .text.SystemClock_Config:000000a4 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1775   .text.main:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1781   .text.main:00000000 main
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1866   .text.main:0000006c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1881   .bss.defaultTaskHandle:00000000 defaultTaskHandle
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1873   .rodata.str1.4:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1878   .bss.defaultTaskHandle:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1885   .bss.hdma_memtomem_dma2_stream1:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1895   .bss.hdma_usart2_tx:00000000 hdma_usart2_tx
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1892   .bss.hdma_usart2_tx:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1902   .bss.hdma_usart2_rx:00000000 hdma_usart2_rx
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1899   .bss.hdma_usart2_rx:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1909   .bss.hdma_usart1_tx:00000000 hdma_usart1_tx
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1906   .bss.hdma_usart1_tx:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1913   .bss.huart2:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1920   .bss.huart1:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1930   .bss.hdma_spi1_tx:00000000 hdma_spi1_tx
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1927   .bss.hdma_spi1_tx:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1937   .bss.hdma_spi1_rx:00000000 hdma_spi1_rx
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1934   .bss.hdma_spi1_rx:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1941   .bss.hspi1:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1948   .bss.hrtc:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1958   .bss.hdma_i2c3_tx:00000000 hdma_i2c3_tx
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1955   .bss.hdma_i2c3_tx:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1965   .bss.hdma_i2c3_rx:00000000 hdma_i2c3_rx
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1962   .bss.hdma_i2c3_rx:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1969   .bss.hi2c3:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1976   .bss.hcrc:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s:1982   .rodata:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1618   .text.SystemClock_Config:00000000 SystemClock_Config
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1769   .text.SystemClock_Config:000000a4 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1775   .text.main:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1781   .text.main:00000000 main
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1866   .text.main:0000006c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1881   .bss.defaultTaskHandle:00000000 defaultTaskHandle
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1873   .rodata.str1.4:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1878   .bss.defaultTaskHandle:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1885   .bss.hdma_memtomem_dma2_stream1:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1895   .bss.hdma_usart2_tx:00000000 hdma_usart2_tx
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1892   .bss.hdma_usart2_tx:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1902   .bss.hdma_usart2_rx:00000000 hdma_usart2_rx
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1899   .bss.hdma_usart2_rx:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1909   .bss.hdma_usart1_tx:00000000 hdma_usart1_tx
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1906   .bss.hdma_usart1_tx:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1913   .bss.huart2:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1920   .bss.huart1:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1930   .bss.hdma_spi1_tx:00000000 hdma_spi1_tx
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1927   .bss.hdma_spi1_tx:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1937   .bss.hdma_spi1_rx:00000000 hdma_spi1_rx
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1934   .bss.hdma_spi1_rx:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1941   .bss.hspi1:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1948   .bss.hrtc:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1958   .bss.hdma_i2c3_tx:00000000 hdma_i2c3_tx
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1955   .bss.hdma_i2c3_tx:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1965   .bss.hdma_i2c3_rx:00000000 hdma_i2c3_rx
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1962   .bss.hdma_i2c3_rx:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1969   .bss.hi2c3:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1976   .bss.hcrc:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s:1982   .rodata:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin
@@ -3636,7 +3636,7 @@ HAL_DMA_Init
 HAL_NVIC_SetPriority
 HAL_NVIC_EnableIRQ
 HAL_UART_Init
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccuSeYfm.s 			page 62
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccaCaEPP.s 			page 62
 
 
 HAL_SPI_Init
