@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s 			page 1
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -29,39 +29,43 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s 			page 1
   27              	lis2hd12_who_am_i:
   28              	.LVL0:
   29              	.LFB133:
-   1:Core/Src/lis2hd12.c **** #include "i2c.h"
-   2:Core/Src/lis2hd12.c **** #include "lis2hd12.h"
-   3:Core/Src/lis2hd12.c **** #include "main.h"
-   4:Core/Src/lis2hd12.c **** 
-   5:Core/Src/lis2hd12.c **** volatile uint8_t write_complete = 0;
-   6:Core/Src/lis2hd12.c **** volatile uint8_t read_complete = 0;
-   7:Core/Src/lis2hd12.c **** 
-   8:Core/Src/lis2hd12.c **** #define LIS2HD12_I2C_ADDR (0x19 << 1)
+   1:Core/Src/lis2hd12.c **** #include <assert.h>
+   2:Core/Src/lis2hd12.c **** #include "i2c.h"
+   3:Core/Src/lis2hd12.c **** #include "lis2hd12.h"
+   4:Core/Src/lis2hd12.c **** #include "main.h"
+   5:Core/Src/lis2hd12.c **** #include "retcheck.h"
+   6:Core/Src/lis2hd12.c **** 
+   7:Core/Src/lis2hd12.c **** volatile uint8_t write_complete = 0;
+   8:Core/Src/lis2hd12.c **** volatile uint8_t read_complete = 0;
    9:Core/Src/lis2hd12.c **** 
-  10:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_write(uint8_t *buf, uint32_t len)
-  11:Core/Src/lis2hd12.c **** {
-  12:Core/Src/lis2hd12.c ****     return i2c_write(LIS2HD12_I2C_ADDR, buf, len);
-  13:Core/Src/lis2hd12.c **** }
-  14:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_read_reg(uint8_t memaddr, uint8_t *buf, uint32_t len)
-  15:Core/Src/lis2hd12.c **** {
-  16:Core/Src/lis2hd12.c ****     return i2c_mem_read(LIS2HD12_I2C_ADDR, memaddr, sizeof(uint8_t), buf, len);
-  17:Core/Src/lis2hd12.c **** }
-  18:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_write_reg(uint8_t reg_addr, uint8_t data)
-  19:Core/Src/lis2hd12.c **** {
-  20:Core/Src/lis2hd12.c ****     return 0;
-  21:Core/Src/lis2hd12.c **** }
-  22:Core/Src/lis2hd12.c **** 
-  23:Core/Src/lis2hd12.c **** void lis2hd12_init(void);
-  24:Core/Src/lis2hd12.c **** uint8_t lis2hd12_who_am_i(uint8_t *who_am_i)
-  25:Core/Src/lis2hd12.c **** {
-  30              		.loc 1 25 1 view -0
+  10:Core/Src/lis2hd12.c **** #define LIS2HD12_I2C_ADDR (0x19 << 1)
+  11:Core/Src/lis2hd12.c **** #define LIS2HD12_CHECK_NULL(x)  if(x == NULL) return HAL_ERROR
+  12:Core/Src/lis2hd12.c **** 
+  13:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_write(uint8_t *buf, uint32_t len)
+  14:Core/Src/lis2hd12.c **** {
+  15:Core/Src/lis2hd12.c ****     return i2c_write(LIS2HD12_I2C_ADDR, buf, len);
+  16:Core/Src/lis2hd12.c **** }
+  17:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_read_reg(uint8_t memaddr, uint8_t *buf, uint32_t len)
+  18:Core/Src/lis2hd12.c **** {
+  19:Core/Src/lis2hd12.c ****     return i2c_mem_read(LIS2HD12_I2C_ADDR, memaddr, sizeof(uint8_t), buf, len);
+  20:Core/Src/lis2hd12.c **** }
+  21:Core/Src/lis2hd12.c **** static inline uint8_t lis2hd12_write_reg(uint8_t reg_addr, uint8_t data)
+  22:Core/Src/lis2hd12.c **** {
+  23:Core/Src/lis2hd12.c ****     return 0;
+  24:Core/Src/lis2hd12.c **** }
+  25:Core/Src/lis2hd12.c **** 
+  26:Core/Src/lis2hd12.c **** void lis2hd12_init(void);
+  27:Core/Src/lis2hd12.c **** 
+  28:Core/Src/lis2hd12.c **** uint8_t lis2hd12_who_am_i(uint8_t *who_am_i)
+  29:Core/Src/lis2hd12.c **** {
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 2
+
+
+  30              		.loc 1 29 1 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s 			page 2
-
-
-  34              		.loc 1 25 1 is_stmt 0 view .LVU1
+  34              		.loc 1 29 1 is_stmt 0 view .LVU1
   35 0000 00B5     		push	{lr}
   36              	.LCFI0:
   37              		.cfi_def_cfa_offset 4
@@ -70,37 +74,37 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s 			page 1
   40              	.LCFI1:
   41              		.cfi_def_cfa_offset 16
   42 0004 0346     		mov	r3, r0
-  26:Core/Src/lis2hd12.c **** 
-  27:Core/Src/lis2hd12.c ****     static const uint8_t REG_ADDR = 0x0f;
-  43              		.loc 1 27 5 is_stmt 1 view .LVU2
-  28:Core/Src/lis2hd12.c **** 
-  29:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(REG_ADDR, who_am_i, 1);
-  44              		.loc 1 29 5 view .LVU3
+  30:Core/Src/lis2hd12.c **** 
+  31:Core/Src/lis2hd12.c ****     static const uint8_t REG_ADDR = 0x0f;
+  43              		.loc 1 31 5 is_stmt 1 view .LVU2
+  32:Core/Src/lis2hd12.c **** 
+  33:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(REG_ADDR, who_am_i, 1);
+  44              		.loc 1 33 5 view .LVU3
   45              	.LVL1:
-  46              	.LBB4:
-  47              	.LBI4:
-  14:Core/Src/lis2hd12.c **** {
-  48              		.loc 1 14 23 view .LVU4
-  49              	.LBB5:
-  16:Core/Src/lis2hd12.c **** }
-  50              		.loc 1 16 5 view .LVU5
-  16:Core/Src/lis2hd12.c **** }
-  51              		.loc 1 16 12 is_stmt 0 view .LVU6
+  46              	.LBB90:
+  47              	.LBI90:
+  17:Core/Src/lis2hd12.c **** {
+  48              		.loc 1 17 23 view .LVU4
+  49              	.LBB91:
+  19:Core/Src/lis2hd12.c **** }
+  50              		.loc 1 19 5 view .LVU5
+  19:Core/Src/lis2hd12.c **** }
+  51              		.loc 1 19 12 is_stmt 0 view .LVU6
   52 0006 0122     		movs	r2, #1
   53 0008 0092     		str	r2, [sp]
   54 000a 0F21     		movs	r1, #15
   55 000c 3220     		movs	r0, #50
   56              	.LVL2:
-  16:Core/Src/lis2hd12.c **** }
-  57              		.loc 1 16 12 view .LVU7
+  19:Core/Src/lis2hd12.c **** }
+  57              		.loc 1 19 12 view .LVU7
   58 000e FFF7FEFF 		bl	i2c_mem_read
   59              	.LVL3:
-  16:Core/Src/lis2hd12.c **** }
-  60              		.loc 1 16 12 view .LVU8
-  61              	.LBE5:
-  62              	.LBE4:
-  30:Core/Src/lis2hd12.c **** }...
-  63              		.loc 1 30 1 view .LVU9
+  19:Core/Src/lis2hd12.c **** }
+  60              		.loc 1 19 12 view .LVU8
+  61              	.LBE91:
+  62              	.LBE90:
+  34:Core/Src/lis2hd12.c **** }
+  63              		.loc 1 34 1 view .LVU9
   64 0012 03B0     		add	sp, sp, #12
   65              	.LCFI2:
   66              		.cfi_def_cfa_offset 4
@@ -108,33 +112,2486 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s 			page 1
   68 0014 5DF804FB 		ldr	pc, [sp], #4
   69              		.cfi_endproc
   70              	.LFE133:
-  72              		.global	read_complete
-  73              		.section	.bss.read_complete,"aw",%nobits
-  76              	read_complete:
-  77 0000 00       		.space	1
-  78              		.global	write_complete
-  79              		.section	.bss.write_complete,"aw",%nobits
-  82              	write_complete:
-  83 0000 00       		.space	1
-  84              		.text
-  85              	.Letext0:
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s 			page 3
+  72              		.section	.rodata.lis2hd12_get_status_reg.str1.4,"aMS",%progbits,1
+  73              		.align	2
+  74              	.LC0:
+  75 0000 73746174 		.ascii	"status_reg\000"
+  75      75735F72 
+  75      656700
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 3
 
 
-  86              		.file 2 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/machi
-  87              		.file 3 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/sys/_
-  88              		.file 4 "Core/Inc/i2c.h"
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s 			page 4
+  76 000b 00       		.align	2
+  77              	.LC1:
+  78 000c 436F7265 		.ascii	"Core/Src/lis2hd12.c\000"
+  78      2F537263 
+  78      2F6C6973 
+  78      32686431 
+  78      322E6300 
+  79              		.section	.text.lis2hd12_get_status_reg,"ax",%progbits
+  80              		.align	1
+  81              		.global	lis2hd12_get_status_reg
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  86              	lis2hd12_get_status_reg:
+  87              	.LVL4:
+  88              	.LFB134:
+  35:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_status_reg(uint8_t *status_reg)
+  36:Core/Src/lis2hd12.c **** {
+  89              		.loc 1 36 1 is_stmt 1 view -0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93              		.loc 1 36 1 is_stmt 0 view .LVU11
+  94 0000 00B5     		push	{lr}
+  95              	.LCFI3:
+  96              		.cfi_def_cfa_offset 4
+  97              		.cfi_offset 14, -4
+  98 0002 83B0     		sub	sp, sp, #12
+  99              	.LCFI4:
+ 100              		.cfi_def_cfa_offset 16
+  37:Core/Src/lis2hd12.c ****     assert(status_reg);
+ 101              		.loc 1 37 5 is_stmt 1 view .LVU12
+ 102 0004 48B1     		cbz	r0, .L6
+ 103 0006 0346     		mov	r3, r0
+  38:Core/Src/lis2hd12.c **** 
+  39:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(0x07, status_reg, 1);
+ 104              		.loc 1 39 5 view .LVU13
+ 105              	.LVL5:
+ 106              	.LBB92:
+ 107              	.LBI92:
+  17:Core/Src/lis2hd12.c **** {
+ 108              		.loc 1 17 23 view .LVU14
+ 109              	.LBB93:
+  19:Core/Src/lis2hd12.c **** }
+ 110              		.loc 1 19 5 view .LVU15
+  19:Core/Src/lis2hd12.c **** }
+ 111              		.loc 1 19 12 is_stmt 0 view .LVU16
+ 112 0008 0122     		movs	r2, #1
+ 113 000a 0092     		str	r2, [sp]
+ 114 000c 0721     		movs	r1, #7
+ 115 000e 3220     		movs	r0, #50
+ 116              	.LVL6:
+  19:Core/Src/lis2hd12.c **** }
+ 117              		.loc 1 19 12 view .LVU17
+ 118 0010 FFF7FEFF 		bl	i2c_mem_read
+ 119              	.LVL7:
+  19:Core/Src/lis2hd12.c **** }
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 4
+
+
+ 120              		.loc 1 19 12 view .LVU18
+ 121              	.LBE93:
+ 122              	.LBE92:
+  40:Core/Src/lis2hd12.c **** }
+ 123              		.loc 1 40 1 view .LVU19
+ 124 0014 03B0     		add	sp, sp, #12
+ 125              	.LCFI5:
+ 126              		.cfi_remember_state
+ 127              		.cfi_def_cfa_offset 4
+ 128              		@ sp needed
+ 129 0016 5DF804FB 		ldr	pc, [sp], #4
+ 130              	.LVL8:
+ 131              	.L6:
+ 132              	.LCFI6:
+ 133              		.cfi_restore_state
+  37:Core/Src/lis2hd12.c **** 
+ 134              		.loc 1 37 5 discriminator 1 view .LVU20
+ 135 001a 034B     		ldr	r3, .L7
+ 136 001c 034A     		ldr	r2, .L7+4
+ 137 001e 2521     		movs	r1, #37
+ 138 0020 0348     		ldr	r0, .L7+8
+ 139              	.LVL9:
+  37:Core/Src/lis2hd12.c **** 
+ 140              		.loc 1 37 5 discriminator 1 view .LVU21
+ 141 0022 FFF7FEFF 		bl	__assert_func
+ 142              	.LVL10:
+ 143              	.L8:
+ 144 0026 00BF     		.align	2
+ 145              	.L7:
+ 146 0028 00000000 		.word	.LC0
+ 147 002c 00000000 		.word	__func__.1
+ 148 0030 0C000000 		.word	.LC1
+ 149              		.cfi_endproc
+ 150              	.LFE134:
+ 152              		.section	.rodata.lis2hd12_get_temp.str1.4,"aMS",%progbits,1
+ 153              		.align	2
+ 154              	.LC2:
+ 155 0000 74656D70 		.ascii	"temp\000"
+ 155      00
+ 156              		.section	.text.lis2hd12_get_temp,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	lis2hd12_get_temp
+ 159              		.syntax unified
+ 160              		.thumb
+ 161              		.thumb_func
+ 163              	lis2hd12_get_temp:
+ 164              	.LVL11:
+ 165              	.LFB135:
+  41:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_temp(uint16_t *temp)
+  42:Core/Src/lis2hd12.c **** {
+ 166              		.loc 1 42 1 is_stmt 1 view -0
+ 167              		.cfi_startproc
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 170              		.loc 1 42 1 is_stmt 0 view .LVU23
+ 171 0000 00B5     		push	{lr}
+ 172              	.LCFI7:
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 5
+
+
+ 173              		.cfi_def_cfa_offset 4
+ 174              		.cfi_offset 14, -4
+ 175 0002 83B0     		sub	sp, sp, #12
+ 176              	.LCFI8:
+ 177              		.cfi_def_cfa_offset 16
+  43:Core/Src/lis2hd12.c ****     assert(temp);
+ 178              		.loc 1 43 5 is_stmt 1 view .LVU24
+ 179 0004 50B1     		cbz	r0, .L12
+ 180 0006 0346     		mov	r3, r0
+  44:Core/Src/lis2hd12.c **** 
+  45:Core/Src/lis2hd12.c ****     static const uint8_t TEMP_REG = 0x0C;
+ 181              		.loc 1 45 5 view .LVU25
+  46:Core/Src/lis2hd12.c **** 
+  47:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(TEMP_REG, temp, sizeof(uint16_t));
+ 182              		.loc 1 47 5 view .LVU26
+ 183              	.LVL12:
+ 184              	.LBB94:
+ 185              	.LBI94:
+  17:Core/Src/lis2hd12.c **** {
+ 186              		.loc 1 17 23 view .LVU27
+ 187              	.LBB95:
+  19:Core/Src/lis2hd12.c **** }
+ 188              		.loc 1 19 5 view .LVU28
+  19:Core/Src/lis2hd12.c **** }
+ 189              		.loc 1 19 12 is_stmt 0 view .LVU29
+ 190 0008 0222     		movs	r2, #2
+ 191 000a 0092     		str	r2, [sp]
+ 192 000c 0122     		movs	r2, #1
+ 193 000e 0C21     		movs	r1, #12
+ 194 0010 3220     		movs	r0, #50
+ 195              	.LVL13:
+  19:Core/Src/lis2hd12.c **** }
+ 196              		.loc 1 19 12 view .LVU30
+ 197 0012 FFF7FEFF 		bl	i2c_mem_read
+ 198              	.LVL14:
+  19:Core/Src/lis2hd12.c **** }
+ 199              		.loc 1 19 12 view .LVU31
+ 200              	.LBE95:
+ 201              	.LBE94:
+  48:Core/Src/lis2hd12.c **** }
+ 202              		.loc 1 48 1 view .LVU32
+ 203 0016 03B0     		add	sp, sp, #12
+ 204              	.LCFI9:
+ 205              		.cfi_remember_state
+ 206              		.cfi_def_cfa_offset 4
+ 207              		@ sp needed
+ 208 0018 5DF804FB 		ldr	pc, [sp], #4
+ 209              	.LVL15:
+ 210              	.L12:
+ 211              	.LCFI10:
+ 212              		.cfi_restore_state
+  43:Core/Src/lis2hd12.c **** 
+ 213              		.loc 1 43 5 discriminator 1 view .LVU33
+ 214 001c 024B     		ldr	r3, .L13
+ 215 001e 034A     		ldr	r2, .L13+4
+ 216 0020 2B21     		movs	r1, #43
+ 217 0022 0348     		ldr	r0, .L13+8
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 6
+
+
+ 218              	.LVL16:
+  43:Core/Src/lis2hd12.c **** 
+ 219              		.loc 1 43 5 discriminator 1 view .LVU34
+ 220 0024 FFF7FEFF 		bl	__assert_func
+ 221              	.LVL17:
+ 222              	.L14:
+ 223              		.align	2
+ 224              	.L13:
+ 225 0028 00000000 		.word	.LC2
+ 226 002c 00000000 		.word	__func__.0
+ 227 0030 0C000000 		.word	.LC1
+ 228              		.cfi_endproc
+ 229              	.LFE135:
+ 231              		.section	.text.lis2hd12_disconnect_sdo_pullup,"ax",%progbits
+ 232              		.align	1
+ 233              		.global	lis2hd12_disconnect_sdo_pullup
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ 238              	lis2hd12_disconnect_sdo_pullup:
+ 239              	.LVL18:
+ 240              	.LFB136:
+  49:Core/Src/lis2hd12.c **** uint8_t lis2hd12_disconnect_sdo_pullup(bool disconnect)
+  50:Core/Src/lis2hd12.c **** {
+ 241              		.loc 1 50 1 is_stmt 1 view -0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 0
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245              		@ link register save eliminated.
+  51:Core/Src/lis2hd12.c ****     static const uint8_t CTRL0_REG = 0x1E;
+ 246              		.loc 1 51 5 view .LVU36
+  52:Core/Src/lis2hd12.c ****     static const uint8_t PU_DISCONNECT = 0x90;
+ 247              		.loc 1 52 5 view .LVU37
+  53:Core/Src/lis2hd12.c ****     static const uint8_t PU_CONNECT = 0x10;
+ 248              		.loc 1 53 5 view .LVU38
+  54:Core/Src/lis2hd12.c **** 
+  55:Core/Src/lis2hd12.c ****     const uint8_t reg_value = disconnect ? PU_DISCONNECT : PU_CONNECT;
+ 249              		.loc 1 55 5 view .LVU39
+  56:Core/Src/lis2hd12.c **** 
+  57:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(CTRL0_REG, reg_value);
+ 250              		.loc 1 57 5 view .LVU40
+  58:Core/Src/lis2hd12.c **** 
+  59:Core/Src/lis2hd12.c **** }
+ 251              		.loc 1 59 1 is_stmt 0 view .LVU41
+ 252 0000 0020     		movs	r0, #0
+ 253              	.LVL19:
+ 254              		.loc 1 59 1 view .LVU42
+ 255 0002 7047     		bx	lr
+ 256              		.cfi_endproc
+ 257              	.LFE136:
+ 259              		.section	.text.lis2hd12_sdo_pullup_is_disconnected,"ax",%progbits
+ 260              		.align	1
+ 261              		.global	lis2hd12_sdo_pullup_is_disconnected
+ 262              		.syntax unified
+ 263              		.thumb
+ 264              		.thumb_func
+ 266              	lis2hd12_sdo_pullup_is_disconnected:
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 7
+
+
+ 267              	.LVL20:
+ 268              	.LFB137:
+  60:Core/Src/lis2hd12.c **** uint8_t lis2hd12_sdo_pullup_is_disconnected(bool *is_disconnected)
+  61:Core/Src/lis2hd12.c **** {
+ 269              		.loc 1 61 1 is_stmt 1 view -0
+ 270              		.cfi_startproc
+ 271              		@ args = 0, pretend = 0, frame = 8
+ 272              		@ frame_needed = 0, uses_anonymous_args = 0
+ 273              		.loc 1 61 1 is_stmt 0 view .LVU44
+ 274 0000 10B5     		push	{r4, lr}
+ 275              	.LCFI11:
+ 276              		.cfi_def_cfa_offset 8
+ 277              		.cfi_offset 4, -8
+ 278              		.cfi_offset 14, -4
+ 279 0002 84B0     		sub	sp, sp, #16
+ 280              	.LCFI12:
+ 281              		.cfi_def_cfa_offset 24
+ 282 0004 0446     		mov	r4, r0
+  62:Core/Src/lis2hd12.c ****     static const uint8_t CTRL0_REG = 0x1E;
+ 283              		.loc 1 62 5 is_stmt 1 view .LVU45
+  63:Core/Src/lis2hd12.c ****     static const uint8_t PU_DISCONNECT = 0x90;
+ 284              		.loc 1 63 5 view .LVU46
+  64:Core/Src/lis2hd12.c **** 
+  65:Core/Src/lis2hd12.c ****     uint8_t reg_value;
+ 285              		.loc 1 65 5 view .LVU47
+  66:Core/Src/lis2hd12.c ****     const uint8_t ret = lis2hd12_read_reg(CTRL0_REG, &reg_value, 1);
+ 286              		.loc 1 66 5 view .LVU48
+ 287              	.LVL21:
+ 288              	.LBB96:
+ 289              	.LBI96:
+  17:Core/Src/lis2hd12.c **** {
+ 290              		.loc 1 17 23 view .LVU49
+ 291              	.LBB97:
+  19:Core/Src/lis2hd12.c **** }
+ 292              		.loc 1 19 5 view .LVU50
+  19:Core/Src/lis2hd12.c **** }
+ 293              		.loc 1 19 12 is_stmt 0 view .LVU51
+ 294 0006 0122     		movs	r2, #1
+ 295 0008 0092     		str	r2, [sp]
+ 296 000a 0DF10F03 		add	r3, sp, #15
+ 297              	.LVL22:
+  19:Core/Src/lis2hd12.c **** }
+ 298              		.loc 1 19 12 view .LVU52
+ 299 000e 1E21     		movs	r1, #30
+ 300 0010 3220     		movs	r0, #50
+ 301              	.LVL23:
+  19:Core/Src/lis2hd12.c **** }
+ 302              		.loc 1 19 12 view .LVU53
+ 303 0012 FFF7FEFF 		bl	i2c_mem_read
+ 304              	.LVL24:
+  19:Core/Src/lis2hd12.c **** }
+ 305              		.loc 1 19 12 view .LVU54
+ 306              	.LBE97:
+ 307              	.LBE96:
+  67:Core/Src/lis2hd12.c **** 
+  68:Core/Src/lis2hd12.c ****     *is_disconnected = (reg_value == PU_DISCONNECT);
+ 308              		.loc 1 68 5 is_stmt 1 view .LVU55
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 8
+
+
+ 309              		.loc 1 68 35 is_stmt 0 view .LVU56
+ 310 0016 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 311 001a 902B     		cmp	r3, #144
+ 312 001c 14BF     		ite	ne
+ 313 001e 0023     		movne	r3, #0
+ 314 0020 0123     		moveq	r3, #1
+ 315              		.loc 1 68 22 view .LVU57
+ 316 0022 2370     		strb	r3, [r4]
+  69:Core/Src/lis2hd12.c **** 
+  70:Core/Src/lis2hd12.c ****     return ret;
+ 317              		.loc 1 70 5 is_stmt 1 view .LVU58
+  71:Core/Src/lis2hd12.c **** 
+  72:Core/Src/lis2hd12.c **** }
+ 318              		.loc 1 72 1 is_stmt 0 view .LVU59
+ 319 0024 04B0     		add	sp, sp, #16
+ 320              	.LCFI13:
+ 321              		.cfi_def_cfa_offset 8
+ 322              		@ sp needed
+ 323 0026 10BD     		pop	{r4, pc}
+ 324              		.loc 1 72 1 view .LVU60
+ 325              		.cfi_endproc
+ 326              	.LFE137:
+ 328              		.section	.text.lis2hd12_get_ctrl,"ax",%progbits
+ 329              		.align	1
+ 330              		.global	lis2hd12_get_ctrl
+ 331              		.syntax unified
+ 332              		.thumb
+ 333              		.thumb_func
+ 335              	lis2hd12_get_ctrl:
+ 336              	.LVL25:
+ 337              	.LFB138:
+  73:Core/Src/lis2hd12.c **** 
+  74:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_ctrl(lis2dh12_ctrl_t *ctrl)
+  75:Core/Src/lis2hd12.c **** {
+ 338              		.loc 1 75 1 is_stmt 1 view -0
+ 339              		.cfi_startproc
+ 340              		@ args = 0, pretend = 0, frame = 0
+ 341              		@ frame_needed = 0, uses_anonymous_args = 0
+ 342              		@ link register save eliminated.
+  76:Core/Src/lis2hd12.c ****     return 0;
+ 343              		.loc 1 76 5 view .LVU62
+  77:Core/Src/lis2hd12.c **** }
+ 344              		.loc 1 77 1 is_stmt 0 view .LVU63
+ 345 0000 0020     		movs	r0, #0
+ 346              	.LVL26:
+ 347              		.loc 1 77 1 view .LVU64
+ 348 0002 7047     		bx	lr
+ 349              		.cfi_endproc
+ 350              	.LFE138:
+ 352              		.section	.text.lis2hd12_set_ctrl,"ax",%progbits
+ 353              		.align	1
+ 354              		.global	lis2hd12_set_ctrl
+ 355              		.syntax unified
+ 356              		.thumb
+ 357              		.thumb_func
+ 359              	lis2hd12_set_ctrl:
+ 360              	.LVL27:
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 9
+
+
+ 361              	.LFB139:
+  78:Core/Src/lis2hd12.c **** 
+  79:Core/Src/lis2hd12.c **** 
+  80:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_ctrl(lis2dh12_ctrl_t *ctrl)
+  81:Core/Src/lis2hd12.c **** {
+ 362              		.loc 1 81 1 is_stmt 1 view -0
+ 363              		.cfi_startproc
+ 364              		@ args = 0, pretend = 0, frame = 0
+ 365              		@ frame_needed = 0, uses_anonymous_args = 0
+ 366              		@ link register save eliminated.
+  82:Core/Src/lis2hd12.c **** 
+  83:Core/Src/lis2hd12.c **** 
+  84:Core/Src/lis2hd12.c ****     return 0;
+ 367              		.loc 1 84 5 view .LVU66
+  85:Core/Src/lis2hd12.c **** }
+ 368              		.loc 1 85 1 is_stmt 0 view .LVU67
+ 369 0000 0020     		movs	r0, #0
+ 370              	.LVL28:
+ 371              		.loc 1 85 1 view .LVU68
+ 372 0002 7047     		bx	lr
+ 373              		.cfi_endproc
+ 374              	.LFE139:
+ 376              		.section	.text.lis2hd12_enable_temp_sensor,"ax",%progbits
+ 377              		.align	1
+ 378              		.global	lis2hd12_enable_temp_sensor
+ 379              		.syntax unified
+ 380              		.thumb
+ 381              		.thumb_func
+ 383              	lis2hd12_enable_temp_sensor:
+ 384              	.LFB140:
+  86:Core/Src/lis2hd12.c **** 
+  87:Core/Src/lis2hd12.c **** uint8_t lis2hd12_enable_temp_sensor(void)
+  88:Core/Src/lis2hd12.c **** {
+ 385              		.loc 1 88 1 is_stmt 1 view -0
+ 386              		.cfi_startproc
+ 387              		@ args = 0, pretend = 0, frame = 0
+ 388              		@ frame_needed = 0, uses_anonymous_args = 0
+ 389              		@ link register save eliminated.
+  89:Core/Src/lis2hd12.c ****     static const uint8_t ENABLE = (0x3 << 6);
+ 390              		.loc 1 89 5 view .LVU70
+  90:Core/Src/lis2hd12.c ****     static const uint8_t TEMP_CFG_REG = 0x1F;
+ 391              		.loc 1 90 5 view .LVU71
+  91:Core/Src/lis2hd12.c ****     lis2hd12_write_reg(TEMP_CFG_REG, ENABLE);
+ 392              		.loc 1 91 5 view .LVU72
+  92:Core/Src/lis2hd12.c **** 
+  93:Core/Src/lis2hd12.c **** }
+ 393              		.loc 1 93 1 is_stmt 0 view .LVU73
+ 394 0000 7047     		bx	lr
+ 395              		.cfi_endproc
+ 396              	.LFE140:
+ 398              		.section	.text.lis2hd12_disable_temp_sensor,"ax",%progbits
+ 399              		.align	1
+ 400              		.global	lis2hd12_disable_temp_sensor
+ 401              		.syntax unified
+ 402              		.thumb
+ 403              		.thumb_func
+ 405              	lis2hd12_disable_temp_sensor:
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 10
+
+
+ 406              	.LFB141:
+  94:Core/Src/lis2hd12.c **** uint8_t lis2hd12_disable_temp_sensor(void)
+  95:Core/Src/lis2hd12.c **** {
+ 407              		.loc 1 95 1 is_stmt 1 view -0
+ 408              		.cfi_startproc
+ 409              		@ args = 0, pretend = 0, frame = 0
+ 410              		@ frame_needed = 0, uses_anonymous_args = 0
+ 411              		@ link register save eliminated.
+  96:Core/Src/lis2hd12.c ****     static const uint8_t DISABLE = 0x00;
+ 412              		.loc 1 96 5 view .LVU75
+  97:Core/Src/lis2hd12.c ****     static const uint8_t TEMP_CFG_REG = 0x1F;
+ 413              		.loc 1 97 5 view .LVU76
+  98:Core/Src/lis2hd12.c ****     lis2hd12_write_reg(TEMP_CFG_REG, ENABLE);
+ 414              		.loc 1 98 5 view .LVU77
+  99:Core/Src/lis2hd12.c **** 
+ 100:Core/Src/lis2hd12.c **** 
+ 101:Core/Src/lis2hd12.c **** }
+ 415              		.loc 1 101 1 is_stmt 0 view .LVU78
+ 416 0000 7047     		bx	lr
+ 417              		.cfi_endproc
+ 418              	.LFE141:
+ 420              		.section	.text.lis2hd12_temp_sensor_is_enabled,"ax",%progbits
+ 421              		.align	1
+ 422              		.global	lis2hd12_temp_sensor_is_enabled
+ 423              		.syntax unified
+ 424              		.thumb
+ 425              		.thumb_func
+ 427              	lis2hd12_temp_sensor_is_enabled:
+ 428              	.LVL29:
+ 429              	.LFB142:
+ 102:Core/Src/lis2hd12.c **** uint8_t lis2hd12_temp_sensor_is_enabled(bool *is_enabled)
+ 103:Core/Src/lis2hd12.c **** {
+ 430              		.loc 1 103 1 is_stmt 1 view -0
+ 431              		.cfi_startproc
+ 432              		@ args = 0, pretend = 0, frame = 0
+ 433              		@ frame_needed = 0, uses_anonymous_args = 0
+ 434              		.loc 1 103 1 is_stmt 0 view .LVU80
+ 435 0000 00B5     		push	{lr}
+ 436              	.LCFI14:
+ 437              		.cfi_def_cfa_offset 4
+ 438              		.cfi_offset 14, -4
+ 439 0002 83B0     		sub	sp, sp, #12
+ 440              	.LCFI15:
+ 441              		.cfi_def_cfa_offset 16
+ 442 0004 0346     		mov	r3, r0
+ 104:Core/Src/lis2hd12.c ****     static const uint8_t TEMP_CFG_REG = 0x1F;
+ 443              		.loc 1 104 5 is_stmt 1 view .LVU81
+ 105:Core/Src/lis2hd12.c ****     lis2hd12_read_reg(TEMP_CFG_REG, is_enabled, sizeof(uint8_t));
+ 444              		.loc 1 105 5 view .LVU82
+ 445              	.LVL30:
+ 446              	.LBB98:
+ 447              	.LBI98:
+  17:Core/Src/lis2hd12.c **** {
+ 448              		.loc 1 17 23 view .LVU83
+ 449              	.LBB99:
+  19:Core/Src/lis2hd12.c **** }
+ 450              		.loc 1 19 5 view .LVU84
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 11
+
+
+  19:Core/Src/lis2hd12.c **** }
+ 451              		.loc 1 19 12 is_stmt 0 view .LVU85
+ 452 0006 0122     		movs	r2, #1
+ 453 0008 0092     		str	r2, [sp]
+ 454 000a 1F21     		movs	r1, #31
+ 455 000c 3220     		movs	r0, #50
+ 456              	.LVL31:
+  19:Core/Src/lis2hd12.c **** }
+ 457              		.loc 1 19 12 view .LVU86
+ 458 000e FFF7FEFF 		bl	i2c_mem_read
+ 459              	.LVL32:
+  19:Core/Src/lis2hd12.c **** }
+ 460              		.loc 1 19 12 view .LVU87
+ 461              	.LBE99:
+ 462              	.LBE98:
+ 106:Core/Src/lis2hd12.c **** }
+ 463              		.loc 1 106 1 view .LVU88
+ 464 0012 03B0     		add	sp, sp, #12
+ 465              	.LCFI16:
+ 466              		.cfi_def_cfa_offset 4
+ 467              		@ sp needed
+ 468 0014 5DF804FB 		ldr	pc, [sp], #4
+ 469              		.cfi_endproc
+ 470              	.LFE142:
+ 472              		.section	.text.lis2hd12_get_interrupt_ref,"ax",%progbits
+ 473              		.align	1
+ 474              		.global	lis2hd12_get_interrupt_ref
+ 475              		.syntax unified
+ 476              		.thumb
+ 477              		.thumb_func
+ 479              	lis2hd12_get_interrupt_ref:
+ 480              	.LVL33:
+ 481              	.LFB143:
+ 107:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_interrupt_ref(uint8_t *interrupt_ref)
+ 108:Core/Src/lis2hd12.c **** {
+ 482              		.loc 1 108 1 is_stmt 1 view -0
+ 483              		.cfi_startproc
+ 484              		@ args = 0, pretend = 0, frame = 0
+ 485              		@ frame_needed = 0, uses_anonymous_args = 0
+ 486              		.loc 1 108 1 is_stmt 0 view .LVU90
+ 487 0000 00B5     		push	{lr}
+ 488              	.LCFI17:
+ 489              		.cfi_def_cfa_offset 4
+ 490              		.cfi_offset 14, -4
+ 491 0002 83B0     		sub	sp, sp, #12
+ 492              	.LCFI18:
+ 493              		.cfi_def_cfa_offset 16
+ 494 0004 0346     		mov	r3, r0
+ 109:Core/Src/lis2hd12.c ****     static const uint8_t REF_REG = 0x26;
+ 495              		.loc 1 109 5 is_stmt 1 view .LVU91
+ 110:Core/Src/lis2hd12.c **** 
+ 111:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(REF_REG, interrupt_ref, sizeof(uint8_t));
+ 496              		.loc 1 111 5 view .LVU92
+ 497              	.LVL34:
+ 498              	.LBB100:
+ 499              	.LBI100:
+  17:Core/Src/lis2hd12.c **** {
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 12
+
+
+ 500              		.loc 1 17 23 view .LVU93
+ 501              	.LBB101:
+  19:Core/Src/lis2hd12.c **** }
+ 502              		.loc 1 19 5 view .LVU94
+  19:Core/Src/lis2hd12.c **** }
+ 503              		.loc 1 19 12 is_stmt 0 view .LVU95
+ 504 0006 0122     		movs	r2, #1
+ 505 0008 0092     		str	r2, [sp]
+ 506 000a 2621     		movs	r1, #38
+ 507 000c 3220     		movs	r0, #50
+ 508              	.LVL35:
+  19:Core/Src/lis2hd12.c **** }
+ 509              		.loc 1 19 12 view .LVU96
+ 510 000e FFF7FEFF 		bl	i2c_mem_read
+ 511              	.LVL36:
+  19:Core/Src/lis2hd12.c **** }
+ 512              		.loc 1 19 12 view .LVU97
+ 513              	.LBE101:
+ 514              	.LBE100:
+ 112:Core/Src/lis2hd12.c **** }
+ 515              		.loc 1 112 1 view .LVU98
+ 516 0012 03B0     		add	sp, sp, #12
+ 517              	.LCFI19:
+ 518              		.cfi_def_cfa_offset 4
+ 519              		@ sp needed
+ 520 0014 5DF804FB 		ldr	pc, [sp], #4
+ 521              		.cfi_endproc
+ 522              	.LFE143:
+ 524              		.section	.text.lis2hd12_set_interrupt_ref,"ax",%progbits
+ 525              		.align	1
+ 526              		.global	lis2hd12_set_interrupt_ref
+ 527              		.syntax unified
+ 528              		.thumb
+ 529              		.thumb_func
+ 531              	lis2hd12_set_interrupt_ref:
+ 532              	.LVL37:
+ 533              	.LFB144:
+ 113:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_interrupt_ref(uint8_t *interrupt_ref)
+ 114:Core/Src/lis2hd12.c **** {
+ 534              		.loc 1 114 1 is_stmt 1 view -0
+ 535              		.cfi_startproc
+ 536              		@ args = 0, pretend = 0, frame = 0
+ 537              		@ frame_needed = 0, uses_anonymous_args = 0
+ 538              		@ link register save eliminated.
+ 115:Core/Src/lis2hd12.c ****     static const uint8_t REF_REG = 0x26;
+ 539              		.loc 1 115 5 view .LVU100
+ 116:Core/Src/lis2hd12.c **** 
+ 117:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(REF_REG, interrupt_ref);
+ 540              		.loc 1 117 5 view .LVU101
+ 118:Core/Src/lis2hd12.c **** }
+ 541              		.loc 1 118 1 is_stmt 0 view .LVU102
+ 542 0000 0020     		movs	r0, #0
+ 543              	.LVL38:
+ 544              		.loc 1 118 1 view .LVU103
+ 545 0002 7047     		bx	lr
+ 546              		.cfi_endproc
+ 547              	.LFE144:
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 13
+
+
+ 549              		.section	.text.lis2hd12_get_status,"ax",%progbits
+ 550              		.align	1
+ 551              		.global	lis2hd12_get_status
+ 552              		.syntax unified
+ 553              		.thumb
+ 554              		.thumb_func
+ 556              	lis2hd12_get_status:
+ 557              	.LVL39:
+ 558              	.LFB145:
+ 119:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_status(uint8_t *status)
+ 120:Core/Src/lis2hd12.c **** {
+ 559              		.loc 1 120 1 is_stmt 1 view -0
+ 560              		.cfi_startproc
+ 561              		@ args = 0, pretend = 0, frame = 0
+ 562              		@ frame_needed = 0, uses_anonymous_args = 0
+ 563              		.loc 1 120 1 is_stmt 0 view .LVU105
+ 564 0000 00B5     		push	{lr}
+ 565              	.LCFI20:
+ 566              		.cfi_def_cfa_offset 4
+ 567              		.cfi_offset 14, -4
+ 568 0002 83B0     		sub	sp, sp, #12
+ 569              	.LCFI21:
+ 570              		.cfi_def_cfa_offset 16
+ 571 0004 0346     		mov	r3, r0
+ 121:Core/Src/lis2hd12.c ****     static const uint8_t STATUS_REG = 0x26;
+ 572              		.loc 1 121 5 is_stmt 1 view .LVU106
+ 122:Core/Src/lis2hd12.c **** 
+ 123:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(STATUS_REG, status, sizeof(uint8_t));
+ 573              		.loc 1 123 5 view .LVU107
+ 574              	.LVL40:
+ 575              	.LBB102:
+ 576              	.LBI102:
+  17:Core/Src/lis2hd12.c **** {
+ 577              		.loc 1 17 23 view .LVU108
+ 578              	.LBB103:
+  19:Core/Src/lis2hd12.c **** }
+ 579              		.loc 1 19 5 view .LVU109
+  19:Core/Src/lis2hd12.c **** }
+ 580              		.loc 1 19 12 is_stmt 0 view .LVU110
+ 581 0006 0122     		movs	r2, #1
+ 582 0008 0092     		str	r2, [sp]
+ 583 000a 2621     		movs	r1, #38
+ 584 000c 3220     		movs	r0, #50
+ 585              	.LVL41:
+  19:Core/Src/lis2hd12.c **** }
+ 586              		.loc 1 19 12 view .LVU111
+ 587 000e FFF7FEFF 		bl	i2c_mem_read
+ 588              	.LVL42:
+  19:Core/Src/lis2hd12.c **** }
+ 589              		.loc 1 19 12 view .LVU112
+ 590              	.LBE103:
+ 591              	.LBE102:
+ 124:Core/Src/lis2hd12.c **** }
+ 592              		.loc 1 124 1 view .LVU113
+ 593 0012 03B0     		add	sp, sp, #12
+ 594              	.LCFI22:
+ 595              		.cfi_def_cfa_offset 4
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 14
+
+
+ 596              		@ sp needed
+ 597 0014 5DF804FB 		ldr	pc, [sp], #4
+ 598              		.cfi_endproc
+ 599              	.LFE145:
+ 601              		.section	.text.lis2hd12_get_acc_xyz,"ax",%progbits
+ 602              		.align	1
+ 603              		.global	lis2hd12_get_acc_xyz
+ 604              		.syntax unified
+ 605              		.thumb
+ 606              		.thumb_func
+ 608              	lis2hd12_get_acc_xyz:
+ 609              	.LVL43:
+ 610              	.LFB146:
+ 125:Core/Src/lis2hd12.c **** 
+ 126:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_acc_xyz(lis2dh12_acc_xyz *xyz)
+ 127:Core/Src/lis2hd12.c **** {
+ 611              		.loc 1 127 1 is_stmt 1 view -0
+ 612              		.cfi_startproc
+ 613              		@ args = 0, pretend = 0, frame = 0
+ 614              		@ frame_needed = 0, uses_anonymous_args = 0
+ 615              		.loc 1 127 1 is_stmt 0 view .LVU115
+ 616 0000 00B5     		push	{lr}
+ 617              	.LCFI23:
+ 618              		.cfi_def_cfa_offset 4
+ 619              		.cfi_offset 14, -4
+ 620 0002 83B0     		sub	sp, sp, #12
+ 621              	.LCFI24:
+ 622              		.cfi_def_cfa_offset 16
+ 623 0004 0346     		mov	r3, r0
+ 128:Core/Src/lis2hd12.c ****     static const uint8_t X_REG = 0x29;
+ 624              		.loc 1 128 5 is_stmt 1 view .LVU116
+ 129:Core/Src/lis2hd12.c **** 
+ 130:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(X_REG, xyz, 3 * sizeof(uint16_t));
+ 625              		.loc 1 130 5 view .LVU117
+ 626              	.LVL44:
+ 627              	.LBB104:
+ 628              	.LBI104:
+  17:Core/Src/lis2hd12.c **** {
+ 629              		.loc 1 17 23 view .LVU118
+ 630              	.LBB105:
+  19:Core/Src/lis2hd12.c **** }
+ 631              		.loc 1 19 5 view .LVU119
+  19:Core/Src/lis2hd12.c **** }
+ 632              		.loc 1 19 12 is_stmt 0 view .LVU120
+ 633 0006 0622     		movs	r2, #6
+ 634 0008 0092     		str	r2, [sp]
+ 635 000a 0122     		movs	r2, #1
+ 636 000c 2921     		movs	r1, #41
+ 637 000e 3220     		movs	r0, #50
+ 638              	.LVL45:
+  19:Core/Src/lis2hd12.c **** }
+ 639              		.loc 1 19 12 view .LVU121
+ 640 0010 FFF7FEFF 		bl	i2c_mem_read
+ 641              	.LVL46:
+  19:Core/Src/lis2hd12.c **** }
+ 642              		.loc 1 19 12 view .LVU122
+ 643              	.LBE105:
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 15
+
+
+ 644              	.LBE104:
+ 131:Core/Src/lis2hd12.c **** }
+ 645              		.loc 1 131 1 view .LVU123
+ 646 0014 03B0     		add	sp, sp, #12
+ 647              	.LCFI25:
+ 648              		.cfi_def_cfa_offset 4
+ 649              		@ sp needed
+ 650 0016 5DF804FB 		ldr	pc, [sp], #4
+ 651              		.cfi_endproc
+ 652              	.LFE146:
+ 654              		.section	.text.lis2hd12_get_fifo_ctrl,"ax",%progbits
+ 655              		.align	1
+ 656              		.global	lis2hd12_get_fifo_ctrl
+ 657              		.syntax unified
+ 658              		.thumb
+ 659              		.thumb_func
+ 661              	lis2hd12_get_fifo_ctrl:
+ 662              	.LVL47:
+ 663              	.LFB147:
+ 132:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_fifo_ctrl(uint8_t *fifo_ctrl)
+ 133:Core/Src/lis2hd12.c **** {
+ 664              		.loc 1 133 1 is_stmt 1 view -0
+ 665              		.cfi_startproc
+ 666              		@ args = 0, pretend = 0, frame = 0
+ 667              		@ frame_needed = 0, uses_anonymous_args = 0
+ 668              		.loc 1 133 1 is_stmt 0 view .LVU125
+ 669 0000 00B5     		push	{lr}
+ 670              	.LCFI26:
+ 671              		.cfi_def_cfa_offset 4
+ 672              		.cfi_offset 14, -4
+ 673 0002 83B0     		sub	sp, sp, #12
+ 674              	.LCFI27:
+ 675              		.cfi_def_cfa_offset 16
+ 676 0004 0346     		mov	r3, r0
+ 134:Core/Src/lis2hd12.c ****     static const uint8_t FIFO_CTRL_REG = 0x2E;
+ 677              		.loc 1 134 5 is_stmt 1 view .LVU126
+ 135:Core/Src/lis2hd12.c **** 
+ 136:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(FIFO_CTRL_REG, fifo_ctrl, sizeof(uint8_t));
+ 678              		.loc 1 136 5 view .LVU127
+ 679              	.LVL48:
+ 680              	.LBB106:
+ 681              	.LBI106:
+  17:Core/Src/lis2hd12.c **** {
+ 682              		.loc 1 17 23 view .LVU128
+ 683              	.LBB107:
+  19:Core/Src/lis2hd12.c **** }
+ 684              		.loc 1 19 5 view .LVU129
+  19:Core/Src/lis2hd12.c **** }
+ 685              		.loc 1 19 12 is_stmt 0 view .LVU130
+ 686 0006 0122     		movs	r2, #1
+ 687 0008 0092     		str	r2, [sp]
+ 688 000a 2E21     		movs	r1, #46
+ 689 000c 3220     		movs	r0, #50
+ 690              	.LVL49:
+  19:Core/Src/lis2hd12.c **** }
+ 691              		.loc 1 19 12 view .LVU131
+ 692 000e FFF7FEFF 		bl	i2c_mem_read
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 16
+
+
+ 693              	.LVL50:
+  19:Core/Src/lis2hd12.c **** }
+ 694              		.loc 1 19 12 view .LVU132
+ 695              	.LBE107:
+ 696              	.LBE106:
+ 137:Core/Src/lis2hd12.c **** }
+ 697              		.loc 1 137 1 view .LVU133
+ 698 0012 03B0     		add	sp, sp, #12
+ 699              	.LCFI28:
+ 700              		.cfi_def_cfa_offset 4
+ 701              		@ sp needed
+ 702 0014 5DF804FB 		ldr	pc, [sp], #4
+ 703              		.cfi_endproc
+ 704              	.LFE147:
+ 706              		.section	.text.lis2hd12_set_fifo_ctrl,"ax",%progbits
+ 707              		.align	1
+ 708              		.global	lis2hd12_set_fifo_ctrl
+ 709              		.syntax unified
+ 710              		.thumb
+ 711              		.thumb_func
+ 713              	lis2hd12_set_fifo_ctrl:
+ 714              	.LVL51:
+ 715              	.LFB148:
+ 138:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_fifo_ctrl(uint8_t *fifo_ctrl)
+ 139:Core/Src/lis2hd12.c **** {
+ 716              		.loc 1 139 1 is_stmt 1 view -0
+ 717              		.cfi_startproc
+ 718              		@ args = 0, pretend = 0, frame = 0
+ 719              		@ frame_needed = 0, uses_anonymous_args = 0
+ 720              		@ link register save eliminated.
+ 140:Core/Src/lis2hd12.c ****     static const uint8_t FIFO_CTRL_REG = 0x2E;
+ 721              		.loc 1 140 5 view .LVU135
+ 141:Core/Src/lis2hd12.c **** 
+ 142:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(FIFO_CTRL_REG, fifo_ctrl);
+ 722              		.loc 1 142 5 view .LVU136
+ 143:Core/Src/lis2hd12.c **** }
+ 723              		.loc 1 143 1 is_stmt 0 view .LVU137
+ 724 0000 0020     		movs	r0, #0
+ 725              	.LVL52:
+ 726              		.loc 1 143 1 view .LVU138
+ 727 0002 7047     		bx	lr
+ 728              		.cfi_endproc
+ 729              	.LFE148:
+ 731              		.section	.text.lis2hd12_get_fifo_src,"ax",%progbits
+ 732              		.align	1
+ 733              		.global	lis2hd12_get_fifo_src
+ 734              		.syntax unified
+ 735              		.thumb
+ 736              		.thumb_func
+ 738              	lis2hd12_get_fifo_src:
+ 739              	.LVL53:
+ 740              	.LFB149:
+ 144:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_fifo_src(uint8_t *fifo_src)
+ 145:Core/Src/lis2hd12.c **** {
+ 741              		.loc 1 145 1 is_stmt 1 view -0
+ 742              		.cfi_startproc
+ 743              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 17
+
+
+ 744              		@ frame_needed = 0, uses_anonymous_args = 0
+ 745              		.loc 1 145 1 is_stmt 0 view .LVU140
+ 746 0000 00B5     		push	{lr}
+ 747              	.LCFI29:
+ 748              		.cfi_def_cfa_offset 4
+ 749              		.cfi_offset 14, -4
+ 750 0002 83B0     		sub	sp, sp, #12
+ 751              	.LCFI30:
+ 752              		.cfi_def_cfa_offset 16
+ 753 0004 0346     		mov	r3, r0
+ 146:Core/Src/lis2hd12.c ****     static const uint8_t FIFO_SRC_REG = 0x2F;
+ 754              		.loc 1 146 5 is_stmt 1 view .LVU141
+ 147:Core/Src/lis2hd12.c **** 
+ 148:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(FIFO_SRC_REG, fifo_src, sizeof(uint8_t));
+ 755              		.loc 1 148 5 view .LVU142
+ 756              	.LVL54:
+ 757              	.LBB108:
+ 758              	.LBI108:
+  17:Core/Src/lis2hd12.c **** {
+ 759              		.loc 1 17 23 view .LVU143
+ 760              	.LBB109:
+  19:Core/Src/lis2hd12.c **** }
+ 761              		.loc 1 19 5 view .LVU144
+  19:Core/Src/lis2hd12.c **** }
+ 762              		.loc 1 19 12 is_stmt 0 view .LVU145
+ 763 0006 0122     		movs	r2, #1
+ 764 0008 0092     		str	r2, [sp]
+ 765 000a 2F21     		movs	r1, #47
+ 766 000c 3220     		movs	r0, #50
+ 767              	.LVL55:
+  19:Core/Src/lis2hd12.c **** }
+ 768              		.loc 1 19 12 view .LVU146
+ 769 000e FFF7FEFF 		bl	i2c_mem_read
+ 770              	.LVL56:
+  19:Core/Src/lis2hd12.c **** }
+ 771              		.loc 1 19 12 view .LVU147
+ 772              	.LBE109:
+ 773              	.LBE108:
+ 149:Core/Src/lis2hd12.c **** }
+ 774              		.loc 1 149 1 view .LVU148
+ 775 0012 03B0     		add	sp, sp, #12
+ 776              	.LCFI31:
+ 777              		.cfi_def_cfa_offset 4
+ 778              		@ sp needed
+ 779 0014 5DF804FB 		ldr	pc, [sp], #4
+ 780              		.cfi_endproc
+ 781              	.LFE149:
+ 783              		.section	.text.lis2hd12_get_int1_cfg,"ax",%progbits
+ 784              		.align	1
+ 785              		.global	lis2hd12_get_int1_cfg
+ 786              		.syntax unified
+ 787              		.thumb
+ 788              		.thumb_func
+ 790              	lis2hd12_get_int1_cfg:
+ 791              	.LVL57:
+ 792              	.LFB150:
+ 150:Core/Src/lis2hd12.c **** 
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 18
+
+
+ 151:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_int1_cfg(uint8_t *int1_cfg)
+ 152:Core/Src/lis2hd12.c **** {
+ 793              		.loc 1 152 1 is_stmt 1 view -0
+ 794              		.cfi_startproc
+ 795              		@ args = 0, pretend = 0, frame = 0
+ 796              		@ frame_needed = 0, uses_anonymous_args = 0
+ 797              		.loc 1 152 1 is_stmt 0 view .LVU150
+ 798 0000 00B5     		push	{lr}
+ 799              	.LCFI32:
+ 800              		.cfi_def_cfa_offset 4
+ 801              		.cfi_offset 14, -4
+ 802 0002 83B0     		sub	sp, sp, #12
+ 803              	.LCFI33:
+ 804              		.cfi_def_cfa_offset 16
+ 805 0004 0346     		mov	r3, r0
+ 153:Core/Src/lis2hd12.c ****     static const uint8_t INT1_CFG_REG = 0x30;
+ 806              		.loc 1 153 5 is_stmt 1 view .LVU151
+ 154:Core/Src/lis2hd12.c **** 
+ 155:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(INT1_CFG_REG, int1_cfg, sizeof(uint8_t));
+ 807              		.loc 1 155 5 view .LVU152
+ 808              	.LVL58:
+ 809              	.LBB110:
+ 810              	.LBI110:
+  17:Core/Src/lis2hd12.c **** {
+ 811              		.loc 1 17 23 view .LVU153
+ 812              	.LBB111:
+  19:Core/Src/lis2hd12.c **** }
+ 813              		.loc 1 19 5 view .LVU154
+  19:Core/Src/lis2hd12.c **** }
+ 814              		.loc 1 19 12 is_stmt 0 view .LVU155
+ 815 0006 0122     		movs	r2, #1
+ 816 0008 0092     		str	r2, [sp]
+ 817 000a 3021     		movs	r1, #48
+ 818 000c 3220     		movs	r0, #50
+ 819              	.LVL59:
+  19:Core/Src/lis2hd12.c **** }
+ 820              		.loc 1 19 12 view .LVU156
+ 821 000e FFF7FEFF 		bl	i2c_mem_read
+ 822              	.LVL60:
+  19:Core/Src/lis2hd12.c **** }
+ 823              		.loc 1 19 12 view .LVU157
+ 824              	.LBE111:
+ 825              	.LBE110:
+ 156:Core/Src/lis2hd12.c **** }
+ 826              		.loc 1 156 1 view .LVU158
+ 827 0012 03B0     		add	sp, sp, #12
+ 828              	.LCFI34:
+ 829              		.cfi_def_cfa_offset 4
+ 830              		@ sp needed
+ 831 0014 5DF804FB 		ldr	pc, [sp], #4
+ 832              		.cfi_endproc
+ 833              	.LFE150:
+ 835              		.section	.text.lis2hd12_set_int1_cfg,"ax",%progbits
+ 836              		.align	1
+ 837              		.global	lis2hd12_set_int1_cfg
+ 838              		.syntax unified
+ 839              		.thumb
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 19
+
+
+ 840              		.thumb_func
+ 842              	lis2hd12_set_int1_cfg:
+ 843              	.LVL61:
+ 844              	.LFB151:
+ 157:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_int1_cfg(uint8_t *int1_cfg)
+ 158:Core/Src/lis2hd12.c **** {
+ 845              		.loc 1 158 1 is_stmt 1 view -0
+ 846              		.cfi_startproc
+ 847              		@ args = 0, pretend = 0, frame = 0
+ 848              		@ frame_needed = 0, uses_anonymous_args = 0
+ 849              		@ link register save eliminated.
+ 159:Core/Src/lis2hd12.c ****     static const uint8_t INT1_CFG_REG = 0x30;
+ 850              		.loc 1 159 5 view .LVU160
+ 160:Core/Src/lis2hd12.c **** 
+ 161:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(INT1_CFG_REG, int1_cfg);
+ 851              		.loc 1 161 5 view .LVU161
+ 162:Core/Src/lis2hd12.c **** }
+ 852              		.loc 1 162 1 is_stmt 0 view .LVU162
+ 853 0000 0020     		movs	r0, #0
+ 854              	.LVL62:
+ 855              		.loc 1 162 1 view .LVU163
+ 856 0002 7047     		bx	lr
+ 857              		.cfi_endproc
+ 858              	.LFE151:
+ 860              		.section	.text.lis2hd12_get_int1_src,"ax",%progbits
+ 861              		.align	1
+ 862              		.global	lis2hd12_get_int1_src
+ 863              		.syntax unified
+ 864              		.thumb
+ 865              		.thumb_func
+ 867              	lis2hd12_get_int1_src:
+ 868              	.LVL63:
+ 869              	.LFB152:
+ 163:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_int1_src(uint8_t *int1_src)
+ 164:Core/Src/lis2hd12.c **** {
+ 870              		.loc 1 164 1 is_stmt 1 view -0
+ 871              		.cfi_startproc
+ 872              		@ args = 0, pretend = 0, frame = 0
+ 873              		@ frame_needed = 0, uses_anonymous_args = 0
+ 874              		.loc 1 164 1 is_stmt 0 view .LVU165
+ 875 0000 00B5     		push	{lr}
+ 876              	.LCFI35:
+ 877              		.cfi_def_cfa_offset 4
+ 878              		.cfi_offset 14, -4
+ 879 0002 83B0     		sub	sp, sp, #12
+ 880              	.LCFI36:
+ 881              		.cfi_def_cfa_offset 16
+ 882 0004 0346     		mov	r3, r0
+ 165:Core/Src/lis2hd12.c ****     static const uint8_t INT1_SRC_REG = 0x31;
+ 883              		.loc 1 165 5 is_stmt 1 view .LVU166
+ 166:Core/Src/lis2hd12.c **** 
+ 167:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(INT1_SRC_REG, int1_src, sizeof(uint8_t));
+ 884              		.loc 1 167 5 view .LVU167
+ 885              	.LVL64:
+ 886              	.LBB112:
+ 887              	.LBI112:
+  17:Core/Src/lis2hd12.c **** {
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 20
+
+
+ 888              		.loc 1 17 23 view .LVU168
+ 889              	.LBB113:
+  19:Core/Src/lis2hd12.c **** }
+ 890              		.loc 1 19 5 view .LVU169
+  19:Core/Src/lis2hd12.c **** }
+ 891              		.loc 1 19 12 is_stmt 0 view .LVU170
+ 892 0006 0122     		movs	r2, #1
+ 893 0008 0092     		str	r2, [sp]
+ 894 000a 3121     		movs	r1, #49
+ 895 000c 3220     		movs	r0, #50
+ 896              	.LVL65:
+  19:Core/Src/lis2hd12.c **** }
+ 897              		.loc 1 19 12 view .LVU171
+ 898 000e FFF7FEFF 		bl	i2c_mem_read
+ 899              	.LVL66:
+  19:Core/Src/lis2hd12.c **** }
+ 900              		.loc 1 19 12 view .LVU172
+ 901              	.LBE113:
+ 902              	.LBE112:
+ 168:Core/Src/lis2hd12.c **** }
+ 903              		.loc 1 168 1 view .LVU173
+ 904 0012 03B0     		add	sp, sp, #12
+ 905              	.LCFI37:
+ 906              		.cfi_def_cfa_offset 4
+ 907              		@ sp needed
+ 908 0014 5DF804FB 		ldr	pc, [sp], #4
+ 909              		.cfi_endproc
+ 910              	.LFE152:
+ 912              		.section	.text.lis2hd12_get_int1_ths,"ax",%progbits
+ 913              		.align	1
+ 914              		.global	lis2hd12_get_int1_ths
+ 915              		.syntax unified
+ 916              		.thumb
+ 917              		.thumb_func
+ 919              	lis2hd12_get_int1_ths:
+ 920              	.LVL67:
+ 921              	.LFB153:
+ 169:Core/Src/lis2hd12.c **** 
+ 170:Core/Src/lis2hd12.c **** 
+ 171:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_int1_ths(uint8_t *int1_ths)
+ 172:Core/Src/lis2hd12.c **** {
+ 922              		.loc 1 172 1 is_stmt 1 view -0
+ 923              		.cfi_startproc
+ 924              		@ args = 0, pretend = 0, frame = 0
+ 925              		@ frame_needed = 0, uses_anonymous_args = 0
+ 926              		.loc 1 172 1 is_stmt 0 view .LVU175
+ 927 0000 00B5     		push	{lr}
+ 928              	.LCFI38:
+ 929              		.cfi_def_cfa_offset 4
+ 930              		.cfi_offset 14, -4
+ 931 0002 83B0     		sub	sp, sp, #12
+ 932              	.LCFI39:
+ 933              		.cfi_def_cfa_offset 16
+ 934 0004 0346     		mov	r3, r0
+ 173:Core/Src/lis2hd12.c ****     static const uint8_t INT1_THS_REG = 0x32;
+ 935              		.loc 1 173 5 is_stmt 1 view .LVU176
+ 174:Core/Src/lis2hd12.c **** 
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 21
+
+
+ 175:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(INT1_THS_REG, int1_ths, sizeof(uint8_t));
+ 936              		.loc 1 175 5 view .LVU177
+ 937              	.LVL68:
+ 938              	.LBB114:
+ 939              	.LBI114:
+  17:Core/Src/lis2hd12.c **** {
+ 940              		.loc 1 17 23 view .LVU178
+ 941              	.LBB115:
+  19:Core/Src/lis2hd12.c **** }
+ 942              		.loc 1 19 5 view .LVU179
+  19:Core/Src/lis2hd12.c **** }
+ 943              		.loc 1 19 12 is_stmt 0 view .LVU180
+ 944 0006 0122     		movs	r2, #1
+ 945 0008 0092     		str	r2, [sp]
+ 946 000a 3221     		movs	r1, #50
+ 947 000c 0846     		mov	r0, r1
+ 948              	.LVL69:
+  19:Core/Src/lis2hd12.c **** }
+ 949              		.loc 1 19 12 view .LVU181
+ 950 000e FFF7FEFF 		bl	i2c_mem_read
+ 951              	.LVL70:
+  19:Core/Src/lis2hd12.c **** }
+ 952              		.loc 1 19 12 view .LVU182
+ 953              	.LBE115:
+ 954              	.LBE114:
+ 176:Core/Src/lis2hd12.c **** }
+ 955              		.loc 1 176 1 view .LVU183
+ 956 0012 03B0     		add	sp, sp, #12
+ 957              	.LCFI40:
+ 958              		.cfi_def_cfa_offset 4
+ 959              		@ sp needed
+ 960 0014 5DF804FB 		ldr	pc, [sp], #4
+ 961              		.cfi_endproc
+ 962              	.LFE153:
+ 964              		.section	.text.lis2hd12_set_int1_ths,"ax",%progbits
+ 965              		.align	1
+ 966              		.global	lis2hd12_set_int1_ths
+ 967              		.syntax unified
+ 968              		.thumb
+ 969              		.thumb_func
+ 971              	lis2hd12_set_int1_ths:
+ 972              	.LVL71:
+ 973              	.LFB154:
+ 177:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_int1_ths(uint8_t *int1_ths)
+ 178:Core/Src/lis2hd12.c **** {
+ 974              		.loc 1 178 1 is_stmt 1 view -0
+ 975              		.cfi_startproc
+ 976              		@ args = 0, pretend = 0, frame = 0
+ 977              		@ frame_needed = 0, uses_anonymous_args = 0
+ 978              		@ link register save eliminated.
+ 179:Core/Src/lis2hd12.c ****     static const uint8_t INT1_THS_REG = 0x32;
+ 979              		.loc 1 179 5 view .LVU185
+ 180:Core/Src/lis2hd12.c **** 
+ 181:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(INT1_THS_REG, int1_ths);
+ 980              		.loc 1 181 5 view .LVU186
+ 182:Core/Src/lis2hd12.c **** }
+ 981              		.loc 1 182 1 is_stmt 0 view .LVU187
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 22
+
+
+ 982 0000 0020     		movs	r0, #0
+ 983              	.LVL72:
+ 984              		.loc 1 182 1 view .LVU188
+ 985 0002 7047     		bx	lr
+ 986              		.cfi_endproc
+ 987              	.LFE154:
+ 989              		.section	.text.lis2hd12_get_int1_duration,"ax",%progbits
+ 990              		.align	1
+ 991              		.global	lis2hd12_get_int1_duration
+ 992              		.syntax unified
+ 993              		.thumb
+ 994              		.thumb_func
+ 996              	lis2hd12_get_int1_duration:
+ 997              	.LVL73:
+ 998              	.LFB155:
+ 183:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_int1_duration(uint8_t *int1_duration)
+ 184:Core/Src/lis2hd12.c **** {
+ 999              		.loc 1 184 1 is_stmt 1 view -0
+ 1000              		.cfi_startproc
+ 1001              		@ args = 0, pretend = 0, frame = 0
+ 1002              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1003              		.loc 1 184 1 is_stmt 0 view .LVU190
+ 1004 0000 00B5     		push	{lr}
+ 1005              	.LCFI41:
+ 1006              		.cfi_def_cfa_offset 4
+ 1007              		.cfi_offset 14, -4
+ 1008 0002 83B0     		sub	sp, sp, #12
+ 1009              	.LCFI42:
+ 1010              		.cfi_def_cfa_offset 16
+ 1011 0004 0346     		mov	r3, r0
+ 185:Core/Src/lis2hd12.c ****     static const uint8_t INT1_THS_DURATION = 0x33;
+ 1012              		.loc 1 185 5 is_stmt 1 view .LVU191
+ 186:Core/Src/lis2hd12.c **** 
+ 187:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(INT1_THS_DURATION, int1_duration, sizeof(uint8_t));
+ 1013              		.loc 1 187 5 view .LVU192
+ 1014              	.LVL74:
+ 1015              	.LBB116:
+ 1016              	.LBI116:
+  17:Core/Src/lis2hd12.c **** {
+ 1017              		.loc 1 17 23 view .LVU193
+ 1018              	.LBB117:
+  19:Core/Src/lis2hd12.c **** }
+ 1019              		.loc 1 19 5 view .LVU194
+  19:Core/Src/lis2hd12.c **** }
+ 1020              		.loc 1 19 12 is_stmt 0 view .LVU195
+ 1021 0006 0122     		movs	r2, #1
+ 1022 0008 0092     		str	r2, [sp]
+ 1023 000a 3321     		movs	r1, #51
+ 1024 000c 3220     		movs	r0, #50
+ 1025              	.LVL75:
+  19:Core/Src/lis2hd12.c **** }
+ 1026              		.loc 1 19 12 view .LVU196
+ 1027 000e FFF7FEFF 		bl	i2c_mem_read
+ 1028              	.LVL76:
+  19:Core/Src/lis2hd12.c **** }
+ 1029              		.loc 1 19 12 view .LVU197
+ 1030              	.LBE117:
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 23
+
+
+ 1031              	.LBE116:
+ 188:Core/Src/lis2hd12.c **** }
+ 1032              		.loc 1 188 1 view .LVU198
+ 1033 0012 03B0     		add	sp, sp, #12
+ 1034              	.LCFI43:
+ 1035              		.cfi_def_cfa_offset 4
+ 1036              		@ sp needed
+ 1037 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1038              		.cfi_endproc
+ 1039              	.LFE155:
+ 1041              		.section	.text.lis2hd12_set_int1_duration,"ax",%progbits
+ 1042              		.align	1
+ 1043              		.global	lis2hd12_set_int1_duration
+ 1044              		.syntax unified
+ 1045              		.thumb
+ 1046              		.thumb_func
+ 1048              	lis2hd12_set_int1_duration:
+ 1049              	.LVL77:
+ 1050              	.LFB156:
+ 189:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_int1_duration(uint8_t *int1_duration)
+ 190:Core/Src/lis2hd12.c **** {
+ 1051              		.loc 1 190 1 is_stmt 1 view -0
+ 1052              		.cfi_startproc
+ 1053              		@ args = 0, pretend = 0, frame = 0
+ 1054              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1055              		@ link register save eliminated.
+ 191:Core/Src/lis2hd12.c ****     static const uint8_t INT1_THS_DURATION = 0x33;
+ 1056              		.loc 1 191 5 view .LVU200
+ 192:Core/Src/lis2hd12.c **** 
+ 193:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(INT1_THS_DURATION, int1_duration);
+ 1057              		.loc 1 193 5 view .LVU201
+ 194:Core/Src/lis2hd12.c **** }
+ 1058              		.loc 1 194 1 is_stmt 0 view .LVU202
+ 1059 0000 0020     		movs	r0, #0
+ 1060              	.LVL78:
+ 1061              		.loc 1 194 1 view .LVU203
+ 1062 0002 7047     		bx	lr
+ 1063              		.cfi_endproc
+ 1064              	.LFE156:
+ 1066              		.section	.text.lis2hd12_get_int2_cfg,"ax",%progbits
+ 1067              		.align	1
+ 1068              		.global	lis2hd12_get_int2_cfg
+ 1069              		.syntax unified
+ 1070              		.thumb
+ 1071              		.thumb_func
+ 1073              	lis2hd12_get_int2_cfg:
+ 1074              	.LVL79:
+ 1075              	.LFB157:
+ 195:Core/Src/lis2hd12.c **** 
+ 196:Core/Src/lis2hd12.c **** 
+ 197:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_int2_cfg(uint8_t *int2_cfg)
+ 198:Core/Src/lis2hd12.c **** {
+ 1076              		.loc 1 198 1 is_stmt 1 view -0
+ 1077              		.cfi_startproc
+ 1078              		@ args = 0, pretend = 0, frame = 0
+ 1079              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1080              		.loc 1 198 1 is_stmt 0 view .LVU205
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 24
+
+
+ 1081 0000 00B5     		push	{lr}
+ 1082              	.LCFI44:
+ 1083              		.cfi_def_cfa_offset 4
+ 1084              		.cfi_offset 14, -4
+ 1085 0002 83B0     		sub	sp, sp, #12
+ 1086              	.LCFI45:
+ 1087              		.cfi_def_cfa_offset 16
+ 1088 0004 0346     		mov	r3, r0
+ 199:Core/Src/lis2hd12.c ****     static const uint8_t INT2_CFG_REG = 0x34;
+ 1089              		.loc 1 199 5 is_stmt 1 view .LVU206
+ 200:Core/Src/lis2hd12.c **** 
+ 201:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(INT2_CFG_REG, int2_cfg, sizeof(uint8_t));
+ 1090              		.loc 1 201 5 view .LVU207
+ 1091              	.LVL80:
+ 1092              	.LBB118:
+ 1093              	.LBI118:
+  17:Core/Src/lis2hd12.c **** {
+ 1094              		.loc 1 17 23 view .LVU208
+ 1095              	.LBB119:
+  19:Core/Src/lis2hd12.c **** }
+ 1096              		.loc 1 19 5 view .LVU209
+  19:Core/Src/lis2hd12.c **** }
+ 1097              		.loc 1 19 12 is_stmt 0 view .LVU210
+ 1098 0006 0122     		movs	r2, #1
+ 1099 0008 0092     		str	r2, [sp]
+ 1100 000a 3421     		movs	r1, #52
+ 1101 000c 3220     		movs	r0, #50
+ 1102              	.LVL81:
+  19:Core/Src/lis2hd12.c **** }
+ 1103              		.loc 1 19 12 view .LVU211
+ 1104 000e FFF7FEFF 		bl	i2c_mem_read
+ 1105              	.LVL82:
+  19:Core/Src/lis2hd12.c **** }
+ 1106              		.loc 1 19 12 view .LVU212
+ 1107              	.LBE119:
+ 1108              	.LBE118:
+ 202:Core/Src/lis2hd12.c **** }
+ 1109              		.loc 1 202 1 view .LVU213
+ 1110 0012 03B0     		add	sp, sp, #12
+ 1111              	.LCFI46:
+ 1112              		.cfi_def_cfa_offset 4
+ 1113              		@ sp needed
+ 1114 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1115              		.cfi_endproc
+ 1116              	.LFE157:
+ 1118              		.section	.text.lis2hd12_set_int2_cfg,"ax",%progbits
+ 1119              		.align	1
+ 1120              		.global	lis2hd12_set_int2_cfg
+ 1121              		.syntax unified
+ 1122              		.thumb
+ 1123              		.thumb_func
+ 1125              	lis2hd12_set_int2_cfg:
+ 1126              	.LVL83:
+ 1127              	.LFB158:
+ 203:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_int2_cfg(uint8_t *int2_cfg)
+ 204:Core/Src/lis2hd12.c **** {
+ 1128              		.loc 1 204 1 is_stmt 1 view -0
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 25
+
+
+ 1129              		.cfi_startproc
+ 1130              		@ args = 0, pretend = 0, frame = 0
+ 1131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1132              		@ link register save eliminated.
+ 205:Core/Src/lis2hd12.c ****     static const uint8_t INT2_CFG_REG = 0x34;
+ 1133              		.loc 1 205 5 view .LVU215
+ 206:Core/Src/lis2hd12.c **** 
+ 207:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(INT2_CFG_REG, int2_cfg);
+ 1134              		.loc 1 207 5 view .LVU216
+ 208:Core/Src/lis2hd12.c **** }
+ 1135              		.loc 1 208 1 is_stmt 0 view .LVU217
+ 1136 0000 0020     		movs	r0, #0
+ 1137              	.LVL84:
+ 1138              		.loc 1 208 1 view .LVU218
+ 1139 0002 7047     		bx	lr
+ 1140              		.cfi_endproc
+ 1141              	.LFE158:
+ 1143              		.section	.text.lis2hd12_get_int2_src,"ax",%progbits
+ 1144              		.align	1
+ 1145              		.global	lis2hd12_get_int2_src
+ 1146              		.syntax unified
+ 1147              		.thumb
+ 1148              		.thumb_func
+ 1150              	lis2hd12_get_int2_src:
+ 1151              	.LVL85:
+ 1152              	.LFB159:
+ 209:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_int2_src(uint8_t *int2_src)
+ 210:Core/Src/lis2hd12.c **** {
+ 1153              		.loc 1 210 1 is_stmt 1 view -0
+ 1154              		.cfi_startproc
+ 1155              		@ args = 0, pretend = 0, frame = 0
+ 1156              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1157              		.loc 1 210 1 is_stmt 0 view .LVU220
+ 1158 0000 00B5     		push	{lr}
+ 1159              	.LCFI47:
+ 1160              		.cfi_def_cfa_offset 4
+ 1161              		.cfi_offset 14, -4
+ 1162 0002 83B0     		sub	sp, sp, #12
+ 1163              	.LCFI48:
+ 1164              		.cfi_def_cfa_offset 16
+ 1165 0004 0346     		mov	r3, r0
+ 211:Core/Src/lis2hd12.c ****     static const uint8_t INT2_SRC_REG = 0x35;
+ 1166              		.loc 1 211 5 is_stmt 1 view .LVU221
+ 212:Core/Src/lis2hd12.c **** 
+ 213:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(INT2_SRC_REG, int2_src, sizeof(uint8_t));
+ 1167              		.loc 1 213 5 view .LVU222
+ 1168              	.LVL86:
+ 1169              	.LBB120:
+ 1170              	.LBI120:
+  17:Core/Src/lis2hd12.c **** {
+ 1171              		.loc 1 17 23 view .LVU223
+ 1172              	.LBB121:
+  19:Core/Src/lis2hd12.c **** }
+ 1173              		.loc 1 19 5 view .LVU224
+  19:Core/Src/lis2hd12.c **** }
+ 1174              		.loc 1 19 12 is_stmt 0 view .LVU225
+ 1175 0006 0122     		movs	r2, #1
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 26
+
+
+ 1176 0008 0092     		str	r2, [sp]
+ 1177 000a 3521     		movs	r1, #53
+ 1178 000c 3220     		movs	r0, #50
+ 1179              	.LVL87:
+  19:Core/Src/lis2hd12.c **** }
+ 1180              		.loc 1 19 12 view .LVU226
+ 1181 000e FFF7FEFF 		bl	i2c_mem_read
+ 1182              	.LVL88:
+  19:Core/Src/lis2hd12.c **** }
+ 1183              		.loc 1 19 12 view .LVU227
+ 1184              	.LBE121:
+ 1185              	.LBE120:
+ 214:Core/Src/lis2hd12.c **** }
+ 1186              		.loc 1 214 1 view .LVU228
+ 1187 0012 03B0     		add	sp, sp, #12
+ 1188              	.LCFI49:
+ 1189              		.cfi_def_cfa_offset 4
+ 1190              		@ sp needed
+ 1191 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1192              		.cfi_endproc
+ 1193              	.LFE159:
+ 1195              		.section	.text.lis2hd12_get_int2_ths,"ax",%progbits
+ 1196              		.align	1
+ 1197              		.global	lis2hd12_get_int2_ths
+ 1198              		.syntax unified
+ 1199              		.thumb
+ 1200              		.thumb_func
+ 1202              	lis2hd12_get_int2_ths:
+ 1203              	.LVL89:
+ 1204              	.LFB160:
+ 215:Core/Src/lis2hd12.c **** 
+ 216:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_int2_ths(uint8_t *int2_ths)
+ 217:Core/Src/lis2hd12.c **** {
+ 1205              		.loc 1 217 1 is_stmt 1 view -0
+ 1206              		.cfi_startproc
+ 1207              		@ args = 0, pretend = 0, frame = 0
+ 1208              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1209              		.loc 1 217 1 is_stmt 0 view .LVU230
+ 1210 0000 00B5     		push	{lr}
+ 1211              	.LCFI50:
+ 1212              		.cfi_def_cfa_offset 4
+ 1213              		.cfi_offset 14, -4
+ 1214 0002 83B0     		sub	sp, sp, #12
+ 1215              	.LCFI51:
+ 1216              		.cfi_def_cfa_offset 16
+ 1217 0004 0346     		mov	r3, r0
+ 218:Core/Src/lis2hd12.c ****     static const uint8_t INT2_THS_REG = 0x36;
+ 1218              		.loc 1 218 5 is_stmt 1 view .LVU231
+ 219:Core/Src/lis2hd12.c **** 
+ 220:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(INT2_THS_REG, int2_ths, sizeof(uint8_t));
+ 1219              		.loc 1 220 5 view .LVU232
+ 1220              	.LVL90:
+ 1221              	.LBB122:
+ 1222              	.LBI122:
+  17:Core/Src/lis2hd12.c **** {
+ 1223              		.loc 1 17 23 view .LVU233
+ 1224              	.LBB123:
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 27
+
+
+  19:Core/Src/lis2hd12.c **** }
+ 1225              		.loc 1 19 5 view .LVU234
+  19:Core/Src/lis2hd12.c **** }
+ 1226              		.loc 1 19 12 is_stmt 0 view .LVU235
+ 1227 0006 0122     		movs	r2, #1
+ 1228 0008 0092     		str	r2, [sp]
+ 1229 000a 3621     		movs	r1, #54
+ 1230 000c 3220     		movs	r0, #50
+ 1231              	.LVL91:
+  19:Core/Src/lis2hd12.c **** }
+ 1232              		.loc 1 19 12 view .LVU236
+ 1233 000e FFF7FEFF 		bl	i2c_mem_read
+ 1234              	.LVL92:
+  19:Core/Src/lis2hd12.c **** }
+ 1235              		.loc 1 19 12 view .LVU237
+ 1236              	.LBE123:
+ 1237              	.LBE122:
+ 221:Core/Src/lis2hd12.c **** }
+ 1238              		.loc 1 221 1 view .LVU238
+ 1239 0012 03B0     		add	sp, sp, #12
+ 1240              	.LCFI52:
+ 1241              		.cfi_def_cfa_offset 4
+ 1242              		@ sp needed
+ 1243 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1244              		.cfi_endproc
+ 1245              	.LFE160:
+ 1247              		.section	.text.lis2hd12_set_int2_ths,"ax",%progbits
+ 1248              		.align	1
+ 1249              		.global	lis2hd12_set_int2_ths
+ 1250              		.syntax unified
+ 1251              		.thumb
+ 1252              		.thumb_func
+ 1254              	lis2hd12_set_int2_ths:
+ 1255              	.LVL93:
+ 1256              	.LFB161:
+ 222:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_int2_ths(uint8_t *int2_ths)
+ 223:Core/Src/lis2hd12.c **** {
+ 1257              		.loc 1 223 1 is_stmt 1 view -0
+ 1258              		.cfi_startproc
+ 1259              		@ args = 0, pretend = 0, frame = 0
+ 1260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1261              		@ link register save eliminated.
+ 224:Core/Src/lis2hd12.c ****     static const uint8_t INT2_THS_REG = 0x36;
+ 1262              		.loc 1 224 5 view .LVU240
+ 225:Core/Src/lis2hd12.c **** 
+ 226:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(INT2_THS_REG, int2_ths);
+ 1263              		.loc 1 226 5 view .LVU241
+ 227:Core/Src/lis2hd12.c **** }
+ 1264              		.loc 1 227 1 is_stmt 0 view .LVU242
+ 1265 0000 0020     		movs	r0, #0
+ 1266              	.LVL94:
+ 1267              		.loc 1 227 1 view .LVU243
+ 1268 0002 7047     		bx	lr
+ 1269              		.cfi_endproc
+ 1270              	.LFE161:
+ 1272              		.section	.text.lis2hd12_get_int2_duration,"ax",%progbits
+ 1273              		.align	1
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 28
+
+
+ 1274              		.global	lis2hd12_get_int2_duration
+ 1275              		.syntax unified
+ 1276              		.thumb
+ 1277              		.thumb_func
+ 1279              	lis2hd12_get_int2_duration:
+ 1280              	.LVL95:
+ 1281              	.LFB162:
+ 228:Core/Src/lis2hd12.c **** 
+ 229:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_int2_duration(uint8_t *int2_duration)
+ 230:Core/Src/lis2hd12.c **** {
+ 1282              		.loc 1 230 1 is_stmt 1 view -0
+ 1283              		.cfi_startproc
+ 1284              		@ args = 0, pretend = 0, frame = 0
+ 1285              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1286              		.loc 1 230 1 is_stmt 0 view .LVU245
+ 1287 0000 00B5     		push	{lr}
+ 1288              	.LCFI53:
+ 1289              		.cfi_def_cfa_offset 4
+ 1290              		.cfi_offset 14, -4
+ 1291 0002 83B0     		sub	sp, sp, #12
+ 1292              	.LCFI54:
+ 1293              		.cfi_def_cfa_offset 16
+ 1294 0004 0346     		mov	r3, r0
+ 231:Core/Src/lis2hd12.c ****     static const uint8_t INT2_THS_DURATION = 0x37;
+ 1295              		.loc 1 231 5 is_stmt 1 view .LVU246
+ 232:Core/Src/lis2hd12.c **** 
+ 233:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(INT2_THS_DURATION, int2_duration, sizeof(uint8_t));
+ 1296              		.loc 1 233 5 view .LVU247
+ 1297              	.LVL96:
+ 1298              	.LBB124:
+ 1299              	.LBI124:
+  17:Core/Src/lis2hd12.c **** {
+ 1300              		.loc 1 17 23 view .LVU248
+ 1301              	.LBB125:
+  19:Core/Src/lis2hd12.c **** }
+ 1302              		.loc 1 19 5 view .LVU249
+  19:Core/Src/lis2hd12.c **** }
+ 1303              		.loc 1 19 12 is_stmt 0 view .LVU250
+ 1304 0006 0122     		movs	r2, #1
+ 1305 0008 0092     		str	r2, [sp]
+ 1306 000a 3721     		movs	r1, #55
+ 1307 000c 3220     		movs	r0, #50
+ 1308              	.LVL97:
+  19:Core/Src/lis2hd12.c **** }
+ 1309              		.loc 1 19 12 view .LVU251
+ 1310 000e FFF7FEFF 		bl	i2c_mem_read
+ 1311              	.LVL98:
+  19:Core/Src/lis2hd12.c **** }
+ 1312              		.loc 1 19 12 view .LVU252
+ 1313              	.LBE125:
+ 1314              	.LBE124:
+ 234:Core/Src/lis2hd12.c **** }
+ 1315              		.loc 1 234 1 view .LVU253
+ 1316 0012 03B0     		add	sp, sp, #12
+ 1317              	.LCFI55:
+ 1318              		.cfi_def_cfa_offset 4
+ 1319              		@ sp needed
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 29
+
+
+ 1320 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1321              		.cfi_endproc
+ 1322              	.LFE162:
+ 1324              		.section	.text.lis2hd12_set_int2_duration,"ax",%progbits
+ 1325              		.align	1
+ 1326              		.global	lis2hd12_set_int2_duration
+ 1327              		.syntax unified
+ 1328              		.thumb
+ 1329              		.thumb_func
+ 1331              	lis2hd12_set_int2_duration:
+ 1332              	.LVL99:
+ 1333              	.LFB163:
+ 235:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_int2_duration(uint8_t *int2_duration)
+ 236:Core/Src/lis2hd12.c **** {
+ 1334              		.loc 1 236 1 is_stmt 1 view -0
+ 1335              		.cfi_startproc
+ 1336              		@ args = 0, pretend = 0, frame = 0
+ 1337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1338              		@ link register save eliminated.
+ 237:Core/Src/lis2hd12.c ****     static const uint8_t INT1_THS_DURATION = 0x37;
+ 1339              		.loc 1 237 5 view .LVU255
+ 238:Core/Src/lis2hd12.c **** 
+ 239:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(INT1_THS_DURATION, int2_duration);
+ 1340              		.loc 1 239 5 view .LVU256
+ 240:Core/Src/lis2hd12.c **** }
+ 1341              		.loc 1 240 1 is_stmt 0 view .LVU257
+ 1342 0000 0020     		movs	r0, #0
+ 1343              	.LVL100:
+ 1344              		.loc 1 240 1 view .LVU258
+ 1345 0002 7047     		bx	lr
+ 1346              		.cfi_endproc
+ 1347              	.LFE163:
+ 1349              		.section	.text.lis2hd12_get_click_cfg,"ax",%progbits
+ 1350              		.align	1
+ 1351              		.global	lis2hd12_get_click_cfg
+ 1352              		.syntax unified
+ 1353              		.thumb
+ 1354              		.thumb_func
+ 1356              	lis2hd12_get_click_cfg:
+ 1357              	.LVL101:
+ 1358              	.LFB164:
+ 241:Core/Src/lis2hd12.c **** 
+ 242:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_click_cfg(uint8_t *click_cfg)
+ 243:Core/Src/lis2hd12.c **** {
+ 1359              		.loc 1 243 1 is_stmt 1 view -0
+ 1360              		.cfi_startproc
+ 1361              		@ args = 0, pretend = 0, frame = 0
+ 1362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1363              		.loc 1 243 1 is_stmt 0 view .LVU260
+ 1364 0000 00B5     		push	{lr}
+ 1365              	.LCFI56:
+ 1366              		.cfi_def_cfa_offset 4
+ 1367              		.cfi_offset 14, -4
+ 1368 0002 83B0     		sub	sp, sp, #12
+ 1369              	.LCFI57:
+ 1370              		.cfi_def_cfa_offset 16
+ 1371 0004 0346     		mov	r3, r0
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 30
+
+
+ 244:Core/Src/lis2hd12.c ****     static const uint8_t CLICK_CFG_REG = 0x38;
+ 1372              		.loc 1 244 5 is_stmt 1 view .LVU261
+ 245:Core/Src/lis2hd12.c **** 
+ 246:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(CLICK_CFG_REG, click_cfg, sizeof(uint8_t));
+ 1373              		.loc 1 246 5 view .LVU262
+ 1374              	.LVL102:
+ 1375              	.LBB126:
+ 1376              	.LBI126:
+  17:Core/Src/lis2hd12.c **** {
+ 1377              		.loc 1 17 23 view .LVU263
+ 1378              	.LBB127:
+  19:Core/Src/lis2hd12.c **** }
+ 1379              		.loc 1 19 5 view .LVU264
+  19:Core/Src/lis2hd12.c **** }
+ 1380              		.loc 1 19 12 is_stmt 0 view .LVU265
+ 1381 0006 0122     		movs	r2, #1
+ 1382 0008 0092     		str	r2, [sp]
+ 1383 000a 3821     		movs	r1, #56
+ 1384 000c 3220     		movs	r0, #50
+ 1385              	.LVL103:
+  19:Core/Src/lis2hd12.c **** }
+ 1386              		.loc 1 19 12 view .LVU266
+ 1387 000e FFF7FEFF 		bl	i2c_mem_read
+ 1388              	.LVL104:
+  19:Core/Src/lis2hd12.c **** }
+ 1389              		.loc 1 19 12 view .LVU267
+ 1390              	.LBE127:
+ 1391              	.LBE126:
+ 247:Core/Src/lis2hd12.c **** }
+ 1392              		.loc 1 247 1 view .LVU268
+ 1393 0012 03B0     		add	sp, sp, #12
+ 1394              	.LCFI58:
+ 1395              		.cfi_def_cfa_offset 4
+ 1396              		@ sp needed
+ 1397 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1398              		.cfi_endproc
+ 1399              	.LFE164:
+ 1401              		.section	.text.lis2hd12_set_click_cfg,"ax",%progbits
+ 1402              		.align	1
+ 1403              		.global	lis2hd12_set_click_cfg
+ 1404              		.syntax unified
+ 1405              		.thumb
+ 1406              		.thumb_func
+ 1408              	lis2hd12_set_click_cfg:
+ 1409              	.LVL105:
+ 1410              	.LFB165:
+ 248:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_click_cfg(uint8_t *click_cfg)
+ 249:Core/Src/lis2hd12.c **** {
+ 1411              		.loc 1 249 1 is_stmt 1 view -0
+ 1412              		.cfi_startproc
+ 1413              		@ args = 0, pretend = 0, frame = 0
+ 1414              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1415              		@ link register save eliminated.
+ 250:Core/Src/lis2hd12.c ****     static const uint8_t CLICK_CFG_REG = 0x38;
+ 1416              		.loc 1 250 5 view .LVU270
+ 251:Core/Src/lis2hd12.c **** 
+ 252:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(CLICK_CFG_REG, click_cfg);
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 31
+
+
+ 1417              		.loc 1 252 5 view .LVU271
+ 253:Core/Src/lis2hd12.c **** }
+ 1418              		.loc 1 253 1 is_stmt 0 view .LVU272
+ 1419 0000 0020     		movs	r0, #0
+ 1420              	.LVL106:
+ 1421              		.loc 1 253 1 view .LVU273
+ 1422 0002 7047     		bx	lr
+ 1423              		.cfi_endproc
+ 1424              	.LFE165:
+ 1426              		.section	.text.lis2hd12_get_click_src,"ax",%progbits
+ 1427              		.align	1
+ 1428              		.global	lis2hd12_get_click_src
+ 1429              		.syntax unified
+ 1430              		.thumb
+ 1431              		.thumb_func
+ 1433              	lis2hd12_get_click_src:
+ 1434              	.LVL107:
+ 1435              	.LFB166:
+ 254:Core/Src/lis2hd12.c **** 
+ 255:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_click_src(uint8_t *click_src)
+ 256:Core/Src/lis2hd12.c **** {
+ 1436              		.loc 1 256 1 is_stmt 1 view -0
+ 1437              		.cfi_startproc
+ 1438              		@ args = 0, pretend = 0, frame = 0
+ 1439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1440              		.loc 1 256 1 is_stmt 0 view .LVU275
+ 1441 0000 00B5     		push	{lr}
+ 1442              	.LCFI59:
+ 1443              		.cfi_def_cfa_offset 4
+ 1444              		.cfi_offset 14, -4
+ 1445 0002 83B0     		sub	sp, sp, #12
+ 1446              	.LCFI60:
+ 1447              		.cfi_def_cfa_offset 16
+ 1448 0004 0346     		mov	r3, r0
+ 257:Core/Src/lis2hd12.c ****     static const uint8_t CLICK_SRC_REG = 0x39;
+ 1449              		.loc 1 257 5 is_stmt 1 view .LVU276
+ 258:Core/Src/lis2hd12.c **** 
+ 259:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(CLICK_SRC_REG, click_src, sizeof(uint8_t));
+ 1450              		.loc 1 259 5 view .LVU277
+ 1451              	.LVL108:
+ 1452              	.LBB128:
+ 1453              	.LBI128:
+  17:Core/Src/lis2hd12.c **** {
+ 1454              		.loc 1 17 23 view .LVU278
+ 1455              	.LBB129:
+  19:Core/Src/lis2hd12.c **** }
+ 1456              		.loc 1 19 5 view .LVU279
+  19:Core/Src/lis2hd12.c **** }
+ 1457              		.loc 1 19 12 is_stmt 0 view .LVU280
+ 1458 0006 0122     		movs	r2, #1
+ 1459 0008 0092     		str	r2, [sp]
+ 1460 000a 3921     		movs	r1, #57
+ 1461 000c 3220     		movs	r0, #50
+ 1462              	.LVL109:
+  19:Core/Src/lis2hd12.c **** }
+ 1463              		.loc 1 19 12 view .LVU281
+ 1464 000e FFF7FEFF 		bl	i2c_mem_read
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 32
+
+
+ 1465              	.LVL110:
+  19:Core/Src/lis2hd12.c **** }
+ 1466              		.loc 1 19 12 view .LVU282
+ 1467              	.LBE129:
+ 1468              	.LBE128:
+ 260:Core/Src/lis2hd12.c **** }
+ 1469              		.loc 1 260 1 view .LVU283
+ 1470 0012 03B0     		add	sp, sp, #12
+ 1471              	.LCFI61:
+ 1472              		.cfi_def_cfa_offset 4
+ 1473              		@ sp needed
+ 1474 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1475              		.cfi_endproc
+ 1476              	.LFE166:
+ 1478              		.section	.text.lis2hd12_get_click_ths,"ax",%progbits
+ 1479              		.align	1
+ 1480              		.global	lis2hd12_get_click_ths
+ 1481              		.syntax unified
+ 1482              		.thumb
+ 1483              		.thumb_func
+ 1485              	lis2hd12_get_click_ths:
+ 1486              	.LVL111:
+ 1487              	.LFB167:
+ 261:Core/Src/lis2hd12.c **** 
+ 262:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_click_ths(uint8_t *click_ths)
+ 263:Core/Src/lis2hd12.c **** {
+ 1488              		.loc 1 263 1 is_stmt 1 view -0
+ 1489              		.cfi_startproc
+ 1490              		@ args = 0, pretend = 0, frame = 0
+ 1491              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1492              		.loc 1 263 1 is_stmt 0 view .LVU285
+ 1493 0000 00B5     		push	{lr}
+ 1494              	.LCFI62:
+ 1495              		.cfi_def_cfa_offset 4
+ 1496              		.cfi_offset 14, -4
+ 1497 0002 83B0     		sub	sp, sp, #12
+ 1498              	.LCFI63:
+ 1499              		.cfi_def_cfa_offset 16
+ 1500 0004 0346     		mov	r3, r0
+ 264:Core/Src/lis2hd12.c ****     static const uint8_t CLICK_THS_REG = 0x3A;
+ 1501              		.loc 1 264 5 is_stmt 1 view .LVU286
+ 265:Core/Src/lis2hd12.c **** 
+ 266:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(CLICK_THS_REG, click_ths, sizeof(uint8_t));
+ 1502              		.loc 1 266 5 view .LVU287
+ 1503              	.LVL112:
+ 1504              	.LBB130:
+ 1505              	.LBI130:
+  17:Core/Src/lis2hd12.c **** {
+ 1506              		.loc 1 17 23 view .LVU288
+ 1507              	.LBB131:
+  19:Core/Src/lis2hd12.c **** }
+ 1508              		.loc 1 19 5 view .LVU289
+  19:Core/Src/lis2hd12.c **** }
+ 1509              		.loc 1 19 12 is_stmt 0 view .LVU290
+ 1510 0006 0122     		movs	r2, #1
+ 1511 0008 0092     		str	r2, [sp]
+ 1512 000a 3A21     		movs	r1, #58
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 33
+
+
+ 1513 000c 3220     		movs	r0, #50
+ 1514              	.LVL113:
+  19:Core/Src/lis2hd12.c **** }
+ 1515              		.loc 1 19 12 view .LVU291
+ 1516 000e FFF7FEFF 		bl	i2c_mem_read
+ 1517              	.LVL114:
+  19:Core/Src/lis2hd12.c **** }
+ 1518              		.loc 1 19 12 view .LVU292
+ 1519              	.LBE131:
+ 1520              	.LBE130:
+ 267:Core/Src/lis2hd12.c **** }
+ 1521              		.loc 1 267 1 view .LVU293
+ 1522 0012 03B0     		add	sp, sp, #12
+ 1523              	.LCFI64:
+ 1524              		.cfi_def_cfa_offset 4
+ 1525              		@ sp needed
+ 1526 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1527              		.cfi_endproc
+ 1528              	.LFE167:
+ 1530              		.section	.text.lis2hd12_set_click_ths,"ax",%progbits
+ 1531              		.align	1
+ 1532              		.global	lis2hd12_set_click_ths
+ 1533              		.syntax unified
+ 1534              		.thumb
+ 1535              		.thumb_func
+ 1537              	lis2hd12_set_click_ths:
+ 1538              	.LVL115:
+ 1539              	.LFB168:
+ 268:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_click_ths(uint8_t *click_ths)
+ 269:Core/Src/lis2hd12.c **** {
+ 1540              		.loc 1 269 1 is_stmt 1 view -0
+ 1541              		.cfi_startproc
+ 1542              		@ args = 0, pretend = 0, frame = 0
+ 1543              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1544              		@ link register save eliminated.
+ 270:Core/Src/lis2hd12.c ****     static const uint8_t CLICK_THS_REG = 0x3A;
+ 1545              		.loc 1 270 5 view .LVU295
+ 271:Core/Src/lis2hd12.c **** 
+ 272:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(CLICK_THS_REG, click_ths);
+ 1546              		.loc 1 272 5 view .LVU296
+ 273:Core/Src/lis2hd12.c **** }
+ 1547              		.loc 1 273 1 is_stmt 0 view .LVU297
+ 1548 0000 0020     		movs	r0, #0
+ 1549              	.LVL116:
+ 1550              		.loc 1 273 1 view .LVU298
+ 1551 0002 7047     		bx	lr
+ 1552              		.cfi_endproc
+ 1553              	.LFE168:
+ 1555              		.section	.text.lis2hd12_get_time_limit,"ax",%progbits
+ 1556              		.align	1
+ 1557              		.global	lis2hd12_get_time_limit
+ 1558              		.syntax unified
+ 1559              		.thumb
+ 1560              		.thumb_func
+ 1562              	lis2hd12_get_time_limit:
+ 1563              	.LVL117:
+ 1564              	.LFB169:
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 34
+
+
+ 274:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_time_limit(uint8_t *time_limit)
+ 275:Core/Src/lis2hd12.c **** {
+ 1565              		.loc 1 275 1 is_stmt 1 view -0
+ 1566              		.cfi_startproc
+ 1567              		@ args = 0, pretend = 0, frame = 0
+ 1568              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1569              		.loc 1 275 1 is_stmt 0 view .LVU300
+ 1570 0000 00B5     		push	{lr}
+ 1571              	.LCFI65:
+ 1572              		.cfi_def_cfa_offset 4
+ 1573              		.cfi_offset 14, -4
+ 1574 0002 83B0     		sub	sp, sp, #12
+ 1575              	.LCFI66:
+ 1576              		.cfi_def_cfa_offset 16
+ 1577 0004 0346     		mov	r3, r0
+ 276:Core/Src/lis2hd12.c ****     static const uint8_t TIME_LIMIT_REG = 0x3B;
+ 1578              		.loc 1 276 5 is_stmt 1 view .LVU301
+ 277:Core/Src/lis2hd12.c **** 
+ 278:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(TIME_LIMIT_REG, time_limit, sizeof(uint8_t));
+ 1579              		.loc 1 278 5 view .LVU302
+ 1580              	.LVL118:
+ 1581              	.LBB132:
+ 1582              	.LBI132:
+  17:Core/Src/lis2hd12.c **** {
+ 1583              		.loc 1 17 23 view .LVU303
+ 1584              	.LBB133:
+  19:Core/Src/lis2hd12.c **** }
+ 1585              		.loc 1 19 5 view .LVU304
+  19:Core/Src/lis2hd12.c **** }
+ 1586              		.loc 1 19 12 is_stmt 0 view .LVU305
+ 1587 0006 0122     		movs	r2, #1
+ 1588 0008 0092     		str	r2, [sp]
+ 1589 000a 3B21     		movs	r1, #59
+ 1590 000c 3220     		movs	r0, #50
+ 1591              	.LVL119:
+  19:Core/Src/lis2hd12.c **** }
+ 1592              		.loc 1 19 12 view .LVU306
+ 1593 000e FFF7FEFF 		bl	i2c_mem_read
+ 1594              	.LVL120:
+  19:Core/Src/lis2hd12.c **** }
+ 1595              		.loc 1 19 12 view .LVU307
+ 1596              	.LBE133:
+ 1597              	.LBE132:
+ 279:Core/Src/lis2hd12.c **** }
+ 1598              		.loc 1 279 1 view .LVU308
+ 1599 0012 03B0     		add	sp, sp, #12
+ 1600              	.LCFI67:
+ 1601              		.cfi_def_cfa_offset 4
+ 1602              		@ sp needed
+ 1603 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1604              		.cfi_endproc
+ 1605              	.LFE169:
+ 1607              		.section	.text.lis2hd12_set_time_limit,"ax",%progbits
+ 1608              		.align	1
+ 1609              		.global	lis2hd12_set_time_limit
+ 1610              		.syntax unified
+ 1611              		.thumb
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 35
+
+
+ 1612              		.thumb_func
+ 1614              	lis2hd12_set_time_limit:
+ 1615              	.LVL121:
+ 1616              	.LFB170:
+ 280:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_time_limit(uint8_t *time_limit)
+ 281:Core/Src/lis2hd12.c **** {
+ 1617              		.loc 1 281 1 is_stmt 1 view -0
+ 1618              		.cfi_startproc
+ 1619              		@ args = 0, pretend = 0, frame = 0
+ 1620              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1621              		@ link register save eliminated.
+ 282:Core/Src/lis2hd12.c ****     static const uint8_t TIME_LIMIT_REG = 0x3B;
+ 1622              		.loc 1 282 5 view .LVU310
+ 283:Core/Src/lis2hd12.c **** 
+ 284:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(TIME_LIMIT_REG, time_limit);
+ 1623              		.loc 1 284 5 view .LVU311
+ 285:Core/Src/lis2hd12.c **** }
+ 1624              		.loc 1 285 1 is_stmt 0 view .LVU312
+ 1625 0000 0020     		movs	r0, #0
+ 1626              	.LVL122:
+ 1627              		.loc 1 285 1 view .LVU313
+ 1628 0002 7047     		bx	lr
+ 1629              		.cfi_endproc
+ 1630              	.LFE170:
+ 1632              		.section	.text.lis2hd12_get_time_latency,"ax",%progbits
+ 1633              		.align	1
+ 1634              		.global	lis2hd12_get_time_latency
+ 1635              		.syntax unified
+ 1636              		.thumb
+ 1637              		.thumb_func
+ 1639              	lis2hd12_get_time_latency:
+ 1640              	.LVL123:
+ 1641              	.LFB171:
+ 286:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_time_latency(uint8_t *time_latency)
+ 287:Core/Src/lis2hd12.c **** {
+ 1642              		.loc 1 287 1 is_stmt 1 view -0
+ 1643              		.cfi_startproc
+ 1644              		@ args = 0, pretend = 0, frame = 0
+ 1645              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1646              		.loc 1 287 1 is_stmt 0 view .LVU315
+ 1647 0000 00B5     		push	{lr}
+ 1648              	.LCFI68:
+ 1649              		.cfi_def_cfa_offset 4
+ 1650              		.cfi_offset 14, -4
+ 1651 0002 83B0     		sub	sp, sp, #12
+ 1652              	.LCFI69:
+ 1653              		.cfi_def_cfa_offset 16
+ 1654 0004 0346     		mov	r3, r0
+ 288:Core/Src/lis2hd12.c ****     static const uint8_t TIME_LATENCY_REG = 0x3C;
+ 1655              		.loc 1 288 5 is_stmt 1 view .LVU316
+ 289:Core/Src/lis2hd12.c **** 
+ 290:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(TIME_LATENCY_REG, time_latency, sizeof(uint8_t));
+ 1656              		.loc 1 290 5 view .LVU317
+ 1657              	.LVL124:
+ 1658              	.LBB134:
+ 1659              	.LBI134:
+  17:Core/Src/lis2hd12.c **** {
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 36
+
+
+ 1660              		.loc 1 17 23 view .LVU318
+ 1661              	.LBB135:
+  19:Core/Src/lis2hd12.c **** }
+ 1662              		.loc 1 19 5 view .LVU319
+  19:Core/Src/lis2hd12.c **** }
+ 1663              		.loc 1 19 12 is_stmt 0 view .LVU320
+ 1664 0006 0122     		movs	r2, #1
+ 1665 0008 0092     		str	r2, [sp]
+ 1666 000a 3C21     		movs	r1, #60
+ 1667 000c 3220     		movs	r0, #50
+ 1668              	.LVL125:
+  19:Core/Src/lis2hd12.c **** }
+ 1669              		.loc 1 19 12 view .LVU321
+ 1670 000e FFF7FEFF 		bl	i2c_mem_read
+ 1671              	.LVL126:
+  19:Core/Src/lis2hd12.c **** }
+ 1672              		.loc 1 19 12 view .LVU322
+ 1673              	.LBE135:
+ 1674              	.LBE134:
+ 291:Core/Src/lis2hd12.c **** }
+ 1675              		.loc 1 291 1 view .LVU323
+ 1676 0012 03B0     		add	sp, sp, #12
+ 1677              	.LCFI70:
+ 1678              		.cfi_def_cfa_offset 4
+ 1679              		@ sp needed
+ 1680 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1681              		.cfi_endproc
+ 1682              	.LFE171:
+ 1684              		.section	.text.lis2hd12_set_time_latency,"ax",%progbits
+ 1685              		.align	1
+ 1686              		.global	lis2hd12_set_time_latency
+ 1687              		.syntax unified
+ 1688              		.thumb
+ 1689              		.thumb_func
+ 1691              	lis2hd12_set_time_latency:
+ 1692              	.LVL127:
+ 1693              	.LFB172:
+ 292:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_time_latency(uint8_t *time_latency)
+ 293:Core/Src/lis2hd12.c **** {
+ 1694              		.loc 1 293 1 is_stmt 1 view -0
+ 1695              		.cfi_startproc
+ 1696              		@ args = 0, pretend = 0, frame = 0
+ 1697              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1698              		@ link register save eliminated.
+ 294:Core/Src/lis2hd12.c ****     static const uint8_t TIME_LATENCY_REG = 0x3C;
+ 1699              		.loc 1 294 5 view .LVU325
+ 295:Core/Src/lis2hd12.c **** 
+ 296:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(TIME_LATENCY_REG, time_latency);
+ 1700              		.loc 1 296 5 view .LVU326
+ 297:Core/Src/lis2hd12.c **** }
+ 1701              		.loc 1 297 1 is_stmt 0 view .LVU327
+ 1702 0000 0020     		movs	r0, #0
+ 1703              	.LVL128:
+ 1704              		.loc 1 297 1 view .LVU328
+ 1705 0002 7047     		bx	lr
+ 1706              		.cfi_endproc
+ 1707              	.LFE172:
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 37
+
+
+ 1709              		.section	.text.lis2hd12_get_time_window,"ax",%progbits
+ 1710              		.align	1
+ 1711              		.global	lis2hd12_get_time_window
+ 1712              		.syntax unified
+ 1713              		.thumb
+ 1714              		.thumb_func
+ 1716              	lis2hd12_get_time_window:
+ 1717              	.LVL129:
+ 1718              	.LFB173:
+ 298:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_time_window(uint8_t *time_window)
+ 299:Core/Src/lis2hd12.c **** {
+ 1719              		.loc 1 299 1 is_stmt 1 view -0
+ 1720              		.cfi_startproc
+ 1721              		@ args = 0, pretend = 0, frame = 0
+ 1722              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1723              		.loc 1 299 1 is_stmt 0 view .LVU330
+ 1724 0000 00B5     		push	{lr}
+ 1725              	.LCFI71:
+ 1726              		.cfi_def_cfa_offset 4
+ 1727              		.cfi_offset 14, -4
+ 1728 0002 83B0     		sub	sp, sp, #12
+ 1729              	.LCFI72:
+ 1730              		.cfi_def_cfa_offset 16
+ 1731 0004 0346     		mov	r3, r0
+ 300:Core/Src/lis2hd12.c ****     static const uint8_t TIME_WINDOW_REG = 0x3D;
+ 1732              		.loc 1 300 5 is_stmt 1 view .LVU331
+ 301:Core/Src/lis2hd12.c **** 
+ 302:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(TIME_WINDOW_REG, time_window, sizeof(uint8_t));
+ 1733              		.loc 1 302 5 view .LVU332
+ 1734              	.LVL130:
+ 1735              	.LBB136:
+ 1736              	.LBI136:
+  17:Core/Src/lis2hd12.c **** {
+ 1737              		.loc 1 17 23 view .LVU333
+ 1738              	.LBB137:
+  19:Core/Src/lis2hd12.c **** }
+ 1739              		.loc 1 19 5 view .LVU334
+  19:Core/Src/lis2hd12.c **** }
+ 1740              		.loc 1 19 12 is_stmt 0 view .LVU335
+ 1741 0006 0122     		movs	r2, #1
+ 1742 0008 0092     		str	r2, [sp]
+ 1743 000a 3D21     		movs	r1, #61
+ 1744 000c 3220     		movs	r0, #50
+ 1745              	.LVL131:
+  19:Core/Src/lis2hd12.c **** }
+ 1746              		.loc 1 19 12 view .LVU336
+ 1747 000e FFF7FEFF 		bl	i2c_mem_read
+ 1748              	.LVL132:
+  19:Core/Src/lis2hd12.c **** }
+ 1749              		.loc 1 19 12 view .LVU337
+ 1750              	.LBE137:
+ 1751              	.LBE136:
+ 303:Core/Src/lis2hd12.c **** }
+ 1752              		.loc 1 303 1 view .LVU338
+ 1753 0012 03B0     		add	sp, sp, #12
+ 1754              	.LCFI73:
+ 1755              		.cfi_def_cfa_offset 4
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 38
+
+
+ 1756              		@ sp needed
+ 1757 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1758              		.cfi_endproc
+ 1759              	.LFE173:
+ 1761              		.section	.text.lis2hd12_set_time_window,"ax",%progbits
+ 1762              		.align	1
+ 1763              		.global	lis2hd12_set_time_window
+ 1764              		.syntax unified
+ 1765              		.thumb
+ 1766              		.thumb_func
+ 1768              	lis2hd12_set_time_window:
+ 1769              	.LVL133:
+ 1770              	.LFB174:
+ 304:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_time_window(uint8_t *time_window)
+ 305:Core/Src/lis2hd12.c **** {
+ 1771              		.loc 1 305 1 is_stmt 1 view -0
+ 1772              		.cfi_startproc
+ 1773              		@ args = 0, pretend = 0, frame = 0
+ 1774              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1775              		@ link register save eliminated.
+ 306:Core/Src/lis2hd12.c ****     static const uint8_t TIME_WINDOW_REG = 0x3D;
+ 1776              		.loc 1 306 5 view .LVU340
+ 307:Core/Src/lis2hd12.c **** 
+ 308:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(TIME_WINDOW_REG, time_window);
+ 1777              		.loc 1 308 5 view .LVU341
+ 309:Core/Src/lis2hd12.c **** }
+ 1778              		.loc 1 309 1 is_stmt 0 view .LVU342
+ 1779 0000 0020     		movs	r0, #0
+ 1780              	.LVL134:
+ 1781              		.loc 1 309 1 view .LVU343
+ 1782 0002 7047     		bx	lr
+ 1783              		.cfi_endproc
+ 1784              	.LFE174:
+ 1786              		.section	.text.lis2hd12_get_act_ths,"ax",%progbits
+ 1787              		.align	1
+ 1788              		.global	lis2hd12_get_act_ths
+ 1789              		.syntax unified
+ 1790              		.thumb
+ 1791              		.thumb_func
+ 1793              	lis2hd12_get_act_ths:
+ 1794              	.LVL135:
+ 1795              	.LFB175:
+ 310:Core/Src/lis2hd12.c **** 
+ 311:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_act_ths(uint8_t *act_ths)
+ 312:Core/Src/lis2hd12.c **** {
+ 1796              		.loc 1 312 1 is_stmt 1 view -0
+ 1797              		.cfi_startproc
+ 1798              		@ args = 0, pretend = 0, frame = 0
+ 1799              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1800              		.loc 1 312 1 is_stmt 0 view .LVU345
+ 1801 0000 00B5     		push	{lr}
+ 1802              	.LCFI74:
+ 1803              		.cfi_def_cfa_offset 4
+ 1804              		.cfi_offset 14, -4
+ 1805 0002 83B0     		sub	sp, sp, #12
+ 1806              	.LCFI75:
+ 1807              		.cfi_def_cfa_offset 16
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 39
+
+
+ 1808 0004 0346     		mov	r3, r0
+ 313:Core/Src/lis2hd12.c ****     static const uint8_t ACT_THS_REG = 0x3E;
+ 1809              		.loc 1 313 5 is_stmt 1 view .LVU346
+ 314:Core/Src/lis2hd12.c **** 
+ 315:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(ACT_THS_REG, act_ths, sizeof(uint8_t));
+ 1810              		.loc 1 315 5 view .LVU347
+ 1811              	.LVL136:
+ 1812              	.LBB138:
+ 1813              	.LBI138:
+  17:Core/Src/lis2hd12.c **** {
+ 1814              		.loc 1 17 23 view .LVU348
+ 1815              	.LBB139:
+  19:Core/Src/lis2hd12.c **** }
+ 1816              		.loc 1 19 5 view .LVU349
+  19:Core/Src/lis2hd12.c **** }
+ 1817              		.loc 1 19 12 is_stmt 0 view .LVU350
+ 1818 0006 0122     		movs	r2, #1
+ 1819 0008 0092     		str	r2, [sp]
+ 1820 000a 3E21     		movs	r1, #62
+ 1821 000c 3220     		movs	r0, #50
+ 1822              	.LVL137:
+  19:Core/Src/lis2hd12.c **** }
+ 1823              		.loc 1 19 12 view .LVU351
+ 1824 000e FFF7FEFF 		bl	i2c_mem_read
+ 1825              	.LVL138:
+  19:Core/Src/lis2hd12.c **** }
+ 1826              		.loc 1 19 12 view .LVU352
+ 1827              	.LBE139:
+ 1828              	.LBE138:
+ 316:Core/Src/lis2hd12.c **** }
+ 1829              		.loc 1 316 1 view .LVU353
+ 1830 0012 03B0     		add	sp, sp, #12
+ 1831              	.LCFI76:
+ 1832              		.cfi_def_cfa_offset 4
+ 1833              		@ sp needed
+ 1834 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1835              		.cfi_endproc
+ 1836              	.LFE175:
+ 1838              		.section	.text.lis2hd12_set_act_ths,"ax",%progbits
+ 1839              		.align	1
+ 1840              		.global	lis2hd12_set_act_ths
+ 1841              		.syntax unified
+ 1842              		.thumb
+ 1843              		.thumb_func
+ 1845              	lis2hd12_set_act_ths:
+ 1846              	.LVL139:
+ 1847              	.LFB176:
+ 317:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_act_ths(uint8_t *act_ths)
+ 318:Core/Src/lis2hd12.c **** {
+ 1848              		.loc 1 318 1 is_stmt 1 view -0
+ 1849              		.cfi_startproc
+ 1850              		@ args = 0, pretend = 0, frame = 0
+ 1851              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1852              		@ link register save eliminated.
+ 319:Core/Src/lis2hd12.c ****     static const uint8_t ACT_THS_REG = 0x3E;
+ 1853              		.loc 1 319 5 view .LVU355
+ 320:Core/Src/lis2hd12.c **** 
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 40
+
+
+ 321:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(ACT_THS_REG, act_ths);
+ 1854              		.loc 1 321 5 view .LVU356
+ 322:Core/Src/lis2hd12.c **** }
+ 1855              		.loc 1 322 1 is_stmt 0 view .LVU357
+ 1856 0000 0020     		movs	r0, #0
+ 1857              	.LVL140:
+ 1858              		.loc 1 322 1 view .LVU358
+ 1859 0002 7047     		bx	lr
+ 1860              		.cfi_endproc
+ 1861              	.LFE176:
+ 1863              		.section	.text.lis2hd12_get_act_dur,"ax",%progbits
+ 1864              		.align	1
+ 1865              		.global	lis2hd12_get_act_dur
+ 1866              		.syntax unified
+ 1867              		.thumb
+ 1868              		.thumb_func
+ 1870              	lis2hd12_get_act_dur:
+ 1871              	.LVL141:
+ 1872              	.LFB177:
+ 323:Core/Src/lis2hd12.c **** uint8_t lis2hd12_get_act_dur(uint8_t *act_dur)
+ 324:Core/Src/lis2hd12.c **** {
+ 1873              		.loc 1 324 1 is_stmt 1 view -0
+ 1874              		.cfi_startproc
+ 1875              		@ args = 0, pretend = 0, frame = 0
+ 1876              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1877              		.loc 1 324 1 is_stmt 0 view .LVU360
+ 1878 0000 00B5     		push	{lr}
+ 1879              	.LCFI77:
+ 1880              		.cfi_def_cfa_offset 4
+ 1881              		.cfi_offset 14, -4
+ 1882 0002 83B0     		sub	sp, sp, #12
+ 1883              	.LCFI78:
+ 1884              		.cfi_def_cfa_offset 16
+ 1885 0004 0346     		mov	r3, r0
+ 325:Core/Src/lis2hd12.c ****     static const uint8_t ACT_DUR_REG = 0x3F;
+ 1886              		.loc 1 325 5 is_stmt 1 view .LVU361
+ 326:Core/Src/lis2hd12.c **** 
+ 327:Core/Src/lis2hd12.c ****     return lis2hd12_read_reg(ACT_DUR_REG, act_dur, sizeof(uint8_t));
+ 1887              		.loc 1 327 5 view .LVU362
+ 1888              	.LVL142:
+ 1889              	.LBB140:
+ 1890              	.LBI140:
+  17:Core/Src/lis2hd12.c **** {
+ 1891              		.loc 1 17 23 view .LVU363
+ 1892              	.LBB141:
+  19:Core/Src/lis2hd12.c **** }
+ 1893              		.loc 1 19 5 view .LVU364
+  19:Core/Src/lis2hd12.c **** }
+ 1894              		.loc 1 19 12 is_stmt 0 view .LVU365
+ 1895 0006 0122     		movs	r2, #1
+ 1896 0008 0092     		str	r2, [sp]
+ 1897 000a 3F21     		movs	r1, #63
+ 1898 000c 3220     		movs	r0, #50
+ 1899              	.LVL143:
+  19:Core/Src/lis2hd12.c **** }
+ 1900              		.loc 1 19 12 view .LVU366
+ 1901 000e FFF7FEFF 		bl	i2c_mem_read
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 41
+
+
+ 1902              	.LVL144:
+  19:Core/Src/lis2hd12.c **** }
+ 1903              		.loc 1 19 12 view .LVU367
+ 1904              	.LBE141:
+ 1905              	.LBE140:
+ 328:Core/Src/lis2hd12.c **** }
+ 1906              		.loc 1 328 1 view .LVU368
+ 1907 0012 03B0     		add	sp, sp, #12
+ 1908              	.LCFI79:
+ 1909              		.cfi_def_cfa_offset 4
+ 1910              		@ sp needed
+ 1911 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1912              		.cfi_endproc
+ 1913              	.LFE177:
+ 1915              		.section	.text.lis2hd12_set_act_dur,"ax",%progbits
+ 1916              		.align	1
+ 1917              		.global	lis2hd12_set_act_dur
+ 1918              		.syntax unified
+ 1919              		.thumb
+ 1920              		.thumb_func
+ 1922              	lis2hd12_set_act_dur:
+ 1923              	.LVL145:
+ 1924              	.LFB178:
+ 329:Core/Src/lis2hd12.c **** uint8_t lis2hd12_set_act_dur(uint8_t *act_dur)
+ 330:Core/Src/lis2hd12.c **** {
+ 1925              		.loc 1 330 1 is_stmt 1 view -0
+ 1926              		.cfi_startproc
+ 1927              		@ args = 0, pretend = 0, frame = 0
+ 1928              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1929              		@ link register save eliminated.
+ 331:Core/Src/lis2hd12.c ****     static const uint8_t ACT_DUR_REG = 0x3F;
+ 1930              		.loc 1 331 5 view .LVU370
+ 332:Core/Src/lis2hd12.c **** 
+ 333:Core/Src/lis2hd12.c ****     return lis2hd12_write_reg(ACT_DUR_REG, act_dur);
+ 1931              		.loc 1 333 5 view .LVU371
+ 334:Core/Src/lis2hd12.c **** }...
+ 1932              		.loc 1 334 1 is_stmt 0 view .LVU372
+ 1933 0000 0020     		movs	r0, #0
+ 1934              	.LVL146:
+ 1935              		.loc 1 334 1 view .LVU373
+ 1936 0002 7047     		bx	lr
+ 1937              		.cfi_endproc
+ 1938              	.LFE178:
+ 1940              		.section	.rodata.__func__.0,"a"
+ 1941              		.align	2
+ 1944              	__func__.0:
+ 1945 0000 6C697332 		.ascii	"lis2hd12_get_temp\000"
+ 1945      68643132 
+ 1945      5F676574 
+ 1945      5F74656D 
+ 1945      7000
+ 1946              		.section	.rodata.__func__.1,"a"
+ 1947              		.align	2
+ 1950              	__func__.1:
+ 1951 0000 6C697332 		.ascii	"lis2hd12_get_status_reg\000"
+ 1951      68643132 
+ 1951      5F676574 
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 42
+
+
+ 1951      5F737461 
+ 1951      7475735F 
+ 1952              		.global	read_complete
+ 1953              		.section	.bss.read_complete,"aw",%nobits
+ 1956              	read_complete:
+ 1957 0000 00       		.space	1
+ 1958              		.global	write_complete
+ 1959              		.section	.bss.write_complete,"aw",%nobits
+ 1962              	write_complete:
+ 1963 0000 00       		.space	1
+ 1964              		.text
+ 1965              	.Letext0:
+ 1966              		.file 2 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/machi
+ 1967              		.file 3 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/sys/_
+ 1968              		.file 4 "Core/Inc/lis2hd12.h"
+ 1969              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1970              		.file 6 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/asser
+ 1971              		.file 7 "Core/Inc/i2c.h"
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 43
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 lis2hd12.c
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s:21     .text.lis2hd12_who_am_i:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s:27     .text.lis2hd12_who_am_i:00000000 lis2hd12_who_am_i
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s:76     .bss.read_complete:00000000 read_complete
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s:77     .bss.read_complete:00000000 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s:82     .bss.write_complete:00000000 write_complete
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccFJrjNp.s:83     .bss.write_complete:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:21     .text.lis2hd12_who_am_i:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:27     .text.lis2hd12_who_am_i:00000000 lis2hd12_who_am_i
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:73     .rodata.lis2hd12_get_status_reg.str1.4:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:80     .text.lis2hd12_get_status_reg:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:86     .text.lis2hd12_get_status_reg:00000000 lis2hd12_get_status_reg
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:146    .text.lis2hd12_get_status_reg:00000028 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1950   .rodata.__func__.1:00000000 __func__.1
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:153    .rodata.lis2hd12_get_temp.str1.4:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:157    .text.lis2hd12_get_temp:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:163    .text.lis2hd12_get_temp:00000000 lis2hd12_get_temp
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:225    .text.lis2hd12_get_temp:00000028 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1944   .rodata.__func__.0:00000000 __func__.0
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:232    .text.lis2hd12_disconnect_sdo_pullup:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:238    .text.lis2hd12_disconnect_sdo_pullup:00000000 lis2hd12_disconnect_sdo_pullup
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:260    .text.lis2hd12_sdo_pullup_is_disconnected:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:266    .text.lis2hd12_sdo_pullup_is_disconnected:00000000 lis2hd12_sdo_pullup_is_disconnected
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:329    .text.lis2hd12_get_ctrl:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:335    .text.lis2hd12_get_ctrl:00000000 lis2hd12_get_ctrl
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:353    .text.lis2hd12_set_ctrl:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:359    .text.lis2hd12_set_ctrl:00000000 lis2hd12_set_ctrl
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:377    .text.lis2hd12_enable_temp_sensor:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:383    .text.lis2hd12_enable_temp_sensor:00000000 lis2hd12_enable_temp_sensor
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:399    .text.lis2hd12_disable_temp_sensor:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:405    .text.lis2hd12_disable_temp_sensor:00000000 lis2hd12_disable_temp_sensor
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:421    .text.lis2hd12_temp_sensor_is_enabled:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:427    .text.lis2hd12_temp_sensor_is_enabled:00000000 lis2hd12_temp_sensor_is_enabled
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:473    .text.lis2hd12_get_interrupt_ref:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:479    .text.lis2hd12_get_interrupt_ref:00000000 lis2hd12_get_interrupt_ref
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:525    .text.lis2hd12_set_interrupt_ref:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:531    .text.lis2hd12_set_interrupt_ref:00000000 lis2hd12_set_interrupt_ref
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:550    .text.lis2hd12_get_status:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:556    .text.lis2hd12_get_status:00000000 lis2hd12_get_status
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:602    .text.lis2hd12_get_acc_xyz:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:608    .text.lis2hd12_get_acc_xyz:00000000 lis2hd12_get_acc_xyz
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:655    .text.lis2hd12_get_fifo_ctrl:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:661    .text.lis2hd12_get_fifo_ctrl:00000000 lis2hd12_get_fifo_ctrl
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:707    .text.lis2hd12_set_fifo_ctrl:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:713    .text.lis2hd12_set_fifo_ctrl:00000000 lis2hd12_set_fifo_ctrl
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:732    .text.lis2hd12_get_fifo_src:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:738    .text.lis2hd12_get_fifo_src:00000000 lis2hd12_get_fifo_src
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:784    .text.lis2hd12_get_int1_cfg:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:790    .text.lis2hd12_get_int1_cfg:00000000 lis2hd12_get_int1_cfg
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:836    .text.lis2hd12_set_int1_cfg:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:842    .text.lis2hd12_set_int1_cfg:00000000 lis2hd12_set_int1_cfg
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:861    .text.lis2hd12_get_int1_src:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:867    .text.lis2hd12_get_int1_src:00000000 lis2hd12_get_int1_src
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:913    .text.lis2hd12_get_int1_ths:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:919    .text.lis2hd12_get_int1_ths:00000000 lis2hd12_get_int1_ths
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:965    .text.lis2hd12_set_int1_ths:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:971    .text.lis2hd12_set_int1_ths:00000000 lis2hd12_set_int1_ths
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:990    .text.lis2hd12_get_int1_duration:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:996    .text.lis2hd12_get_int1_duration:00000000 lis2hd12_get_int1_duration
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1042   .text.lis2hd12_set_int1_duration:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1048   .text.lis2hd12_set_int1_duration:00000000 lis2hd12_set_int1_duration
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1067   .text.lis2hd12_get_int2_cfg:00000000 $t
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s 			page 44
+
+
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1073   .text.lis2hd12_get_int2_cfg:00000000 lis2hd12_get_int2_cfg
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1119   .text.lis2hd12_set_int2_cfg:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1125   .text.lis2hd12_set_int2_cfg:00000000 lis2hd12_set_int2_cfg
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1144   .text.lis2hd12_get_int2_src:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1150   .text.lis2hd12_get_int2_src:00000000 lis2hd12_get_int2_src
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1196   .text.lis2hd12_get_int2_ths:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1202   .text.lis2hd12_get_int2_ths:00000000 lis2hd12_get_int2_ths
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1248   .text.lis2hd12_set_int2_ths:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1254   .text.lis2hd12_set_int2_ths:00000000 lis2hd12_set_int2_ths
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1273   .text.lis2hd12_get_int2_duration:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1279   .text.lis2hd12_get_int2_duration:00000000 lis2hd12_get_int2_duration
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1325   .text.lis2hd12_set_int2_duration:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1331   .text.lis2hd12_set_int2_duration:00000000 lis2hd12_set_int2_duration
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1350   .text.lis2hd12_get_click_cfg:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1356   .text.lis2hd12_get_click_cfg:00000000 lis2hd12_get_click_cfg
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1402   .text.lis2hd12_set_click_cfg:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1408   .text.lis2hd12_set_click_cfg:00000000 lis2hd12_set_click_cfg
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1427   .text.lis2hd12_get_click_src:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1433   .text.lis2hd12_get_click_src:00000000 lis2hd12_get_click_src
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1479   .text.lis2hd12_get_click_ths:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1485   .text.lis2hd12_get_click_ths:00000000 lis2hd12_get_click_ths
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1531   .text.lis2hd12_set_click_ths:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1537   .text.lis2hd12_set_click_ths:00000000 lis2hd12_set_click_ths
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1556   .text.lis2hd12_get_time_limit:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1562   .text.lis2hd12_get_time_limit:00000000 lis2hd12_get_time_limit
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1608   .text.lis2hd12_set_time_limit:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1614   .text.lis2hd12_set_time_limit:00000000 lis2hd12_set_time_limit
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1633   .text.lis2hd12_get_time_latency:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1639   .text.lis2hd12_get_time_latency:00000000 lis2hd12_get_time_latency
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1685   .text.lis2hd12_set_time_latency:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1691   .text.lis2hd12_set_time_latency:00000000 lis2hd12_set_time_latency
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1710   .text.lis2hd12_get_time_window:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1716   .text.lis2hd12_get_time_window:00000000 lis2hd12_get_time_window
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1762   .text.lis2hd12_set_time_window:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1768   .text.lis2hd12_set_time_window:00000000 lis2hd12_set_time_window
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1787   .text.lis2hd12_get_act_ths:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1793   .text.lis2hd12_get_act_ths:00000000 lis2hd12_get_act_ths
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1839   .text.lis2hd12_set_act_ths:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1845   .text.lis2hd12_set_act_ths:00000000 lis2hd12_set_act_ths
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1864   .text.lis2hd12_get_act_dur:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1870   .text.lis2hd12_get_act_dur:00000000 lis2hd12_get_act_dur
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1916   .text.lis2hd12_set_act_dur:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1922   .text.lis2hd12_set_act_dur:00000000 lis2hd12_set_act_dur
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1941   .rodata.__func__.0:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1947   .rodata.__func__.1:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1956   .bss.read_complete:00000000 read_complete
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1957   .bss.read_complete:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1962   .bss.write_complete:00000000 write_complete
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccJpsW23.s:1963   .bss.write_complete:00000000 $d
 
 UNDEFINED SYMBOLS
 i2c_mem_read
+__assert_func

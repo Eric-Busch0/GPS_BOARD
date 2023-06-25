@@ -122,22 +122,6 @@ void i2c_scan(void)
   /*--[ Scanning Done ]--*/
 }
 
-void print_bmp280_id()
-{
-  uint8_t id;
-  uint8_t ret = bmp280_getid(&id);
-
-  if (ret != HAL_OK)
-  {
-    uart_printf("Error reading ID\r\n");
-  }
-
-  uint8_t buf[16] = {0};
-
-  snprintf((char *)buf, sizeof(buf), "BMP280 ID:%02X\r\n", id);
-  HAL_UART_Transmit(&huart1, buf, sizeof(buf), 10000);
-}
-
 void print_lis2hd12_who_am_i(void)
 {
   uint8_t id;
@@ -692,7 +676,7 @@ static bmp280_com_fptr_t bmp280_write(uint8_t dev_id, uint8_t reg_addr, uint8_t 
   ret = HAL_SPI_Transmit(&hspi1, data, len, HAL_MAX_DELAY);
   HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 1);
 
-  return ret;
+  return (int8_t)ret;
 }
 
 static bmp280_com_fptr_t bmp280_read(uint8_t dev_id, uint8_t reg_addr, uint8_t *data, uint16_t len)
@@ -702,7 +686,7 @@ static bmp280_com_fptr_t bmp280_read(uint8_t dev_id, uint8_t reg_addr, uint8_t *
   HAL_SPI_Transmit(&hspi1, &reg_addr, 1, HAL_MAX_DELAY);
   uint8_t ret = HAL_SPI_Receive(&hspi1, data, len, HAL_MAX_DELAY);
   HAL_GPIO_WritePin(BMP_CS_GPIO_Port, BMP_CS_Pin, 1);
-  return ret;
+  return (int8_t)ret;
 }
 
 /* USER CODE END 4 */
@@ -718,8 +702,10 @@ void StartDefaultTask(void const *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
-  uint32_t pressure;
-  uint8_t ret;
+  struct bmp280_config conf;
+  struct bmp280_uncomp_data ucomp_data;
+  uint32_t pres32, pres64;
+  int32_t temp32;
 
   struct bmp280_dev bmp = {
       .dev_id = 0x00,
@@ -728,62 +714,46 @@ void StartDefaultTask(void const *argument)
       .write = bmp280_write,
       .delay_ms = HAL_Delay};
 
-  struct bmp280_config conf;
-  struct bmp280_uncomp_data ucomp_data;
-  uint32_t pres32, pres64;
-  double pres;
-  int32_t temp32;
-  double temp;
-
   int8_t rslt = bmp280_init(&bmp);
   uart_printf(" bmp280_init status %d\r\n", rslt);
 
-  rslt = bmp280_get_config(&conf, &bmp);
+  (void)bmp280_get_config(&conf, &bmp);
 
   conf.filter = BMP280_FILTER_COEFF_2;
-
   conf.os_pres = BMP280_OS_4X;
-    conf.os_temp = BMP280_OS_4X;
-
-
+  conf.os_temp = BMP280_OS_4X;
   conf.odr = BMP280_ODR_1000_MS;
-  rslt = bmp280_set_config(&conf, &bmp);
 
-  rslt = bmp280_set_power_mode(BMP280_NORMAL_MODE, &bmp);
+  (void)bmp280_set_config(&conf, &bmp);
+
+  (void)bmp280_set_power_mode(BMP280_NORMAL_MODE, &bmp);
 
   for (;;)
   {
 
-    // /* Reading the raw data from sensor */
-    // rslt = bmp280_get_uncomp_data(&ucomp_data, &bmp);
+    /* Reading the raw data from sensor */
+    (void)bmp280_get_uncomp_data(&ucomp_data, &bmp);
 
-    // /* Getting the compensated pressure using 32 bit precision */
-    // rslt = bmp280_get_comp_pres_32bit(&pres32, ucomp_data.uncomp_press, &bmp);
+    /* Getting the compensated pressure using 32 bit precision */
+    (void)bmp280_get_comp_pres_32bit(&pres32, ucomp_data.uncomp_press, &bmp);
 
-    // /* Getting the compensated pressure using 64 bit precision */
-    // rslt = bmp280_get_comp_pres_64bit(&pres64, ucomp_data.uncomp_press, &bmp);
+    /* Getting the compensated pressure using 64 bit precision */
+    (void)bmp280_get_comp_pres_64bit(&pres64, ucomp_data.uncomp_press, &bmp);
 
-    // /* Getting the compensated pressure as floating point value */
-    // rslt = bmp280_get_comp_pres_double(&pres, ucomp_data.uncomp_press, &bmp);
-
-    // uart_printf("UP: %ld, P32: %ld, P64: %ld, P64N: %ld, P: %f\r\n",
-    //             ucomp_data.uncomp_press,
-    //             pres32,
-    //             pres64,
-    //             pres64 / 256,
-    //             pres);
+    uart_printf("UP: %ld, P32: %ld, P64: %ld, P64N: %ld\r\n",
+                ucomp_data.uncomp_press,
+                pres32,
+                pres64,
+                pres64 / 256);
 
     // /* Reading the raw data from sensor */
-    // rslt = bmp280_get_uncomp_data(&ucomp_data, &bmp);
+    (void)bmp280_get_uncomp_data(&ucomp_data, &bmp);
 
-    // /* Getting the 32 bit compensated temperature */
-    // rslt = bmp280_get_comp_temp_32bit(&temp32, ucomp_data.uncomp_temp, &bmp);
+    /* Getting the 32 bit compensated temperature */
+    (void)bmp280_get_comp_temp_32bit(&temp32, ucomp_data.uncomp_temp, &bmp);
 
-    // /* Getting the compensated temperature as floating point value */
-    // rslt = bmp280_get_comp_temp_double(&temp, ucomp_data.uncomp_temp, &bmp);
-    // uart_printf("UT: %ld, T32: %ld, T: %f \r\n", ucomp_data.uncomp_temp, temp32, temp);
+    uart_printf("UT: %ld, T32: %ld\r\n", ucomp_data.uncomp_temp, temp32);
 
-    // uart_printf("Pressure %u\r\n", pressure);
     osDelay(100);
   }
   /* USER CODE END 5 */

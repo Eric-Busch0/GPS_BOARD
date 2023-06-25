@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 1
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 1
   19:Core/Src/eeprom.c ****     HAL_GPIO_WritePin(EEPROM_WP_GPIO_Port, EEPROM_WP_Pin, GPIO_PIN_SET);
   38              		.loc 1 19 5 view .LVU1
   39 0002 0122     		movs	r2, #1
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 2
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s 			page 2
 
 
   40 0004 4FF48051 		mov	r1, #4096
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 1
   93              	eeprom_write:
   94              	.LVL2:
   95              	.LFB133:
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 3
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s 			page 3
 
 
   25:Core/Src/eeprom.c **** uint8_t eeprom_write(uint32_t addr, void *data, uint32_t len)
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 1
   41:Core/Src/eeprom.c ****         uint8_t ret = i2c_write(EEPROM_I2C_ADDR, (uint8_t*) write_buf, len + 1);
   42:Core/Src/eeprom.c ****         enable_wp();
   43:Core/Src/eeprom.c **** 
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 4
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s 			page 4
 
 
   44:Core/Src/eeprom.c ****         if (ret != HAL_OK)
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 1
  162              		.loc 1 41 23 is_stmt 0 view .LVU27
  163 0030 621C     		adds	r2, r4, #1
  164 0032 2946     		mov	r1, r5
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 5
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s 			page 5
 
 
  165 0034 A020     		movs	r0, #160
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 1
  212              	.LCFI3:
  213              		.cfi_def_cfa_offset 16
  214              		.cfi_offset 3, -16
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 6
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s 			page 6
 
 
  215              		.cfi_offset 4, -12
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 1
  255              	.LVL23:
  256 0028 F8E7     		b	.L17
  257              	.L21:
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 7
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s 			page 7
 
 
  258 002a 00BF     		.align	2
@@ -385,25 +385,25 @@ ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 1
  278              		.file 8 "Core/Inc/i2c.h"
  279              		.file 9 "/Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/arm-none-eabi/include/strin
  280              		.file 10 "<built-in>"
-ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s 			page 8
+ARM GAS  /var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 eeprom.c
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:21     .text.enable_wp:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:27     .text.enable_wp:00000000 enable_wp
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:49     .text.enable_wp:00000010 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:54     .text.disable_wp:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:60     .text.disable_wp:00000000 disable_wp
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:82     .text.disable_wp:00000010 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:87     .text.eeprom_write:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:93     .text.eeprom_write:00000000 eeprom_write
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:191    .text.eeprom_write:00000050 $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:268    .bss.write_buf:00000000 write_buf
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:197    .text.eeprom_read:00000000 $t
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:203    .text.eeprom_read:00000000 eeprom_read
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:260    .text.eeprom_read:0000002c $d
-/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccHQJa1u.s:265    .bss.write_buf:00000000 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:21     .text.enable_wp:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:27     .text.enable_wp:00000000 enable_wp
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:49     .text.enable_wp:00000010 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:54     .text.disable_wp:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:60     .text.disable_wp:00000000 disable_wp
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:82     .text.disable_wp:00000010 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:87     .text.eeprom_write:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:93     .text.eeprom_write:00000000 eeprom_write
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:191    .text.eeprom_write:00000050 $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:268    .bss.write_buf:00000000 write_buf
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:197    .text.eeprom_read:00000000 $t
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:203    .text.eeprom_read:00000000 eeprom_read
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:260    .text.eeprom_read:0000002c $d
+/var/folders/lr/lj34qkqj2c73hcmf5705x8480000gn/T//ccUuxliq.s:265    .bss.write_buf:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin
